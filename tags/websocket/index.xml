@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>websocket on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/websocket/</link>
+    <description>Recent content in websocket on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Tue, 12 May 2020 17:58:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/websocket/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>内网穿透使用wss</title>
+      <link>https://www.fenghong.tech/blog/ops/frpc-websocket/</link>
+      <pubDate>Tue, 12 May 2020 17:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/frpc-websocket/</guid>
+      <description>[toc] 前言 公司测试环境需</description>
+    </item>
+    
+  </channel>
+</rss>

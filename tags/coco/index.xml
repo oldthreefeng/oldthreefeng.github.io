@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coco on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/coco/</link>
+    <description>Recent content in Coco on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Sat, 08 Sep 2018 09:59:32 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/coco/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>jumpserver架构</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-03/</link>
+      <pubDate>Sat, 08 Sep 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-03/</guid>
+      <description>架构说明 组件说明 Jumpserver 现</description>
+    </item>
+    
+    <item>
+      <title>jumpserver管理者使用</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-01/</link>
+      <pubDate>Sun, 19 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-01/</guid>
+      <description>快速入门 必备条件 一台</description>
+    </item>
+    
+    <item>
+      <title>jumpServer安装</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-14-jumpserver/</link>
+      <pubDate>Sat, 18 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-14-jumpserver/</guid>
+      <description>CentOS 6 安装文档 说明 # 开</description>
+    </item>
+    
+  </channel>
+</rss>

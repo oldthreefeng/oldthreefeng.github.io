@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>http on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/http/</link>
+    <description>Recent content in http on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Mon, 22 Jun 2020 14:58:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/http/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>记一次nginx跨域访问Content Security Policy设置</title>
+      <link>https://www.fenghong.tech/blog/ops/nginx-blocked-by-cors/</link>
+      <pubDate>Mon, 22 Jun 2020 14:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/nginx-blocked-by-cors/</guid>
+      <description>[toc] 前言 在开发静态页面</description>
+    </item>
+    
+    <item>
+      <title>内网穿透使用wss</title>
+      <link>https://www.fenghong.tech/blog/ops/frpc-websocket/</link>
+      <pubDate>Tue, 12 May 2020 17:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/frpc-websocket/</guid>
+      <description>[toc] 前言 公司测试环境需</description>
+    </item>
+    
+    <item>
+      <title>内网穿透神级工具frp</title>
+      <link>https://www.fenghong.tech/blog/ops/frp-20191204/</link>
+      <pubDate>Wed, 04 Dec 2019 17:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/frp-20191204/</guid>
+      <description>对于没有公网 IP 的内网</description>
+    </item>
+    
+    <item>
+      <title>ULB负载均衡踩的坑</title>
+      <link>https://www.fenghong.tech/blog/ops/loaderbalancerinucloud/</link>
+      <pubDate>Tue, 18 Dec 2018 12:22:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/loaderbalancerinucloud/</guid>
+      <description>[TOC] ULB的http强</description>
+    </item>
+    
+    <item>
+      <title>http 基本原理</title>
+      <link>https://www.fenghong.tech/blog/intro/http/</link>
+      <pubDate>Fri, 10 Nov 2017 23:25:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/intro/http/</guid>
+      <description>[TOC] 一 、基础概念 URL URI 包</description>
+    </item>
+    
+  </channel>
+</rss>

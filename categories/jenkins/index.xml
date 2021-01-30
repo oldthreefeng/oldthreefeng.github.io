@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jenkins on Louis Blog</title>
+    <link>https://www.fenghong.tech/categories/jenkins/</link>
+    <description>Recent content in jenkins on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Sun, 28 Jun 2020 10:54:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/categories/jenkins/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>记一次curl版本yum升级至7.71.0</title>
+      <link>https://www.fenghong.tech/blog/ops/curl-data-raw/</link>
+      <pubDate>Sun, 28 Jun 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/curl-data-raw/</guid>
+      <description>[TOC] 背景 偶然有一次机会</description>
+    </item>
+    
+    <item>
+      <title>jenkins&#43;java&#43;docker&#43;kubernetes实现自动化部署</title>
+      <link>https://www.fenghong.tech/blog/ops/jenkins-java-docker-kubernetes/</link>
+      <pubDate>Wed, 24 Jun 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/jenkins-java-docker-kubernetes/</guid>
+      <description>[TOC] 背景 基于sprin</description>
+    </item>
+    
+    <item>
+      <title>使用shell脚本发送钉钉通知</title>
+      <link>https://www.fenghong.tech/blog/ops/shell-use-sign-dingding/</link>
+      <pubDate>Fri, 29 Nov 2019 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/shell-use-sign-dingding/</guid>
+      <description>使用自定义机器人注意</description>
+    </item>
+    
+    <item>
+      <title>pipeline实现并发构建</title>
+      <link>https://www.fenghong.tech/blog/ops/jenkins-pipeline-parallel/</link>
+      <pubDate>Mon, 16 Sep 2019 15:08:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/jenkins-pipeline-parallel/</guid>
+      <description>[TOC] 背景 公司的jenk</description>
+    </item>
+    
+    <item>
+      <title>jenkins自动化发布工具迁移</title>
+      <link>https://www.fenghong.tech/blog/ops/jenkins-move-to-annother-host/</link>
+      <pubDate>Mon, 09 Sep 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/jenkins-move-to-annother-host/</guid>
+      <description>[TOC] 背景 公司服务器缩减</description>
+    </item>
+    
+    <item>
+      <title>jenkins实现不同角色不同权限</title>
+      <link>https://www.fenghong.tech/blog/ops/jenkins-role-base-strategy/</link>
+      <pubDate>Sat, 10 Aug 2019 10:08:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/jenkins-role-base-strategy/</guid>
+      <description>[TOC] 背景 公司的jenk</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Http on Louis Blog</title>
+    <link>https://www.fenghong.tech/categories/http/</link>
+    <description>Recent content in Http on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Fri, 22 Jun 2018 19:59:32 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/categories/http/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>LAMP2</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-22-lamp2/</link>
+      <pubDate>Fri, 22 Jun 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-22-lamp2/</guid>
+      <description>摘要：centos7</description>
+    </item>
+    
+    <item>
+      <title>LAMP1</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-21-lamp/</link>
+      <pubDate>Thu, 21 Jun 2018 17:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-21-lamp/</guid>
+      <description>摘要：lamp简介，</description>
+    </item>
+    
+    <item>
+      <title>Http(Apache2)</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-21-http_apache2/</link>
+      <pubDate>Thu, 21 Jun 2018 16:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-21-http_apache2/</guid>
+      <description>摘要：压力测试工具a</description>
+    </item>
+    
+    <item>
+      <title>Http(Apache1)</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-19-http_apache1/</link>
+      <pubDate>Tue, 19 Jun 2018 16:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-19-http_apache1/</guid>
+      <description>摘要：Apache的</description>
+    </item>
+    
+    <item>
+      <title>Http(Apache)</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-19-http_apache0/</link>
+      <pubDate>Tue, 19 Jun 2018 10:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-19-http_apache0/</guid>
+      <description>摘要：interne</description>
+    </item>
+    
+  </channel>
+</rss>

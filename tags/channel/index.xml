@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>channel on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/channel/</link>
+    <description>Recent content in channel on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Fri, 09 Aug 2019 15:56:10 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/channel/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go channel 理解</title>
+      <link>https://www.fenghong.tech/blog/go/go-channel/</link>
+      <pubDate>Fri, 09 Aug 2019 15:56:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/go-channel/</guid>
+      <description>[TOC] channel 为什么需要cha</description>
+    </item>
+    
+  </channel>
+</rss>

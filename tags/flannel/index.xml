@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>flannel on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/flannel/</link>
+    <description>Recent content in flannel on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Fri, 06 Sep 2019 15:56:11 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/flannel/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>kuberbetes 网络排错</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubeadm-network-debug/</link>
+      <pubDate>Fri, 06 Sep 2019 15:56:11 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubeadm-network-debug/</guid>
+      <description>[TOC] 转载知乎大佬 知乎专</description>
+    </item>
+    
+  </channel>
+</rss>

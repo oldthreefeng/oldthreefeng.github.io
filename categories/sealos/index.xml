@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sealos on Louis Blog</title>
+    <link>https://www.fenghong.tech/categories/sealos/</link>
+    <description>Recent content in sealos on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Wed, 16 Dec 2020 17:34:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/categories/sealos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>一键在arm64架构上部署高可用kubernetes v1.20.0集群</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sealos-install-arm64-1.20/</link>
+      <pubDate>Wed, 16 Dec 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sealos-install-arm64-1.20/</guid>
+      <description>[TOC] 项目的由来 随着“中</description>
+    </item>
+    
+    <item>
+      <title>一键在arm64架构上部署高可用kubernetes v1.19.0集群</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sealos-install-arm64/</link>
+      <pubDate>Sun, 06 Dec 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sealos-install-arm64/</guid>
+      <description>[TOC] 一个二进制工具加一</description>
+    </item>
+    
+    <item>
+      <title>sealos join master 失败</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sealos-join-master/</link>
+      <pubDate>Fri, 09 Oct 2020 20:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sealos-join-master/</guid>
+      <description>sealos 安装HA 3 master Kubernetes $ sealos</description>
+    </item>
+    
+    <item>
+      <title>sealos 多网卡安装解决方案</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sealos-multi-iface-solution/</link>
+      <pubDate>Mon, 21 Sep 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sealos-multi-iface-solution/</guid>
+      <description>多网卡在sealos</description>
+    </item>
+    
+    <item>
+      <title>sealos etcd及exec子命令使用相关</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sealos-etcd-backup-exec/</link>
+      <pubDate>Sun, 20 Sep 2020 10:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sealos-etcd-backup-exec/</guid>
+      <description>sealos etcd 命令 使用seal</description>
+    </item>
+    
+    <item>
+      <title>sealos 一键安装 kubernetes1.18.0[deprecated]</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sealos-install/</link>
+      <pubDate>Mon, 01 Jun 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sealos-install/</guid>
+      <description>[TOC] 一个二进制工具加一</description>
+    </item>
+    
+  </channel>
+</rss>

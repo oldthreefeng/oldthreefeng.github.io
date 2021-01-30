@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ubuntu on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/ubuntu/</link>
+    <description>Recent content in ubuntu on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Sat, 07 Sep 2019 02:56:11 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ubuntu安装postgresql</title>
+      <link>https://www.fenghong.tech/blog/ops/postgresql-install/</link>
+      <pubDate>Sat, 07 Sep 2019 02:56:11 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/postgresql-install/</guid>
+      <description>[TOC] 配置OS资源限制 #</description>
+    </item>
+    
+    <item>
+      <title>ubuntu 14.04 upgrade to 18.04(LTS)</title>
+      <link>https://www.fenghong.tech/blog/ops/ubuntu14.04to18.04/</link>
+      <pubDate>Tue, 03 Sep 2019 15:11:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/ubuntu14.04to18.04/</guid>
+      <description>[TOC] 前言 升级ubunt</description>
+    </item>
+    
+    <item>
+      <title>use ssr in ubuntu</title>
+      <link>https://www.fenghong.tech/blog/ops/ubuntu-chrome/</link>
+      <pubDate>Wed, 12 Dec 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/ubuntu-chrome/</guid>
+      <description>[TOC] 摘要： 科学上网 lx</description>
+    </item>
+    
+    <item>
+      <title>Kubuntu 从安装到科学上网</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-25-kubuntu/</link>
+      <pubDate>Wed, 25 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-25-kubuntu/</guid>
+      <description>摘要： 科学上网 lxc</description>
+    </item>
+    
+  </channel>
+</rss>

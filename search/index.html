@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn"><head>
+  <meta charset="utf-8">
+  <title>Search Result | Louis Blog</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="this is meta description">
+  
+  <meta name="author" content="Louis ">
+  <meta name="generator" content="Hugo 0.73.0" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  
+  <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="/plugins/animate/animate.css">
+  
+  <link rel="stylesheet" href="/plugins/venobox/venobox.css">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="/images/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="/images/images/favicon.png " type="image/x-icon">
+
+  <!--Algolia-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css">
+</head>
+<body>
+<!-- header -->
+<header>
+  
+
+  <!-- navigation -->
+  <div class="navigation bg-white position-relative">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="/"><img class="img-fluid pb-lg-3" src="/images/images/logo.png" width="189px" alt="Louis Blog"></a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/"></a>
+            </li>
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                博客
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/categories/kubernetes">Kubernetes</a>
+                
+                <a class="dropdown-item" href="/categories/sealos">sealos</a>
+                
+                <a class="dropdown-item" href="/categories/ops">运维相关</a>
+                
+                <a class="dropdown-item" href="/categories/golang">golang</a>
+                
+                <a class="dropdown-item" href="/categories/algorithm">algorithm</a>
+                
+                <a class="dropdown-item" href="/categories/tools">tools</a>
+                
+                <a class="dropdown-item" href="/blog">全部</a>
+                
+              </div>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/team">友情链接</a>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                关于我
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/contact">about</a>
+                
+                <a class="dropdown-item" href="https://github.com/oldthreefeng">github</a>
+                
+              </div>
+            </li>
+            
+            
+          </ul>
+
+          
+          
+
+          
+          <!-- search -->
+          <div class="search px-4">
+            <button id="searchOpen" class="search-btn"><i class="fa fa-search text-dark"></i></button>
+            <div class="search-wrapper">
+              <form action="/search">
+                <input class="search-box form-control" id="js-algolia-btn" name="s" type="search" placeholder="输入搜索词">
+              </form>
+              <button id="searchClose" class="search-close"><i class="fa fa-close text-dark"></i></button>
+            </div>
+          </div>
+          
+          
+          <!-- get start btn -->
+          <a href="/contact" class="btn btn-primary hover-ripple">联系我</a>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- /navigation -->
+</header>
+<!-- /header -->
+
+
+<!-- page title -->
+<section class="section bg-cover overlay" style="background-image: url('/images/images/backgrounds/page-title.webp'),url('/images/images/backgrounds/page-title.jpg'),url('/images/images/backgrounds/page-title.jpg');">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-white mb-3">Search Result</h2>
+        <!-- breadcrumb -->
+        
+        <p class="text-white">this is meta description</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /page title -->
+
+
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+          <div id="search-results"></div>
+          <script id="search-result-template" type="text/x-js-template">
+            <div class="search-result" id="summary-${key}">
+              <h4><a href="${link}">${title}</a></h4>
+              <p>${snippet}</p>
+              ${ isset tags }<p>Tags: ${tags}</p>${ end }
+              ${ isset categories }<p>Categories: ${categories}</p>${ end }
+            </div>
+          </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer>
+	
+	<div class="section bg-secondary">
+		<div class="container">
+			<div class="row justify-content-between">
+				
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					<a class="mb-4 d-inline-block" href="/"><img class="img-fluid"
+																								src="/images/images/logo-alt.png" alt="Louis Blog" width="60%"></a>
+					<p class="text-light mb-5">每一个不曾起舞的日子都是对生命的辜负.</p>
+					<h4 class="text-white mb-4">关注我</h4>
+					
+					<ul class="list-inline social-icon-alt">
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://twitter.com/louishong17"><i class="fa fa-twitter"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://github.com/oldthreefeng"><i class="fa fa-github"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="/contact"><i class="fa fa-wechat"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="mailto:992165098@qq.com"><i class="fa fa-envelope"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://www.fenghong.tech/blog/index.xml"><i class="fa fa-rss"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					
+					
+					
+					
+					<div class="mb-5">
+						<h4 class="text-white mb-4">联系信息</h4>
+						<p class="text-light mb-3">上海 · 浦东新区</p>
+						<p class="text-light mb-3"></p>
+						<p class="text-light mb-3">微信联系方式</p>
+						<p class="text-light mb-3"><img src="/images/images/wechat-qrcode.png" width="356px"></p>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="bg-secondary-darken py-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+					<p class="mb-0 text-white">Copyright © 2020 Louis</p>
+				</div>
+				<div class="col-md-6 text-center text-md-right">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item mx-0"><a class="d-inline-block px-3 text-white" href="https://beian.miit.gov.cn/"
+																									class="text-white">鄂ICP备18027870号-1</a></li>
+						<p class="list-inline-item mx-0 text-white">本网站由</p>
+						<a target="_blank" rel="nofollow noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://pic.fenghong.tech/images/180803_logo30.png" style="margin-bottom:5px;height: 25px;"></a>
+						<p class="list-inline-item mx-0 text-white">提供CDN加速/云存储服务</p>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+<script>
+	var indexURL = "/index.json"
+</script>
+
+
+<!-- JS Plugins -->
+
+<script src="/plugins/jQuery/jquery.min.js"></script>
+
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="/plugins/slick/slick.min.js"></script>
+
+<script src="/plugins/google-map/gmap.js"></script>
+
+<script src="/plugins/venobox/venobox.min.js"></script>
+
+<script src="/plugins/filterizr/jquery.filterizr.min.js"></script>
+
+<script src="/plugins/search/fuse.min.js"></script>
+
+<script src="/plugins/search/mark.js"></script>
+
+<script src="/plugins/search/search.js"></script>
+
+<script src="/plugins/bigPicture/bigPicture.js"></script>
+
+<script src="/plugins/hex_md5/hex_md5.js"></script>
+
+
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+
+<!-- Algolia -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+<script>
+	docsearch({
+		apiKey: 'b4d47f0c039a84d4035305be829404dd',
+		indexName: 'DocSearch',
+		appId: 'CTH4P282IZ',
+		inputSelector: '#js-algolia-btn',
+		debug: false,
+	});
+</script>
+
+<!-- google analitycs -->
+
+<script>
+	(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-130595069-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https'){
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else{
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</body>
+
+</html>

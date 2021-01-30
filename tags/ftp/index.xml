@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ftp on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/ftp/</link>
+    <description>Recent content in ftp on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Mon, 25 Jun 2018 21:59:32 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/ftp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>FTP1</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-25-ftp1/</link>
+      <pubDate>Mon, 25 Jun 2018 21:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-25-ftp1/</guid>
+      <description>摘要：实现基于mys</description>
+    </item>
+    
+    <item>
+      <title>FTP</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-24-ftp/</link>
+      <pubDate>Sun, 24 Jun 2018 08:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-24-ftp/</guid>
+      <description>摘要：FTP的简介；</description>
+    </item>
+    
+  </channel>
+</rss>

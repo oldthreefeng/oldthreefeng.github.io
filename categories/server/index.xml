@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>server on Louis Blog</title>
+    <link>https://www.fenghong.tech/categories/server/</link>
+    <description>Recent content in server on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Tue, 16 Jun 2020 16:58:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/categories/server/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>阿里云6月bug修复</title>
+      <link>https://www.fenghong.tech/blog/ops/aliyun-fix-bug-jun/</link>
+      <pubDate>Tue, 16 Jun 2020 16:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/aliyun-fix-bug-jun/</guid>
+      <description>[TOC] 阿里云六月份的漏洞</description>
+    </item>
+    
+    <item>
+      <title>记一次开机挂载导致linux重启出现紧急模式的问题及解决</title>
+      <link>https://www.fenghong.tech/blog/ops/linux-emergency-mode-resloved/</link>
+      <pubDate>Tue, 09 Jun 2020 09:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/linux-emergency-mode-resloved/</guid>
+      <description>[TOC] 一次意外停电, 公司</description>
+    </item>
+    
+    <item>
+      <title>阿里云5月bug修复</title>
+      <link>https://www.fenghong.tech/blog/ops/aliyun-fix-bug/</link>
+      <pubDate>Fri, 29 May 2020 09:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/aliyun-fix-bug/</guid>
+      <description>[TOC] 阿里云五月份的漏洞</description>
+    </item>
+    
+    <item>
+      <title>gitlab-ce-zh部署并开启https</title>
+      <link>https://www.fenghong.tech/blog/ops/gitlab-ce-zh-install-with-https/</link>
+      <pubDate>Mon, 04 May 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/gitlab-ce-zh-install-with-https/</guid>
+      <description>[TOC] 背景: 源码仓库管理</description>
+    </item>
+    
+    <item>
+      <title>配置prometheus告警规则</title>
+      <link>https://www.fenghong.tech/blog/ops/prometheus-alertmanager/</link>
+      <pubDate>Fri, 24 Apr 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/prometheus-alertmanager/</guid>
+      <description>[TOC] 摘要： 系统监控报警</description>
+    </item>
+    
+    <item>
+      <title>搭建prometheus监控系统</title>
+      <link>https://www.fenghong.tech/blog/ops/grafana-prometheus-node_exporter-mysql/</link>
+      <pubDate>Wed, 08 Apr 2020 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/grafana-prometheus-node_exporter-mysql/</guid>
+      <description>[TOC] 摘要： 系统监控 prometheus 背</description>
+    </item>
+    
+    <item>
+      <title>搭建trojan服务</title>
+      <link>https://www.fenghong.tech/blog/ops/trojan-install/</link>
+      <pubDate>Wed, 04 Mar 2020 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/trojan-install/</guid>
+      <description>[TOC] 摘要： 科学上网 trojan 背</description>
+    </item>
+    
+    <item>
+      <title>rsync大文件传输导致磁盘异常爆增</title>
+      <link>https://www.fenghong.tech/blog/ops/rsync-with-big-file/</link>
+      <pubDate>Mon, 10 Feb 2020 11:12:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/rsync-with-big-file/</guid>
+      <description>[TOC] 背景： 每天四次服务</description>
+    </item>
+    
+    <item>
+      <title>nginx rewrite的break和last</title>
+      <link>https://www.fenghong.tech/blog/ops/nginx-rewrite/</link>
+      <pubDate>Tue, 12 Nov 2019 15:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/nginx-rewrite/</guid>
+      <description>[TOC] last 和 break 当出现在lo</description>
+    </item>
+    
+    <item>
+      <title>nginx基于ip_hash访问策略的不生效的分析.</title>
+      <link>https://www.fenghong.tech/blog/ops/nginx-ip_hash-realip/</link>
+      <pubDate>Mon, 11 Nov 2019 15:52:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/nginx-ip_hash-realip/</guid>
+      <description>nginx基于ip_</description>
+    </item>
+    
+    <item>
+      <title>use acme.sh to renew ssl cert</title>
+      <link>https://www.fenghong.tech/blog/ops/acme-ssl-cert/</link>
+      <pubDate>Mon, 02 Sep 2019 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/acme-ssl-cert/</guid>
+      <description>[TOC] acme.sh：h</description>
+    </item>
+    
+    <item>
+      <title>nginx if 多重判断语句</title>
+      <link>https://www.fenghong.tech/blog/ops/nginx-if/</link>
+      <pubDate>Wed, 12 Dec 2018 10:44:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/nginx-if/</guid>
+      <description>[TOC] nginx 多重判断 在Ngi</description>
+    </item>
+    
+    <item>
+      <title>use ssr in ubuntu</title>
+      <link>https://www.fenghong.tech/blog/ops/ubuntu-chrome/</link>
+      <pubDate>Wed, 12 Dec 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/ubuntu-chrome/</guid>
+      <description>[TOC] 摘要： 科学上网 lx</description>
+    </item>
+    
+  </channel>
+</rss>

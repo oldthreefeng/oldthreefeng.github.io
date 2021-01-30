@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ansible on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/ansible/</link>
+    <description>Recent content in ansible on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Fri, 10 Jan 2020 22:42:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/ansible/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>服务器巡检并汇总Excel发送邮件通知</title>
+      <link>https://www.fenghong.tech/blog/python/python-with-excel/</link>
+      <pubDate>Fri, 10 Jan 2020 22:42:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/python/python-with-excel/</guid>
+      <description>背景 接到一个需求, 要</description>
+    </item>
+    
+    <item>
+      <title>A cli tool to deploy ansible-playbook</title>
+      <link>https://www.fenghong.tech/blog/ops/ango-with-ansible/</link>
+      <pubDate>Fri, 13 Dec 2019 09:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/ango-with-ansible/</guid>
+      <description>ango 基于golang开</description>
+    </item>
+    
+    <item>
+      <title>RabbitMq高可用集群搭建</title>
+      <link>https://www.fenghong.tech/blog/ops/rabbitmq-cluster-install/</link>
+      <pubDate>Wed, 06 Nov 2019 17:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/rabbitmq-cluster-install/</guid>
+      <description>RabbitMQ这款</description>
+    </item>
+    
+    <item>
+      <title>KeepAlive</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-11-keepalive/</link>
+      <pubDate>Wed, 11 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-11-keepalive/</guid>
+      <description>摘要： HA cluste</description>
+    </item>
+    
+    <item>
+      <title>Ansible简单实验</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-10-ansible/</link>
+      <pubDate>Wed, 06 Jun 2018 20:49:28 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-10-ansible/</guid>
+      <description>实验环境： 主控机：1</description>
+    </item>
+    
+  </channel>
+</rss>

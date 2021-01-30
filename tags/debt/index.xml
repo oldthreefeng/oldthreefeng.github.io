@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>debt on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/debt/</link>
+    <description>Recent content in debt on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Tue, 24 Sep 2019 17:40:12 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/debt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>go房贷计算器</title>
+      <link>https://www.fenghong.tech/blog/algorithm/paymydebt/</link>
+      <pubDate>Tue, 24 Sep 2019 17:40:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/paymydebt/</guid>
+      <description>[TOC] 前言 房贷，也被称为</description>
+    </item>
+    
+  </channel>
+</rss>

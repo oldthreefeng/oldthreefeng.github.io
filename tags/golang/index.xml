@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/golang/</link>
+    <description>Recent content in golang on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Thu, 21 Jan 2021 12:34:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>windos使用wls2 并配置vscode golang开发~</title>
+      <link>https://www.fenghong.tech/blog/tools/windows-wls2-vscode-go/</link>
+      <pubDate>Thu, 21 Jan 2021 12:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/tools/windows-wls2-vscode-go/</guid>
+      <description>[TOC] 背景: 提高开发效率</description>
+    </item>
+    
+    <item>
+      <title>A cli tool to deploy ansible-playbook</title>
+      <link>https://www.fenghong.tech/blog/ops/ango-with-ansible/</link>
+      <pubDate>Fri, 13 Dec 2019 09:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/ango-with-ansible/</guid>
+      <description>ango 基于golang开</description>
+    </item>
+    
+    <item>
+      <title>内网穿透神级工具frp</title>
+      <link>https://www.fenghong.tech/blog/ops/frp-20191204/</link>
+      <pubDate>Wed, 04 Dec 2019 17:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/frp-20191204/</guid>
+      <description>对于没有公网 IP 的内网</description>
+    </item>
+    
+  </channel>
+</rss>

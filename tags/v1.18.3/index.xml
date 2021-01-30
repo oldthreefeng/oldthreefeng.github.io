@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>v1.18.3 on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/v1.18.3/</link>
+    <description>Recent content in v1.18.3 on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Tue, 16 Jun 2020 20:34:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/v1.18.3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>kubernetes集群升级至v1.18.3且调整证书年限</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-upgrade-1.18.3/</link>
+      <pubDate>Tue, 16 Jun 2020 20:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-upgrade-1.18.3/</guid>
+      <description>[TOC] 安装kubenet</description>
+    </item>
+    
+  </channel>
+</rss>

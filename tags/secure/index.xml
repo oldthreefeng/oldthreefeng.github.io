@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>secure on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/secure/</link>
+    <description>Recent content in secure on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Mon, 30 Dec 2019 15:22:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/secure/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>记一次linux的bios引导失败</title>
+      <link>https://www.fenghong.tech/blog/ops/linux-grub-bios/</link>
+      <pubDate>Mon, 30 Dec 2019 15:22:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/linux-grub-bios/</guid>
+      <description>周末公司整座大楼停电</description>
+    </item>
+    
+  </channel>
+</rss>

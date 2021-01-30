@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pvc on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/pvc/</link>
+    <description>Recent content in pvc on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Fri, 19 Jun 2020 21:34:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/pvc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>k8s基于helm安装loki并持久化数据</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-loki-logs/</link>
+      <pubDate>Fri, 19 Jun 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-loki-logs/</guid>
+      <description>[TOC] 基本的集群监控部署</description>
+    </item>
+    
+    <item>
+      <title>k8s安装prometheus并持久化数据</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-promtheus-persist-storage/</link>
+      <pubDate>Thu, 11 Jun 2020 15:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-promtheus-persist-storage/</guid>
+      <description>[TOC] Prometheus 部署已经完成, 但</description>
+    </item>
+    
+    <item>
+      <title>kuberbetes serviceaccout访问集群</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-service-accout/</link>
+      <pubDate>Sat, 06 Jun 2020 15:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-service-accout/</guid>
+      <description>[TOC] 所有的 Kubernetes 集群都有两</description>
+    </item>
+    
+    <item>
+      <title>基于uk8s部署的CI/CD</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-uk8s-ci-cd/</link>
+      <pubDate>Fri, 01 Nov 2019 21:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-uk8s-ci-cd/</guid>
+      <description>基于uk8s部署CI</description>
+    </item>
+    
+    <item>
+      <title>kuberbetes 基于nfs的pvc</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubeadm-pvc/</link>
+      <pubDate>Mon, 09 Sep 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubeadm-pvc/</guid>
+      <description>[TOC] k8s提供了emp</description>
+    </item>
+    
+  </channel>
+</rss>

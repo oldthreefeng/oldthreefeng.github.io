@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gitlab on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/gitlab/</link>
+    <description>Recent content in gitlab on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Mon, 04 May 2020 11:54:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/gitlab/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>gitlab-ce-zh部署并开启https</title>
+      <link>https://www.fenghong.tech/blog/ops/gitlab-ce-zh-install-with-https/</link>
+      <pubDate>Mon, 04 May 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/gitlab-ce-zh-install-with-https/</guid>
+      <description>[TOC] 背景: 源码仓库管理</description>
+    </item>
+    
+  </channel>
+</rss>

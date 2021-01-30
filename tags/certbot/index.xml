@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>certbot on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/certbot/</link>
+    <description>Recent content in certbot on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Thu, 08 Nov 2018 23:59:32 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/certbot/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Let’s Encrypt使用</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-11-08-lets-encrypt/</link>
+      <pubDate>Thu, 08 Nov 2018 23:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-11-08-lets-encrypt/</guid>
+      <description>Let’s Encrypt 及 Certbot 简介</description>
+    </item>
+    
+  </channel>
+</rss>

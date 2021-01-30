@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>federated on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/federated/</link>
+    <description>Recent content in federated on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Thu, 23 May 2019 10:44:32 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/federated/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MySQL FEDERATED</title>
+      <link>https://www.fenghong.tech/blog/mysql/mysql-federated/</link>
+      <pubDate>Thu, 23 May 2019 10:44:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/mysql/mysql-federated/</guid>
+      <description>FEDERATED 存储引擎描述 FED</description>
+    </item>
+    
+  </channel>
+</rss>

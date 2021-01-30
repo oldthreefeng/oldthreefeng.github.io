@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ops on Louis Blog</title>
+    <link>https://www.fenghong.tech/categories/ops/</link>
+    <description>Recent content in ops on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Wed, 30 Dec 2020 19:54:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/categories/ops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>记一次nginx使用map后的uri丢失</title>
+      <link>https://www.fenghong.tech/blog/ops/nginx-map-args/</link>
+      <pubDate>Wed, 30 Dec 2020 19:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/nginx-map-args/</guid>
+      <description>[TOC] 背景 偶然有一次机会</description>
+    </item>
+    
+    <item>
+      <title>kernel update by yum</title>
+      <link>https://www.fenghong.tech/blog/technology/kernel-update/</link>
+      <pubDate>Tue, 18 Aug 2020 20:11:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/technology/kernel-update/</guid>
+      <description>[TOC] centos7.7</description>
+    </item>
+    
+    <item>
+      <title>lvm磁盘在线扩缩容</title>
+      <link>https://www.fenghong.tech/blog/ops/lvm-reduce-extend/</link>
+      <pubDate>Fri, 17 Jul 2020 13:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/lvm-reduce-extend/</guid>
+      <description>[TOC] 背景: 公司安装ce</description>
+    </item>
+    
+    <item>
+      <title>阿里云日志方案说明</title>
+      <link>https://www.fenghong.tech/blog/ops/log-for-aliyun/</link>
+      <pubDate>Thu, 16 Jul 2020 13:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/log-for-aliyun/</guid>
+      <description>[TOC] 一 现状与需求 现状与</description>
+    </item>
+    
+    <item>
+      <title>frp内网穿透http获取客户端真实ip</title>
+      <link>https://www.fenghong.tech/blog/ops/frp-get-realip/</link>
+      <pubDate>Tue, 14 Jul 2020 17:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/frp-get-realip/</guid>
+      <description>[TOC] 背景: frp是一款</description>
+    </item>
+    
+    <item>
+      <title>git-rebase合并多commit记录</title>
+      <link>https://www.fenghong.tech/blog/ops/git-rebase/</link>
+      <pubDate>Tue, 30 Jun 2020 10:18:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/git-rebase/</guid>
+      <description>[toc] 新建测试仓库 为了不</description>
+    </item>
+    
+    <item>
+      <title>记一次curl版本yum升级至7.71.0</title>
+      <link>https://www.fenghong.tech/blog/ops/curl-data-raw/</link>
+      <pubDate>Sun, 28 Jun 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/curl-data-raw/</guid>
+      <description>[TOC] 背景 偶然有一次机会</description>
+    </item>
+    
+    <item>
+      <title>jenkins&#43;java&#43;docker&#43;kubernetes实现自动化部署</title>
+      <link>https://www.fenghong.tech/blog/ops/jenkins-java-docker-kubernetes/</link>
+      <pubDate>Wed, 24 Jun 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/jenkins-java-docker-kubernetes/</guid>
+      <description>[TOC] 背景 基于sprin</description>
+    </item>
+    
+    <item>
+      <title>记一次nginx跨域访问Content Security Policy设置</title>
+      <link>https://www.fenghong.tech/blog/ops/nginx-blocked-by-cors/</link>
+      <pubDate>Mon, 22 Jun 2020 14:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/nginx-blocked-by-cors/</guid>
+      <description>[toc] 前言 在开发静态页面</description>
+    </item>
+    
+    <item>
+      <title>阿里云6月bug修复</title>
+      <link>https://www.fenghong.tech/blog/ops/aliyun-fix-bug-jun/</link>
+      <pubDate>Tue, 16 Jun 2020 16:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/aliyun-fix-bug-jun/</guid>
+      <description>[TOC] 阿里云六月份的漏洞</description>
+    </item>
+    
+    <item>
+      <title>记一次开机挂载导致linux重启出现紧急模式的问题及解决</title>
+      <link>https://www.fenghong.tech/blog/ops/linux-emergency-mode-resloved/</link>
+      <pubDate>Tue, 09 Jun 2020 09:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/linux-emergency-mode-resloved/</guid>
+      <description>[TOC] 一次意外停电, 公司</description>
+    </item>
+    
+    <item>
+      <title>阿里云5月bug修复</title>
+      <link>https://www.fenghong.tech/blog/ops/aliyun-fix-bug/</link>
+      <pubDate>Fri, 29 May 2020 09:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/aliyun-fix-bug/</guid>
+      <description>[TOC] 阿里云五月份的漏洞</description>
+    </item>
+    
+    <item>
+      <title>openvpn实现tcp和udp共存</title>
+      <link>https://www.fenghong.tech/blog/ops/openvpn-tcp-udp/</link>
+      <pubDate>Wed, 20 May 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/openvpn-tcp-udp/</guid>
+      <description>[toc] 背景: 疫情期间， 在</description>
+    </item>
+    
+    <item>
+      <title>内网穿透使用wss</title>
+      <link>https://www.fenghong.tech/blog/ops/frpc-websocket/</link>
+      <pubDate>Tue, 12 May 2020 17:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/frpc-websocket/</guid>
+      <description>[toc] 前言 公司测试环境需</description>
+    </item>
+    
+    <item>
+      <title>gitlab-ce-zh部署并开启https</title>
+      <link>https://www.fenghong.tech/blog/ops/gitlab-ce-zh-install-with-https/</link>
+      <pubDate>Mon, 04 May 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/gitlab-ce-zh-install-with-https/</guid>
+      <description>[TOC] 背景: 源码仓库管理</description>
+    </item>
+    
+    <item>
+      <title>配置prometheus告警规则</title>
+      <link>https://www.fenghong.tech/blog/ops/prometheus-alertmanager/</link>
+      <pubDate>Fri, 24 Apr 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/prometheus-alertmanager/</guid>
+      <description>[TOC] 摘要： 系统监控报警</description>
+    </item>
+    
+    <item>
+      <title>搭建prometheus监控系统</title>
+      <link>https://www.fenghong.tech/blog/ops/grafana-prometheus-node_exporter-mysql/</link>
+      <pubDate>Wed, 08 Apr 2020 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/grafana-prometheus-node_exporter-mysql/</guid>
+      <description>[TOC] 摘要： 系统监控 prometheus 背</description>
+    </item>
+    
+    <item>
+      <title>搭建trojan服务</title>
+      <link>https://www.fenghong.tech/blog/ops/trojan-install/</link>
+      <pubDate>Wed, 04 Mar 2020 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/trojan-install/</guid>
+      <description>[TOC] 摘要： 科学上网 trojan 背</description>
+    </item>
+    
+    <item>
+      <title>rsync大文件传输导致磁盘异常爆增</title>
+      <link>https://www.fenghong.tech/blog/ops/rsync-with-big-file/</link>
+      <pubDate>Mon, 10 Feb 2020 11:12:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/rsync-with-big-file/</guid>
+      <description>[TOC] 背景： 每天四次服务</description>
+    </item>
+    
+    <item>
+      <title>记一次linux的bios引导失败</title>
+      <link>https://www.fenghong.tech/blog/ops/linux-grub-bios/</link>
+      <pubDate>Mon, 30 Dec 2019 15:22:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/linux-grub-bios/</guid>
+      <description>周末公司整座大楼停电</description>
+    </item>
+    
+    <item>
+      <title>A cli tool to deploy ansible-playbook</title>
+      <link>https://www.fenghong.tech/blog/ops/ango-with-ansible/</link>
+      <pubDate>Fri, 13 Dec 2019 09:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/ango-with-ansible/</guid>
+      <description>ango 基于golang开</description>
+    </item>
+    
+    <item>
+      <title>中间证书缺少导致request fail</title>
+      <link>https://www.fenghong.tech/blog/ops/ssl-certs/</link>
+      <pubDate>Mon, 09 Dec 2019 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/ssl-certs/</guid>
+      <description>[TOC] 启用SSL已经有段</description>
+    </item>
+    
+    <item>
+      <title>内网穿透神级工具frp</title>
+      <link>https://www.fenghong.tech/blog/ops/frp-20191204/</link>
+      <pubDate>Wed, 04 Dec 2019 17:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/frp-20191204/</guid>
+      <description>对于没有公网 IP 的内网</description>
+    </item>
+    
+    <item>
+      <title>使用shell脚本发送钉钉通知</title>
+      <link>https://www.fenghong.tech/blog/ops/shell-use-sign-dingding/</link>
+      <pubDate>Fri, 29 Nov 2019 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/shell-use-sign-dingding/</guid>
+      <description>使用自定义机器人注意</description>
+    </item>
+    
+    <item>
+      <title>consul服务注册</title>
+      <link>https://www.fenghong.tech/blog/go/consul-register/</link>
+      <pubDate>Wed, 13 Nov 2019 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/consul-register/</guid>
+      <description>$ 表示shell , #</description>
+    </item>
+    
+    <item>
+      <title>openvpn实现内网权限隔离</title>
+      <link>https://www.fenghong.tech/blog/ops/openvpn-iptables/</link>
+      <pubDate>Sat, 09 Nov 2019 02:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/openvpn-iptables/</guid>
+      <description>背景: 公司内网繁多,</description>
+    </item>
+    
+    <item>
+      <title>RabbitMq消息队列使用</title>
+      <link>https://www.fenghong.tech/blog/go/rabbitmq-queue-use/</link>
+      <pubDate>Thu, 07 Nov 2019 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/rabbitmq-queue-use/</guid>
+      <description>$ 表示shell , #</description>
+    </item>
+    
+    <item>
+      <title>RabbitMq高可用集群搭建</title>
+      <link>https://www.fenghong.tech/blog/ops/rabbitmq-cluster-install/</link>
+      <pubDate>Wed, 06 Nov 2019 17:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/rabbitmq-cluster-install/</guid>
+      <description>RabbitMQ这款</description>
+    </item>
+    
+    <item>
+      <title>pipeline实现并发构建</title>
+      <link>https://www.fenghong.tech/blog/ops/jenkins-pipeline-parallel/</link>
+      <pubDate>Mon, 16 Sep 2019 15:08:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/jenkins-pipeline-parallel/</guid>
+      <description>[TOC] 背景 公司的jenk</description>
+    </item>
+    
+    <item>
+      <title>Git in Gogs with SourceTree</title>
+      <link>https://www.fenghong.tech/blog/intro/git-in-gogs/</link>
+      <pubDate>Wed, 11 Sep 2019 15:49:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/intro/git-in-gogs/</guid>
+      <description>[TOC] 背景 使用git clone h</description>
+    </item>
+    
+    <item>
+      <title>java overload</title>
+      <link>https://www.fenghong.tech/blog/java/java-cpu-overload/</link>
+      <pubDate>Wed, 11 Sep 2019 08:43:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/java/java-cpu-overload/</guid>
+      <description>[TOC] 近期java应用，</description>
+    </item>
+    
+    <item>
+      <title>Gogs仓库迁移</title>
+      <link>https://www.fenghong.tech/blog/ops/gogs-repo-move-to-annother-host/</link>
+      <pubDate>Mon, 09 Sep 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/gogs-repo-move-to-annother-host/</guid>
+      <description>[TOC] 公司服务器缩减，运</description>
+    </item>
+    
+    <item>
+      <title>jenkins自动化发布工具迁移</title>
+      <link>https://www.fenghong.tech/blog/ops/jenkins-move-to-annother-host/</link>
+      <pubDate>Mon, 09 Sep 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/jenkins-move-to-annother-host/</guid>
+      <description>[TOC] 背景 公司服务器缩减</description>
+    </item>
+    
+    <item>
+      <title>ubuntu安装postgresql</title>
+      <link>https://www.fenghong.tech/blog/ops/postgresql-install/</link>
+      <pubDate>Sat, 07 Sep 2019 02:56:11 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/postgresql-install/</guid>
+      <description>[TOC] 配置OS资源限制 #</description>
+    </item>
+    
+    <item>
+      <title>ubuntu 14.04 upgrade to 18.04(LTS)</title>
+      <link>https://www.fenghong.tech/blog/ops/ubuntu14.04to18.04/</link>
+      <pubDate>Tue, 03 Sep 2019 15:11:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/ubuntu14.04to18.04/</guid>
+      <description>[TOC] 前言 升级ubunt</description>
+    </item>
+    
+    <item>
+      <title>use acme.sh to renew ssl cert</title>
+      <link>https://www.fenghong.tech/blog/ops/acme-ssl-cert/</link>
+      <pubDate>Mon, 02 Sep 2019 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/acme-ssl-cert/</guid>
+      <description>[TOC] acme.sh：h</description>
+    </item>
+    
+    <item>
+      <title>jenkins实现不同角色不同权限</title>
+      <link>https://www.fenghong.tech/blog/ops/jenkins-role-base-strategy/</link>
+      <pubDate>Sat, 10 Aug 2019 10:08:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/jenkins-role-base-strategy/</guid>
+      <description>[TOC] 背景 公司的jenk</description>
+    </item>
+    
+    <item>
+      <title>docker部署企业级应用openvpn</title>
+      <link>https://www.fenghong.tech/blog/ops/openvpn-in-docker/</link>
+      <pubDate>Wed, 07 Aug 2019 10:08:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/openvpn-in-docker/</guid>
+      <description>[TOC] 部署openvpn</description>
+    </item>
+    
+    <item>
+      <title>refusing to merge unrelated histories</title>
+      <link>https://www.fenghong.tech/blog/intro/git-unrelate/</link>
+      <pubDate>Tue, 16 Jul 2019 14:43:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/intro/git-unrelate/</guid>
+      <description>Git的报错 在使用G</description>
+    </item>
+    
+    <item>
+      <title>运维发布应考虑什么</title>
+      <link>https://www.fenghong.tech/blog/ops/release-to-production/</link>
+      <pubDate>Tue, 04 Jun 2019 17:09:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/release-to-production/</guid>
+      <description>[TOC] 如何在发布的时候有</description>
+    </item>
+    
+    <item>
+      <title>nginx &amp; lvs </title>
+      <link>https://www.fenghong.tech/blog/technology/lvs-nginx/</link>
+      <pubDate>Wed, 22 May 2019 10:44:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/technology/lvs-nginx/</guid>
+      <description>[TOC] ​ lvs和ngin</description>
+    </item>
+    
+    <item>
+      <title>Gogs仓库搭建</title>
+      <link>https://www.fenghong.tech/blog/ops/gogs-repo-install/</link>
+      <pubDate>Thu, 09 May 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/gogs-repo-install/</guid>
+      <description>[TOC] 介绍 Have you used Gogs? It’</description>
+    </item>
+    
+    <item>
+      <title>记一次阿里云服务器转移</title>
+      <link>https://www.fenghong.tech/blog/ops/aliyu-ecs-transfor/</link>
+      <pubDate>Tue, 07 May 2019 17:09:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/aliyu-ecs-transfor/</guid>
+      <description>[TOC] 项目背景 由于业务需</description>
+    </item>
+    
+    <item>
+      <title>小程序request:fail ssl hand shake error</title>
+      <link>https://www.fenghong.tech/blog/ops/fail-ssl-hand-shake-error/</link>
+      <pubDate>Mon, 22 Apr 2019 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/fail-ssl-hand-shake-error/</guid>
+      <description>[TOC] 域名已经备案，证书</description>
+    </item>
+    
+    <item>
+      <title>sonarqube 安装部署</title>
+      <link>https://www.fenghong.tech/blog/java/sonarqube/</link>
+      <pubDate>Fri, 08 Mar 2019 08:43:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/java/sonarqube/</guid>
+      <description>[TOC] 说明 # 开头的行表示</description>
+    </item>
+    
+    <item>
+      <title>openvpn compile &amp; install</title>
+      <link>https://www.fenghong.tech/blog/ops/openvpn-compile-install/</link>
+      <pubDate>Fri, 18 Jan 2019 20:11:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/openvpn-compile-install/</guid>
+      <description>[TOC] 为了方便团队成员从</description>
+    </item>
+    
+    <item>
+      <title>vpn install</title>
+      <link>https://www.fenghong.tech/blog/technology/vpn-clien-install/</link>
+      <pubDate>Fri, 18 Jan 2019 20:11:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/technology/vpn-clien-install/</guid>
+      <description>[TOC] 安装vpn 双击op</description>
+    </item>
+    
+    <item>
+      <title>端口扫描及用户安全</title>
+      <link>https://www.fenghong.tech/blog/ops/safe-password-port/</link>
+      <pubDate>Sat, 12 Jan 2019 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/safe-password-port/</guid>
+      <description>[TOC] 端口扫描 采用nma</description>
+    </item>
+    
+    <item>
+      <title>ULB负载均衡踩的坑</title>
+      <link>https://www.fenghong.tech/blog/ops/loaderbalancerinucloud/</link>
+      <pubDate>Tue, 18 Dec 2018 12:22:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/loaderbalancerinucloud/</guid>
+      <description>[TOC] ULB的http强</description>
+    </item>
+    
+    <item>
+      <title>use ssr in ubuntu</title>
+      <link>https://www.fenghong.tech/blog/ops/ubuntu-chrome/</link>
+      <pubDate>Wed, 12 Dec 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/ubuntu-chrome/</guid>
+      <description>[TOC] 摘要： 科学上网 lx</description>
+    </item>
+    
+    <item>
+      <title>logstash初探</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-12-03-logstash-elk/</link>
+      <pubDate>Mon, 03 Dec 2018 22:50:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-12-03-logstash-elk/</guid>
+      <description>LogStash 可以用来对日志进行</description>
+    </item>
+    
+    <item>
+      <title>git 远程分支清理</title>
+      <link>https://www.fenghong.tech/blog/intro/git_clean_remote/</link>
+      <pubDate>Fri, 16 Nov 2018 16:17:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/intro/git_clean_remote/</guid>
+      <description>[TOC] git 远程分支清理。 远</description>
+    </item>
+    
+    <item>
+      <title>computer basic</title>
+      <link>https://www.fenghong.tech/blog/technology/computer-basic/</link>
+      <pubDate>Sun, 11 Nov 2018 20:11:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/technology/computer-basic/</guid>
+      <description>[TOC] 一、概述 基本特征 1.</description>
+    </item>
+    
+    <item>
+      <title>Git Flow</title>
+      <link>https://www.fenghong.tech/blog/intro/git-flow/</link>
+      <pubDate>Sat, 10 Nov 2018 22:49:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/intro/git-flow/</guid>
+      <description>[TOC] 集中式与分布式 Git 属</description>
+    </item>
+    
+    <item>
+      <title>Let’s Encrypt使用</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-11-08-lets-encrypt/</link>
+      <pubDate>Thu, 08 Nov 2018 23:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-11-08-lets-encrypt/</guid>
+      <description>Let’s Encrypt 及 Certbot 简介</description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://www.fenghong.tech/blog/intro/git/</link>
+      <pubDate>Thu, 08 Nov 2018 16:18:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/intro/git/</guid>
+      <description>[TOC] Git的help信</description>
+    </item>
+    
+    <item>
+      <title>rsync和inotify实现文件同步</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-11-07-rsync-inotify/</link>
+      <pubDate>Wed, 07 Nov 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-11-07-rsync-inotify/</guid>
+      <description>rsync 什么是rsync r</description>
+    </item>
+    
+    <item>
+      <title>jumpserver架构</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-03/</link>
+      <pubDate>Sat, 08 Sep 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-03/</guid>
+      <description>架构说明 组件说明 Jumpserver 现</description>
+    </item>
+    
+    <item>
+      <title>jumpserver用户使用</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-02/</link>
+      <pubDate>Tue, 28 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-02/</guid>
+      <description>用户页面 通过管理员发</description>
+    </item>
+    
+    <item>
+      <title>jumpserver管理者使用</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-01/</link>
+      <pubDate>Sun, 19 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-01/</guid>
+      <description>快速入门 必备条件 一台</description>
+    </item>
+    
+    <item>
+      <title>jumpServer安装</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-14-jumpserver/</link>
+      <pubDate>Sat, 18 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-14-jumpserver/</guid>
+      <description>CentOS 6 安装文档 说明 # 开</description>
+    </item>
+    
+    <item>
+      <title>记一次挖矿病毒处理qW3xT.2</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-07-qw3xt2/</link>
+      <pubDate>Sun, 12 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-07-qw3xt2/</guid>
+      <description>问题发现及解决 ​ 在u</description>
+    </item>
+    
+    <item>
+      <title>运维桌面软件应用安装</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-05-opsenv/</link>
+      <pubDate>Mon, 06 Aug 2018 15:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-05-opsenv/</guid>
+      <description>一、Navicat for</description>
+    </item>
+    
+    <item>
+      <title>磁盘清理</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-08-01-manage-disk/</link>
+      <pubDate>Wed, 01 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-08-01-manage-disk/</guid>
+      <description>磁盘利用率100%问</description>
+    </item>
+    
+    <item>
+      <title>Kvm初探</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-26-kvm/</link>
+      <pubDate>Thu, 26 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-26-kvm/</guid>
+      <description>摘要： 虚拟化技术 KV</description>
+    </item>
+    
+    <item>
+      <title>Kubuntu 从安装到科学上网</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-25-kubuntu/</link>
+      <pubDate>Wed, 25 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-25-kubuntu/</guid>
+      <description>摘要： 科学上网 lxc</description>
+    </item>
+    
+    <item>
+      <title>Zabbix</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-21-zabbix/</link>
+      <pubDate>Tue, 24 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-21-zabbix/</guid>
+      <description>摘要： 监控系统满足的</description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-20-redis/</link>
+      <pubDate>Fri, 20 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-20-redis/</guid>
+      <description>摘要： 分布式系统存储</description>
+    </item>
+    
+    <item>
+      <title>Tomcat</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-18-tomcat/</link>
+      <pubDate>Wed, 18 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-18-tomcat/</guid>
+      <description>摘要： Tomcat相</description>
+    </item>
+    
+    <item>
+      <title>KeepAlive</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-11-keepalive/</link>
+      <pubDate>Wed, 11 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-11-keepalive/</guid>
+      <description>摘要： HA cluste</description>
+    </item>
+    
+    <item>
+      <title>HAProxy</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-09-haproxy/</link>
+      <pubDate>Mon, 09 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-09-haproxy/</guid>
+      <description>摘要： HAproxy</description>
+    </item>
+    
+    <item>
+      <title>Nginx</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-07-nginx/</link>
+      <pubDate>Sun, 08 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-07-nginx/</guid>
+      <description>摘要： Nginx简介</description>
+    </item>
+    
+    <item>
+      <title>I/O</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-02-io/</link>
+      <pubDate>Sat, 07 Jul 2018 17:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-02-io/</guid>
+      <description>摘要： I/O模型; 同</description>
+    </item>
+    
+    <item>
+      <title>nfs 详解</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-25-nfs/</link>
+      <pubDate>Mon, 25 Jun 2018 08:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-25-nfs/</guid>
+      <description>NFS服务 NFS：N</description>
+    </item>
+    
+    <item>
+      <title>Ansible简单实验</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-10-ansible/</link>
+      <pubDate>Wed, 06 Jun 2018 20:49:28 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-10-ansible/</guid>
+      <description>实验环境： 主控机：1</description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://www.fenghong.tech/blog/intro/linux/</link>
+      <pubDate>Fri, 10 Nov 2017 23:36:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/intro/linux/</guid>
+      <description>[TOC] 一、常用操作以及概</description>
+    </item>
+    
+    <item>
+      <title>http 基本原理</title>
+      <link>https://www.fenghong.tech/blog/intro/http/</link>
+      <pubDate>Fri, 10 Nov 2017 23:25:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/intro/http/</guid>
+      <description>[TOC] 一 、基础概念 URL URI 包</description>
+    </item>
+    
+    <item>
+      <title>Java basic</title>
+      <link>https://www.fenghong.tech/blog/java/java-basic/</link>
+      <pubDate>Fri, 10 Nov 2017 22:43:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/java/java-basic/</guid>
+      <description>[TOC] 一、数据类型 包装类</description>
+    </item>
+    
+  </channel>
+</rss>

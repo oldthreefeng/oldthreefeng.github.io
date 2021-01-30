@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>learning on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/learning/</link>
+    <description>Recent content in learning on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Mon, 15 Jun 2020 17:34:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>白嫖网易云音乐vip~</title>
+      <link>https://www.fenghong.tech/blog/tools/unblockneteasemusic-docker-compose/</link>
+      <pubDate>Mon, 15 Jun 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/tools/unblockneteasemusic-docker-compose/</guid>
+      <description>[TOC] 背景: 提高生活质量</description>
+    </item>
+    
+    <item>
+      <title>rest&amp;&amp;learnong</title>
+      <link>https://www.fenghong.tech/blog/living/rest-learning/</link>
+      <pubDate>Tue, 16 Jul 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/living/rest-learning/</guid>
+      <description>[TOC] 题外话&amp;ndash</description>
+    </item>
+    
+    <item>
+      <title>The way to go(directory)</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-11-11-thewaytogo/</link>
+      <pubDate>Sun, 11 Nov 2018 22:50:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-11-11-thewaytogo/</guid>
+      <description>github 源码地址 目录 前言 第</description>
+    </item>
+    
+    <item>
+      <title>查看WIFI历史密码</title>
+      <link>https://www.fenghong.tech/blog/tools/wifi-passwod/</link>
+      <pubDate>Thu, 16 Nov 2017 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/tools/wifi-passwod/</guid>
+      <description>[TOC] 背景: WIFI密码</description>
+    </item>
+    
+  </channel>
+</rss>

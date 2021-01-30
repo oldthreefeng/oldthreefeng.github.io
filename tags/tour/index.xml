@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tour on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/tour/</link>
+    <description>Recent content in tour on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Tue, 01 Jan 2019 20:56:12 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/tour/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Malaysia tour</title>
+      <link>https://www.fenghong.tech/blog/living/jilongpo/</link>
+      <pubDate>Tue, 01 Jan 2019 20:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/living/jilongpo/</guid>
+      <description>[TOC] 简介 马来西亚，全称</description>
+    </item>
+    
+    <item>
+      <title>济州岛旅游日记</title>
+      <link>https://www.fenghong.tech/blog/living/jeju/</link>
+      <pubDate>Wed, 15 Aug 2018 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/living/jeju/</guid>
+      <description>济州岛旅游攻略(偏日</description>
+    </item>
+    
+  </channel>
+</rss>

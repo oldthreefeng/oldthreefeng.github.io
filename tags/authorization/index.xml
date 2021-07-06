@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authorization on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/authorization/</link>
+    <description>Recent content in Authorization on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Sat, 10 Aug 2019 10:08:32 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/authorization/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>jenkins实现不同角色不同权限</title>
+      <link>https://www.fenghong.tech/blog/ops/jenkins-role-base-strategy/</link>
+      <pubDate>Sat, 10 Aug 2019 10:08:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/jenkins-role-base-strategy/</guid>
+      <description>[TOC] 背景 公司的jenk</description>
+    </item>
+    
+  </channel>
+</rss>

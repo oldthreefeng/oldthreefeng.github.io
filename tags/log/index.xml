@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>log on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/log/</link>
+    <description>Recent content in log on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Tue, 29 Jun 2021 09:54:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/log/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>记一次阿里云arms监控和log-pilot日志系统冲突及解决</title>
+      <link>https://www.fenghong.tech/blog/go/log-pilot/</link>
+      <pubDate>Tue, 29 Jun 2021 09:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/log-pilot/</guid>
+      <description>log-pilot分</description>
+    </item>
+    
+    <item>
+      <title>阿里云日志方案说明</title>
+      <link>https://www.fenghong.tech/blog/ops/log-for-aliyun/</link>
+      <pubDate>Thu, 16 Jul 2020 13:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/log-for-aliyun/</guid>
+      <description>[TOC] 一 现状与需求 现状与</description>
+    </item>
+    
+    <item>
+      <title>logstash初探</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-12-03-logstash-elk/</link>
+      <pubDate>Mon, 03 Dec 2018 22:50:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-12-03-logstash-elk/</guid>
+      <description>LogStash 可以用来对日志进行</description>
+    </item>
+    
+    <item>
+      <title>Log</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-22-log/</link>
+      <pubDate>Fri, 22 Jun 2018 17:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-22-log/</guid>
+      <description>摘要：日志相关，jo</description>
+    </item>
+    
+  </channel>
+</rss>

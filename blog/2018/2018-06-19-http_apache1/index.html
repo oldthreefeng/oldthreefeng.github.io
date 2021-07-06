@@ -1,0 +1,2294 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn"><head>
+  <meta charset="utf-8">
+  <title>Http(Apache1) | Louis Blog</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="有技术 有温度 有情怀">
+  
+  <meta name="author" content="Louis ">
+  <meta name="generator" content="Hugo 0.73.0" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  
+  <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="/plugins/animate/animate.css">
+  
+  <link rel="stylesheet" href="/plugins/venobox/venobox.css">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="/images/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="/images/images/favicon.png " type="image/x-icon">
+
+  <!--Algolia-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css">
+</head>
+<body>
+<!-- header -->
+<header>
+  
+
+  <!-- navigation -->
+  <div class="navigation bg-white position-relative">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="/"><img class="img-fluid pb-lg-3" src="/images/images/logo.png" width="189px" alt="Louis Blog"></a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/"></a>
+            </li>
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                博客
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/categories/kubernetes">Kubernetes</a>
+                
+                <a class="dropdown-item" href="/categories/sealos">sealos</a>
+                
+                <a class="dropdown-item" href="/categories/ops">运维相关</a>
+                
+                <a class="dropdown-item" href="/categories/golang">golang</a>
+                
+                <a class="dropdown-item" href="/categories/algorithm">algorithm</a>
+                
+                <a class="dropdown-item" href="/categories/tools">tools</a>
+                
+                <a class="dropdown-item" href="/blog">全部</a>
+                
+              </div>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/team">友情链接</a>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                关于我
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/contact">about</a>
+                
+                <a class="dropdown-item" href="https://github.com/oldthreefeng">github</a>
+                
+              </div>
+            </li>
+            
+            
+          </ul>
+
+          
+          
+
+          
+          <!-- search -->
+          <div class="search px-4">
+            <button id="searchOpen" class="search-btn"><i class="fa fa-search text-dark"></i></button>
+            <div class="search-wrapper">
+              <form action="/search">
+                <input class="search-box form-control" id="js-algolia-btn" name="s" type="search" placeholder="输入搜索词">
+              </form>
+              <button id="searchClose" class="search-close"><i class="fa fa-close text-dark"></i></button>
+            </div>
+          </div>
+          
+          
+          <!-- get start btn -->
+          <a href="/contact" class="btn btn-primary hover-ripple">联系我</a>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- /navigation -->
+</header>
+<!-- /header -->
+
+
+<!-- page title -->
+<section class="section bg-cover overlay" style="background-image: url('/'),url('/'),url('/images/images/backgrounds/page-title.jpg');">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-white mb-3">Http(Apache1)</h2>
+        <!-- breadcrumb -->
+        
+        <p class="text-white"></p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /page title -->
+
+
+<!-- blog details -->
+<section class="section">
+  <div class="container blog">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- post thumb -->
+        <div class="position-relative mb-5">
+          <img src="/"  onerror="this.src='https:\/\/pic.fenghong.tech\/proto\/mom-863055__340.jpg'" alt="post thumb" class="img-fluid w-100">
+           <div class="card-type">Http</div>
+        </div>
+        <div class="card-meta text-uppercase mb-2">作者  <strong class="text-dark"><a href="https://www.fenghong.tech">Louis</a></strong>
+          
+            发表于 <strong class="text-dark">2018年6月19日</strong></div>
+        <hr>
+        <div class="content">
+          <p>摘要：Apache的httpd服务常见配置解析，配置文件的实验&mdash;-</p>
+<h1 id="httpd-24常见配置">httpd 2.4常见配置</h1>
+<p><code>grep -v '^$\|^\s*#' /etc/httpd/conf/httpd.conf</code>,查看配置文件的非注释内容。</p>
+<h2 id="网站家目录服务器版本监听端口的修改">网站家目录/服务器版本/监听端口的修改</h2>
+<p>centos7版本的http服务，更换<code>documentroot</code>的时候，需要放开权限，才能实现访问，不然会报404错误，另外apache服务的版本号的隐藏，在<code>ServerTokens</code>语句块中，修改为Prod即可,很多大型的网站，如京东，淘宝，<code>apache或者nginx</code>的版本号都会隐藏。监听端口的配置修改，配置文件中加入<code>listen 80</code>，<code>http</code>监听端口默认80</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">$ vim /etc/httpd/conf.d/test.conf
+</span><span style="color:#960050;background-color:#1e0010">ServerRoot &#39;/etc/httpd&#39;
+</span><span style="color:#960050;background-color:#1e0010">ServerTokens Prod   #curl -I http://192.168.1.8
+</span><span style="color:#960050;background-color:#1e0010">listen 192.168.1.8:80
+</span><span style="color:#960050;background-color:#1e0010">StartServers 20
+</span><span style="color:#960050;background-color:#1e0010">StartThreads 50
+</span><span style="color:#960050;background-color:#1e0010">DocumentRoot &#34;/data/www/&#34;
+</span><span style="color:#960050;background-color:#1e0010">&lt;Directory &#34;/data/www&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;RequireAll&gt;
+</span><span style="color:#960050;background-color:#1e0010">    Require all granted
+</span><span style="color:#960050;background-color:#1e0010">    Require not ip 192.168.1.17
+</span><span style="color:#960050;background-color:#1e0010">&lt;/RequireAll&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;/Directory&gt;
+</span><span style="color:#960050;background-color:#1e0010">$ systemctl restart httpd
+</span><span style="color:#960050;background-color:#1e0010">$curl -I 192.168.1.8
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
+Date<span style="color:#f92672">:</span> <span style="color:#ae81ff">Wed, 20 Jun 2018 11:38:30 GMT</span>
+Server<span style="color:#f92672">:</span> <span style="color:#ae81ff">Apache</span>
+Last-Modified<span style="color:#f92672">:</span> <span style="color:#ae81ff">Wed, 20 Jun 2018 11:37:49 GMT</span>
+ETag<span style="color:#f92672">:</span> <span style="color:#ae81ff">&#34;6-56f113a6fe504&#34;</span>
+Accept-Ranges<span style="color:#f92672">:</span> <span style="color:#ae81ff">bytes</span>
+Content-Length<span style="color:#f92672">:</span> <span style="color:#ae81ff">6</span>
+Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">text/html; charset=UTF-8</span>
+</code></pre></div><p>在禁止访问的主机ip为<code>192.168.1.11</code>上访问,会出现<code>Forbidden 403</code>，在其他的授权主机上即可正常访问。</p>
+<pre><code>$curl -I 192.168.1.8
+HTTP/1.1 403 Forbidden
+Date: Wed, 20 Jun 2018 11:39:39 GMT
+Server: Apache
+Last-Modified: Thu, 16 Oct 2014 13:20:58 GMT
+ETag: &quot;1321-5058a1e728280&quot;
+Accept-Ranges: bytes
+Content-Length: 4897
+Content-Type: text/html; charset=UTF-8
+</code></pre><h2 id="持久链接">持久链接</h2>
+<p>系统默认的持久链接为5s，时间较短，可以稍微调大。</p>
+<pre><code>$ vim /etc/httpd/conf.d/test.conf
+KeepAlivetimeout  50   #持久链接
+MaxKeepAliveRequests 100
+$ systemctl restart httpd
+$ telnet /192.168.1.8 HTTP/1.1
+GET /index.html
+HOST:6.6.6.6
+</code></pre><h2 id="mpm三种工作模式">MPM三种工作模式</h2>
+<blockquote>
+<p><strong>refork</strong>：多进程I/O模型，每个进程响应一个请求，默认模型
+一个主进程：生成和回收n个子进程，创建套接字，不响应请求
+多个子进程：工作work进程，每个子进程处理一个请求；系统初始时，预先生成多个空闲进程，等待请求，最大不超过1024个</p>
+<p><img src="https://pic.fenghong.tech/others/1529493571245.png" alt="1529493571245"></p>
+</blockquote>
+<blockquote>
+<p><strong>worker</strong>：复用的多进程I/O模型,多进程多线程，IIS使用此模型
+一个主进程：生成m个子进程，每个子进程负责生个n个线程，每个线程响应一个请求，并发响应请求：m*n</p>
+<p><img src="https://pic.fenghong.tech/others/1529493599950.png" alt="1529493599950"></p>
+</blockquote>
+<blockquote>
+<p><strong>event</strong>：事件驱动模型（worker模型的变种）
+一个主进程：生成m个子进程，每个进程直接响应n个请求，并发响应请求：m*n，有专门的线程来管理这些keep-alive类型的线程，当有真实请求时，将请求传递给服务线程，执行完毕后，又允许释放。这样增强了高并发场景下的请求处理能力，示意图入下</p>
+<p><img src="https://pic.fenghong.tech/others/1529493624214.png" alt="1529493624214"></p>
+</blockquote>
+<p>修改配置文件<code>/etc/httpd/conf.modules.d/00-mpm.conf</code>，改变MPM工作模式</p>
+<pre><code>LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
+#LoadModule mpm_worker_module modules/mod_mpm_worker.so
+#LoadModule mpm_event_module modules/mod_mpm_event.so
+</code></pre><p>经ab测试比对，发现<code>prefork</code>和<code>event</code>模块工作并无大的差别。</p>
+<h2 id="访问控制">访问控制</h2>
+<p><strong>基于用户的访问控制</strong></p>
+<ul>
+<li>
+<p>认证质询：<code>WWW-Authenticate</code>：响应码为401，拒绝客户端请求，并说明要求客户端提供账号和密码</p>
+</li>
+<li>
+<p>认证：Authorization：客户端用户填入账号和密码后再次发送请求报文；认证通过时，则服务器发送响应的资源</p>
+</li>
+<li>
+<p>认证方式两种：</p>
+<p>basic：明文
+digest：消息摘要认证,兼容性差</p>
+</li>
+<li>
+<p>安全域：需要用户认证后方能访问的路径；应该通过名称对其进行标识，以便于告知用户认证的原因</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">&lt;Directory &#34;/data/www&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;RequireAll&gt;
+</span><span style="color:#960050;background-color:#1e0010">    Require all granted
+</span><span style="color:#960050;background-color:#1e0010">&lt;/ReqireAll&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;/Directory&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;Files &#34;*.conf&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">	Require all denied
+</span><span style="color:#960050;background-color:#1e0010">&lt;/Files&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;Filesmatch &#34;\.(conf|ini)$&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">	Require all denied
+</span><span style="color:#960050;background-color:#1e0010">&lt;/Filesmatch&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;Location &#34;/conf&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;RequireAny&gt;
+</span><span style="color:#960050;background-color:#1e0010">    Require all denied
+</span><span style="color:#960050;background-color:#1e0010">    Require ip 192.168.1.11
+</span><span style="color:#960050;background-color:#1e0010">&lt;/RequireAny&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;/Location&gt;
+</span></code></pre></div><p>完成配置文件后，重启服务，进行实验效果,在其他主机上进行访问，<code>.conf</code>文件的确不能访问。</p>
+<pre><code>$curl  192.168.1.8/php.conf
+&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;403 Forbidden&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You don't have permission to access /php.conf
+on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+$curl  192.168.1.8/index.html
+test1
+</code></pre><p><!-- raw HTML omitted -->中**“基于源地址”实现访问控制**</p>
+<p><code>options</code>：禁止软连接<code>-FollowSymlinks</code></p>
+<p><code>Indexes</code>:文件索引列表，搭建<code>yum</code>仓库可以用到,此项结合注释<code>conf.d/welcome.conf</code>,不然会报错</p>
+<pre><code>$ vim /etc/httpd/conf.d/test.conf
+&lt;Directory &quot;/data/www&quot;&gt;
+	Require all granted
+	options +Indexes -FollowSymlinks
+&lt;/Directory&gt;
+$ ll /data/www
+total 24
+lrwxrwxrwx 1 root root   11 Jun 20 20:06 hexo -&gt; /data/hexo/
+</code></pre><p>重启服务后，进行访问实验,hexo文件夹为软连接,禁用软连接后，文件夹不能访问了。indexes的确是类似yum仓库的路径。</p>
+<pre><code>$ links 192.168.1.8/hexo
+Forbidden
+You don't have permission to access /hexo/ on this server.
+</code></pre><p><code>AllowOverride</code>:
+与访问控制相关的哪些指令可以放在指定目录下的<code>.htaccess</code>（由AccessFileName指定）文件中，覆盖之前的配置指令,只对<!-- raw HTML omitted -->语句有效</p>
+<pre><code>AllowOverride All: 所有指令都有效
+AllowOverride None：.htaccess 文件无效
+AllowOverride AuthConfig Indexes 除了AuthConfig 和Indexes的其它指令都无法覆盖
+</code></pre><h2 id="身份验证">身份验证</h2>
+<ul>
+<li>
+<p><code>htpasswd</code> :默认是MD5加密</p>
+</li>
+<li>
+<p><code>htpasswd [options] /PATH/HTTPD_PASSWD_FILE username</code>
+-c：自动创建文件，仅应该在文件不存在时使用
+-p：明文密码
+-d：CRYPT格式加密，默认
+-m：md5格式加密
+-s: sha格式加密
+-D：删除指定用户</p>
+</li>
+<li>
+<p>group需要手动创建</p>
+</li>
+</ul>
+<p>我们需要先按照<code>htpassword</code>生成用户名和密码。第一次需要带<code>-c</code>选项</p>
+<pre><code>$ htpasswd -c /etc/httpd/conf.d/.httpuser tom
+$ htpasswd -s /etc/httpd/conf.d/.httpuser jerry
+$ cat /etc/httpd/conf.d/.httpuser 
+user1:$apr1$O8G3R9KG$AjOvrOCyxNGXZC6Sm.Kx3.
+user2:{SHA}QL0AFWMIX8NRZTKeof9cXsvbvu8=
+$ vim /etc/httpd/conf.d/.httpgroup
+g1: tom jerry
+</code></pre><ul>
+<li>修改配置文件如下，然后重启服务，用户访问需要用到上面设置的用户和密码进行登录验证，由于是基于<code>http</code>服务，并没有加密，因此，容易被劫持然后被查询明文密码，是巨大的安全隐患。此项一般是配合<code>https</code>进行实现；实现方法1</li>
+</ul>
+<pre><code>$ vim /etc/httpd/conf.d/test.conf
+&lt;Directory &quot;/data/www/admin&quot;&gt;
+	AuthType Basic
+	AuthName &quot;String&quot;
+	AuthUserFile &quot;/etc/httpd/conf.d/.httpuser&quot;
+	Require user tom jerry
+&lt;/Directory&gt;
+$ systemctl restart httpd
+</code></pre><ul>
+<li>实现方法2</li>
+</ul>
+<pre><code>$ vim /etc/httpd/conf.d/test.conf
+&lt;Directory &quot;/data/www/admin&quot;&gt;
+allowoverride authconfig
+&lt;/Directory&gt;
+$ vim /data/www/admin/.htaccess
+AuthType Basic
+AuthName &quot;String&quot;
+AuthUserFile &quot;/etc/httpd/conf.d/.httpuser&quot;
+#AuthGroupFile &quot;/etc/httpd/conf.d/.httpgroup&quot;
+#Require group g1
+Require user tom jerry
+</code></pre><h2 id="日志">日志</h2>
+<pre><code>ErrorLog &quot;logs/error_log&quot;
+LogLevel warn
+&lt;IfModule log_config_module&gt;
+    LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; combined
+    LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b&quot; common
+%h			  ---&gt;  主机IP
+%l %u		  ---&gt;  登录相关用户信息
+%t 			  ---&gt;  时间格式GMT
+%r			  ---&gt;  第一行的请求
+%{Referer}i    ---&gt;  前一网站跳转的地址
+%{User-Agent}i ---&gt;  客户端使用的浏览器
+</code></pre><h2 id="目录别名">目录别名</h2>
+<p>格式： <code>Alias /URL/ &quot;/PATH/&quot;</code></p>
+<pre><code>$ vim /etc/httpd/conf.d/test.conf
+&lt;Directory &quot;/data/hexo/categories&quot;&gt;
+    Require all granted
+&lt;/Directory&gt;
+alias /hc /data/hexo/categories 
+</code></pre><p>访问<code>http://192.168.1.8/hc/</code>，即相当于访问系统的path：<code>/data/hexo/categories</code></p>
+<h2 id="实现用户家目录的http共享"><strong>实现用户家目录的http共享</strong></h2>
+<ul>
+<li>基于模块<code>mod_userdir.so</code>实现</li>
+<li>SELinux: <code>http_enable_homedirs</code></li>
+<li>相关设置：启用家目录<code>http</code>共享,配置文件如下，并只允许特定<code>user</code>访问，但是基于<code>http</code>仍然存在安全隐患</li>
+</ul>
+<pre><code>$ vim /etc/httpd/conf.d/userdir.conf
+···
+&lt;IfModule mod_userdir.c&gt;
+#UserDir disabled
+UserDir public_html #指定共享目录的名称
+···
+&lt;/IfModule&gt;
+&lt;Directory &quot;/home/hong/public_html&quot;&gt;
+    AuthType Basic
+    AuthName &quot;hong home dir&quot;
+    AuthUserFile &quot;/etc/httpd/conf.d/.httpuser&quot;
+    Require user hong   
+&lt;/Directory&gt;
+</code></pre><ul>
+<li>准备家目录的相关文件及权限。</li>
+</ul>
+<pre><code>su - hong;mkdir ~/public_html；echo welcome to hong~ &gt; ~/public_html/index.html
+setfacl –m u:apache:x ~hong
+</code></pre><ul>
+<li>访问:<code>http://localhost/~hong/index.html</code></li>
+</ul>
+<h2 id="server-status">server-status</h2>
+<p>LoadModule: <code>status_module</code> ,在配置文件中<code>modules/mod_status.so</code>，可以用<code>httpd -M</code>查看。</p>
+<p>实现状态页</p>
+<pre><code>$ httpd -M |grep 'status'
+status_module (shared)
+$ vim /etc/httpd/conf.d/test.conf
+&lt;Location /status&gt;    #url路径
+SetHandler server-status
+Order allow,deny
+Allow from 192.168.
+&lt;/Location&gt;
+$ systemctl restart httpd
+</code></pre><p>压力测试，并在浏览器中查询服务器状态<code>http://localhost/status</code></p>
+<pre><code>$ ab -c 500 -n 20000 http://192.168.1.8/m.txt
+</code></pre><h2 id="虚拟主机">虚拟主机</h2>
+<ul>
+<li>
+<p>站点标识： socket</p>
+<p>IP相同，但端口不同
+IP不同，但端口均为默认端口
+FQDN不同：
+请求报文中首部
+Host: <a href="http://www.magedu.com">www.magedu.com</a></p>
+</li>
+<li>
+<p>有三种实现方案：
+基于ip：为每个虚拟主机准备至少一个ip地址
+基于port：为每个虚拟主机使用至少一个独立的port
+基于FQDN：为每个虚拟主机使用至少一个FQDN</p>
+</li>
+<li>
+<p>注意：一般虚拟机不要与main主机混用；因此，要使用虚拟主机，一般先禁用main主机
+禁用方法：注释中心主机的DocumentRoot指令即可</p>
+</li>
+</ul>
+<p>准备工作</p>
+<pre><code>$mkdir /data/web{1,2,3}
+$echo www.test1.com &gt; /data/web1/index.html
+$echo www.test2.com &gt; /data/web2/index.html
+$echo www.test3.com &gt; /data/web3/index.html
+</code></pre><h3 id="实验一基于port">实验一：基于Port</h3>
+<p>更改端口，完成虚拟主机的服务。默认已经完成准备工作</p>
+<pre><code>$ vim /etc/httpd/conf.d/test.conf
+listen 81
+listen 82
+listen 83
+&lt;directory /data/&gt;
+require all granted
+&lt;/directory&gt;
+&lt;VirtualHost *:81&gt;
+  DocumentRoot &quot;/data/web1&quot;
+  ServerName www.test1.com
+  ErrorLog &quot;logs/test1.com.error_log&quot;
+  TransferLog &quot;logs/test1.com-access_log&quot;
+&lt;/VirtualHost&gt;
+&lt;VirtualHost *:82&gt;
+  DocumentRoot &quot;/data/web2&quot;
+  ServerName www.test2.com
+  ErrorLog &quot;logs/test2.com.error_log&quot;
+  TransferLog &quot;logs/test2.com-access_log&quot;
+&lt;/VirtualHost&gt;
+&lt;VirtualHost *:83&gt;
+  DocumentRoot &quot;/data/web3&quot;
+  ServerName www.test3.com
+  ErrorLog &quot;logs/test3.com.error_log&quot;
+  TransferLog &quot;logs/test3.com-access_log&quot;
+&lt;/VirtualHost&gt;
+</code></pre><p>​	在另外一台主机上，验证实验结果</p>
+<pre><code>$ curl http://192.168.1.8:81
+www.test1.com
+$curl http://192.168.1.8:82
+www.test2.com
+$curl http://192.168.1.8:83
+www.test3.com
+</code></pre><h3 id="实验二基于ip的虚拟主机">实验二：基于IP的虚拟主机,</h3>
+<p>​	先添加3个ip，这里采用的是<code>ifconfig。</code>然后修改配置文件，主要修改<code>&lt;VirtualHost 192.168.1.11:80&gt;</code></p>
+<pre><code>$ ifconfig ens33:0 192.168.1.11 netmask 255.255.255.0 up
+$ ifconfig ens33:1 192.168.1.22 netmask 255.255.255.0 up
+$ ifconfig ens33:2 192.168.1.33 netmask 255.255.255.0 up
+$ vim /etc/httpd/conf.d/test.conf
+&lt;directory /data/&gt;
+require all granted
+&lt;/directory&gt;
+&lt;VirtualHost 192.168.1.11:80&gt;
+  DocumentRoot &quot;/data/web1&quot;
+  ServerName www.test1.com
+  ErrorLog &quot;logs/test1.com.error_log&quot;
+  TransferLog &quot;logs/test1.com-access_log&quot;
+&lt;/VirtualHost&gt;
+&lt;VirtualHost 192.168.1.22:80&gt;
+  DocumentRoot &quot;/data/web2&quot;
+  ServerName www.test2.com
+  ErrorLog &quot;logs/test2.com.error_log&quot;
+  TransferLog &quot;logs/test2.com-access_log&quot;
+&lt;/VirtualHost&gt;
+&lt;VirtualHost 192.168.1.33:80&gt;
+  DocumentRoot &quot;/data/web3&quot;
+  ServerName www.test3.com
+  ErrorLog &quot;logs/test3.com.error_log&quot;
+  TransferLog &quot;logs/test3.com-access_log&quot;
+&lt;/VirtualHost&gt;
+</code></pre><p>​	在另外一台主机上，验证实验结果</p>
+<pre><code>$curl 192.168.1.11
+www.test1.com
+$curl 192.168.1.22
+www.test2.com
+$curl 192.168.1.33
+www.test3.com
+</code></pre><h3 id="实验三fqdn">实验三：FQDN</h3>
+<p>​	配置文件的更改，这里主要是的更改<code>ServerName</code></p>
+<pre><code>$ vim /etc/httpd/conf.d/test.conf 
+&lt;directory /data/&gt;
+require all granted
+&lt;/directory&gt;
+&lt;VirtualHost *:80&gt;
+  DocumentRoot &quot;/data/web1&quot;
+  ServerName www.test1.com
+  ErrorLog &quot;logs/test1.com.error_log&quot;
+  TransferLog &quot;logs/test1.com-access_log&quot;
+&lt;/VirtualHost&gt;
+&lt;VirtualHost *:80&gt;
+  DocumentRoot &quot;/data/web2&quot;
+  ServerName www.test2.com
+  ErrorLog &quot;logs/test2.com.error_log&quot;
+  TransferLog &quot;logs/test2.com-access_log&quot;
+&lt;/VirtualHost&gt;
+&lt;VirtualHost *:80&gt;
+  DocumentRoot &quot;/data/web3&quot;
+  ServerName www.test3.com
+  ErrorLog &quot;logs/test3.com.error_log&quot;
+  TransferLog &quot;logs/test3.com-access_log&quot;
+&lt;/VirtualHost&gt; 
+</code></pre><p>​	在另外一台主机进行验证结果,不过基于主机的配置，需要DNS解析；这里为了方便，直接在hosts文件做名词解析；直接<code>curl 192.168.1.8</code>，这里<code>/var/www/html</code>已经失效，会默认访问基于虚拟主机的第一个网站</p>
+<pre><code>$vim /etc/hosts
+192.168.1.8 www.test1.com www.test2.com www.test3.com
+$curl www.test1.com
+www.test1.com
+$curl www.test2.com
+www.test2.com
+$curl www.test3.com
+www.test3.com
+$curl 192.168.1.8
+www.test1.com
+</code></pre>
+        </div>
+        <!-- tags -->
+        <div class="mb-3">
+          <h5 class="d-inline-block mr-3">Tags:</h5>
+          <ul class="list-inline d-inline-block">
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/linux"> 
+            Linux</a>
+            
+          </ul>
+        </div>
+        <!-- previous -->
+        <div class="mb-3 link-article">
+    <div class="pre-article">
+        
+            <div><i class="fa fa-arrow-left"></i> 上一篇</div>
+            <a href="https://www.fenghong.tech/blog/2018/2018-06-19-http_apache0/">Http(Apache)</a>
+        
+    </div>
+    <div class="next-article">
+        
+            <div>下一篇 <i class="fa fa-arrow-right"></i></div>
+            <a href="https://www.fenghong.tech/blog/2018/2018-06-21-http_apache2/">Http(Apache2)</a>
+        
+    </div>
+</div>
+        <!-- previous -->
+
+        <!-- recommend -->
+        
+
+<div class="mb-3">
+  <h2>文章推荐</h2>
+  <ul class="related">
+  
+    <li><a href="/blog/2018/2018-06-19-http_apache0/">Http(Apache)</a></li>
+  
+    <li><a href="/blog/2018/2018-06-14-mysql-08/">MYSQL主从复制</a></li>
+  
+    <li><a href="/blog/2018/2018-06-13-mysql-07/">MYSQL之xtrabackup</a></li>
+  
+    <li><a href="/blog/2018/2018-06-13-mysql-06/">MYSQL备份</a></li>
+  
+    <li><a href="/blog/2018/2018-06-12-mysql-05/">MYSQL日志</a></li>
+  
+  </ul>
+</div>
+
+
+        <!-- comments -->
+
+        
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script>
+          window.onload = function() {
+              const gitalk = new Gitalk({
+              clientID: 'a0a546df858aafb5300e',
+              clientSecret: '67d7b40de25c072fc38840ffb9c06ceab7ef5080',
+              repo: 'oldthreefeng.github.io',
+              owner: 'oldthreefeng',
+              admin: ['oldthreefeng'],
+              id: hex_md5(hex_md5(window.location.pathname + window.location.hash)), 
+              distractionFreeMode: false 
+            });
+            (function() {
+              if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+                document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+                return;
+              }
+              gitalk.render('gitalk-container');
+            })();
+          }
+        </script>
+        
+      </div>
+      <!-- sidebar -->
+<aside class="col-lg-4 order-1 order-lg-2">
+  <!-- tags -->
+  <div class="bg-white px-4 py-5 box-shadow mb-5 word-cloud">
+    <h4 class="mb-4">标签</h4>
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div id="tag-cloud" style="padding: 5px 15px">
+      
+        
+          
+          
+          
+          <a href="/tags/acme" style="font-size:1.0188679245283019rem">acme</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/acmetiny" style="font-size:1.0188679245283019rem">acmetiny</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/alertmanager" style="font-size:1rem">alertmanager</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/algorithm" style="font-size:1.1132075471698113rem">algorithm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/aliyun" style="font-size:1rem">aliyun</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ansible" style="font-size:1.0754716981132075rem">ansible</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/apisix" style="font-size:1rem">apisix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/arm64" style="font-size:1.0188679245283019rem">arm64</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/authorization" style="font-size:1rem">authorization</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/backup" style="font-size:1.0377358490566038rem">backup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binarysearch" style="font-size:1.0188679245283019rem">binarysearch</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binlog" style="font-size:1rem">binlog</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bit" style="font-size:1.0188679245283019rem">bit</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bug" style="font-size:1.0188679245283019rem">bug</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cache" style="font-size:1rem">cache</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/certbot" style="font-size:1rem">certbot</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/channel" style="font-size:1rem">channel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/chrome" style="font-size:1.0188679245283019rem">chrome</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ci" style="font-size:1rem">ci</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cluster" style="font-size:1.1132075471698113rem">cluster</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cobra" style="font-size:1rem">cobra</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coco" style="font-size:1.0377358490566038rem">coco</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coding" style="font-size:1rem">coding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/computer" style="font-size:1rem">computer</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/consul" style="font-size:1rem">consul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/containerd" style="font-size:1.0188679245283019rem">containerd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coredns" style="font-size:1rem">coredns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cors" style="font-size:1rem">cors</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/crypto" style="font-size:1rem">crypto</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/curl" style="font-size:1rem">curl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dashboard" style="font-size:1rem">dashboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dcdn" style="font-size:1rem">dcdn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/debt" style="font-size:1rem">debt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/devops" style="font-size:1.0188679245283019rem">devops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dingding" style="font-size:1rem">dingding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/disk" style="font-size:1rem">disk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dmesg" style="font-size:1rem">dmesg</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dns" style="font-size:1rem">dns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/docker" style="font-size:1.2264150943396226rem">docker</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/doublylinkedlist" style="font-size:1rem">doublylinkedlist</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/elk" style="font-size:1rem">elk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/error" style="font-size:1rem">error</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/etcd" style="font-size:1.0377358490566038rem">etcd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exec" style="font-size:1.0188679245283019rem">exec</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exp" style="font-size:1rem">exp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/federated" style="font-size:1rem">federated</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/filecoin" style="font-size:1rem">filecoin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/find" style="font-size:1rem">find</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/firewalld" style="font-size:1rem">firewalld</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/fix" style="font-size:1.0377358490566038rem">fix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flag" style="font-size:1.0188679245283019rem">flag</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flannel" style="font-size:1rem">flannel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/food" style="font-size:1.0188679245283019rem">food</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/frp" style="font-size:1.0377358490566038rem">frp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ftp" style="font-size:1.0188679245283019rem">ftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/games" style="font-size:1rem">games</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gin" style="font-size:1.0188679245283019rem">gin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/git" style="font-size:1.2075471698113207rem">git</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/github" style="font-size:1.0188679245283019rem">github</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gitlab" style="font-size:1rem">gitlab</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go" style="font-size:1.320754716981132rem">go</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go-vim" style="font-size:1rem">go-vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gogs" style="font-size:1.0566037735849056rem">gogs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/goland" style="font-size:1.0188679245283019rem">goland</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/golang" style="font-size:1.0377358490566038rem">golang</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gorequest" style="font-size:1rem">gorequest</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grafana" style="font-size:1.0188679245283019rem">grafana</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grub" style="font-size:1rem">grub</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hack" style="font-size:1.0188679245283019rem">hack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/haproxy" style="font-size:1.0377358490566038rem">haproxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/harbor" style="font-size:1.0188679245283019rem">harbor</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hash" style="font-size:1.0188679245283019rem">hash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hashmap" style="font-size:1rem">hashmap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/helm" style="font-size:1.0188679245283019rem">helm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hexo" style="font-size:1.0377358490566038rem">hexo</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/http" style="font-size:1.0754716981132075rem">http</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/https" style="font-size:1rem">https</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/index" style="font-size:1rem">index</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ingress" style="font-size:1.0377358490566038rem">ingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/inotify" style="font-size:1rem">inotify</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/internet" style="font-size:1.169811320754717rem">internet</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/interview" style="font-size:1rem">interview</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/iptables" style="font-size:1.0377358490566038rem">iptables</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ipvs" style="font-size:1.0188679245283019rem">ipvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/java" style="font-size:1.0754716981132075rem">java</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jeju" style="font-size:1rem">jeju</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jenkins" style="font-size:1.0943396226415094rem">jenkins</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jetbrains" style="font-size:1rem">jetbrains</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jumpserver" style="font-size:1.0566037735849056rem">jumpserver</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jvm" style="font-size:1rem">jvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/keepalived" style="font-size:1rem">keepalived</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kernel" style="font-size:1rem">kernel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/knowledge" style="font-size:1rem">knowledge</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kube-proxy" style="font-size:1.0188679245283019rem">kube-proxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetes" style="font-size:1.3962264150943395rem">kubernetes</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesrbac" style="font-size:1rem">kubernetesrbac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesssl" style="font-size:1.0188679245283019rem">kubernetesssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kuboard" style="font-size:1.0566037735849056rem">kuboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lb" style="font-size:1rem">lb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/learning" style="font-size:1.0566037735849056rem">learning</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/leetcode" style="font-size:1.0188679245283019rem">leetcode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libcurl" style="font-size:1rem">libcurl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libssh2" style="font-size:1rem">libssh2</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/link" style="font-size:1rem">link</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/linux" style="font-size:1.9811320754716981rem">linux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/living" style="font-size:1rem">living</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lnux" style="font-size:1rem">lnux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/log" style="font-size:1.0566037735849056rem">log</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logrus" style="font-size:1rem">logrus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logs" style="font-size:1rem">logs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logstash" style="font-size:1rem">logstash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/loki" style="font-size:1rem">loki</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lru" style="font-size:1rem">lru</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/luna" style="font-size:1rem">luna</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvm" style="font-size:1rem">lvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvs" style="font-size:1rem">lvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mac" style="font-size:1rem">mac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/malaysia" style="font-size:1rem">malaysia</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/manage" style="font-size:1rem">manage</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/map" style="font-size:1rem">map</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mariadb" style="font-size:1.0377358490566038rem">mariadb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/markdown" style="font-size:1.0188679245283019rem">markdown</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mfa" style="font-size:1rem">mfa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mha" style="font-size:1rem">mha</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mode" style="font-size:1rem">mode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/module" style="font-size:1rem">module</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mount" style="font-size:1rem">mount</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mysql" style="font-size:1.2452830188679245rem">mysql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/navicat" style="font-size:1rem">navicat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/network" style="font-size:1rem">network</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nfs" style="font-size:1.0754716981132075rem">nfs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginx" style="font-size:1.2264150943396226rem">nginx</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginxingress" style="font-size:1.0566037735849056rem">nginxingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/node_exporter" style="font-size:1.0188679245283019rem">node_exporter</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/numpy" style="font-size:1rem">numpy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ops" style="font-size:1.2452830188679245rem">ops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/owncloud" style="font-size:1rem">owncloud</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/password" style="font-size:1rem">password</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/paxos" style="font-size:1.0188679245283019rem">paxos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/php" style="font-size:1rem">php</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pipeline" style="font-size:1rem">pipeline</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/polynomial" style="font-size:1rem">polynomial</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/problem" style="font-size:1rem">problem</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/prometheus" style="font-size:1.0943396226415094rem">prometheus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pv" style="font-size:1.0754716981132075rem">pv</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pvc" style="font-size:1.0754716981132075rem">pvc</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/python" style="font-size:1.0943396226415094rem">python</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/queue" style="font-size:1rem">queue</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/qw3xt" style="font-size:1rem">qw3xt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rabbitmq" style="font-size:1.0188679245283019rem">rabbitmq</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/raft" style="font-size:1rem">raft</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rebase" style="font-size:1rem">rebase</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/redis" style="font-size:1.0377358490566038rem">redis</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/resources" style="font-size:1.0188679245283019rem">resources</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsa" style="font-size:1rem">rsa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsync" style="font-size:1.0188679245283019rem">rsync</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/safe" style="font-size:1.0754716981132075rem">safe</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/samba" style="font-size:1rem">samba</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sealos" style="font-size:1rem">sealos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/secure" style="font-size:1rem">secure</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sed" style="font-size:1rem">sed</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/server" style="font-size:1.2075471698113207rem">server</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sftp" style="font-size:1rem">sftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shadowsocks" style="font-size:1.0188679245283019rem">shadowsocks</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shell" style="font-size:1.0188679245283019rem">shell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slap" style="font-size:1rem">slap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slave" style="font-size:1rem">slave</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slb" style="font-size:1rem">slb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slowquery" style="font-size:1rem">slowquery</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sonar" style="font-size:1.0377358490566038rem">sonar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sourcetree" style="font-size:1.0188679245283019rem">sourcetree</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sql" style="font-size:1.0188679245283019rem">sql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ss" style="font-size:1rem">ss</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssh" style="font-size:1.0754716981132075rem">ssh</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssl" style="font-size:1.1132075471698113rem">ssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stack" style="font-size:1rem">stack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stress" style="font-size:1rem">stress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/style" style="font-size:1rem">style</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/switchyomega" style="font-size:1rem">switchyomega</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/syncd" style="font-size:1rem">syncd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/taint" style="font-size:1rem">taint</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tar" style="font-size:1rem">tar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tcp" style="font-size:1.0188679245283019rem">tcp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/testing" style="font-size:1rem">testing</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tomcat" style="font-size:1rem">tomcat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tour" style="font-size:1.0188679245283019rem">tour</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/trojan" style="font-size:1rem">trojan</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ubuntu" style="font-size:1.0566037735849056rem">ubuntu</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/udp" style="font-size:1rem">udp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/uk8s" style="font-size:1rem">uk8s</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unauthorized" style="font-size:1rem">unauthorized</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unblockneteasemusic" style="font-size:1rem">unblockneteasemusic</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upgrade" style="font-size:1.0188679245283019rem">upgrade</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upstream" style="font-size:1rem">upstream</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/v1.18.3" style="font-size:1rem">v1.18.3</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vim" style="font-size:1rem">vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/virtul" style="font-size:1rem">virtul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vpn" style="font-size:1.0754716981132075rem">vpn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vscode" style="font-size:1rem">vscode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/websocket" style="font-size:1rem">websocket</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/wifi" style="font-size:1rem">wifi</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xshell" style="font-size:1rem">xshell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xtrabackup" style="font-size:1rem">xtrabackup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/yum" style="font-size:1rem">yum</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/zabbix" style="font-size:1rem">zabbix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e6%95%b0%e6%8d%ae%e5%ba%93%e5%8e%9f%e7%90%86" style="font-size:1rem">数据库原理</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95" style="font-size:1rem">贪心算法</a>
+        
+      
+      </div>
+    
+  </div>
+
+  <!-- profile -->
+  <!-- toc -->
+  
+  <div class="bg-white px-4 py-5 box-shadow mb-5 sticky-top">
+    <h4 class="mb-4">目录</h4>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#网站家目录服务器版本监听端口的修改">网站家目录/服务器版本/监听端口的修改</a></li>
+    <li><a href="#持久链接">持久链接</a></li>
+    <li><a href="#mpm三种工作模式">MPM三种工作模式</a></li>
+    <li><a href="#访问控制">访问控制</a></li>
+    <li><a href="#身份验证">身份验证</a></li>
+    <li><a href="#日志">日志</a></li>
+    <li><a href="#目录别名">目录别名</a></li>
+    <li><a href="#实现用户家目录的http共享"><strong>实现用户家目录的http共享</strong></a></li>
+    <li><a href="#server-status">server-status</a></li>
+    <li><a href="#虚拟主机">虚拟主机</a>
+      <ul>
+        <li><a href="#实验一基于port">实验一：基于Port</a></li>
+        <li><a href="#实验二基于ip的虚拟主机">实验二：基于IP的虚拟主机,</a></li>
+        <li><a href="#实验三fqdn">实验三：FQDN</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+
+</aside>
+<!-- /sidebar -->
+
+    </div>
+  </div>
+</section>
+<!-- /blog details -->
+
+
+
+<footer>
+	
+	<div class="section bg-secondary">
+		<div class="container">
+			<div class="row justify-content-between">
+				
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					<a class="mb-4 d-inline-block" href="/"><img class="img-fluid"
+																								src="/images/images/logo-alt.png" alt="Louis Blog" width="60%"></a>
+					<p class="text-light mb-5">每一个不曾起舞的日子都是对生命的辜负.</p>
+					<h4 class="text-white mb-4">关注我</h4>
+					
+					<ul class="list-inline social-icon-alt">
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://twitter.com/louishong17"><i class="fa fa-twitter"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://github.com/oldthreefeng"><i class="fa fa-github"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="/contact"><i class="fa fa-wechat"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="mailto:992165098@qq.com"><i class="fa fa-envelope"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://www.fenghong.tech/blog/index.xml"><i class="fa fa-rss"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					
+					
+					
+					
+					<div class="mb-5">
+						<h4 class="text-white mb-4">联系信息</h4>
+						<p class="text-light mb-3">上海 · 浦东新区</p>
+						<p class="text-light mb-3"></p>
+						<p class="text-light mb-3">微信联系方式</p>
+						<p class="text-light mb-3"><img src="/images/images/wechat-qrcode.png" width="356px"></p>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="bg-secondary-darken py-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+					<p class="mb-0 text-white">Copyright © 2020 Louis</p>
+				</div>
+				<div class="col-md-6 text-center text-md-right">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item mx-0"><a class="d-inline-block px-3 text-white" href="https://beian.miit.gov.cn/"
+																									class="text-white">鄂ICP备18027870号-1</a></li>
+						<p class="list-inline-item mx-0 text-white">本网站由</p>
+						<a target="_blank" rel="nofollow noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://pic.fenghong.tech/images/180803_logo30.png" style="margin-bottom:5px;height: 25px;"></a>
+						<p class="list-inline-item mx-0 text-white">提供CDN加速/云存储服务</p>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+<script>
+	var indexURL = "/index.json"
+</script>
+
+
+<!-- JS Plugins -->
+
+<script src="/plugins/jQuery/jquery.min.js"></script>
+
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="/plugins/slick/slick.min.js"></script>
+
+<script src="/plugins/google-map/gmap.js"></script>
+
+<script src="/plugins/venobox/venobox.min.js"></script>
+
+<script src="/plugins/filterizr/jquery.filterizr.min.js"></script>
+
+<script src="/plugins/search/fuse.min.js"></script>
+
+<script src="/plugins/search/mark.js"></script>
+
+<script src="/plugins/search/search.js"></script>
+
+<script src="/plugins/bigPicture/bigPicture.js"></script>
+
+<script src="/plugins/hex_md5/hex_md5.js"></script>
+
+
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+
+<!-- Algolia -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+<script>
+	docsearch({
+		apiKey: 'b4d47f0c039a84d4035305be829404dd',
+		indexName: 'DocSearch',
+		appId: 'CTH4P282IZ',
+		inputSelector: '#js-algolia-btn',
+		debug: false,
+	});
+</script>
+
+<!-- google analitycs -->
+
+<script>
+	(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-130595069-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https'){
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else{
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</body>
+
+</html>

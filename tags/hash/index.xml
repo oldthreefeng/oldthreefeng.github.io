@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hash on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/hash/</link>
+    <description>Recent content in hash on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Mon, 11 Nov 2019 15:52:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/hash/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>nginx基于ip_hash访问策略的不生效的分析.</title>
+      <link>https://www.fenghong.tech/blog/ops/nginx-ip_hash-realip/</link>
+      <pubDate>Mon, 11 Nov 2019 15:52:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/nginx-ip_hash-realip/</guid>
+      <description>nginx基于ip_</description>
+    </item>
+    
+    <item>
+      <title>go encrypt&amp;decrypt</title>
+      <link>https://www.fenghong.tech/blog/algorithm/go-crypto/</link>
+      <pubDate>Wed, 28 Aug 2019 18:10:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/go-crypto/</guid>
+      <description>[TOC] 密码学简介与Gol</description>
+    </item>
+    
+  </channel>
+</rss>

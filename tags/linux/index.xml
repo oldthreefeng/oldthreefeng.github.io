@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/linux/</link>
+    <description>Recent content in Linux on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Mon, 30 Dec 2019 15:22:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>记一次linux的bios引导失败</title>
+      <link>https://www.fenghong.tech/blog/ops/linux-grub-bios/</link>
+      <pubDate>Mon, 30 Dec 2019 15:22:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/linux-grub-bios/</guid>
+      <description>周末公司整座大楼停电</description>
+    </item>
+    
+    <item>
+      <title>中间证书缺少导致request fail</title>
+      <link>https://www.fenghong.tech/blog/ops/ssl-certs/</link>
+      <pubDate>Mon, 09 Dec 2019 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/ssl-certs/</guid>
+      <description>[TOC] 启用SSL已经有段</description>
+    </item>
+    
+    <item>
+      <title>sed基础用法</title>
+      <link>https://www.fenghong.tech/blog/tools/sed/</link>
+      <pubDate>Sat, 08 Jun 2019 16:18:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/tools/sed/</guid>
+      <description>[TOC] 使用的是gnu sed, mac</description>
+    </item>
+    
+    <item>
+      <title>小程序request:fail ssl hand shake error</title>
+      <link>https://www.fenghong.tech/blog/ops/fail-ssl-hand-shake-error/</link>
+      <pubDate>Mon, 22 Apr 2019 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/fail-ssl-hand-shake-error/</guid>
+      <description>[TOC] 域名已经备案，证书</description>
+    </item>
+    
+    <item>
+      <title>端口扫描及用户安全</title>
+      <link>https://www.fenghong.tech/blog/ops/safe-password-port/</link>
+      <pubDate>Sat, 12 Jan 2019 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/safe-password-port/</guid>
+      <description>[TOC] 端口扫描 采用nma</description>
+    </item>
+    
+    <item>
+      <title>use ssr in ubuntu</title>
+      <link>https://www.fenghong.tech/blog/ops/ubuntu-chrome/</link>
+      <pubDate>Wed, 12 Dec 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/ubuntu-chrome/</guid>
+      <description>[TOC] 摘要： 科学上网 lx</description>
+    </item>
+    
+    <item>
+      <title>mysql常见错误汇总及解决方案</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-11-15-mysql-11/</link>
+      <pubDate>Thu, 15 Nov 2018 17:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-11-15-mysql-11/</guid>
+      <description>近期mysql数据库</description>
+    </item>
+    
+    <item>
+      <title>The way to go(directory)</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-11-11-thewaytogo/</link>
+      <pubDate>Sun, 11 Nov 2018 22:50:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-11-11-thewaytogo/</guid>
+      <description>github 源码地址 目录 前言 第</description>
+    </item>
+    
+    <item>
+      <title>Let’s Encrypt使用</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-11-08-lets-encrypt/</link>
+      <pubDate>Thu, 08 Nov 2018 23:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-11-08-lets-encrypt/</guid>
+      <description>Let’s Encrypt 及 Certbot 简介</description>
+    </item>
+    
+    <item>
+      <title>rsync和inotify实现文件同步</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-11-07-rsync-inotify/</link>
+      <pubDate>Wed, 07 Nov 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-11-07-rsync-inotify/</guid>
+      <description>rsync 什么是rsync r</description>
+    </item>
+    
+    <item>
+      <title>owncloud私有云搭建</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-10-11-owncloud/</link>
+      <pubDate>Sat, 20 Oct 2018 16:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-10-11-owncloud/</guid>
+      <description>owncloud的功</description>
+    </item>
+    
+    <item>
+      <title>jumpserver架构</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-03/</link>
+      <pubDate>Sat, 08 Sep 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-03/</guid>
+      <description>架构说明 组件说明 Jumpserver 现</description>
+    </item>
+    
+    <item>
+      <title>jumpserver用户使用</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-02/</link>
+      <pubDate>Tue, 28 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-02/</guid>
+      <description>用户页面 通过管理员发</description>
+    </item>
+    
+    <item>
+      <title>jumpserver管理者使用</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-01/</link>
+      <pubDate>Sun, 19 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-01/</guid>
+      <description>快速入门 必备条件 一台</description>
+    </item>
+    
+    <item>
+      <title>jumpServer安装</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-14-jumpserver/</link>
+      <pubDate>Sat, 18 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-14-jumpserver/</guid>
+      <description>CentOS 6 安装文档 说明 # 开</description>
+    </item>
+    
+    <item>
+      <title>记一次挖矿病毒处理qW3xT.2</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-07-qw3xt2/</link>
+      <pubDate>Sun, 12 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-07-qw3xt2/</guid>
+      <description>问题发现及解决 ​ 在u</description>
+    </item>
+    
+    <item>
+      <title>运维桌面软件应用安装</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-05-opsenv/</link>
+      <pubDate>Mon, 06 Aug 2018 15:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-05-opsenv/</guid>
+      <description>一、Navicat for</description>
+    </item>
+    
+    <item>
+      <title>磁盘清理</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-08-01-manage-disk/</link>
+      <pubDate>Wed, 01 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-08-01-manage-disk/</guid>
+      <description>磁盘利用率100%问</description>
+    </item>
+    
+    <item>
+      <title>Kvm初探</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-26-kvm/</link>
+      <pubDate>Thu, 26 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-26-kvm/</guid>
+      <description>摘要： 虚拟化技术 KV</description>
+    </item>
+    
+    <item>
+      <title>Kubuntu 从安装到科学上网</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-25-kubuntu/</link>
+      <pubDate>Wed, 25 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-25-kubuntu/</guid>
+      <description>摘要： 科学上网 lxc</description>
+    </item>
+    
+    <item>
+      <title>Zabbix</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-21-zabbix/</link>
+      <pubDate>Tue, 24 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-21-zabbix/</guid>
+      <description>摘要： 监控系统满足的</description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-20-redis/</link>
+      <pubDate>Fri, 20 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-20-redis/</guid>
+      <description>摘要： 分布式系统存储</description>
+    </item>
+    
+    <item>
+      <title>Tomcat</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-18-tomcat/</link>
+      <pubDate>Wed, 18 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-18-tomcat/</guid>
+      <description>摘要： Tomcat相</description>
+    </item>
+    
+    <item>
+      <title>Varnish</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-15-varnish/</link>
+      <pubDate>Sun, 15 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-15-varnish/</guid>
+      <description>摘要： 缓存相关的概念</description>
+    </item>
+    
+    <item>
+      <title>KeepAlive</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-11-keepalive/</link>
+      <pubDate>Wed, 11 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-11-keepalive/</guid>
+      <description>摘要： HA cluste</description>
+    </item>
+    
+    <item>
+      <title>HAProxy</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-09-haproxy/</link>
+      <pubDate>Mon, 09 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-09-haproxy/</guid>
+      <description>摘要： HAproxy</description>
+    </item>
+    
+    <item>
+      <title>Nginx</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-07-nginx/</link>
+      <pubDate>Sun, 08 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-07-nginx/</guid>
+      <description>摘要： Nginx简介</description>
+    </item>
+    
+    <item>
+      <title>I/O</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-02-io/</link>
+      <pubDate>Sat, 07 Jul 2018 17:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-02-io/</guid>
+      <description>摘要： I/O模型; 同</description>
+    </item>
+    
+    <item>
+      <title>LvsTest</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-06-lvstest/</link>
+      <pubDate>Fri, 06 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-06-lvstest/</guid>
+      <description>摘要： ipvsadm</description>
+    </item>
+    
+    <item>
+      <title>Linux Vitual Server</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-29-linux-vitual-server/</link>
+      <pubDate>Fri, 29 Jun 2018 16:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-29-linux-vitual-server/</guid>
+      <description>摘要： 集群概念 LVS</description>
+    </item>
+    
+    <item>
+      <title>firewalld</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-29-firewalld/</link>
+      <pubDate>Fri, 29 Jun 2018 15:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-29-firewalld/</guid>
+      <description>摘要： firewal</description>
+    </item>
+    
+    <item>
+      <title>IptablesTest</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-27-iptablestest/</link>
+      <pubDate>Wed, 27 Jun 2018 15:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-27-iptablestest/</guid>
+      <description>摘要：iptabel</description>
+    </item>
+    
+    <item>
+      <title>iptables</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-26-iptables/</link>
+      <pubDate>Tue, 26 Jun 2018 15:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-26-iptables/</guid>
+      <description>摘要： 防火墙的概念 i</description>
+    </item>
+    
+    <item>
+      <title>Samba</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-25-samba/</link>
+      <pubDate>Tue, 26 Jun 2018 08:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-25-samba/</guid>
+      <description>摘要：Samba服务</description>
+    </item>
+    
+    <item>
+      <title>FTP1</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-25-ftp1/</link>
+      <pubDate>Mon, 25 Jun 2018 21:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-25-ftp1/</guid>
+      <description>摘要：实现基于mys</description>
+    </item>
+    
+    <item>
+      <title>nfs 详解</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-25-nfs/</link>
+      <pubDate>Mon, 25 Jun 2018 08:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-25-nfs/</guid>
+      <description>NFS服务 NFS：N</description>
+    </item>
+    
+    <item>
+      <title>FTP</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-24-ftp/</link>
+      <pubDate>Sun, 24 Jun 2018 08:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-24-ftp/</guid>
+      <description>摘要：FTP的简介；</description>
+    </item>
+    
+    <item>
+      <title>LAMP2</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-22-lamp2/</link>
+      <pubDate>Fri, 22 Jun 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-22-lamp2/</guid>
+      <description>摘要：centos7</description>
+    </item>
+    
+    <item>
+      <title>Log</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-22-log/</link>
+      <pubDate>Fri, 22 Jun 2018 17:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-22-log/</guid>
+      <description>摘要：日志相关，jo</description>
+    </item>
+    
+    <item>
+      <title>LAMP1</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-21-lamp/</link>
+      <pubDate>Thu, 21 Jun 2018 17:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-21-lamp/</guid>
+      <description>摘要：lamp简介，</description>
+    </item>
+    
+    <item>
+      <title>Http(Apache2)</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-21-http_apache2/</link>
+      <pubDate>Thu, 21 Jun 2018 16:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-21-http_apache2/</guid>
+      <description>摘要：压力测试工具a</description>
+    </item>
+    
+    <item>
+      <title>Http(Apache1)</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-19-http_apache1/</link>
+      <pubDate>Tue, 19 Jun 2018 16:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-19-http_apache1/</guid>
+      <description>摘要：Apache的</description>
+    </item>
+    
+    <item>
+      <title>Http(Apache)</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-19-http_apache0/</link>
+      <pubDate>Tue, 19 Jun 2018 10:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-19-http_apache0/</guid>
+      <description>摘要：interne</description>
+    </item>
+    
+    <item>
+      <title>MYSQL主从复制</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-14-mysql-08/</link>
+      <pubDate>Thu, 14 Jun 2018 16:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-14-mysql-08/</guid>
+      <description>摘要：mysql的主</description>
+    </item>
+    
+    <item>
+      <title>MYSQL之xtrabackup</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-13-mysql-07/</link>
+      <pubDate>Wed, 13 Jun 2018 20:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-13-mysql-07/</guid>
+      <description>**摘要：**mys</description>
+    </item>
+    
+    <item>
+      <title>MYSQL备份</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-13-mysql-06/</link>
+      <pubDate>Wed, 13 Jun 2018 10:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-13-mysql-06/</guid>
+      <description>摘要：MYSQL的l</description>
+    </item>
+    
+    <item>
+      <title>MYSQL日志</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-12-mysql-05/</link>
+      <pubDate>Mon, 11 Jun 2018 21:20:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-12-mysql-05/</guid>
+      <description>摘要：MYSQL的日</description>
+    </item>
+    
+    <item>
+      <title>MYSQL并发控制</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-10-mysql-04/</link>
+      <pubDate>Mon, 11 Jun 2018 16:20:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-10-mysql-04/</guid>
+      <description>摘要：MYsql的并</description>
+    </item>
+    
+    <item>
+      <title>MYSQL数据引擎</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-10-mysql-03/</link>
+      <pubDate>Sat, 09 Jun 2018 22:33:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-10-mysql-03/</guid>
+      <description>摘要：mysql的数</description>
+    </item>
+    
+    <item>
+      <title>MYSQL数据库原理及操作</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-10-mysql-02/</link>
+      <pubDate>Fri, 08 Jun 2018 20:33:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-10-mysql-02/</guid>
+      <description>数据库基础 传统的文件</description>
+    </item>
+    
+    <item>
+      <title>MYSQL安装及多实例</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-10-mysql-01/</link>
+      <pubDate>Thu, 07 Jun 2018 20:33:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-10-mysql-01/</guid>
+      <description>安装MariaDB yum</description>
+    </item>
+    
+    <item>
+      <title>Linux下路由配置梳理</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-04-20-linux_router/</link>
+      <pubDate>Fri, 20 Apr 2018 17:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-04-20-linux_router/</guid>
+      <description>摘要：路由的基本知识</description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://www.fenghong.tech/blog/intro/linux/</link>
+      <pubDate>Fri, 10 Nov 2017 23:36:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/intro/linux/</guid>
+      <description>[TOC] 一、常用操作以及概</description>
+    </item>
+    
+  </channel>
+</rss>

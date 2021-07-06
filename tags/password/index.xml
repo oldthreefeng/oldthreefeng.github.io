@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>password on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/password/</link>
+    <description>Recent content in password on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Tue, 11 Dec 2018 17:05:12 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/password/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>mysql lost password</title>
+      <link>https://www.fenghong.tech/blog/mysql/mysql_password/</link>
+      <pubDate>Tue, 11 Dec 2018 17:05:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/mysql/mysql_password/</guid>
+      <description>[TOC] mysql 数据库密码忘记 一</description>
+    </item>
+    
+  </channel>
+</rss>

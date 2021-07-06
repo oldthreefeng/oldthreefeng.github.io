@@ -1,0 +1,2643 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn"><head>
+  <meta charset="utf-8">
+  <title>DNS服务 | Louis Blog</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="有技术 有温度 有情怀">
+  
+  <meta name="author" content="Louis ">
+  <meta name="generator" content="Hugo 0.73.0" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  
+  <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="/plugins/animate/animate.css">
+  
+  <link rel="stylesheet" href="/plugins/venobox/venobox.css">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="/images/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="/images/images/favicon.png " type="image/x-icon">
+
+  <!--Algolia-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css">
+</head>
+<body>
+<!-- header -->
+<header>
+  
+
+  <!-- navigation -->
+  <div class="navigation bg-white position-relative">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="/"><img class="img-fluid pb-lg-3" src="/images/images/logo.png" width="189px" alt="Louis Blog"></a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/"></a>
+            </li>
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                博客
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/categories/kubernetes">Kubernetes</a>
+                
+                <a class="dropdown-item" href="/categories/sealos">sealos</a>
+                
+                <a class="dropdown-item" href="/categories/ops">运维相关</a>
+                
+                <a class="dropdown-item" href="/categories/golang">golang</a>
+                
+                <a class="dropdown-item" href="/categories/algorithm">algorithm</a>
+                
+                <a class="dropdown-item" href="/categories/tools">tools</a>
+                
+                <a class="dropdown-item" href="/blog">全部</a>
+                
+              </div>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/team">友情链接</a>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                关于我
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/contact">about</a>
+                
+                <a class="dropdown-item" href="https://github.com/oldthreefeng">github</a>
+                
+              </div>
+            </li>
+            
+            
+          </ul>
+
+          
+          
+
+          
+          <!-- search -->
+          <div class="search px-4">
+            <button id="searchOpen" class="search-btn"><i class="fa fa-search text-dark"></i></button>
+            <div class="search-wrapper">
+              <form action="/search">
+                <input class="search-box form-control" id="js-algolia-btn" name="s" type="search" placeholder="输入搜索词">
+              </form>
+              <button id="searchClose" class="search-close"><i class="fa fa-close text-dark"></i></button>
+            </div>
+          </div>
+          
+          
+          <!-- get start btn -->
+          <a href="/contact" class="btn btn-primary hover-ripple">联系我</a>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- /navigation -->
+</header>
+<!-- /header -->
+
+
+<!-- page title -->
+<section class="section bg-cover overlay" style="background-image: url('/'),url('/'),url('/images/images/backgrounds/page-title.jpg');">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-white mb-3">DNS服务</h2>
+        <!-- breadcrumb -->
+        
+        <p class="text-white"></p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /page title -->
+
+
+<!-- blog details -->
+<section class="section">
+  <div class="container blog">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- post thumb -->
+        <div class="position-relative mb-5">
+          <img src="/"  onerror="this.src='https:\/\/pic.fenghong.tech\/proto\/lake-1915846__340.jpg'" alt="post thumb" class="img-fluid w-100">
+           <div class="card-type">Internet</div>
+        </div>
+        <div class="card-meta text-uppercase mb-2">作者  <strong class="text-dark"><a href="https://www.fenghong.tech">Louis</a></strong>
+          
+            发表于 <strong class="text-dark">2018年6月9日</strong></div>
+        <hr>
+        <div class="content">
+          <h1 id="dns服务">DNS服务</h1>
+<p>DNS:Domain Name Service 应用层协议</p>
+<ul>
+<li>C/S,53/udp, 53/tcp</li>
+</ul>
+<p>BIND：Bekerley Internat Name Domain
+<a href="www.isc.org">ISC</a>
+本地名称解析配置文件：hosts</p>
+<blockquote>
+<p>/etc/hosts
+%WINDIR%/system32/drivers/etc/hosts
+93.46.8.89 <a href="www.google.com">Google</a></p>
+</blockquote>
+<p><strong>根域：</strong> .</p>
+<ul>
+<li>一级域名：Top Level Domain: tld</li>
+</ul>
+<p>com, edu, mil, gov, net, org, int,arpa</p>
+<ul>
+<li>
+<p>三类：组织域、国家域(.cn, .ca, .hk, .tw)、反向域</p>
+</li>
+<li>
+<p>二级域名，三级域名，最多127级域名</p>
+</li>
+<li>
+<p>ICANN（The Internet Corporation for Assigned Names and Numbers）互联网名称与数字地址分配机构，负责在全球范围内对互联网通用顶级域名（gTLD）以及国家和地区顶级域名（ccTLD）系统的管理、以及根服务器系统的管理</p>
+</li>
+</ul>
+<p><strong>DNS类型：</strong></p>
+<pre><code>&gt; 递归查询
+&gt; 迭代查询
+&gt; 名称服务器：域内负责解析本域内的名称的主机
+&gt; 根服务器：13组服务器
+&gt; 解析类型：
+&gt; 正向解析：FQDN --&gt; IP
+&gt; 反向解析：IP --&gt; FQDN
+&gt; 注意：正反向解析是两个不同的名称空间，是两棵不同的解析树
+</code></pre><p><strong>一次完整的查询请求经过的流程</strong>：</p>
+<pre><code>&gt; Client --&gt;hosts文件 --&gt;DNS Service Local Cache --&gt; DNS Server(recursion) --&gt; Server Cache --&gt; iteration(迭代) --&gt; 根--&gt; 顶级域名DNS--&gt;二级域名DNS…
+&gt; 解析答案：
+&gt; 肯定答案：
+&gt; 否定答案：请求的条目不存在等原因导致无法返回结果
+&gt; 权威答案：
+&gt; 非权威答案：
+</code></pre><h1 id="区域zone的资源记录rr">区域zone的资源记录(RR)</h1>
+<pre><code> 记录类型：A, AAAA, PTR, SOA, NS, CNAME, MX,
+- SOA：Start Of Authority，起始授权记录；一个区域解析库有且仅能有一个SOA记录，必须位于解析库的第一条记录
+- A：internet Address，作用，FQDN --&gt; IP
+- AAAA: FQDN --&gt; IPv6
+- PTR: PoinTeR，IP --&gt; FQDN
+- NS: Name Server，专用于标明当前区域的DNS服务器
+- CNAME：Canonical Name，别名记录
+- MX: Mail eXchanger，邮件交换器
+</code></pre><p><strong>资源记录定义的格式</strong>：</p>
+<p>语法：<code>name [TTL] IN rr_type value</code></p>
+<p>注意：</p>
+<pre><code>&gt;1. TTL可从全局继承
+&gt;2. @可用于引用当前区域的名字
+&gt;3. 同一个名字可以通过多条记录定义多个不同的值；此时DNS服务器会以轮询方式响应
+&gt;4. 同一个值也可能有多个不同的定义名字；通过多个不同的名字指向同一个值进行定义；此仅表示通过多个不同的名字可以找到同一个主机
+</code></pre><h2 id="正向解析文件格式">正向解析文件格式</h2>
+<p>FQDN&mdash;&gt;IP</p>
+<p>/var/named/ZONE_NAME.zone</p>
+<pre><code>$TTL 1D
+@	IN SOA dns1.feng.com. admin.feng.com. (
+					0	; Serial	#序列号，主从服务器同步更新的条件，最多4294967296(2^32)
+					1D	; Refresh 	#刷新时间,slave 会去向 master 要求数据更新的判断的时间定义
+					1H	; Retry		#重试时间
+					1W	; Expire	#过期时间
+					3H )	; minimum	
+		NS	dns1.feng.com.		#省略写法，dns1.feng.com.	1D	IN	NS	dns1.feng.com.
+dns1	A 	192.168.1.8      	#省略写法，dns1.feng.com.	1D	IN	A	192.168.1.8 
+master	A	192.168.1.200		#省略写法，master.feng.com.	1D	IN	A	192.168.1.100
+$GENERATE 1-254 HOST$ 	A 	192.168.1.$ #对应192.168.1.{1..254}的主机对应记录
+*.feng.com	A	192.168.1.200 	#泛域名解析
+websrv	A 	192.168.1.10
+websrv	A 	192.168.1.11
+websrv	A 	192.168.1.12
+www	CNAME 	websrv #别名解析，实现负载均衡。
+</code></pre><p><strong>SOA数据的说明:</strong></p>
+<pre><code>&gt; Serial &lt; 2^32 = 4294967296
+&gt; Refresh &gt;= Retry *2
+&gt; Refresh + Retry &lt; Expire
+&gt; Expire &gt;= Rrtry * 10
+&gt; Expire &gt;= 7D
+</code></pre><p>一般来说，如果 DNS RR 资料变更情况频繁的，那么上述的相关数值可以订定的小一些，如果 DNS RR 是很稳定的， 为了节省带宽，则可以将 Refresh 设定的较大一些 .</p>
+<h2 id="反向解析文件格式">反向解析文件格式</h2>
+<p>IP &mdash;&gt;FQDN</p>
+<p><code>/var/named/ZONE_NAME.zone</code></p>
+<pre><code>$TTL 1D
+@ 	IN	SOA	dns1.feng.com.	admin.feng.com.	( 1 1D 1H 1W 3H )
+		NS	dns1.feng.com.
+dns1.feng.com.	A	192.168.1.9
+8	PTR	websrv.feng.com.	#省略写法， 8.1.168.192.in-addr.arpa. IN PTR websrv.feng.com.
+6	PTR	appsrv.feng.com.
+100	PTR	mailsrv.feng.com.
+</code></pre><h2 id="子域">子域</h2>
+<ul>
+<li>子域授权：每个域的名称服务器，都是通过其上级名称服务器在解析库进行授权，资源记录如下：</li>
+</ul>
+<pre><code>.com. 	IN 	NS 	ns1.com.
+.com. 	IN 	NS  ns2.com.
+ns1.com. 	IN	 A	 2.2.2.1
+ns2.com.	IN	 A	 2.2.2.2
+</code></pre><h2 id="bind服务器base源">bind服务器(base源)</h2>
+<p>安装bind服务 <code>yum install -y bind </code></p>
+<p>文件：</p>
+<ul>
+<li>主配置文件：/etc/named.conf, /etc/named.rfc1912.zones, /etc/rndc.key</li>
+<li>解析库文件：/var/named/ ZONE_NAME.ZONE</li>
+<li>解析库文件必须存在named.ca文件，默认与bind安装在同一主机，且只能通过127.0.0.1连接named进程</li>
+</ul>
+<h3 id="测试命令dig">测试命令dig</h3>
+<p><code>dig [-t type] name [@SERVER][query options]</code></p>
+<ul>
+<li>dig只用于测试dns系统，不会查询hosts文件进行解析</li>
+<li>查询选项：</li>
+</ul>
+<blockquote>
+<p>+[no]trace：跟踪解析过程 : dig +trace feng.com</p>
+<p>+[no]recurse：进行递归解析</p>
+<p>测试反向解析：</p>
+<p>dig -x IP = dig –t ptr reverseip.in-addr.arpa</p>
+<p>模拟区域传送：</p>
+</blockquote>
+<pre><code>dig -t axfr ZONE_NAME @SERVER
+dig -t axfr feng.com @10.10.10.11
+dig –t axfr 100.1.10.in-addr.arpa @172.16.1.1
+dig -t NS . @114.114.114.114
+dig -t NS . @a.root-servers.net
+</code></pre><h3 id="host测试命令">host测试命令</h3>
+<p>格式：<code>host [-t type] name [SERVER]</code></p>
+<pre><code>host –t NS feng.com 172.16.0.1
+host –t soa feng.com
+host –t mx feng.com
+host –t axfr feng.com
+host 1.2.3.4
+</code></pre><h3 id="nslookup命令及dns动态更新">nslookup命令及DNS动态更新</h3>
+<p>nslookup命令： <code>nslookup [-option][name][server]</code></p>
+<p><strong>交互式模式：</strong></p>
+<ul>
+<li>nslookup&gt;</li>
+<li>server IP: 指明使用哪个DNS server进行查询</li>
+<li>set q=RR_TYPE: 指明查询的资源记录类型</li>
+<li>NAME: 要查询的名称</li>
+<li>指定的zone语句块中或者全局的options配置文件中：</li>
+<li>Allow-update {any;};</li>
+</ul>
+<p><strong>远程主机端：</strong></p>
+<pre><code>]$ chmod 770 /var/named
+]$ setsebool -P named_write_master_zones on
+]$ nsupdate
+&gt;server 192.168.1.9
+&gt;zone feng.com
+&gt;update add ftp.feng.com 88888 IN A 8.8.8.8
+&gt;send
+&gt;update delete www.feng.com A  
+&gt;send
+测试：dig ftp.feng.com @192.168.1.9
+在DNS服务器端会生成一个日志文件feng.com.zone.jnl
+]$ ll /var/named/feng.com.zone.jnl
+]$ cat /var/named/feng.com.zone
+将feng.com.zone的文件格式规划好了
+</code></pre><h2 id="客户端的设定">客户端的设定</h2>
+<p>架设好DNS服务器后，都需要进行测试，所以这里需要有客户端进行配置好。</p>
+<pre><code>/etc/hosts #这个是最早的 hostname 对应 IP 的档案；
+/etc/resolv.conf #这个重要！就是 ISP 的 DNS 服务器 IP 记录处；
+/etc/nsswitch.conf #这个档案则是在『决定』先要使用 /etc/hosts 还是 /etc/resolv.conf 的设定！
+]$ vim /etc/resolv.conf
+nameserver DNS_IP   #供实验的DNSip地址,一定是第一个
+nameserver 8.8.8.8
+nameserver 223.5.5.5
+nameserver 223.6.6.6
+
+</code></pre><h2 id="rndc命令">rndc命令</h2>
+<p>rndc &mdash;&gt; rndc(953/tcp)</p>
+<pre><code>]$ rndc status
+version: 9.9.4-RedHat-9.9.4-61.el7 id:8f9657aa
+CPUs found: 1
+worker threads: 1
+UDP listeners per interface: 1
+number of zones: 103
+debug level: 0
+xfers running: 0
+xfers deferred: 0
+soa queries in progress: 0
+query logging is OFF
+recursive clients: 0/0/1000
+tcp clients: 0/100
+server is up and running
+
+</code></pre><ul>
+<li>reload: 重载主配置文件和区域解析库文件</li>
+<li>reload zonename: 重载区域解析库文件</li>
+<li>retransfer zonename: 手动启动区域传送，而不管序列号是否增加</li>
+<li>notify zonename: 重新对区域传送发通知</li>
+<li>reconfig: 重载主配置文件</li>
+<li>querylog: 开启或关闭查询日志文件/var/log/message</li>
+<li>trace: 递增debug一个级别</li>
+<li>trace LEVEL: 指定使用的级别</li>
+<li>notrace：将调试级别设置为 0</li>
+<li>flush：清空DNS服务器的所有缓存记录</li>
+</ul>
+<h1 id="实验1实现wwwfengcom正向反向dns配置">实验1.<strong>实现<code>www.feng.com</code>正向反向DNS配置</strong></h1>
+<h2 id="在服务器上进行配置etcnamedconf">在服务器上进行配置/etc/named.conf</h2>
+<pre><code>]$ vim /etc/named.conf
+options {
+    listen-on port 53 { localhost; };   	#允许localhost连接named进程
+    listen-on-v6 port 53 { ::1; };
+    directory   &quot;/var/named&quot;;				#named家目录
+    dump-file   &quot;/var/named/data/cache_dump.db&quot;;
+    statistics-file &quot;/var/named/data/named_stats.txt&quot;;
+    memstatistics-file &quot;/var/named/data/named_mem_stats.txt&quot;;
+    allow-query     { localhost;any; };		#允许any所有的client进行DNS解析服务
+    allow-transfer { none;};	#禁止任何人转发
+···
+include &quot;/etc/named.rfc1912.zones&quot;;  #当然，zone文件也可以放在.conf文件里面。
+include &quot;/etc/named.root.key&quot;;
+</code></pre><h2 id="配置etcnamedrfc1912zones文件">配置/etc/named.rfc1912.zones文件</h2>
+<pre><code>]$ vim /etc/named.rfc1912.zones  #加入两条正向反向解析的域名
+zone &quot;feng.com&quot; IN {
+    type master;
+    file &quot;feng.com.zone&quot;;
+};
+zone &quot;1.168.192.in-addr.arpa&quot; IN {
+    type master;
+    file &quot;192.168.1.zone&quot;;
+};
+</code></pre><h2 id="解析域zone文件的配置">解析域zone文件的配置</h2>
+<pre><code>]$ touch /var/named/{feng.com.zone,192.168.1.zone} #建立两套解析域资源
+]$ chgrp named /var/named/{feng.com.zone,192.168.1.zone} #改变文件的属组
+]$ chmod 640 /var/named/{feng.com.zone,192.168.1.zone} #改变文件的权限
+]$ vim /var/named/192.168.1.zone
+$TTL 1D
+@   IN  SOA dns1.feng.com.    admin.feng.com.   ( 1 1D 1H 1W 3H )
+        NS  dns1.feng.com.
+dns1.feng.com.    A   192.168.1.9
+8   PTR websrv.feng.com.
+6   PTR appsrv.feng.com.
+100 PTR mailsrv.feng.com.
+$ vim /var/named/feng.com.zone
+$TTL 1D
+@   IN  SOA dns1.feng.com.    admin.feng.com.   ( 1 1D 1H 1W 3H )
+            NS  dns1.feng.com.
+dns1    A   192.168.1.9
+websrv	A 	192.168.1.10
+websrv	A 	192.168.1.11
+www		CNAME 	websrv
+]$ systemctl start named  #至此，DNS正向反向解析库配置完成，客户端使用dig即可完成DNS解析。
+</code></pre><h1 id="实验2实现dns的主从服务器配置">实验2.<strong>实现DNS的主从服务器配置</strong></h1>
+<p>要点：</p>
+<p>1、应该为一台独立的名称服务器
+2、主服务器的区域解析库文件中必须有一条NS记录指向从服务器
+3、从服务器只需要定义区域，而无须提供解析库文件；解析库文件应该放置于/var/named/slaves/目录中
+4、主服务器得允许从服务器作区域传送
+5、主从服务器时间应该同步，可通过ntp进行；
+6、bind程序的版本应该保持一致；否则，应该从高，主低</p>
+<h2 id="从服务器配置">从服务器配置：</h2>
+<pre><code>#主服务器的主配置文件options中
+(影响全局，若只影响局部，可以在/etc/named.rfc1912.zones添加)：
+]$ vim /etc/named.conf
+	listen-on port 53 { localhost; };
+	allow-query     { localhost;any; };	
+	allow-transfer { 192.168.1.8; }; 	#只允许slave_ip传输
+]$ vim /etc/named.rfc1912.zones
+zone &quot;feng.com&quot; IN {
+  	type master;
+    file &quot;feng.com.zone&quot;;
+};
+]$ vim /var/named/feng.com.zone
+$TTL 1D
+@   IN  SOA dns1.feng.com.    admin.feng.com.   ( 1 1D 1H 1W 3H )
+            NS  dns1.feng.com.
+            NS	dns2.feng.com.
+dns1    A   192.168.1.9
+dns2	A	192.168.1.8
+websrv	A 	192.168.1.10
+websrv	A 	192.168.1.11
+www		CNAME 	websrv
+]$ chmod 640 /var/named/feng.com.zone
+]$ chgrp named /var/named/feng.com.zone
+]$ systemctl start named #配置完毕，启动服务
+</code></pre><h2 id="从服务器">从服务器：</h2>
+<pre><code>$vim /etc/named.conf
+options {
+	listen-on port 53 { localhost; };
+	allow-query     { localhost;any; };	
+	allow-transfer { none;};
+···
+};
+]$ vim /etc/named.rfc1912.zones
+zone &quot;ZONE_NAME&quot; IN {
+	type slave;
+	masters { 192.168.1.9; };
+	file &quot;slaves/feng.com.zone&quot;;
+};
+
+]$ systemctl start named 
+]$ ll /var/named/slaves/      #重启服务后立即生成配置的文件
+total 4
+-rw-r--r-- 1 named named 415 Jun  3 13:32 feng.com.zone
+</code></pre><h1 id="实验3实现dns的转发">实验3.实现DNS的转发</h1>
+<p>中间DNS服务器192.168.1.8(全局/局部)</p>
+<pre><code>options {
+···
+	listen-on port 53 { localhost; };
+	allow-query     { localhost;any; };	
+	forward first|only; 	#first首先转发forward IP;only只转发forward IP;
+	forwarders { 192.168.1.9;};
+···
+	dnssec-enable no;
+	dnssec-validation no;  	#关闭dnssec功能
+中间DNS服务器(局部域名转发)
+zone &quot;feng.com&quot; IN {
+	type forward;
+	forward first|only;
+	forwarders { 192.168.1.9;};
+};
+192.168.1.9的DNS正向服务器解析配置参照实验1配置即可。
+</code></pre><h1 id="实验4子域的配置">实验4.子域的配置</h1>
+<p><strong>三种方法：</strong></p>
+<ol>
+<li>当成父域的一条记录</li>
+<li>子域，本机的独立域名</li>
+<li>委派给另一台主机维护子域(主要应用)</li>
+</ol>
+<p>父域：192.168.1.9    <a href="http://www.feng.com">www.feng.com</a>   子域：192.168.1.8  <a href="http://www.bj.feng.com">www.bj.feng.com</a></p>
+<pre><code>]$ vim /etc/named.conf
+	listen-on port 53 { localhost; };
+	allow-query     { localhost;any; };	
+	dnssec-enable no;
+	dnssec-validation no;  	#关闭dnssec功能
+···
+]$ vim /etc/named.rfc1912.zones
+zone &quot;feng.com&quot; IN {
+  	type master;
+    file &quot;feng.com.zone&quot;;
+};
+]$ vim /var/named/feng.com.zone 
+$TTL 86400
+@               IN SOA  dns1.feng.com. admin.feng.com. (1 1D 2H 1W 3H)
+                        NS      dns1.feng.com.
+bj                      NS      dns2.feng.com.  ##增加这条ns	
+sh                      NS      dns3.feng.com.  					
+dns1                    A       192.168.1.9
+dns2                    A       192.168.1.8    ##增加这条A记录
+dns3                    A       192.168.1.7   
+]$ systemctl start named #配置完毕，启动服务
+</code></pre><ul>
+<li>在子域192.168.1.8配置bj.feng.com域名即可</li>
+<li>在子域192.168.1.7配置sh.feng.com域名即可，参照实验1即可</li>
+</ul>
+<h1 id="实验5实现智能dns">实验5.实现智能DNS</h1>
+<p><strong>需求：</strong></p>
+<ul>
+<li>192.168.1.0/24 本地的网段访问www.feng.com的时候，DNS解析为192.168.1.10</li>
+<li>非192.168.1.0/24 外部的网段访问www.feng.com的时候，DNS解析为192.168.1.11</li>
+</ul>
+<p><strong>注意：</strong></p>
+<ul>
+<li>view语句块必须包含所有的zone，所有需要把.(root)域转移到/etc/named.rfc1912.zones。进行模块化的管理。</li>
+</ul>
+<p>实验DNS服务器：192.168.1.9/24 ; 172.20.1.24/16</p>
+<h2 id="etcnamedconf文件配置">/etc/named.conf文件配置</h2>
+<pre><code>]$ vim /etc/named.conf
+acl bjnet { 192.168.1.0/24;};
+acl othernet {!192.168.1.0/24;any;};
+/*
+zone &quot;.&quot; IN {
+    type hint;
+    file &quot;named.ca&quot;;
+};
+*/
+view &quot;bjnet&quot; {
+    match-clients {&quot;bjnet&quot;;};
+    include &quot;/etc/named.rfc1912.zones.bj&quot;;
+};
+view &quot;othernet&quot; {
+    match-clients {&quot;othernet&quot;;};
+    include &quot;/etc/named.rfc1912.zones&quot;;
+};
+// include &quot;/etc/named.rfc1912.zones&quot;; 
+</code></pre><h2 id="配置zone文件">配置zone文件</h2>
+<pre><code>]$ cp -p /etc/named.rfc1912.zones /etc/named.rfc1912.zones.bj
+]$ vim /etc/named.rfc1912.zones.bj
+zone &quot;.&quot; IN {
+    type hint;
+    file &quot;named.ca&quot;;
+};
+zone &quot;feng.com&quot; IN {
+    type master;
+    file &quot;feng.com.zone.bj&quot;;
+};
+$vim /etc/named.rfc1912.zones
+zone &quot;.&quot; IN {
+    type hint;
+    file &quot;named.ca&quot;;
+};
+
+zone &quot;feng.com&quot; IN {
+    tpye master;
+    file &quot;feng.com.zone&quot;;
+};
+</code></pre><h2 id="数据库文件配置">数据库文件配置</h2>
+<pre><code>]$ vim /var/named/feng.com.zone
+$TTL 1D
+@   IN  SOA dns1.feng.com.    admin.feng.com.   ( 1 1D 1H 1W 3H )
+            NS  dns1.feng.com.
+dns1    A   192.168.1.9
+websrv	A 	192.168.1.10
+www		CNAME 	websrv
+]$ vim /var/named/feng.com.zone.bj
+$TTL 1D
+@   IN  SOA dns1.feng.com.    admin.feng.com.   ( 1 1D 1H 1W 3H )
+            NS  dns1.feng.com.
+dns1    A   192.168.1.9
+websrv	A 	192.168.1.11
+www		CNAME 	websrv
+]$ systemctl start named #配置好，启动服务
+</code></pre><h1 id="实验6搭建互联网模型的dns">实验6.搭建互联网模型的dns</h1>
+<p>场景:.(root)服务器,com.服务器,feng.com服务器,www.feng.com主机,电信转发服务器,clinets</p>
+<pre><code>主机：centos7.4
+
+.(root):192.168.1.1
+
+com.:192.168.1.2
+
+feng.com.:192.168.1.3   从：192.168.1.33  高可用
+
+www.feng.com.: 192.168.1.4     负载均衡备用主机：192.168.1.44
+
+DNStrans:192.168.1.5
+
+clients：192.168.1.6
+</code></pre><h2 id="实验综合条件每台dns服务器的要求">实验综合条件：每台dns服务器的要求</h2>
+<ol>
+<li>关闭防火墙</li>
+<li>selinux策略为disabled</li>
+<li>安装好bind服务</li>
+</ol>
+<pre><code>]$ getenforce 
+Disabled
+]$ systemctl stop firewalld
+]$ yum install bind -y
+]$ rpm -qf /usr/sbin/named
+bind-9.8.2-0.62.rc1.el6.x86_64
+
+</code></pre><p><img src="https://pic.fenghong.tech/others/network_Diagram_MIS.png" alt=""></p>
+<h2 id="根服务器的配置"><strong>根服务器的配置</strong></h2>
+<p><strong>ip为：192.168.1.1</strong></p>
+<pre><code>]$ vim /etc/named.conf
+	listen-on port 53 { localhost; };
+	allow-query     { localhost;any; };	
+	dnssec-enable no;
+	dnssec-validation no;  	#关闭dnssec功能，需要委派
+···
+/*
+zone &quot;.&quot; IN {
+  	tpye hint;
+  	file &quot;named.ca&quot;;
+};
+*/
+]$ vim /etc/named.rfc1912.zones
+zone &quot;.&quot; IN {
+  	type master;
+    file &quot;root.zone&quot;;
+};
+]$ vim /var/named/root.zone
+$TTL 86400
+@  	IN  SOA 	dns1. admin. (1 1D 2H 1W 3H)
+		NS   dns1
+com		NS	 dns2		#委派子域com.
+dns1	 A	192.168.1.1
+dns2	 A	192.168.1.2
+$systemctl start named #配置完毕，启动服务
+</code></pre><h2 id="搭建区域dns服务器">搭建区域dns服务器</h2>
+<p>ip为192.168.1.5</p>
+<pre><code>]$ vim /etc/named.conf
+	listen-on port 53 { localhost; };
+	allow-query     { localhost;any; };	
+	dnssec-enable no;
+	dnssec-validation no;  	#关闭dnssec功能，需要转发
+···
+]$ vim /var/named/named.ca
+
+.						518400	IN	NS	a.root-servers.net.
+a.root-servers.net.  	  3600000 IN  A  192.168.1.1  #把CDN服务器指向已经搭好的根服务器IP
+]$ systemctl start named
+</code></pre><h2 id="搭建com服务器">搭建com.服务器：</h2>
+<p>IP为192.168.1.2</p>
+<pre><code>]$ vim /etc/named.conf
+	listen-on port 53 { localhost; };
+	allow-query     { localhost;any; };	
+	dnssec-enable no;
+	dnssec-validation no;  	#关闭dnssec功能，需要委派
+]$ vim /etc/named.rfc1912.zones
+zone &quot;com&quot; IN {
+    type master;
+    file &quot;com.zone&quot;
+};
+]$ vim /var/named/com.zone
+$TTL 86400
+@  	IN  SOA 	dns1.com. admin.com. (1 1D 2H 1W 3H)
+		NS   dns1
+feng	NS	 dns2		#委派子域feng.com.
+feng	NS	 dns3
+dns1	A	192.168.1.2
+dns2	A	192.168.1.3
+dns3	A	192.168.1.33
+$systemctl start named
+</code></pre><h2 id="搭建fengcom服务器">搭建feng.com.服务器</h2>
+<p><strong>主：192.168.1.3  从：192.168.1.33</strong></p>
+<h3 id="主服务器配置">主服务器配置；</h3>
+<pre><code>]$ vim /etc/named.conf
+	listen-on port 53 { localhost; };
+	allow-query     { localhost;any; };	
+	allow-transfer { 192.168.1.33; }; 	#只允许slave_ip传输
+]$ vim /etc/named.rfc1912.zones
+zone &quot;feng.com&quot; IN {
+  	type master;
+    file &quot;feng.com.zone&quot;;
+};
+]$ vim /var/named/feng.com.zone
+$TTL 1D
+@   IN  SOA dns1.feng.com.    admin.feng.com.   ( 1 1D 1H 1W 3H )
+            NS  dns1.feng.com.
+            NS	dns2.feng.com.
+dns1    A   192.168.1.3
+dns2	A	192.168.1.33
+websrv	A 	192.168.1.4
+websrv	A 	192.168.1.44
+www		CNAME 	websrv
+]$ systemctl start named
+</code></pre><h3 id="从服务器配置-1">从服务器配置；</h3>
+<pre><code>]$ vim /etc/named.conf
+options {
+	listen-on port 53 { localhost; };
+	allow-query     { localhost;any; };	
+	allow-transfer { none;};
+···
+};
+]$ vim /etc/named.rfc1912.zones
+zone &quot;ZONE_NAME&quot; IN {
+	type slave;
+	masters { 192.168.1.3; };
+	file &quot;slaves/feng.com.zone&quot;;
+};
+
+]$ systemctl start named 
+]$ ll /var/named/slaves/      #重启服务后立即生成配置的文件
+total 4
+-rw-r--r-- 1 named named 415 Jun  3 13:32 feng.com.zone
+</code></pre><h2 id="5搭建wwwfengcom">5.搭建www.feng.com</h2>
+<p>主：192.168.1.4    备：192.168.1.44</p>
+<h3 id="19216814主机">192.168.1.4主机：</h3>
+<pre><code>]$ yum install httpd -y
+]$ setenforce 0
+]$ echo welcome to testsrv1 &gt;&gt; /var/www/html/index.html
+]$ systemctl start httpd
+]$ systemctl stop firewalld 
+</code></pre><h3 id="192168144备用机">192.168.1.44备用机：</h3>
+<pre><code>]$ yum install httpd -y
+]$ setenforce 0
+]$ echo welcome to testsrv2 &gt;&gt; /var/www/html/index.html
+]$ systemctl start httpd
+]$ systemctl stop firewalld
+</code></pre><h2 id="6clients访问"><strong>6.clients访问</strong></h2>
+<p>dig或者host命令是bind包</p>
+<pre><code>]$ rpm -qf /usr/bin/dig
+bind-utils-9.9.4-61.el7.x86_64
+]$ rpm -q bind &amp;&gt; /dev/null || yum install -y bind
+]$ dig www.feng.com @192.168.1.5
+]$ host www.feng.com 192.168.1.5
+]$ vim /etc/resolv.conf
+nameserver 192.168.1.5
+]$ for i in {1..20} ;do curl www.feng.com ;done
+welcome to testsrv1
+welcome to testsrv2
+welcome to testsrv1
+welcome to testsrv2
+welcome to testsrv1
+welcome to testsrv2
+welcome to testsrv1
+welcome to testsrv2
+welcome to testsrv1
+welcome to testsrv2
+welcome to testsrv1
+welcome to testsrv2
+welcome to testsrv1
+welcome to testsrv2
+welcome to testsrv1
+welcome to testsrv2
+welcome to testsrv1
+welcome to testsrv2
+welcome to testsrv1
+welcome to testsrv2
+</code></pre><p>自此，实现了互联网的DNS负载均衡。</p>
+<h1 id="编译安装bind">编译安装bind</h1>
+<h2 id="编译安装bind及启动rndc服务dns服务">编译安装bind及启动rndc服务DNS服务</h2>
+<p><strong>目标：</strong></p>
+<ul>
+<li>开启dns服务，启用rndc服务</li>
+</ul>
+<h3 id="编译前准备">编译前准备</h3>
+<pre><code>]$ yum groupinstall &quot;devlopment tools&quot;
+]$ yum install openssl-devel -y
+]$ useradd -r -d /var/named -u 25 -s /sbin/nologin -m named
+]$ ./configrue --prefix=/app/bind
+</code></pre><h3 id="编译">编译</h3>
+<pre><code>]$ make -j 4 &amp;&amp; make install 
+]$ vim /etc/profile.d/bind.sh
+PATH=/app/bind/bin:/app/bind/sbin:$PATH
+</code></pre><h3 id="修改相关配置文件">修改相关配置文件</h3>
+<pre><code>]$ vim /app/bind/etc/named.conf
+options {
+    directory &quot;/var/named&quot;;
+};
+zone &quot;feng.com&quot; {
+    type master;
+    file &quot;feng.com.zone&quot;;
+};
+zone &quot;.&quot; {
+    type hint;
+    file &quot;named.ca&quot;;
+};
+]$ chgrp named /app/bind/etc/named.conf
+]$ chmod 640 /app/bind/etc/named.conf
+]$ mkdir /var/named/
+]$ dig -t ns . @a.root-servers.net &gt; /var/named/named.ca
+</code></pre><h3 id="修改zone文件配置dns服务">修改zone文件，配置dns服务</h3>
+<pre><code>]$ vim /var/named/feng.com.zone
+$TTL 1D
+@   IN  SOA dns1.feng.com.    admin.feng.com.   ( 1 1D 1H 1W 3H )
+            NS  dns1
+dns1    A   192.168.1.9
+websrv	A 	192.168.1.10
+websrv	A 	192.168.1.11
+www		CNAME 	websrv
+]$ named -u named -g -d 3 
+]$ named -u named -d 3  #dns基本配置完成，后台启用服务
+]$ rndc-confgen &gt; /app/bind/etc/rndc.conf
+]$ grep '^#' /app/bind/etc/rndc.conf  &gt;&gt; /app/bind/etc/named.conf
+]$ vim /app/bind/etc/named.conf     #去掉rndc配置的相关的#号
+key &quot;rndc-key&quot; {
+        algorithm hmac-sha256;
+        secret &quot;sTvCPeQfkCmaObjPsnXXpqqryxkse4EmWUQylO4Wl5M=&quot;;
+};
+controls {
+        inet 127.0.0.1 port 953
+                allow { 127.0.0.1; } keys { &quot;rndc-key&quot;; };
+};
+]$ killall -HUP named      #重新加载配置文件,dns服务重启成功
+</code></pre><h2 id="querperf测试">querperf测试</h2>
+<h3 id="编译querperf">编译querperf</h3>
+<pre><code>]$ cd /root/bind-9.13.0/contrib/queryperf
+]$ ./configure 
+]$ make
+]$ cp queryperf /app/bind/bin/ 
+]$ vim /root/dnstest.txt 
+</code></pre><h3 id="测试">测试</h3>
+<pre><code>www.feng.com A
+feng.com NS
+feng.com SOA
+feng.com MX 
+]$ cat &gt;&gt; /root/dnstest.txt &lt; /root/dnstest.txt  #生成大文件
+]$ sed -i '100000,$d' /root/dnstest.txt  #取前100000行
+]$ queryperf -d /root/dnstest.txt
+Statistics:
+
+  Parse input file:     once
+  Ended due to:         reaching end of file
+
+  Queries sent:         4055040 queries
+  Queries completed:    4055040 queries
+  Queries lost:         0 queries
+  Queries delayed(?):   0 queries
+
+  RTT max:         	1.629313 sec
+  RTT min:              0.000057 sec
+  RTT average:          0.004647 sec
+  RTT std deviation:    0.008495 sec
+  RTT out of range:     0 queries
+
+  Percentage completed: 100.00%
+  Percentage lost:        0.00%
+
+  Started at:           Sat Jun  2 23:03:40 2018
+  Finished at:          Sat Jun  2 23:19:26 2018
+  Ran for:              945.913922 seconds
+
+  Queries per second:   4286.901700 qps
+</code></pre><p>以上内容为学习过程</p>
+
+        </div>
+        <!-- tags -->
+        <div class="mb-3">
+          <h5 class="d-inline-block mr-3">Tags:</h5>
+          <ul class="list-inline d-inline-block">
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/dns"> 
+            DNS</a>
+            
+          </ul>
+        </div>
+        <!-- previous -->
+        <div class="mb-3 link-article">
+    <div class="pre-article">
+        
+            <div><i class="fa fa-arrow-left"></i> 上一篇</div>
+            <a href="https://www.fenghong.tech/blog/2018/2018-06-10-mysql-02/">MYSQL数据库原理及操作</a>
+        
+    </div>
+    <div class="next-article">
+        
+            <div>下一篇 <i class="fa fa-arrow-right"></i></div>
+            <a href="https://www.fenghong.tech/blog/2018/2018-06-10-mysql-03/">MYSQL数据引擎</a>
+        
+    </div>
+</div>
+        <!-- previous -->
+
+        <!-- recommend -->
+        
+
+
+        <!-- comments -->
+
+        
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script>
+          window.onload = function() {
+              const gitalk = new Gitalk({
+              clientID: 'a0a546df858aafb5300e',
+              clientSecret: '67d7b40de25c072fc38840ffb9c06ceab7ef5080',
+              repo: 'oldthreefeng.github.io',
+              owner: 'oldthreefeng',
+              admin: ['oldthreefeng'],
+              id: hex_md5(hex_md5(window.location.pathname + window.location.hash)), 
+              distractionFreeMode: false 
+            });
+            (function() {
+              if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+                document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+                return;
+              }
+              gitalk.render('gitalk-container');
+            })();
+          }
+        </script>
+        
+      </div>
+      <!-- sidebar -->
+<aside class="col-lg-4 order-1 order-lg-2">
+  <!-- tags -->
+  <div class="bg-white px-4 py-5 box-shadow mb-5 word-cloud">
+    <h4 class="mb-4">标签</h4>
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div id="tag-cloud" style="padding: 5px 15px">
+      
+        
+          
+          
+          
+          <a href="/tags/acme" style="font-size:1.0188679245283019rem">acme</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/acmetiny" style="font-size:1.0188679245283019rem">acmetiny</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/alertmanager" style="font-size:1rem">alertmanager</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/algorithm" style="font-size:1.1132075471698113rem">algorithm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/aliyun" style="font-size:1rem">aliyun</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ansible" style="font-size:1.0754716981132075rem">ansible</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/apisix" style="font-size:1rem">apisix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/arm64" style="font-size:1.0188679245283019rem">arm64</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/authorization" style="font-size:1rem">authorization</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/backup" style="font-size:1.0377358490566038rem">backup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binarysearch" style="font-size:1.0188679245283019rem">binarysearch</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binlog" style="font-size:1rem">binlog</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bit" style="font-size:1.0188679245283019rem">bit</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bug" style="font-size:1.0188679245283019rem">bug</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cache" style="font-size:1rem">cache</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/certbot" style="font-size:1rem">certbot</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/channel" style="font-size:1rem">channel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/chrome" style="font-size:1.0188679245283019rem">chrome</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ci" style="font-size:1rem">ci</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cluster" style="font-size:1.1132075471698113rem">cluster</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cobra" style="font-size:1rem">cobra</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coco" style="font-size:1.0377358490566038rem">coco</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coding" style="font-size:1rem">coding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/computer" style="font-size:1rem">computer</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/consul" style="font-size:1rem">consul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/containerd" style="font-size:1.0188679245283019rem">containerd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coredns" style="font-size:1rem">coredns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cors" style="font-size:1rem">cors</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/crypto" style="font-size:1rem">crypto</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/curl" style="font-size:1rem">curl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dashboard" style="font-size:1rem">dashboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dcdn" style="font-size:1rem">dcdn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/debt" style="font-size:1rem">debt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/devops" style="font-size:1.0188679245283019rem">devops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dingding" style="font-size:1rem">dingding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/disk" style="font-size:1rem">disk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dmesg" style="font-size:1rem">dmesg</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dns" style="font-size:1rem">dns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/docker" style="font-size:1.2264150943396226rem">docker</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/doublylinkedlist" style="font-size:1rem">doublylinkedlist</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/elk" style="font-size:1rem">elk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/error" style="font-size:1rem">error</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/etcd" style="font-size:1.0377358490566038rem">etcd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exec" style="font-size:1.0188679245283019rem">exec</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exp" style="font-size:1rem">exp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/federated" style="font-size:1rem">federated</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/filecoin" style="font-size:1rem">filecoin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/find" style="font-size:1rem">find</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/firewalld" style="font-size:1rem">firewalld</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/fix" style="font-size:1.0377358490566038rem">fix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flag" style="font-size:1.0188679245283019rem">flag</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flannel" style="font-size:1rem">flannel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/food" style="font-size:1.0188679245283019rem">food</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/frp" style="font-size:1.0377358490566038rem">frp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ftp" style="font-size:1.0188679245283019rem">ftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/games" style="font-size:1rem">games</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gin" style="font-size:1.0188679245283019rem">gin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/git" style="font-size:1.2075471698113207rem">git</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/github" style="font-size:1.0188679245283019rem">github</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gitlab" style="font-size:1rem">gitlab</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go" style="font-size:1.320754716981132rem">go</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go-vim" style="font-size:1rem">go-vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gogs" style="font-size:1.0566037735849056rem">gogs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/goland" style="font-size:1.0188679245283019rem">goland</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/golang" style="font-size:1.0377358490566038rem">golang</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gorequest" style="font-size:1rem">gorequest</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grafana" style="font-size:1.0188679245283019rem">grafana</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grub" style="font-size:1rem">grub</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hack" style="font-size:1.0188679245283019rem">hack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/haproxy" style="font-size:1.0377358490566038rem">haproxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/harbor" style="font-size:1.0188679245283019rem">harbor</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hash" style="font-size:1.0188679245283019rem">hash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hashmap" style="font-size:1rem">hashmap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/helm" style="font-size:1.0188679245283019rem">helm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hexo" style="font-size:1.0377358490566038rem">hexo</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/http" style="font-size:1.0754716981132075rem">http</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/https" style="font-size:1rem">https</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/index" style="font-size:1rem">index</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ingress" style="font-size:1.0377358490566038rem">ingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/inotify" style="font-size:1rem">inotify</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/internet" style="font-size:1.169811320754717rem">internet</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/interview" style="font-size:1rem">interview</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/iptables" style="font-size:1.0377358490566038rem">iptables</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ipvs" style="font-size:1.0188679245283019rem">ipvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/java" style="font-size:1.0754716981132075rem">java</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jeju" style="font-size:1rem">jeju</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jenkins" style="font-size:1.0943396226415094rem">jenkins</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jetbrains" style="font-size:1rem">jetbrains</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jumpserver" style="font-size:1.0566037735849056rem">jumpserver</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jvm" style="font-size:1rem">jvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/keepalived" style="font-size:1rem">keepalived</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kernel" style="font-size:1rem">kernel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/knowledge" style="font-size:1rem">knowledge</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kube-proxy" style="font-size:1.0188679245283019rem">kube-proxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetes" style="font-size:1.3962264150943395rem">kubernetes</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesrbac" style="font-size:1rem">kubernetesrbac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesssl" style="font-size:1.0188679245283019rem">kubernetesssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kuboard" style="font-size:1.0566037735849056rem">kuboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lb" style="font-size:1rem">lb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/learning" style="font-size:1.0566037735849056rem">learning</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/leetcode" style="font-size:1.0188679245283019rem">leetcode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libcurl" style="font-size:1rem">libcurl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libssh2" style="font-size:1rem">libssh2</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/link" style="font-size:1rem">link</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/linux" style="font-size:1.9811320754716981rem">linux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/living" style="font-size:1rem">living</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lnux" style="font-size:1rem">lnux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/log" style="font-size:1.0566037735849056rem">log</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logrus" style="font-size:1rem">logrus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logs" style="font-size:1rem">logs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logstash" style="font-size:1rem">logstash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/loki" style="font-size:1rem">loki</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lru" style="font-size:1rem">lru</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/luna" style="font-size:1rem">luna</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvm" style="font-size:1rem">lvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvs" style="font-size:1rem">lvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mac" style="font-size:1rem">mac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/malaysia" style="font-size:1rem">malaysia</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/manage" style="font-size:1rem">manage</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/map" style="font-size:1rem">map</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mariadb" style="font-size:1.0377358490566038rem">mariadb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/markdown" style="font-size:1.0188679245283019rem">markdown</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mfa" style="font-size:1rem">mfa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mha" style="font-size:1rem">mha</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mode" style="font-size:1rem">mode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/module" style="font-size:1rem">module</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mount" style="font-size:1rem">mount</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mysql" style="font-size:1.2452830188679245rem">mysql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/navicat" style="font-size:1rem">navicat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/network" style="font-size:1rem">network</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nfs" style="font-size:1.0754716981132075rem">nfs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginx" style="font-size:1.2264150943396226rem">nginx</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginxingress" style="font-size:1.0566037735849056rem">nginxingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/node_exporter" style="font-size:1.0188679245283019rem">node_exporter</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/numpy" style="font-size:1rem">numpy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ops" style="font-size:1.2452830188679245rem">ops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/owncloud" style="font-size:1rem">owncloud</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/password" style="font-size:1rem">password</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/paxos" style="font-size:1.0188679245283019rem">paxos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/php" style="font-size:1rem">php</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pipeline" style="font-size:1rem">pipeline</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/polynomial" style="font-size:1rem">polynomial</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/problem" style="font-size:1rem">problem</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/prometheus" style="font-size:1.0943396226415094rem">prometheus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pv" style="font-size:1.0754716981132075rem">pv</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pvc" style="font-size:1.0754716981132075rem">pvc</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/python" style="font-size:1.0943396226415094rem">python</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/queue" style="font-size:1rem">queue</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/qw3xt" style="font-size:1rem">qw3xt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rabbitmq" style="font-size:1.0188679245283019rem">rabbitmq</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/raft" style="font-size:1rem">raft</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rebase" style="font-size:1rem">rebase</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/redis" style="font-size:1.0377358490566038rem">redis</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/resources" style="font-size:1.0188679245283019rem">resources</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsa" style="font-size:1rem">rsa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsync" style="font-size:1.0188679245283019rem">rsync</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/safe" style="font-size:1.0754716981132075rem">safe</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/samba" style="font-size:1rem">samba</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sealos" style="font-size:1rem">sealos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/secure" style="font-size:1rem">secure</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sed" style="font-size:1rem">sed</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/server" style="font-size:1.2075471698113207rem">server</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sftp" style="font-size:1rem">sftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shadowsocks" style="font-size:1.0188679245283019rem">shadowsocks</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shell" style="font-size:1.0188679245283019rem">shell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slap" style="font-size:1rem">slap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slave" style="font-size:1rem">slave</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slb" style="font-size:1rem">slb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slowquery" style="font-size:1rem">slowquery</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sonar" style="font-size:1.0377358490566038rem">sonar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sourcetree" style="font-size:1.0188679245283019rem">sourcetree</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sql" style="font-size:1.0188679245283019rem">sql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ss" style="font-size:1rem">ss</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssh" style="font-size:1.0754716981132075rem">ssh</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssl" style="font-size:1.1132075471698113rem">ssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stack" style="font-size:1rem">stack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stress" style="font-size:1rem">stress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/style" style="font-size:1rem">style</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/switchyomega" style="font-size:1rem">switchyomega</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/syncd" style="font-size:1rem">syncd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/taint" style="font-size:1rem">taint</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tar" style="font-size:1rem">tar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tcp" style="font-size:1.0188679245283019rem">tcp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/testing" style="font-size:1rem">testing</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tomcat" style="font-size:1rem">tomcat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tour" style="font-size:1.0188679245283019rem">tour</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/trojan" style="font-size:1rem">trojan</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ubuntu" style="font-size:1.0566037735849056rem">ubuntu</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/udp" style="font-size:1rem">udp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/uk8s" style="font-size:1rem">uk8s</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unauthorized" style="font-size:1rem">unauthorized</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unblockneteasemusic" style="font-size:1rem">unblockneteasemusic</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upgrade" style="font-size:1.0188679245283019rem">upgrade</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upstream" style="font-size:1rem">upstream</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/v1.18.3" style="font-size:1rem">v1.18.3</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vim" style="font-size:1rem">vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/virtul" style="font-size:1rem">virtul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vpn" style="font-size:1.0754716981132075rem">vpn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vscode" style="font-size:1rem">vscode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/websocket" style="font-size:1rem">websocket</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/wifi" style="font-size:1rem">wifi</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xshell" style="font-size:1rem">xshell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xtrabackup" style="font-size:1rem">xtrabackup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/yum" style="font-size:1rem">yum</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/zabbix" style="font-size:1rem">zabbix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e6%95%b0%e6%8d%ae%e5%ba%93%e5%8e%9f%e7%90%86" style="font-size:1rem">数据库原理</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95" style="font-size:1rem">贪心算法</a>
+        
+      
+      </div>
+    
+  </div>
+
+  <!-- profile -->
+  <!-- toc -->
+  
+  <div class="bg-white px-4 py-5 box-shadow mb-5 sticky-top">
+    <h4 class="mb-4">目录</h4>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#正向解析文件格式">正向解析文件格式</a></li>
+    <li><a href="#反向解析文件格式">反向解析文件格式</a></li>
+    <li><a href="#子域">子域</a></li>
+    <li><a href="#bind服务器base源">bind服务器(base源)</a>
+      <ul>
+        <li><a href="#测试命令dig">测试命令dig</a></li>
+        <li><a href="#host测试命令">host测试命令</a></li>
+        <li><a href="#nslookup命令及dns动态更新">nslookup命令及DNS动态更新</a></li>
+      </ul>
+    </li>
+    <li><a href="#客户端的设定">客户端的设定</a></li>
+    <li><a href="#rndc命令">rndc命令</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#在服务器上进行配置etcnamedconf">在服务器上进行配置/etc/named.conf</a></li>
+    <li><a href="#配置etcnamedrfc1912zones文件">配置/etc/named.rfc1912.zones文件</a></li>
+    <li><a href="#解析域zone文件的配置">解析域zone文件的配置</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#从服务器配置">从服务器配置：</a></li>
+    <li><a href="#从服务器">从服务器：</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#etcnamedconf文件配置">/etc/named.conf文件配置</a></li>
+    <li><a href="#配置zone文件">配置zone文件</a></li>
+    <li><a href="#数据库文件配置">数据库文件配置</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#实验综合条件每台dns服务器的要求">实验综合条件：每台dns服务器的要求</a></li>
+    <li><a href="#根服务器的配置"><strong>根服务器的配置</strong></a></li>
+    <li><a href="#搭建区域dns服务器">搭建区域dns服务器</a></li>
+    <li><a href="#搭建com服务器">搭建com.服务器：</a></li>
+    <li><a href="#搭建fengcom服务器">搭建feng.com.服务器</a>
+      <ul>
+        <li><a href="#主服务器配置">主服务器配置；</a></li>
+        <li><a href="#从服务器配置-1">从服务器配置；</a></li>
+      </ul>
+    </li>
+    <li><a href="#5搭建wwwfengcom">5.搭建www.feng.com</a>
+      <ul>
+        <li><a href="#19216814主机">192.168.1.4主机：</a></li>
+        <li><a href="#192168144备用机">192.168.1.44备用机：</a></li>
+      </ul>
+    </li>
+    <li><a href="#6clients访问"><strong>6.clients访问</strong></a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#编译安装bind及启动rndc服务dns服务">编译安装bind及启动rndc服务DNS服务</a>
+      <ul>
+        <li><a href="#编译前准备">编译前准备</a></li>
+        <li><a href="#编译">编译</a></li>
+        <li><a href="#修改相关配置文件">修改相关配置文件</a></li>
+        <li><a href="#修改zone文件配置dns服务">修改zone文件，配置dns服务</a></li>
+      </ul>
+    </li>
+    <li><a href="#querperf测试">querperf测试</a>
+      <ul>
+        <li><a href="#编译querperf">编译querperf</a></li>
+        <li><a href="#测试">测试</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+
+</aside>
+<!-- /sidebar -->
+
+    </div>
+  </div>
+</section>
+<!-- /blog details -->
+
+
+
+<footer>
+	
+	<div class="section bg-secondary">
+		<div class="container">
+			<div class="row justify-content-between">
+				
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					<a class="mb-4 d-inline-block" href="/"><img class="img-fluid"
+																								src="/images/images/logo-alt.png" alt="Louis Blog" width="60%"></a>
+					<p class="text-light mb-5">每一个不曾起舞的日子都是对生命的辜负.</p>
+					<h4 class="text-white mb-4">关注我</h4>
+					
+					<ul class="list-inline social-icon-alt">
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://twitter.com/louishong17"><i class="fa fa-twitter"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://github.com/oldthreefeng"><i class="fa fa-github"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="/contact"><i class="fa fa-wechat"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="mailto:992165098@qq.com"><i class="fa fa-envelope"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://www.fenghong.tech/blog/index.xml"><i class="fa fa-rss"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					
+					
+					
+					
+					<div class="mb-5">
+						<h4 class="text-white mb-4">联系信息</h4>
+						<p class="text-light mb-3">上海 · 浦东新区</p>
+						<p class="text-light mb-3"></p>
+						<p class="text-light mb-3">微信联系方式</p>
+						<p class="text-light mb-3"><img src="/images/images/wechat-qrcode.png" width="356px"></p>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="bg-secondary-darken py-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+					<p class="mb-0 text-white">Copyright © 2020 Louis</p>
+				</div>
+				<div class="col-md-6 text-center text-md-right">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item mx-0"><a class="d-inline-block px-3 text-white" href="https://beian.miit.gov.cn/"
+																									class="text-white">鄂ICP备18027870号-1</a></li>
+						<p class="list-inline-item mx-0 text-white">本网站由</p>
+						<a target="_blank" rel="nofollow noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://pic.fenghong.tech/images/180803_logo30.png" style="margin-bottom:5px;height: 25px;"></a>
+						<p class="list-inline-item mx-0 text-white">提供CDN加速/云存储服务</p>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+<script>
+	var indexURL = "/index.json"
+</script>
+
+
+<!-- JS Plugins -->
+
+<script src="/plugins/jQuery/jquery.min.js"></script>
+
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="/plugins/slick/slick.min.js"></script>
+
+<script src="/plugins/google-map/gmap.js"></script>
+
+<script src="/plugins/venobox/venobox.min.js"></script>
+
+<script src="/plugins/filterizr/jquery.filterizr.min.js"></script>
+
+<script src="/plugins/search/fuse.min.js"></script>
+
+<script src="/plugins/search/mark.js"></script>
+
+<script src="/plugins/search/search.js"></script>
+
+<script src="/plugins/bigPicture/bigPicture.js"></script>
+
+<script src="/plugins/hex_md5/hex_md5.js"></script>
+
+
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+
+<!-- Algolia -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+<script>
+	docsearch({
+		apiKey: 'b4d47f0c039a84d4035305be829404dd',
+		indexName: 'DocSearch',
+		appId: 'CTH4P282IZ',
+		inputSelector: '#js-algolia-btn',
+		debug: false,
+	});
+</script>
+
+<!-- google analitycs -->
+
+<script>
+	(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-130595069-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https'){
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else{
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</body>
+
+</html>

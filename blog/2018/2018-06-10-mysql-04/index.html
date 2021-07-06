@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn"><head>
+  <meta charset="utf-8">
+  <title>MYSQL并发控制 | Louis Blog</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="有技术 有温度 有情怀">
+  
+  <meta name="author" content="Louis ">
+  <meta name="generator" content="Hugo 0.73.0" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  
+  <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="/plugins/animate/animate.css">
+  
+  <link rel="stylesheet" href="/plugins/venobox/venobox.css">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="/images/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="/images/images/favicon.png " type="image/x-icon">
+
+  <!--Algolia-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css">
+</head>
+<body>
+<!-- header -->
+<header>
+  
+
+  <!-- navigation -->
+  <div class="navigation bg-white position-relative">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="/"><img class="img-fluid pb-lg-3" src="/images/images/logo.png" width="189px" alt="Louis Blog"></a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/"></a>
+            </li>
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                博客
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/categories/kubernetes">Kubernetes</a>
+                
+                <a class="dropdown-item" href="/categories/sealos">sealos</a>
+                
+                <a class="dropdown-item" href="/categories/ops">运维相关</a>
+                
+                <a class="dropdown-item" href="/categories/golang">golang</a>
+                
+                <a class="dropdown-item" href="/categories/algorithm">algorithm</a>
+                
+                <a class="dropdown-item" href="/categories/tools">tools</a>
+                
+                <a class="dropdown-item" href="/blog">全部</a>
+                
+              </div>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/team">友情链接</a>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                关于我
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/contact">about</a>
+                
+                <a class="dropdown-item" href="https://github.com/oldthreefeng">github</a>
+                
+              </div>
+            </li>
+            
+            
+          </ul>
+
+          
+          
+
+          
+          <!-- search -->
+          <div class="search px-4">
+            <button id="searchOpen" class="search-btn"><i class="fa fa-search text-dark"></i></button>
+            <div class="search-wrapper">
+              <form action="/search">
+                <input class="search-box form-control" id="js-algolia-btn" name="s" type="search" placeholder="输入搜索词">
+              </form>
+              <button id="searchClose" class="search-close"><i class="fa fa-close text-dark"></i></button>
+            </div>
+          </div>
+          
+          
+          <!-- get start btn -->
+          <a href="/contact" class="btn btn-primary hover-ripple">联系我</a>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- /navigation -->
+</header>
+<!-- /header -->
+
+
+<!-- page title -->
+<section class="section bg-cover overlay" style="background-image: url('/'),url('/'),url('/images/images/backgrounds/page-title.jpg');">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-white mb-3">MYSQL并发控制</h2>
+        <!-- breadcrumb -->
+        
+        <p class="text-white"></p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /page title -->
+
+
+<!-- blog details -->
+<section class="section">
+  <div class="container blog">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- post thumb -->
+        <div class="position-relative mb-5">
+          <img src="/"  onerror="this.src='https:\/\/pic.fenghong.tech\/proto\/girl-4150265__340.jpg'" alt="post thumb" class="img-fluid w-100">
+           <div class="card-type">Mysql</div>
+        </div>
+        <div class="card-meta text-uppercase mb-2">作者  <strong class="text-dark"><a href="https://www.fenghong.tech">Louis</a></strong>
+          
+            发表于 <strong class="text-dark">2018年6月11日</strong></div>
+        <hr>
+        <div class="content">
+          <p>摘要：MYsql的并发控制，锁，事务了解，涵盖了事务安全，事务原理，事务回滚点，事务特性</p>
+<h1 id="并发控制">并发控制</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">LOCK</span> <span style="color:#66d9ef">TABLES</span>
+	tbl_name [[<span style="color:#66d9ef">AS</span>] alias] lock_type
+	[, tbl_name [[<span style="color:#66d9ef">AS</span>] alias] lock_type] ...
+lock_type: <span style="color:#66d9ef">READ</span> <span style="color:#960050;background-color:#1e0010">，</span> <span style="color:#66d9ef">WRITE</span>
+<span style="color:#66d9ef">UNLOCK</span> <span style="color:#66d9ef">TABLES</span>  <span style="color:#75715e">-- 解锁
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">FLUSH</span> <span style="color:#66d9ef">TABLES</span> tb_name[,...] [<span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">LOCK</span>]
+<span style="color:#75715e">-- 关闭正在打开的表（清除查询缓存），通常在备份前加全局读锁
+</span><span style="color:#75715e"></span>MariaDB [hellodb]<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> clause [<span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">LOCK</span> <span style="color:#66d9ef">IN</span> SHARE MODE]
+<span style="color:#75715e">-- 查询时加写或读锁
+</span></code></pre></div><ul>
+<li>
+<p>锁：</p>
+<ul>
+<li>
+<p>读锁：共享锁，只读不可写，多个读互不阻塞，</p>
+<p><code>MariaDB [hellodb]&gt; LOCK TABLES students READ;</code></p>
+</li>
+<li>
+<p>写锁：独占锁,排它锁，一个写锁会阻塞其它读和它锁</p>
+<p><code>MariaDB [hellodb]&gt; LOCK TABLES students WRITE;</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>实现</p>
+<ul>
+<li>存储引擎：自行实现其锁策略和锁粒度</li>
+<li>服务器级：实现了锁，表级锁；用户可显式请求</li>
+</ul>
+</li>
+<li>
+<p>分类：</p>
+<ul>
+<li>隐式锁：由存储引擎自动施加锁</li>
+<li>显式锁：用户手动请求</li>
+</ul>
+</li>
+<li>
+<p>锁机制： innodb默认是行锁，但是如果在事务操做过程中，没有使用到索引，系统会自动进行全表检索苏剧，自动升级为表所，后续事务会讲到。</p>
+<ul>
+<li>行锁：只有当前行被锁住，别的用户不能操作当前行</li>
+<li>表所：整张表被锁住，别的用户都不能操作</li>
+<li>页锁：显示的整页被锁住</li>
+</ul>
+</li>
+</ul>
+<h2 id="read-锁">read 锁</h2>
+<p>自己可以读，但是不可以写；其他人可以读，不可以写。</p>
+<pre><code>lock tables students read;
+update students set classid=3 where stuid=25; -- 均不可写，只可读
+</code></pre><h2 id="write-锁">write 锁</h2>
+<p>自己可以读，但是不可以写；其他人不可以读</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">flush</span> <span style="color:#66d9ef">tables</span> students; 		<span style="color:#75715e">-- 清除缓存
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">lock</span> <span style="color:#66d9ef">tables</span> students <span style="color:#66d9ef">write</span>;
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> students <span style="color:#66d9ef">where</span> stuid<span style="color:#f92672">=</span><span style="color:#ae81ff">12</span>; <span style="color:#75715e">-- 其他终端不可读此表，自己可读
+</span></code></pre></div><h3 id="死锁">死锁：</h3>
+<p>两个或多个事务在同一资源相互占用，并请求锁定对方占用的资源的状态.相当于行级锁。</p>
+<h1 id="事务">事务</h1>
+<h2 id="事务了解">事务了解</h2>
+<ul>
+<li>事务Transactions：一组原子性的SQL语句，或一个独立工作单元</li>
+<li>事务日志：记录事务信息，实现undo,redo等故障恢复功能</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 创建一个账户表
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> testdb;
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> <span style="color:#a6e22e">my_account</span>(
+number <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">16</span>) <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span> <span style="color:#66d9ef">unique</span> ,
+name <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">20</span>) <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>,
+money <span style="color:#66d9ef">decimal</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">default</span> <span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">0</span>
+)<span style="color:#66d9ef">charset</span> utf8;
+<span style="color:#75715e">-- 插入数据
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> my_account <span style="color:#66d9ef">values</span>
+(<span style="color:#e6db74">&#39;0000000000001&#39;</span>,<span style="color:#e6db74">&#39;张三&#39;</span>,<span style="color:#ae81ff">100000</span>),
+(<span style="color:#e6db74">&#39;0000000000002&#39;</span>,<span style="color:#e6db74">&#39;李四&#39;</span>,<span style="color:#ae81ff">200000</span>);
+<span style="color:#75715e">-- 开启事务
+</span><span style="color:#75715e"></span>start transaction;
+<span style="color:#75715e">-- 更新数据库
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> my_account <span style="color:#66d9ef">add</span> id <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">primary</span> <span style="color:#66d9ef">key</span> <span style="color:#66d9ef">auto_increment</span> first;
+<span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> my_account <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;3&#39;</span>,<span style="color:#e6db74">&#39;0000000000003&#39;</span>,<span style="color:#e6db74">&#39;王五&#39;</span>,<span style="color:#ae81ff">300000</span>);
+<span style="color:#66d9ef">update</span> my_account <span style="color:#66d9ef">set</span> money <span style="color:#f92672">=</span> money <span style="color:#f92672">-</span> <span style="color:#ae81ff">100000</span> <span style="color:#66d9ef">where</span> id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> ;  <span style="color:#75715e">-- 另开一个账户查看是否修改了表
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">update</span> my_account <span style="color:#66d9ef">set</span> money <span style="color:#f92672">=</span> money <span style="color:#f92672">+</span> <span style="color:#ae81ff">100000</span> <span style="color:#66d9ef">where</span> id <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> ;  <span style="color:#75715e">-- 另开一个账户查看是否修改了表
+</span><span style="color:#75715e">-- 提交事务
+</span><span style="color:#75715e"></span>commit<span style="color:#960050;background-color:#1e0010">；</span>
+</code></pre></div><h2 id="事务操作">事务操作</h2>
+<p>事务操作分为两种：自动事务(默认的)，手动事务</p>
+<p><strong>手动事务：</strong></p>
+<ul>
+<li>
+<p>开启事务：告诉系统所有的操作（写）不要直接写到数据库的表中，先放入事务日志中；start transaction;</p>
+</li>
+<li>
+<p>事务操作：1. 张三账户减少</p>
+<p><code>MariaDB[testdb]&gt; update my_account set money = money - 100000 where id = 1 ;</code></p>
+</li>
+<li>
+<p>事务操作：2. 李四账户增加</p>
+<p><code>MariaDB[testdb]&gt; update my_account set money = money + 100000 where id = 2 ;</code></p>
+</li>
+<li>
+<p>事务关闭：选择性将日志文件中的操作的结果报错到数据表中，清空事务日志</p>
+<ol>
+<li>
+<p>提交事务：同步数据表（操作成功）commit；</p>
+</li>
+<li>
+<p>回滚事务：直接清空日志表（操作失败）rollback；</p>
+</li>
+</ol>
+</li>
+<li>
+<p>注意：只有事务型存储引擎方能支持此类操作,如innodb</p>
+</li>
+</ul>
+<p>事务原理</p>
+<p><img src="https://pic.fenghong.tech/others/transaction.png" alt="生命周期"></p>
+<h2 id="回滚点">回滚点</h2>
+<p>回滚点：在某个成功的操作完成之后，后续的操作有可能成功也可能失败，但是无论结果如何，可以在当前的成功位置上，设置一个点。可以供后续的失败操作返回到该位置，而不是返回所有操作，这个点称为回滚点。</p>
+<p>设置回滚点：savepoint 回滚点名字;一个回滚点，只能回滚一次</p>
+<p><code>release savepoint identified;</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 回滚点操作
+</span><span style="color:#75715e">-- 开启事务
+</span><span style="color:#75715e"></span>start transaction;
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> my_account;
+<span style="color:#75715e">-- 事务处理1：张三加钱
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">update</span> my_account <span style="color:#66d9ef">set</span> money <span style="color:#f92672">=</span> money <span style="color:#f92672">+</span> <span style="color:#ae81ff">10000</span> <span style="color:#66d9ef">where</span> id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+
+<span style="color:#75715e">-- 设置回滚点
+</span><span style="color:#75715e"></span>savepoint sp1;
+
+<span style="color:#75715e">-- 银行扣税
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">update</span> my_account <span style="color:#66d9ef">set</span> money <span style="color:#f92672">=</span> money <span style="color:#f92672">-</span> <span style="color:#ae81ff">10000</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">05</span> <span style="color:#66d9ef">where</span> id <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> ; <span style="color:#75715e">-- 扣错了
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> my_account;
+<span style="color:#75715e">-- 回滚
+</span><span style="color:#75715e"></span>rollback <span style="color:#66d9ef">to</span> sp1;
+
+<span style="color:#75715e">-- 继续操作
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">update</span> my_account <span style="color:#66d9ef">set</span> money <span style="color:#f92672">=</span> money <span style="color:#f92672">-</span> <span style="color:#ae81ff">10000</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">05</span> <span style="color:#66d9ef">where</span> id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> ; 
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> my_account;
+<span style="color:#75715e">-- 提交
+</span><span style="color:#75715e"></span>commit<span style="color:#960050;background-color:#1e0010">；</span>
+</code></pre></div><h2 id="自动事务处理">自动事务处理</h2>
+<p>在mysql中：默认的都是自动事务处理，用户操作完立即同步到数据表中。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 系统默认自动事务
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">show</span> variabes <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;autocommit&#39;</span>;
+<span style="color:#66d9ef">set</span> autocommit<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+<span style="color:#75715e">-- 李四加工资
+</span><span style="color:#75715e"></span>start transaction;
+<span style="color:#66d9ef">update</span> my_account <span style="color:#66d9ef">set</span> money <span style="color:#f92672">=</span> money <span style="color:#f92672">+</span> <span style="color:#ae81ff">10000</span> <span style="color:#66d9ef">where</span> id <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+<span style="color:#75715e">-- 手动提交
+</span><span style="color:#75715e"></span>commit<span style="color:#960050;background-color:#1e0010">；</span>
+<span style="color:#75715e">-- 一般使用自动事务
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">set</span> autocommit<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+<span style="color:#75715e">-- 扣税
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">update</span> my_account <span style="color:#66d9ef">set</span> money <span style="color:#f92672">=</span> money <span style="color:#f92672">-</span> <span style="color:#ae81ff">10000</span><span style="color:#f92672">*</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">05</span> <span style="color:#66d9ef">where</span> id <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</code></pre></div><ul>
+<li>注意：通常都会使用自动事务. 减少重复的工作</li>
+</ul>
+<h2 id="事务的特性">事务的特性</h2>
+<ul>
+<li>ACID特性：</li>
+<li>A：atomicity原子性；整个事务中的所有操作要么全部成功执行，要么全部失败后回滚</li>
+<li>C：consistency一致性；数据库总是从一个一致性状态转换为另一个一致性状态</li>
+<li>I：Isolation隔离性；一个事务所做出的操作在提交之前，是不能为其它事务所见，存于数据的日志中，彼此之间不受影响；隔离有多种隔离级别，实现并发</li>
+<li>D：durability持久性；一旦事务提交，其所做的修改会永久保存于数据库中</li>
+</ul>
+<h2 id="事务隔离级别">事务隔离级别：</h2>
+<p>从上至下更加严格</p>
+<ul>
+<li>READ-UNCOMMITTED 可读取到未提交数据，产生脏读</li>
+<li>READ-COMMITTED 可读取到提交数据，但未提交数据不可读，产生不可重复读，即可读取到多个提交数据，导致每次读取数据不一致</li>
+<li>REPEATABLE-READ 可重复读，多次读取数据都一致，产生幻读，即读取过程中，即使有其它提交的事务修改数据，仍只能读取到未修改前的旧数据。此为MySQL默认设置</li>
+<li>SERIALIZABILE 可串行化，未提交的读事务阻塞修改事务，或者未提交的修改事务阻塞读事务。导致并发性能差</li>
+</ul>
+<p>MVCC: 多版本并发控制，和事务级别相关</p>
+<h3 id="事务的隔离性read-uncommitted"><strong>事务的隔离性</strong>：READ-UNCOMMITTED</h3>
+<p>在两个会话中</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">set</span> tx_isolation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;READ-UNCOMMITTED&#39;</span>;
+start transaction;
+<span style="color:#66d9ef">update</span> my_account <span style="color:#66d9ef">set</span> money <span style="color:#f92672">=</span> money <span style="color:#f92672">+</span> <span style="color:#ae81ff">10000</span> <span style="color:#66d9ef">where</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;王五&#39;</span>;
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> my_account; 	<span style="color:#75715e">-- 未提交，产生脏读
+</span></code></pre></div><h3 id="事务的隔离性read-committed"><strong>事务的隔离性</strong>：READ-COMMITTED</h3>
+<p>在两个会话中</p>
+<pre><code>set tx_isolation='READ-COMMITTED';
+start transaction;
+update my_account set money = money + 10000 where name = '李四';
+select * from my_account; 	-- 未提交，另外一边不能读到未提交的数据
+commit；	-- 提交之后，可以读取新数据
+</code></pre><h3 id="事务的隔离性repeatable-read"><strong>事务的隔离性</strong>：REPEATABLE-READ</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">set</span> tx_isolation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;REPEATABLE-READ&#39;</span>;
+start transaction;
+<span style="color:#66d9ef">update</span> my_account <span style="color:#66d9ef">set</span> money <span style="color:#f92672">=</span> money <span style="color:#f92672">+</span> <span style="color:#ae81ff">10000</span> <span style="color:#66d9ef">where</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;张三&#39;</span>;
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> my_account; 	
+commit<span style="color:#960050;background-color:#1e0010">；</span>		
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> my_account; 	<span style="color:#f92672">--</span><span style="color:#960050;background-color:#1e0010">不管是否提交，都看不到新的数据</span>
+</code></pre></div><h3 id="事务的隔离性serializabile"><strong>事务的隔离性</strong>：SERIALIZABILE</h3>
+<p>不用索引，系统会进行全表索引，会导致事务升级为表级锁，并发性能差</p>
+<pre><code>set tz_isolation='SERIALIZABILE';
+start transaction;
+update my_account set money = money + 10000 where name = '张三';
+</code></pre><pre><code>select * from my_account ; -- 数据未更新
+update my_account set money = money + 10000 where id = 2;
+-- 显示等待，事务升级为表级锁
+</code></pre><p>总结：支持事务的引擎有innodb，而myisam是不支持事务的，一般涉及到钱的，基本会用到事务。</p>
+<pre><code>start transaction;
+update students set gender='M'; -- 未提交，导致全表锁，造成大量用户无法访问
+show processlist;
++----+--------+-----------+---------+---------+------+----------+------------------+----------+
+| Id | User   | Host      | db      | Command | Time | State    | Info             | Progress |
++----+--------+-----------+---------+---------+------+----------+------------------+----------+
+| 10 | root   | localhost | hellodb | Query   |    0 | init     | show processlist |    0.000 |
+| 11 | root   | localhost | hellodb | Sleep   | 4962 |          | NULL             |    0.000 |
++----+--------+-----------+---------+---------+------+----------+------------------+----------+
+kill id -- 杀掉进程
+</code></pre>
+        </div>
+        <!-- tags -->
+        <div class="mb-3">
+          <h5 class="d-inline-block mr-3">Tags:</h5>
+          <ul class="list-inline d-inline-block">
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/linux"> 
+            Linux</a>
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/mysql"> , 
+            Mysql</a>
+            
+          </ul>
+        </div>
+        <!-- previous -->
+        <div class="mb-3 link-article">
+    <div class="pre-article">
+        
+            <div><i class="fa fa-arrow-left"></i> 上一篇</div>
+            <a href="https://www.fenghong.tech/blog/2018/2018-06-10-mysql-03/">MYSQL数据引擎</a>
+        
+    </div>
+    <div class="next-article">
+        
+            <div>下一篇 <i class="fa fa-arrow-right"></i></div>
+            <a href="https://www.fenghong.tech/blog/2018/2018-06-12-mysql-05/">MYSQL日志</a>
+        
+    </div>
+</div>
+        <!-- previous -->
+
+        <!-- recommend -->
+        
+
+<div class="mb-3">
+  <h2>文章推荐</h2>
+  <ul class="related">
+  
+    <li><a href="/blog/2018/2018-06-10-mysql-03/">MYSQL数据引擎</a></li>
+  
+    <li><a href="/blog/2018/2018-06-10-mysql-01/">MYSQL安装及多实例</a></li>
+  
+    <li><a href="/blog/2018/2018-06-10-mysql-02/">MYSQL数据库原理及操作</a></li>
+  
+    <li><a href="/blog/2018/2018-04-20-linux_router/">Linux下路由配置梳理</a></li>
+  
+  </ul>
+</div>
+
+
+        <!-- comments -->
+
+        
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script>
+          window.onload = function() {
+              const gitalk = new Gitalk({
+              clientID: 'a0a546df858aafb5300e',
+              clientSecret: '67d7b40de25c072fc38840ffb9c06ceab7ef5080',
+              repo: 'oldthreefeng.github.io',
+              owner: 'oldthreefeng',
+              admin: ['oldthreefeng'],
+              id: hex_md5(hex_md5(window.location.pathname + window.location.hash)), 
+              distractionFreeMode: false 
+            });
+            (function() {
+              if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+                document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+                return;
+              }
+              gitalk.render('gitalk-container');
+            })();
+          }
+        </script>
+        
+      </div>
+      <!-- sidebar -->
+<aside class="col-lg-4 order-1 order-lg-2">
+  <!-- tags -->
+  <div class="bg-white px-4 py-5 box-shadow mb-5 word-cloud">
+    <h4 class="mb-4">标签</h4>
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div id="tag-cloud" style="padding: 5px 15px">
+      
+        
+          
+          
+          
+          <a href="/tags/acme" style="font-size:1.0188679245283019rem">acme</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/acmetiny" style="font-size:1.0188679245283019rem">acmetiny</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/alertmanager" style="font-size:1rem">alertmanager</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/algorithm" style="font-size:1.1132075471698113rem">algorithm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/aliyun" style="font-size:1rem">aliyun</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ansible" style="font-size:1.0754716981132075rem">ansible</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/apisix" style="font-size:1rem">apisix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/arm64" style="font-size:1.0188679245283019rem">arm64</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/authorization" style="font-size:1rem">authorization</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/backup" style="font-size:1.0377358490566038rem">backup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binarysearch" style="font-size:1.0188679245283019rem">binarysearch</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binlog" style="font-size:1rem">binlog</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bit" style="font-size:1.0188679245283019rem">bit</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bug" style="font-size:1.0188679245283019rem">bug</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cache" style="font-size:1rem">cache</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/certbot" style="font-size:1rem">certbot</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/channel" style="font-size:1rem">channel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/chrome" style="font-size:1.0188679245283019rem">chrome</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ci" style="font-size:1rem">ci</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cluster" style="font-size:1.1132075471698113rem">cluster</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cobra" style="font-size:1rem">cobra</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coco" style="font-size:1.0377358490566038rem">coco</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coding" style="font-size:1rem">coding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/computer" style="font-size:1rem">computer</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/consul" style="font-size:1rem">consul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/containerd" style="font-size:1.0188679245283019rem">containerd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coredns" style="font-size:1rem">coredns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cors" style="font-size:1rem">cors</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/crypto" style="font-size:1rem">crypto</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/curl" style="font-size:1rem">curl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dashboard" style="font-size:1rem">dashboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dcdn" style="font-size:1rem">dcdn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/debt" style="font-size:1rem">debt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/devops" style="font-size:1.0188679245283019rem">devops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dingding" style="font-size:1rem">dingding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/disk" style="font-size:1rem">disk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dmesg" style="font-size:1rem">dmesg</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dns" style="font-size:1rem">dns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/docker" style="font-size:1.2264150943396226rem">docker</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/doublylinkedlist" style="font-size:1rem">doublylinkedlist</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/elk" style="font-size:1rem">elk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/error" style="font-size:1rem">error</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/etcd" style="font-size:1.0377358490566038rem">etcd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exec" style="font-size:1.0188679245283019rem">exec</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exp" style="font-size:1rem">exp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/federated" style="font-size:1rem">federated</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/filecoin" style="font-size:1rem">filecoin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/find" style="font-size:1rem">find</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/firewalld" style="font-size:1rem">firewalld</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/fix" style="font-size:1.0377358490566038rem">fix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flag" style="font-size:1.0188679245283019rem">flag</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flannel" style="font-size:1rem">flannel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/food" style="font-size:1.0188679245283019rem">food</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/frp" style="font-size:1.0377358490566038rem">frp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ftp" style="font-size:1.0188679245283019rem">ftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/games" style="font-size:1rem">games</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gin" style="font-size:1.0188679245283019rem">gin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/git" style="font-size:1.2075471698113207rem">git</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/github" style="font-size:1.0188679245283019rem">github</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gitlab" style="font-size:1rem">gitlab</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go" style="font-size:1.320754716981132rem">go</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go-vim" style="font-size:1rem">go-vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gogs" style="font-size:1.0566037735849056rem">gogs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/goland" style="font-size:1.0188679245283019rem">goland</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/golang" style="font-size:1.0377358490566038rem">golang</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gorequest" style="font-size:1rem">gorequest</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grafana" style="font-size:1.0188679245283019rem">grafana</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grub" style="font-size:1rem">grub</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hack" style="font-size:1.0188679245283019rem">hack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/haproxy" style="font-size:1.0377358490566038rem">haproxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/harbor" style="font-size:1.0188679245283019rem">harbor</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hash" style="font-size:1.0188679245283019rem">hash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hashmap" style="font-size:1rem">hashmap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/helm" style="font-size:1.0188679245283019rem">helm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hexo" style="font-size:1.0377358490566038rem">hexo</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/http" style="font-size:1.0754716981132075rem">http</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/https" style="font-size:1rem">https</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/index" style="font-size:1rem">index</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ingress" style="font-size:1.0377358490566038rem">ingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/inotify" style="font-size:1rem">inotify</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/internet" style="font-size:1.169811320754717rem">internet</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/interview" style="font-size:1rem">interview</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/iptables" style="font-size:1.0377358490566038rem">iptables</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ipvs" style="font-size:1.0188679245283019rem">ipvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/java" style="font-size:1.0754716981132075rem">java</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jeju" style="font-size:1rem">jeju</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jenkins" style="font-size:1.0943396226415094rem">jenkins</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jetbrains" style="font-size:1rem">jetbrains</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jumpserver" style="font-size:1.0566037735849056rem">jumpserver</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jvm" style="font-size:1rem">jvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/keepalived" style="font-size:1rem">keepalived</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kernel" style="font-size:1rem">kernel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/knowledge" style="font-size:1rem">knowledge</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kube-proxy" style="font-size:1.0188679245283019rem">kube-proxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetes" style="font-size:1.3962264150943395rem">kubernetes</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesrbac" style="font-size:1rem">kubernetesrbac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesssl" style="font-size:1.0188679245283019rem">kubernetesssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kuboard" style="font-size:1.0566037735849056rem">kuboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lb" style="font-size:1rem">lb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/learning" style="font-size:1.0566037735849056rem">learning</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/leetcode" style="font-size:1.0188679245283019rem">leetcode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libcurl" style="font-size:1rem">libcurl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libssh2" style="font-size:1rem">libssh2</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/link" style="font-size:1rem">link</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/linux" style="font-size:1.9811320754716981rem">linux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/living" style="font-size:1rem">living</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lnux" style="font-size:1rem">lnux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/log" style="font-size:1.0566037735849056rem">log</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logrus" style="font-size:1rem">logrus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logs" style="font-size:1rem">logs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logstash" style="font-size:1rem">logstash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/loki" style="font-size:1rem">loki</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lru" style="font-size:1rem">lru</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/luna" style="font-size:1rem">luna</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvm" style="font-size:1rem">lvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvs" style="font-size:1rem">lvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mac" style="font-size:1rem">mac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/malaysia" style="font-size:1rem">malaysia</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/manage" style="font-size:1rem">manage</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/map" style="font-size:1rem">map</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mariadb" style="font-size:1.0377358490566038rem">mariadb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/markdown" style="font-size:1.0188679245283019rem">markdown</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mfa" style="font-size:1rem">mfa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mha" style="font-size:1rem">mha</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mode" style="font-size:1rem">mode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/module" style="font-size:1rem">module</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mount" style="font-size:1rem">mount</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mysql" style="font-size:1.2452830188679245rem">mysql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/navicat" style="font-size:1rem">navicat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/network" style="font-size:1rem">network</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nfs" style="font-size:1.0754716981132075rem">nfs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginx" style="font-size:1.2264150943396226rem">nginx</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginxingress" style="font-size:1.0566037735849056rem">nginxingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/node_exporter" style="font-size:1.0188679245283019rem">node_exporter</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/numpy" style="font-size:1rem">numpy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ops" style="font-size:1.2452830188679245rem">ops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/owncloud" style="font-size:1rem">owncloud</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/password" style="font-size:1rem">password</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/paxos" style="font-size:1.0188679245283019rem">paxos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/php" style="font-size:1rem">php</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pipeline" style="font-size:1rem">pipeline</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/polynomial" style="font-size:1rem">polynomial</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/problem" style="font-size:1rem">problem</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/prometheus" style="font-size:1.0943396226415094rem">prometheus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pv" style="font-size:1.0754716981132075rem">pv</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pvc" style="font-size:1.0754716981132075rem">pvc</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/python" style="font-size:1.0943396226415094rem">python</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/queue" style="font-size:1rem">queue</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/qw3xt" style="font-size:1rem">qw3xt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rabbitmq" style="font-size:1.0188679245283019rem">rabbitmq</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/raft" style="font-size:1rem">raft</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rebase" style="font-size:1rem">rebase</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/redis" style="font-size:1.0377358490566038rem">redis</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/resources" style="font-size:1.0188679245283019rem">resources</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsa" style="font-size:1rem">rsa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsync" style="font-size:1.0188679245283019rem">rsync</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/safe" style="font-size:1.0754716981132075rem">safe</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/samba" style="font-size:1rem">samba</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sealos" style="font-size:1rem">sealos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/secure" style="font-size:1rem">secure</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sed" style="font-size:1rem">sed</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/server" style="font-size:1.2075471698113207rem">server</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sftp" style="font-size:1rem">sftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shadowsocks" style="font-size:1.0188679245283019rem">shadowsocks</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shell" style="font-size:1.0188679245283019rem">shell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slap" style="font-size:1rem">slap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slave" style="font-size:1rem">slave</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slb" style="font-size:1rem">slb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slowquery" style="font-size:1rem">slowquery</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sonar" style="font-size:1.0377358490566038rem">sonar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sourcetree" style="font-size:1.0188679245283019rem">sourcetree</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sql" style="font-size:1.0188679245283019rem">sql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ss" style="font-size:1rem">ss</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssh" style="font-size:1.0754716981132075rem">ssh</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssl" style="font-size:1.1132075471698113rem">ssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stack" style="font-size:1rem">stack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stress" style="font-size:1rem">stress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/style" style="font-size:1rem">style</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/switchyomega" style="font-size:1rem">switchyomega</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/syncd" style="font-size:1rem">syncd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/taint" style="font-size:1rem">taint</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tar" style="font-size:1rem">tar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tcp" style="font-size:1.0188679245283019rem">tcp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/testing" style="font-size:1rem">testing</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tomcat" style="font-size:1rem">tomcat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tour" style="font-size:1.0188679245283019rem">tour</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/trojan" style="font-size:1rem">trojan</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ubuntu" style="font-size:1.0566037735849056rem">ubuntu</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/udp" style="font-size:1rem">udp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/uk8s" style="font-size:1rem">uk8s</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unauthorized" style="font-size:1rem">unauthorized</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unblockneteasemusic" style="font-size:1rem">unblockneteasemusic</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upgrade" style="font-size:1.0188679245283019rem">upgrade</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upstream" style="font-size:1rem">upstream</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/v1.18.3" style="font-size:1rem">v1.18.3</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vim" style="font-size:1rem">vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/virtul" style="font-size:1rem">virtul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vpn" style="font-size:1.0754716981132075rem">vpn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vscode" style="font-size:1rem">vscode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/websocket" style="font-size:1rem">websocket</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/wifi" style="font-size:1rem">wifi</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xshell" style="font-size:1rem">xshell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xtrabackup" style="font-size:1rem">xtrabackup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/yum" style="font-size:1rem">yum</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/zabbix" style="font-size:1rem">zabbix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e6%95%b0%e6%8d%ae%e5%ba%93%e5%8e%9f%e7%90%86" style="font-size:1rem">数据库原理</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95" style="font-size:1rem">贪心算法</a>
+        
+      
+      </div>
+    
+  </div>
+
+  <!-- profile -->
+  <!-- toc -->
+  
+  <div class="bg-white px-4 py-5 box-shadow mb-5 sticky-top">
+    <h4 class="mb-4">目录</h4>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#read-锁">read 锁</a></li>
+    <li><a href="#write-锁">write 锁</a>
+      <ul>
+        <li><a href="#死锁">死锁：</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#事务了解">事务了解</a></li>
+    <li><a href="#事务操作">事务操作</a></li>
+    <li><a href="#回滚点">回滚点</a></li>
+    <li><a href="#自动事务处理">自动事务处理</a></li>
+    <li><a href="#事务的特性">事务的特性</a></li>
+    <li><a href="#事务隔离级别">事务隔离级别：</a>
+      <ul>
+        <li><a href="#事务的隔离性read-uncommitted"><strong>事务的隔离性</strong>：READ-UNCOMMITTED</a></li>
+        <li><a href="#事务的隔离性read-committed"><strong>事务的隔离性</strong>：READ-COMMITTED</a></li>
+        <li><a href="#事务的隔离性repeatable-read"><strong>事务的隔离性</strong>：REPEATABLE-READ</a></li>
+        <li><a href="#事务的隔离性serializabile"><strong>事务的隔离性</strong>：SERIALIZABILE</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+
+</aside>
+<!-- /sidebar -->
+
+    </div>
+  </div>
+</section>
+<!-- /blog details -->
+
+
+
+<footer>
+	
+	<div class="section bg-secondary">
+		<div class="container">
+			<div class="row justify-content-between">
+				
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					<a class="mb-4 d-inline-block" href="/"><img class="img-fluid"
+																								src="/images/images/logo-alt.png" alt="Louis Blog" width="60%"></a>
+					<p class="text-light mb-5">每一个不曾起舞的日子都是对生命的辜负.</p>
+					<h4 class="text-white mb-4">关注我</h4>
+					
+					<ul class="list-inline social-icon-alt">
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://twitter.com/louishong17"><i class="fa fa-twitter"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://github.com/oldthreefeng"><i class="fa fa-github"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="/contact"><i class="fa fa-wechat"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="mailto:992165098@qq.com"><i class="fa fa-envelope"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://www.fenghong.tech/blog/index.xml"><i class="fa fa-rss"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					
+					
+					
+					
+					<div class="mb-5">
+						<h4 class="text-white mb-4">联系信息</h4>
+						<p class="text-light mb-3">上海 · 浦东新区</p>
+						<p class="text-light mb-3"></p>
+						<p class="text-light mb-3">微信联系方式</p>
+						<p class="text-light mb-3"><img src="/images/images/wechat-qrcode.png" width="356px"></p>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="bg-secondary-darken py-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+					<p class="mb-0 text-white">Copyright © 2020 Louis</p>
+				</div>
+				<div class="col-md-6 text-center text-md-right">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item mx-0"><a class="d-inline-block px-3 text-white" href="https://beian.miit.gov.cn/"
+																									class="text-white">鄂ICP备18027870号-1</a></li>
+						<p class="list-inline-item mx-0 text-white">本网站由</p>
+						<a target="_blank" rel="nofollow noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://pic.fenghong.tech/images/180803_logo30.png" style="margin-bottom:5px;height: 25px;"></a>
+						<p class="list-inline-item mx-0 text-white">提供CDN加速/云存储服务</p>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+<script>
+	var indexURL = "/index.json"
+</script>
+
+
+<!-- JS Plugins -->
+
+<script src="/plugins/jQuery/jquery.min.js"></script>
+
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="/plugins/slick/slick.min.js"></script>
+
+<script src="/plugins/google-map/gmap.js"></script>
+
+<script src="/plugins/venobox/venobox.min.js"></script>
+
+<script src="/plugins/filterizr/jquery.filterizr.min.js"></script>
+
+<script src="/plugins/search/fuse.min.js"></script>
+
+<script src="/plugins/search/mark.js"></script>
+
+<script src="/plugins/search/search.js"></script>
+
+<script src="/plugins/bigPicture/bigPicture.js"></script>
+
+<script src="/plugins/hex_md5/hex_md5.js"></script>
+
+
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+
+<!-- Algolia -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+<script>
+	docsearch({
+		apiKey: 'b4d47f0c039a84d4035305be829404dd',
+		indexName: 'DocSearch',
+		appId: 'CTH4P282IZ',
+		inputSelector: '#js-algolia-btn',
+		debug: false,
+	});
+</script>
+
+<!-- google analitycs -->
+
+<script>
+	(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-130595069-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https'){
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else{
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</body>
+
+</html>

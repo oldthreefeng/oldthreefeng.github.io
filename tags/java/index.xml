@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/java/</link>
+    <description>Recent content in java on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Sat, 23 Nov 2019 15:42:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>java的spring-boot项目docker化</title>
+      <link>https://www.fenghong.tech/blog/docker/java-with-docker/</link>
+      <pubDate>Sat, 23 Nov 2019 15:42:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/docker/java-with-docker/</guid>
+      <description>创建spring-b</description>
+    </item>
+    
+    <item>
+      <title>java overload</title>
+      <link>https://www.fenghong.tech/blog/java/java-cpu-overload/</link>
+      <pubDate>Wed, 11 Sep 2019 08:43:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/java/java-cpu-overload/</guid>
+      <description>[TOC] 近期java应用，</description>
+    </item>
+    
+    <item>
+      <title>sonarqube 权限配置使用</title>
+      <link>https://www.fenghong.tech/blog/java/sonarqube-use/</link>
+      <pubDate>Mon, 11 Mar 2019 08:43:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/java/sonarqube-use/</guid>
+      <description>[TOC] 权限控制 新建群组 管</description>
+    </item>
+    
+    <item>
+      <title>sonarqube 安装部署</title>
+      <link>https://www.fenghong.tech/blog/java/sonarqube/</link>
+      <pubDate>Fri, 08 Mar 2019 08:43:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/java/sonarqube/</guid>
+      <description>[TOC] 说明 # 开头的行表示</description>
+    </item>
+    
+    <item>
+      <title>Java basic</title>
+      <link>https://www.fenghong.tech/blog/java/java-basic/</link>
+      <pubDate>Fri, 10 Nov 2017 22:43:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/java/java-basic/</guid>
+      <description>[TOC] 一、数据类型 包装类</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,2575 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn"><head>
+  <meta charset="utf-8">
+  <title>Go入门笔记 | Louis Blog</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="有技术 有温度 有情怀">
+  
+  <meta name="author" content="Louis ">
+  <meta name="generator" content="Hugo 0.73.0" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  
+  <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="/plugins/animate/animate.css">
+  
+  <link rel="stylesheet" href="/plugins/venobox/venobox.css">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="/images/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="/images/images/favicon.png " type="image/x-icon">
+
+  <!--Algolia-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css">
+</head>
+<body>
+<!-- header -->
+<header>
+  
+
+  <!-- navigation -->
+  <div class="navigation bg-white position-relative">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="/"><img class="img-fluid pb-lg-3" src="/images/images/logo.png" width="189px" alt="Louis Blog"></a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/"></a>
+            </li>
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                博客
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/categories/kubernetes">Kubernetes</a>
+                
+                <a class="dropdown-item" href="/categories/sealos">sealos</a>
+                
+                <a class="dropdown-item" href="/categories/ops">运维相关</a>
+                
+                <a class="dropdown-item" href="/categories/golang">golang</a>
+                
+                <a class="dropdown-item" href="/categories/algorithm">algorithm</a>
+                
+                <a class="dropdown-item" href="/categories/tools">tools</a>
+                
+                <a class="dropdown-item" href="/blog">全部</a>
+                
+              </div>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/team">友情链接</a>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                关于我
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/contact">about</a>
+                
+                <a class="dropdown-item" href="https://github.com/oldthreefeng">github</a>
+                
+              </div>
+            </li>
+            
+            
+          </ul>
+
+          
+          
+
+          
+          <!-- search -->
+          <div class="search px-4">
+            <button id="searchOpen" class="search-btn"><i class="fa fa-search text-dark"></i></button>
+            <div class="search-wrapper">
+              <form action="/search">
+                <input class="search-box form-control" id="js-algolia-btn" name="s" type="search" placeholder="输入搜索词">
+              </form>
+              <button id="searchClose" class="search-close"><i class="fa fa-close text-dark"></i></button>
+            </div>
+          </div>
+          
+          
+          <!-- get start btn -->
+          <a href="/contact" class="btn btn-primary hover-ripple">联系我</a>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- /navigation -->
+</header>
+<!-- /header -->
+
+
+<!-- page title -->
+<section class="section bg-cover overlay" style="background-image: url('/'),url('/'),url('/images/images/backgrounds/page-title.jpg');">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-white mb-3">Go入门笔记</h2>
+        <!-- breadcrumb -->
+        
+        <p class="text-white"></p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /page title -->
+
+
+<!-- blog details -->
+<section class="section">
+  <div class="container blog">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- post thumb -->
+        <div class="position-relative mb-5">
+          <img src="/"  onerror="this.src='https:\/\/pic.fenghong.tech\/proto\/wet-girl-1390623__340.jpg'" alt="post thumb" class="img-fluid w-100">
+           <div class="card-type">Golang</div>
+        </div>
+        <div class="card-meta text-uppercase mb-2">作者  <strong class="text-dark"><a href="https://www.fenghong.tech">Louis</a></strong>
+          
+            发表于 <strong class="text-dark">2018年11月9日</strong></div>
+        <hr>
+        <div class="content">
+          <p>[TOC]</p>
+<h2 id="教程">教程</h2>
+<ul>
+<li><a href="https://tour.golang.org/">A Tour of Go</a></li>
+<li><a href="https://gobyexample.com/">Go by Example</a></li>
+<li><a href="http://wiki.jikexueyuan.com/project/the-way-to-go/">Go入门指南</a> / <a href="https://github.com/Unknwon/the-way-to-go_ZH_CN">Github</a></li>
+<li><a href="https://book.douban.com/subject/24869910/">Go 语言程序设计</a></li>
+<li><a href="https://www.zhihu.com/question/23486344">怎么学习golang？</a> 里面给出了一些不错的入门资料</li>
+<li><a href="https://github.com/golang/go/wiki">Go Wiki</a></li>
+</ul>
+<h2 id="笔记">笔记</h2>
+<p>2017-01-01: 目前是官网入门指南 <a href="https://tour.golang.org/list">A Tour of Go</a> 的笔记，大部分代码来至上面。</p>
+<h3 id="goroot-和-gopath">GOROOT 和 GOPATH</h3>
+<p>关于 <code>GOROOT</code> 和 <code>GOPATH</code> 环境变量，如果是系统默认安装，而非自定义的安装目录，则 <code>GOROOT</code> 不需要设置。</p>
+<blockquote>
+<p>GOROOT must be set only when installing to a custom location. <a href="https://golang.org/doc/install#install">from</a></p>
+</blockquote>
+<p>关于 <code>GOPATH</code>，必须设置，在get/build/install包时用到，第三方的包都会装在这个目录下，包括里面的二进制文件，所以建议将 <code>$GOPATH/bin</code> 加入到 <code>$PATH</code> 环境变量中。更多可以 <code>go help gopath</code>。</p>
+<h3 id="package-和-import">package 和 import</h3>
+<p>一个基本的例子:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Hello, World&#34;</span>)
+}
+</code></pre></div><p>其中package我的理解是继承或者说基于的包名; main包表示这个程序的执行入口，编译时会将这个编译为可执行程序 (<code>go build</code>) 而不是 <code>$GOPATH/pkg/</code> 下的静态库 (<code>go install</code>)。类似Python中的 <code>if __name__ == '__main__'</code>。</p>
+<p>import 则表示导入要使用的标准库包或第三方包。</p>
+<p>参考:</p>
+<ul>
+<li><a href="http://thenewstack.io/understanding-golang-packages/">Understanding Golang Packages</a></li>
+<li><a href="https://www.golang-book.com/books/intro/11">golang-book Packages</a></li>
+</ul>
+<p>多个import语句可以使用 <strong>打包导入(factored import)</strong>，更优雅:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;math&#34;</span>
+)
+
+<span style="color:#75715e">// 等价
+</span><span style="color:#75715e"></span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;match&#34;</span>
+</code></pre></div><h3 id="exported-names">Exported names</h3>
+<p>在 Go 中，首字母大写的名称是 <strong>可被导出</strong> 的。当 import 包时，不被导出的包是无法被访问使用的，所以可以看到如上面的 <code>fmt</code> 包的 <code>Println()</code> 是以大写字母开头。</p>
+<h3 id="function">Function</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">swap</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> <span style="color:#66d9ef">string</span>) (<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">string</span>) {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">x</span>
+}
+</code></pre></div><p>函数名后面圆括号里接 <strong>参数</strong>。</p>
+<p>参数后面指定 <strong>返回类型</strong>，多个相同的类型 <strong>不能</strong> 省略只写一个; 单个返回值可以不用圆括号括起来; 没有返回值则不写。</p>
+<p><strong>Named return values(命名返回值)</strong>，即在函数名后的返回值指定变量名，函数体内配合裸 return 来返回，注意 return 后面不要接返回值了，否则命名返回无效，使用的还是返回的值。另外在这种情况下，返回类型如果相同是可以省略只写一个：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">swap</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> <span style="color:#66d9ef">string</span>) (<span style="color:#a6e22e">m</span>, <span style="color:#a6e22e">n</span> <span style="color:#66d9ef">string</span>) {
+    <span style="color:#a6e22e">m</span>, <span style="color:#a6e22e">n</span> = <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">x</span>
+    <span style="color:#66d9ef">return</span>
+}
+</code></pre></div><p>这里不能对参数做命名返回值返回，否则报错:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 错误的
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">swap</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> <span style="color:#66d9ef">string</span>) (<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> <span style="color:#66d9ef">string</span>) {
+    <span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> = <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">x</span>
+    <span style="color:#66d9ef">return</span>
+}
+</code></pre></div><p>函数参数，闭包没啥好写的</p>
+<h3 id="variable-constants-and-type">Variable, Constants and Type</h3>
+<p>几种定义方式:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span> <span style="color:#66d9ef">bool</span>
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> <span style="color:#66d9ef">int</span> = <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m</span>, <span style="color:#a6e22e">n</span> = <span style="color:#e6db74">&#34;abc&#34;</span>, <span style="color:#ae81ff">100</span>
+    <span style="color:#a6e22e">z</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">200</span>
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span>, <span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">m</span>, <span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">z</span>)
+}
+<span style="color:#75715e">// 输出: false false 1 2 abc 100 200
+</span></code></pre></div><p>Go中声明(declaration)和定义(definition)个人理解是不做区分的(和C不一样)，因为如果声明了变量但是未显式赋值，会隐式赋值给各类型的初始值(zero value，<strong>零值</strong>)。</p>
+<p>另外 <code>var var_name var_type</code> 和函数参数一样，变量名在前，类型在后。</p>
+<p>另外也可以不指定类型名，Go 会根据赋值判断相应类型</p>
+<p>最后，也可以不写 <code>var</code>，改用 <code>:=</code> 的简明赋值语句，但是此语法 <strong>只能用于函数内</strong>，而 <code>var</code> 则可以在函数外使用。</p>
+<p>并且在至少有一个新变量，<code>:=</code> 可以用于重声明，比如下面的例子：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> = <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>)
+    <span style="color:#75715e">// b 是重声明的，c 是新变量
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 如果改为 a, b := 3, 4 则报错：no new variables on left side of :=
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">b</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">b</span>)
+}
+</code></pre></div><p>声明和导入包一样，可以 <strong>打包声明</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> (
+    <span style="color:#a6e22e">i</span> <span style="color:#66d9ef">bool</span>    = <span style="color:#66d9ef">false</span>
+    <span style="color:#a6e22e">j</span> <span style="color:#66d9ef">int</span>     = <span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">z</span> <span style="color:#66d9ef">float64</span> = <span style="color:#ae81ff">0.3</span>
+)
+</code></pre></div><p>关于类型关键词，其中 <code>byte</code> 是 <code>uint8</code> 的别名，<code>rune</code> 是 <code>int32</code> 的别名。</p>
+<p>一般情况下，数字用 <code>int</code> 即可。</p>
+<p>一些基本类型的零值:</p>
+<ul>
+<li>数字: 0</li>
+<li>布尔: false</li>
+<li>字符串: &quot;&rdquo;</li>
+</ul>
+<p>Go中类型的转换用 <code>T(v)</code>，将值 v 转换为类型 T:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>
+<span style="color:#a6e22e">f</span> <span style="color:#f92672">:=</span> float64(<span style="color:#a6e22e">i</span>)
+</code></pre></div><p>Go中类型转换 <strong>必须</strong> 显示指定（C中是可以做隐式转换的）。</p>
+<p>常量类型变量声明，使用关键字 <code>const</code>，不能使用 <code>:=</code> 语法</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">World</span> = <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">世界</span><span style="color:#960050;background-color:#1e0010">&#39;</span>
+
+<span style="color:#66d9ef">const</span> (
+	<span style="color:#a6e22e">Big</span>   = <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">100</span>
+	<span style="color:#a6e22e">Small</span> = <span style="color:#a6e22e">Big</span> <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">99</span>
+)
+</code></pre></div><h3 id="for--if--switch">for / if / switch</h3>
+<p><code>for</code>支持几种语法:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// init statement; condition expression; post statement
+</span><span style="color:#75715e">// 另外这里注意只有后自增，没有前自增; 写C/C++时习惯了用前自增，这里总写错
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">10</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">i</span>)
+}
+
+<span style="color:#75715e">// init / post statement 可以省略
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">for</span> ; <span style="color:#a6e22e">sum</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">10</span>; {
+	<span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">sum</span>
+}
+
+<span style="color:#75715e">// 上面的例子，前后两个分号`;`也可以省略，这就是while的语法了
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">10</span> {
+	<span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">sum</span>
+}
+
+<span style="color:#75715e">// 上面的例子，退出条件也省略，就是无限循环了
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> {
+}
+</code></pre></div><p><code>if</code>语法:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// condition expression
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">10</span> {
+	<span style="color:#f92672">...</span>
+}
+
+<span style="color:#75715e">// if也支持init statement，if初始化的变量作用域只在if主体内
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">10</span> {
+	<span style="color:#f92672">...</span>
+}
+
+<span style="color:#75715e">// if ... else if ... else
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">3</span> {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;&lt;= 3&#34;</span>)
+} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">6</span> {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;&lt;= 6&#34;</span>)
+} <span style="color:#66d9ef">else</span> {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;&gt; 6&#34;</span>)
+}
+</code></pre></div><p><code>switch</code>语法:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 同样支持初始化语法
+</span><span style="color:#75715e">// 和C不同，每个case语句的行为是自动`break`，不需要手动写`break`
+</span><span style="color:#75715e">// 如果想保持和C的行为一致，即匹配后还继续往下执行，则可以在case中加上`fallthrough`
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">os</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">GOOS</span>; <span style="color:#a6e22e">os</span> {
+	<span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;darwin&#34;</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;OS X.&#34;</span>)
+	<span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;linux&#34;</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Linux.&#34;</span>)
+	<span style="color:#66d9ef">default</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%s.&#34;</span>, <span style="color:#a6e22e">os</span>)
+}
+
+<span style="color:#75715e">// 如果switch condition没写，则默认表示 `true`
+</span><span style="color:#75715e">// 行为和if ... else if ... else 一样
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+<span style="color:#66d9ef">switch</span> {
+<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Hour</span>() &lt; <span style="color:#ae81ff">12</span>:
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Good morning!&#34;</span>)
+<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Hour</span>() &lt; <span style="color:#ae81ff">17</span>:
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Good afternoon.&#34;</span>)
+<span style="color:#66d9ef">default</span>:
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Good evening.&#34;</span>)
+}
+</code></pre></div><p>注:</p>
+<ul>
+<li>Go中初始、条件等语句不需要用 <code>()</code> 阔起来</li>
+<li>主体部分必须用花括号 <code>{}</code> 阔起来</li>
+</ul>
+<h3 id="defer">defer</h3>
+<p><code>defer</code> 语句用于延迟函数的执行直到当前函数 return，但是 defer 的参数会立刻生成。</p>
+<p>多个defer语句会进行 <strong>压栈</strong>，最后执行时是 LIFO:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;begin&#34;</span>)
+
+<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">3</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">i</span>)
+}
+
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;done&#34;</span>)
+<span style="color:#75715e">// 返回: begin -&gt; end -&gt; 2 -&gt; 1 -&gt; 0
+</span></code></pre></div><h3 id="pointers">Pointers</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">100</span>
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">p1</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">int</span>  <span style="color:#75715e">// 如果没有初始化，则零值是`nil`
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">p1</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">i</span>
+<span style="color:#a6e22e">p2</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">i</span>
+<span style="color:#f92672">*</span><span style="color:#a6e22e">p2</span> = <span style="color:#ae81ff">101</span>
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">i</span>, <span style="color:#f92672">*</span><span style="color:#a6e22e">p1</span>, <span style="color:#f92672">*</span><span style="color:#a6e22e">p2</span>)
+</code></pre></div><ul>
+<li><code>*T</code> 在声明时表示指向值T的指针</li>
+<li><code>&amp;</code> 用于对值 <strong>取址</strong></li>
+<li><code>*p</code> 在使用时表示对指针的 <strong>解引用</strong>，即取指针指向的值。</li>
+</ul>
+<p>这里<code>*</code>需要注意，在不同地方的含义不一样。</p>
+<h3 id="struct">Struct</h3>
+<p>结构体用法:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Vertex</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">X</span> <span style="color:#66d9ef">int</span>
+	<span style="color:#a6e22e">Y</span> <span style="color:#66d9ef">int</span>
+}
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Vertex</span> = <span style="color:#a6e22e">Vertex</span>{<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>} <span style="color:#75715e">// 结构体初始化
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">X</span> = <span style="color:#ae81ff">6</span>                     <span style="color:#75715e">// 通过dot获取结构体字段
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">v</span>)
+<span style="color:#a6e22e">p</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">v</span>    <span style="color:#75715e">// 结构体指针
+</span><span style="color:#75715e"></span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">p</span>).<span style="color:#a6e22e">X</span> = <span style="color:#ae81ff">7</span> <span style="color:#75715e">// 结构体指针获取结构体字段
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">v</span>)
+<span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">X</span> = <span style="color:#ae81ff">8</span> <span style="color:#75715e">// 上面的用法太笨拙，这个更简单
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">v</span>)
+<span style="color:#75715e">// 输出:
+</span><span style="color:#75715e">// {6 5}
+</span><span style="color:#75715e">// {7 5}
+</span><span style="color:#75715e">// {8 5}
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// Struct Literals 结构体字面值
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">v1</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Vertex</span>{<span style="color:#a6e22e">X</span>: <span style="color:#ae81ff">1</span>} <span style="color:#75715e">// X: 1, Y: 0
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">v2</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Vertex</span>{}     <span style="color:#75715e">// X: 0, Y: 0
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">p</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Vertex</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>} <span style="color:#75715e">// has type *Vertex
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">v1</span>, <span style="color:#a6e22e">v2</span>, <span style="color:#a6e22e">p</span>)
+<span style="color:#75715e">// 输出: {1 0} {0 0} &amp;{1 2}
+</span><span style="color:#75715e">// 注意p的输出结构式带有`&amp;`，表示输出的是结构体指针
+</span><span style="color:#75715e"></span>
+</code></pre></div><h3 id="array">Array</h3>
+<p>数组是<strong>定长</strong>的 <code>[n]T</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a1</span> [<span style="color:#ae81ff">2</span>]<span style="color:#66d9ef">string</span>
+<span style="color:#a6e22e">a1</span>[<span style="color:#ae81ff">0</span>] = <span style="color:#e6db74">&#34;hello&#34;</span>
+<span style="color:#a6e22e">a1</span>[<span style="color:#ae81ff">1</span>] = <span style="color:#e6db74">&#34;world&#34;</span>
+<span style="color:#a6e22e">a2</span> <span style="color:#f92672">:=</span> [<span style="color:#ae81ff">3</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>}
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">a1</span>, <span style="color:#a6e22e">a2</span>)
+<span style="color:#75715e">// 输出: [hello world] [1 2 3]
+</span></code></pre></div><p>注意长度 <code>[n]</code> 也是类型的一部分</p>
+<h3 id="slice">Slice</h3>
+<p>数组是定长的，Go还提供了切片这个数据结构，长度是<strong>动态变化</strong>的，所以这个用的比数组更频繁。</p>
+<p>（刚看到 slice/切片 这个词，第一反应是一个函数，结果是一个数据结构&hellip;）</p>
+<p>因为长度是动态变化，所以声明是 <code>[]T</code>，括号中不写。</p>
+<p>Go中做切片（这里是动词）操作，返回的是切片。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">array</span> <span style="color:#f92672">:=</span> [<span style="color:#ae81ff">3</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">slice1</span> []<span style="color:#66d9ef">int</span> = <span style="color:#a6e22e">array</span>[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">3</span>]
+<span style="color:#a6e22e">slice2</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">array</span>[<span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">2</span>]
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">slice1</span>, <span style="color:#a6e22e">slice2</span>)
+<span style="color:#75715e">// import &#34;reflect&#34;
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">TypeOf</span>(<span style="color:#a6e22e">slice1</span>), <span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">TypeOf</span>(<span style="color:#a6e22e">slice2</span>))
+<span style="color:#75715e">// 输出:
+</span><span style="color:#75715e">// [2 3] [1]
+</span><span style="color:#75715e">// []int []int
+</span></code></pre></div><p><strong>切片自身并不存储数据，它是对底层数组的引用</strong>。</p>
+<p>所以对切片中数据的修改，会影响相应的底层数组的值，也会影响其它引用到这个数组的切片</p>
+<pre><code>// 接上面的例子
+slice1[0] = 100
+fmt.Println(array, slice1, slice2)
+// 输出: [1 100 3] [100 3] [1 100]
+</code></pre><p>切片字面值（slice literal）和数组字面值（array literal）一样，只是不需要指定长度:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">slice1</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>}
+<span style="color:#a6e22e">slice2</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>
+	<span style="color:#a6e22e">b</span> <span style="color:#66d9ef">bool</span>
+}{
+	{<span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">true</span>},
+	{<span style="color:#ae81ff">2</span>, <span style="color:#66d9ef">false</span>},
+	{<span style="color:#ae81ff">3</span>, <span style="color:#66d9ef">true</span>},  <span style="color:#75715e">// 注意最后的逗号不能省略
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">slice1</span>, <span style="color:#a6e22e">slice2</span>)
+<span style="color:#75715e">// 输出: [1 2 3] [{1 true} {2 false} {3 true}]
+</span></code></pre></div><p>上面注意最后的逗号不能省略，否则报错：</p>
+<blockquote>
+<p>missing &lsquo;,&rsquo; before newline in composite literal</p>
+</blockquote>
+<p>原因参考 <a href="https://stackoverflow.com/a/29301344/1276501">这个回答</a>：</p>
+<blockquote>
+<p>a semicolon is automatically inserted into the token stream at the end of a non-blank line if the line&rsquo;s final token is</p>
+<ul>
+<li>&hellip;</li>
+<li>one of the operators and delimiters ++, &ndash;, ), ], or }</li>
+</ul>
+</blockquote>
+<p>切片的使用和 Python 类似，支持:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">s</span>[<span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">10</span>]
+<span style="color:#a6e22e">s</span>[:<span style="color:#ae81ff">10</span>]
+<span style="color:#a6e22e">s</span>[<span style="color:#ae81ff">0</span>:]
+<span style="color:#a6e22e">s</span>[:]
+</code></pre></div><p>切片有 length 和 capacity 的概念</p>
+<ul>
+<li><code>length</code> 通过 <code>len(s)</code> 获取，表示切片中元素的个数</li>
+<li><code>capacity</code> 通过 <code>cap(s)</code> 获取，表示切片引用的 <strong>底层数组</strong> 中元素的个数，从切片的第一个元素开始计算</li>
+</ul>
+<p>下面这个例子比较有意思，感觉容易入坑:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">printSlice</span>(<span style="color:#a6e22e">s</span> []<span style="color:#66d9ef">int</span>) {
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;len=%d cap=%d %v\n&#34;</span>, len(<span style="color:#a6e22e">s</span>), cap(<span style="color:#a6e22e">s</span>), <span style="color:#a6e22e">s</span>)
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>}
+    <span style="color:#a6e22e">printSlice</span>(<span style="color:#a6e22e">s</span>)
+
+    <span style="color:#a6e22e">s</span> = <span style="color:#a6e22e">s</span>[:<span style="color:#ae81ff">0</span>]
+    <span style="color:#a6e22e">printSlice</span>(<span style="color:#a6e22e">s</span>)
+
+    <span style="color:#a6e22e">s</span> = <span style="color:#a6e22e">s</span>[:<span style="color:#ae81ff">4</span>]  <span style="color:#75715e">// 注意这里还可以扩展，因为是引用，底层数组一直存在
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">printSlice</span>(<span style="color:#a6e22e">s</span>)
+
+    <span style="color:#a6e22e">s</span> = <span style="color:#a6e22e">s</span>[<span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">5</span>] <span style="color:#75715e">// 这里capacity就减少了
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">printSlice</span>(<span style="color:#a6e22e">s</span>)
+}
+<span style="color:#75715e">// 输出
+</span><span style="color:#75715e">// len=5 cap=5 [1 2 3 4 5]
+</span><span style="color:#75715e">// len=0 cap=5 []
+</span><span style="color:#75715e">// len=4 cap=5 [1 2 3 4]
+</span><span style="color:#75715e">// len=3 cap=3 [3 4 5]
+</span></code></pre></div><p>切片的零值是 <code>nil</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">s</span> []<span style="color:#66d9ef">int</span>  <span style="color:#75715e">// 注意和s := []int{}不一样，这个是空切片，赋值过的
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">s</span>, len(<span style="color:#a6e22e">s</span>), cap(<span style="color:#a6e22e">s</span>))
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;slice is nil&#34;</span>)
+}
+</code></pre></div><p><code>make</code> 函数可以用来创建切片，并指定 length（必选）和 capacity（可选）:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">s1</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">3</span>)
+<span style="color:#a6e22e">printSlice</span>(<span style="color:#a6e22e">s1</span>)
+
+<span style="color:#a6e22e">s2</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>)
+<span style="color:#a6e22e">printSlice</span>(<span style="color:#a6e22e">s2</span>)
+<span style="color:#75715e">// 输出
+</span><span style="color:#75715e">// len=3 cap=3 [0 0 0]
+</span><span style="color:#75715e">// len=3 cap=5 [0 0 0]
+</span></code></pre></div><p>二维切片(类似C中二维数组):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// len(s) = 2, cap(s) = 2
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> [][]<span style="color:#66d9ef">string</span>{
+	[]<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>},
+	[]<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;c&#34;</span>, <span style="color:#e6db74">&#34;d&#34;</span>},
+}
+</code></pre></div><p>Go对切片的 append 操作提供了内置函数<code>append(s []T, v1, v2, v3, ...T) []T</code>，最后返回append后的切片; 因为切片大小是动态的，所以如果capacity不够，会自动扩容:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>)
+<span style="color:#a6e22e">printSlice</span>(<span style="color:#a6e22e">s</span>)
+
+<span style="color:#a6e22e">s</span> = append(<span style="color:#a6e22e">s</span>, <span style="color:#ae81ff">1</span>)
+<span style="color:#a6e22e">printSlice</span>(<span style="color:#a6e22e">s</span>)
+
+<span style="color:#a6e22e">s</span> = append(<span style="color:#a6e22e">s</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+<span style="color:#a6e22e">printSlice</span>(<span style="color:#a6e22e">s</span>)
+<span style="color:#75715e">// 输出:
+</span><span style="color:#75715e">// len=1 cap=3 [0]
+</span><span style="color:#75715e">// len=2 cap=3 [0 1]
+</span><span style="color:#75715e">// len=4 cap=6 [0 1 2 3]
+</span></code></pre></div><p>for循环切片:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>}
+<span style="color:#75715e">// i 是切片索引，v是值的一个copy
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span> {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">v</span>)
+}
+
+<span style="color:#75715e">// i 是切片索引
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span> {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span>])
+}
+</code></pre></div><p>和Python一样，如果不关心索引，可以直接赋值给变量名<code>_</code></p>
+<p>关于 range 的扩展阅读：</p>
+<ul>
+<li><a href="https://xiaozhou.net/something-about-range-of-go-2016-04-10.html">聊聊Go中的Range关键字</a></li>
+<li><a href="https://qianlonggit.gitbooks.io/the-golang-standard-library-by-example/content/chapter02/02.5.html">unicode — Unicode码点、UTF-8/16编码</a></li>
+<li><a href="https://github.com/golang/go/wiki/Range">go wiki - Range</a></li>
+<li><a href="https://gobyexample.com/range">Go by Example: Range</a></li>
+</ul>
+<h3 id="maps">Maps</h3>
+<p>映射（也就是字典吧）表示一个 key/value 对集合，声明语法:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">map_name</span> <span style="color:#66d9ef">map</span>[<span style="color:#a6e22e">map_key_type</span>]<span style="color:#a6e22e">map_value_type</span>
+</code></pre></div><p><code>map_value_type</code> 表示 map 值的类型，类似于 slice 的 <code>[]int</code> 这种表示 slice 中的值是 int。</p>
+<p>即:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Vertex</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">X</span> <span style="color:#66d9ef">int</span>
+    <span style="color:#a6e22e">Y</span> <span style="color:#66d9ef">int</span>
+}
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#a6e22e">Vertex</span>  <span style="color:#75715e">// 声明
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">m</span> = make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#a6e22e">Vertex</span>)  <span style="color:#75715e">// 创建
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">m</span>[<span style="color:#e6db74">&#34;a&#34;</span>] = <span style="color:#a6e22e">Vertex</span>{<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>}
+    <span style="color:#a6e22e">m</span>[<span style="color:#e6db74">&#34;b&#34;</span>] = <span style="color:#a6e22e">Vertex</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>}
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">m</span>)
+}
+<span style="color:#75715e">// 输出: map[a:{3 4} b:{1 2}]
+</span></code></pre></div><p>只声明的map，零值是nil，nil map不能添加key/values，即没有下面的make则后面不能操作。</p>
+<p>声明、创建这块也可以直接写为<code>m := map[string]Vertex</code></p>
+<p>映射字面值(map literal):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m</span> = <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#a6e22e">Vertex</span>{
+	<span style="color:#e6db74">&#34;a&#34;</span>: <span style="color:#a6e22e">Vertex</span>{<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>},
+	<span style="color:#e6db74">&#34;b&#34;</span>: <span style="color:#a6e22e">Vertex</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>},  <span style="color:#75715e">// 注意逗号
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#75715e">// If the top-level type is just a type name, you can omit it from the elements of the literal.
+</span><span style="color:#75715e">// 按我理解是表示 map 已经定义了值的类型，所以在里面的字面值不需要再定义
+</span><span style="color:#75715e">// 下面是简写，省去内部的值类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m</span> = <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#a6e22e">Vertex</span>{
+	<span style="color:#e6db74">&#34;a&#34;</span>: {<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>},
+	<span style="color:#e6db74">&#34;b&#34;</span>: {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>},
+}
+</code></pre></div><p>map的几个操作:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 修改某个key的value
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">k</span>] = <span style="color:#a6e22e">v</span>
+
+<span style="color:#75715e">// 获取某个key的value
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">v</span> = <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">k</span>]
+
+<span style="color:#75715e">// 删除某个key
+</span><span style="color:#75715e"></span>delete(<span style="color:#a6e22e">m</span>, <span style="color:#a6e22e">k</span>)
+
+<span style="color:#75715e">// 测试某个key是否在m中
+</span><span style="color:#75715e">// ok是boolean，存在则为true，否则是false
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">v</span>, <span style="color:#a6e22e">ok</span> = <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">k</span>]
+</code></pre></div><h3 id="methods">Methods</h3>
+<p>Go没有类，但是可以给自定义类型（如结构体）定义方法（methods）。</p>
+<p>method 和 function 类似，只不过多了一个特殊的接收者参数（receiver），位置在 func 关键字和 method name 之间。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 如这里定义Abs这个方法，属于Vertex这个结构体，`(v Vertex)`就是function没有的多出的部分
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Vertex</span>) <span style="color:#a6e22e">AbsMethod</span>() <span style="color:#66d9ef">float64</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Sqrt</span>(<span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">X</span><span style="color:#f92672">*</span><span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">X</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">Y</span><span style="color:#f92672">*</span><span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">Y</span>)
+}
+<span style="color:#75715e">// 调用
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Vertex</span>{<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>}
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">AbsMethod</span>())
+
+<span style="color:#75715e">// 这个是function, 将Vertex结构体当普通参数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">AbsFunc</span>(<span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Vertex</span>) <span style="color:#66d9ef">float64</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Sqrt</span>(<span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">X</span><span style="color:#f92672">*</span><span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">X</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">Y</span><span style="color:#f92672">*</span><span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">Y</span>)
+}
+<span style="color:#75715e">// 调用
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Vertex</span>{<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>}
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">AbsFunc</span>(<span style="color:#a6e22e">v</span>))
+</code></pre></div><p>如上所说，不光结构体可以声明方法，比如自定义类型:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">MyFloat</span> <span style="color:#66d9ef">float64</span>
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">f</span> <span style="color:#a6e22e">MyFloat</span>) <span style="color:#a6e22e">Abs</span>() <span style="color:#66d9ef">float64</span> {
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">f</span> &lt; <span style="color:#ae81ff">0</span> {
+		<span style="color:#66d9ef">return</span> float64(<span style="color:#f92672">-</span><span style="color:#a6e22e">f</span>)
+	}
+	<span style="color:#66d9ef">return</span> float64(<span style="color:#a6e22e">f</span>)
+}
+</code></pre></div><p>但是 <strong>receiver的类型必须定义在当前包里，不能给其它包里定义的类型声明method，比如内置类型</strong>。</p>
+<p>上面使用的 receiver 是一个值（value receiver），receiver还可以是一个指针（pointer receiver），如:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// method
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">v</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Vertex</span>) <span style="color:#a6e22e">ScaleMethod</span>(<span style="color:#a6e22e">f</span> <span style="color:#66d9ef">float64</span>) {
+	<span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">X</span> = <span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">X</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">f</span>
+	<span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">Y</span> = <span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">Y</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">f</span>
+}
+
+<span style="color:#75715e">// function
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">ScaleFunc</span>(<span style="color:#a6e22e">v</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Vertex</span>, <span style="color:#a6e22e">f</span> <span style="color:#66d9ef">float64</span>) {
+	<span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">X</span> = <span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">X</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">f</span>
+	<span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">Y</span> = <span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">Y</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">f</span>
+}
+</code></pre></div><p>因为Go里函数参数是传值，相当于一份拷贝，所以如果使用 <code>func (v Vertex) Scale...</code> 而不是 <code>func (v *Vertex) Scale...</code> ，则实际 v.X 和 v.Y 的值并没有被改变。</p>
+<p>关于这块调用 Scale 时针对 pointer 和 value，需要注意一个坑:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">v</span> <span style="color:#a6e22e">Vertex</span>
+
+<span style="color:#75715e">// 针对上面的Scale
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">ScaleFunc</span>(<span style="color:#a6e22e">v</span>, <span style="color:#ae81ff">3</span>)      <span style="color:#75715e">// compile error!
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">ScaleFunc</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">v</span>, <span style="color:#ae81ff">3</span>)      <span style="color:#75715e">// ok
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">ScaleMethod</span>(<span style="color:#ae81ff">3</span>)     <span style="color:#75715e">// ok, as (&amp;v).ScaleMethod()
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">p</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">v</span>
+<span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">ScaleMethod</span>(<span style="color:#ae81ff">3</span>)     <span style="color:#75715e">// ok
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// 针对上上面的Abs
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">AbsFunc</span>(<span style="color:#a6e22e">v</span>)           <span style="color:#75715e">// ok
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">AbsFunc</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">v</span>)          <span style="color:#75715e">// compile error!
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">v</span>.<span style="color:#a6e22e">AbsMethod</span>()        <span style="color:#75715e">// ok
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">p</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">v</span>
+<span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">AbsMethod</span>()         <span style="color:#75715e">// ok, as (*p).AbsMethod()
+</span></code></pre></div><p>为了方便，Go的解释器对 method 作了一些自动化处理，如上例子，不论是 pointer receiver 还是 value receiver 的方法，都可以通过 pointer 或 value 来调用。</p>
+<p>更倾向于选择使用 pointer receiver 的原因有两个:</p>
+<ol>
+<li>method 内部可以修改 receiver 的值</li>
+<li>不是按值传递，所以更节省空间，比如需要传递的是一个很大的结构体</li>
+</ol>
+<h3 id="interfaces">Interfaces</h3>
+<p>Go Tour上这块英文感觉有点绕，需要多读几遍。</p>
+<blockquote>
+<p>An interface type is defined as a set of method signatures.</p>
+</blockquote>
+<p>一个接口类型是一组 method 的定义的集合。</p>
+<blockquote>
+<p>A value of interface type can hold any value that implements those methods.</p>
+</blockquote>
+<p>接口类型是一个抽象类型，它的值可以是任何值，只需要这个值实现了接口的 methods</p>
+<p>接口的好处就是将接口的定义和实现分离。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 接口类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">I</span> <span style="color:#66d9ef">interface</span> {
+    <span style="color:#a6e22e">M</span>()
+}
+
+<span style="color:#75715e">// 具体类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">T</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">S</span> <span style="color:#66d9ef">string</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">T</span>) <span style="color:#a6e22e">M</span>() {
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">S</span>)
+}
+
+<span style="color:#75715e">// 具体类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">F</span> <span style="color:#66d9ef">float64</span>
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">f</span> <span style="color:#a6e22e">F</span>) <span style="color:#a6e22e">M</span>() {
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">f</span>)
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#a6e22e">I</span>
+
+    <span style="color:#a6e22e">i</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">T</span>{<span style="color:#e6db74">&#34;Hello&#34;</span>}
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;(%v, %T)\n&#34;</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">i</span>)
+    <span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">M</span>()
+
+    <span style="color:#a6e22e">i</span> = <span style="color:#a6e22e">F</span>(<span style="color:#ae81ff">0.11</span>)
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;(%v, %T)\n&#34;</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">i</span>)
+    <span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">M</span>()
+}
+<span style="color:#75715e">// 输出
+</span><span style="color:#75715e">// (&amp;{Hello}, *main.T)
+</span><span style="color:#75715e">// Hello
+</span><span style="color:#75715e">// (0.11, main.F)
+</span><span style="color:#75715e">// 0.11
+</span></code></pre></div><p><strong>一个接口需要挂载到一个底层具体类型上，调用接口的方法实际就是调用底层具体类型的同名方法.</strong></p>
+<p>如果实际类型是 nil (nil underlying value)，则接口也是 nil</p>
+<p>但如果接口类型是 nil (nil interface value)，则无法调用它的 method，否则报错</p>
+<p>空接口定义: <code>var i interface{}</code>，接口i可以是任何值。</p>
+<p>类型断言（type assertion）让接口值可以访问所挂载具体类型的值: <code>t := i.(T)</code>，其中i是接口值，T是具体类型名：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#66d9ef">interface</span>{} = <span style="color:#e6db74">&#34;hello&#34;</span>
+
+<span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">i</span>.(<span style="color:#66d9ef">string</span>)
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">s</span>)
+
+<span style="color:#a6e22e">s</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">i</span>.(<span style="color:#66d9ef">string</span>)
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">s</span>, <span style="color:#a6e22e">ok</span>)
+
+<span style="color:#75715e">// 这个和之前的map test类似
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">f</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">i</span>.(<span style="color:#66d9ef">float64</span>)
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">f</span>, <span style="color:#a6e22e">ok</span>)
+
+<span style="color:#a6e22e">f</span> = <span style="color:#a6e22e">i</span>.(<span style="color:#66d9ef">float64</span>) <span style="color:#75715e">// panic
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">f</span>)
+</code></pre></div><p>type switch 结合了接口类型和switch语句，语法<code>i.(type)</code>，和type assertion语法有点像。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// i is interface
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">i</span>.(<span style="color:#66d9ef">type</span>) {
+	<span style="color:#66d9ef">case</span> <span style="color:#66d9ef">int</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Twice %v is %v\n&#34;</span>, <span style="color:#a6e22e">v</span>, <span style="color:#a6e22e">v</span><span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>)
+	<span style="color:#66d9ef">case</span> <span style="color:#66d9ef">string</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%q is %v bytes long\n&#34;</span>, <span style="color:#a6e22e">v</span>, len(<span style="color:#a6e22e">v</span>))
+	<span style="color:#66d9ef">default</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;I don&#39;t know about type %T!\n&#34;</span>, <span style="color:#a6e22e">v</span>)
+}
+</code></pre></div><p>fmt包中定义了Stringer接口，方法String()，如目前用到最多的fmt.Println()就根据类型的String()方法输出内容:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// type Stringer interface {
+</span><span style="color:#75715e">//     String() string
+</span><span style="color:#75715e">// }
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Person</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">Name</span> <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">Age</span>  <span style="color:#66d9ef">int</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">p</span> <span style="color:#a6e22e">Person</span>) <span style="color:#a6e22e">String</span>() <span style="color:#66d9ef">string</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;%v (%v years)&#34;</span>, <span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">Age</span>)
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Person</span>{<span style="color:#e6db74">&#34;Arthur Dent&#34;</span>, <span style="color:#ae81ff">42</span>}
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">a</span>)
+</code></pre></div><h3 id="goroutine">goroutine</h3>
+<p>轻量级线程(lightweight thread)</p>
+<p>goroutines在同一个地址空间中运行，所以访问共享内存必须进行同步</p>
+<p>使用关键字<code>go</code>，<code>go func(x, y)</code>中x, y是在当前goroutine中定义，但是func的执行是在一个新的goroutine:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">say</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>) {
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">100</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Millisecond</span>)
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">s</span>)
+    }
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">say</span>(<span style="color:#e6db74">&#34;world&#34;</span>)
+    <span style="color:#a6e22e">say</span>(<span style="color:#e6db74">&#34;hello&#34;</span>)
+}
+</code></pre></div><p>如果当前goroutine结束，则新起的goroutine也会结束。所以这个和执行时间、顺序有关系，上面的例子会出现偶尔world只输出4次的情况。如果去掉time.Sleep，则可能会出现world还没来得及输出就已经结束了。</p>
+<h3 id="channel">channel</h3>
+<p>channel是一个有类型的管道(typed conduit)，可以用来接收或发送数据，操作符<code>&lt;-</code>，channel 和 <code>&lt;-</code>的方向表示了数据流的方向:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">ch</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">v</span>    <span style="color:#75715e">// 发送v到channel ch
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ch</span>  <span style="color:#75715e">// 接收来自channel ch的数据，并赋值给v
+</span></code></pre></div><p>和slice，map类似，channel 在使用前需要创建:</p>
+<pre><code>ch := make(chan int)
+</code></pre><p><strong>默认情况下，在另一端准备好之前，发送和接收都会阻塞。这使得 goroutine 可以在没有明确的锁或竞态变量的情况下进行同步。</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">s</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">c</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>) {
+	<span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span> {
+		<span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">v</span>
+	}
+	<span style="color:#a6e22e">c</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sum</span> <span style="color:#75715e">// send sum to c
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">8</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">0</span>}
+
+	<span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">s</span>[:len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>], <span style="color:#a6e22e">c</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">s</span>[len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>:], <span style="color:#a6e22e">c</span>)
+	<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c</span>, <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c</span> <span style="color:#75715e">// receive from c
+</span><span style="color:#75715e"></span>
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">x</span><span style="color:#f92672">+</span><span style="color:#a6e22e">y</span>)
+}
+</code></pre></div><p>上面例子是goroutine和channel的配合。</p>
+<p>创建channel时，第二个参数可以指定channel大小，使其为<strong>buffered channel</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">ch</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">2</span>)
+	<span style="color:#a6e22e">ch</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">1</span>
+	<span style="color:#a6e22e">ch</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">2</span>
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ch</span>)
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ch</span>)
+}
+</code></pre></div><p>如果是buffered channel，则如果buffer满了，则发送给channel会被block; 如果buffer空了，则从channel读取数据会被block。</p>
+<p>上面例子如果在&lt;-ch之前再写数据进ch，会导致报错: fatal error: all goroutines are asleep - deadlock!</p>
+<p>在读取channel时，如果指定第二个参数，可以确认channel是否关闭。对channel进行for循环可以持续从channel读取数据，直到channel关闭。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">ch</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+close(<span style="color:#a6e22e">ch</span>)    <span style="color:#75715e">// 关闭channel
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">v</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ch</span>  <span style="color:#75715e">// 检查channel是否关闭
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">ch</span> {  <span style="color:#75715e">// 持续从channel读取数据
+</span><span style="color:#75715e"></span>  <span style="color:#f92672">...</span>
+}
+</code></pre></div><p><code>select</code> 语句用于从多个channel中选出一个可用的channel来执行，都没有则block，如果有多个则随机选一个; 如果有<code>default</code> case，则不会block，没有任何case可执行时则用default case</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">select</span> {
+<span style="color:#66d9ef">case</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c1</span>:
+	<span style="color:#f92672">...</span>
+<span style="color:#66d9ef">case</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c2</span>:
+	<span style="color:#f92672">...</span>
+<span style="color:#66d9ef">default</span>:
+	<span style="color:#f92672">...</span>
+}
+</code></pre></div>
+        </div>
+        <!-- tags -->
+        <div class="mb-3">
+          <h5 class="d-inline-block mr-3">Tags:</h5>
+          <ul class="list-inline d-inline-block">
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/go"> 
+            Go</a>
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/resources"> , 
+            Resources</a>
+            
+          </ul>
+        </div>
+        <!-- previous -->
+        <div class="mb-3 link-article">
+    <div class="pre-article">
+        
+            <div><i class="fa fa-arrow-left"></i> 上一篇</div>
+            <a href="https://www.fenghong.tech/blog/2018/2018-11-08-lets-encrypt/">Let’s Encrypt使用</a>
+        
+    </div>
+    <div class="next-article">
+        
+            <div>下一篇 <i class="fa fa-arrow-right"></i></div>
+            <a href="https://www.fenghong.tech/blog/go/go-resource/">Go 资源汇总</a>
+        
+    </div>
+</div>
+        <!-- previous -->
+
+        <!-- recommend -->
+        
+
+<div class="mb-3">
+  <h2>文章推荐</h2>
+  <ul class="related">
+  
+    <li><a href="/blog/go/go-resource/">Go 资源汇总</a></li>
+  
+  </ul>
+</div>
+
+
+        <!-- comments -->
+
+        
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script>
+          window.onload = function() {
+              const gitalk = new Gitalk({
+              clientID: 'a0a546df858aafb5300e',
+              clientSecret: '67d7b40de25c072fc38840ffb9c06ceab7ef5080',
+              repo: 'oldthreefeng.github.io',
+              owner: 'oldthreefeng',
+              admin: ['oldthreefeng'],
+              id: hex_md5(hex_md5(window.location.pathname + window.location.hash)), 
+              distractionFreeMode: false 
+            });
+            (function() {
+              if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+                document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+                return;
+              }
+              gitalk.render('gitalk-container');
+            })();
+          }
+        </script>
+        
+      </div>
+      <!-- sidebar -->
+<aside class="col-lg-4 order-1 order-lg-2">
+  <!-- tags -->
+  <div class="bg-white px-4 py-5 box-shadow mb-5 word-cloud">
+    <h4 class="mb-4">标签</h4>
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div id="tag-cloud" style="padding: 5px 15px">
+      
+        
+          
+          
+          
+          <a href="/tags/acme" style="font-size:1.0188679245283019rem">acme</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/acmetiny" style="font-size:1.0188679245283019rem">acmetiny</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/alertmanager" style="font-size:1rem">alertmanager</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/algorithm" style="font-size:1.1132075471698113rem">algorithm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/aliyun" style="font-size:1rem">aliyun</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ansible" style="font-size:1.0754716981132075rem">ansible</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/apisix" style="font-size:1rem">apisix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/arm64" style="font-size:1.0188679245283019rem">arm64</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/authorization" style="font-size:1rem">authorization</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/backup" style="font-size:1.0377358490566038rem">backup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binarysearch" style="font-size:1.0188679245283019rem">binarysearch</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binlog" style="font-size:1rem">binlog</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bit" style="font-size:1.0188679245283019rem">bit</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bug" style="font-size:1.0188679245283019rem">bug</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cache" style="font-size:1rem">cache</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/certbot" style="font-size:1rem">certbot</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/channel" style="font-size:1rem">channel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/chrome" style="font-size:1.0188679245283019rem">chrome</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ci" style="font-size:1rem">ci</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cluster" style="font-size:1.1132075471698113rem">cluster</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cobra" style="font-size:1rem">cobra</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coco" style="font-size:1.0377358490566038rem">coco</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coding" style="font-size:1rem">coding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/computer" style="font-size:1rem">computer</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/consul" style="font-size:1rem">consul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/containerd" style="font-size:1.0188679245283019rem">containerd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coredns" style="font-size:1rem">coredns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cors" style="font-size:1rem">cors</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/crypto" style="font-size:1rem">crypto</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/curl" style="font-size:1rem">curl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dashboard" style="font-size:1rem">dashboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dcdn" style="font-size:1rem">dcdn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/debt" style="font-size:1rem">debt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/devops" style="font-size:1.0188679245283019rem">devops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dingding" style="font-size:1rem">dingding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/disk" style="font-size:1rem">disk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dmesg" style="font-size:1rem">dmesg</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dns" style="font-size:1rem">dns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/docker" style="font-size:1.2264150943396226rem">docker</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/doublylinkedlist" style="font-size:1rem">doublylinkedlist</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/elk" style="font-size:1rem">elk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/error" style="font-size:1rem">error</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/etcd" style="font-size:1.0377358490566038rem">etcd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exec" style="font-size:1.0188679245283019rem">exec</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exp" style="font-size:1rem">exp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/federated" style="font-size:1rem">federated</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/filecoin" style="font-size:1rem">filecoin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/find" style="font-size:1rem">find</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/firewalld" style="font-size:1rem">firewalld</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/fix" style="font-size:1.0377358490566038rem">fix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flag" style="font-size:1.0188679245283019rem">flag</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flannel" style="font-size:1rem">flannel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/food" style="font-size:1.0188679245283019rem">food</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/frp" style="font-size:1.0377358490566038rem">frp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ftp" style="font-size:1.0188679245283019rem">ftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/games" style="font-size:1rem">games</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gin" style="font-size:1.0188679245283019rem">gin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/git" style="font-size:1.2075471698113207rem">git</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/github" style="font-size:1.0188679245283019rem">github</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gitlab" style="font-size:1rem">gitlab</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go" style="font-size:1.320754716981132rem">go</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go-vim" style="font-size:1rem">go-vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gogs" style="font-size:1.0566037735849056rem">gogs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/goland" style="font-size:1.0188679245283019rem">goland</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/golang" style="font-size:1.0377358490566038rem">golang</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gorequest" style="font-size:1rem">gorequest</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grafana" style="font-size:1.0188679245283019rem">grafana</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grub" style="font-size:1rem">grub</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hack" style="font-size:1.0188679245283019rem">hack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/haproxy" style="font-size:1.0377358490566038rem">haproxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/harbor" style="font-size:1.0188679245283019rem">harbor</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hash" style="font-size:1.0188679245283019rem">hash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hashmap" style="font-size:1rem">hashmap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/helm" style="font-size:1.0188679245283019rem">helm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hexo" style="font-size:1.0377358490566038rem">hexo</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/http" style="font-size:1.0754716981132075rem">http</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/https" style="font-size:1rem">https</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/index" style="font-size:1rem">index</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ingress" style="font-size:1.0377358490566038rem">ingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/inotify" style="font-size:1rem">inotify</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/internet" style="font-size:1.169811320754717rem">internet</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/interview" style="font-size:1rem">interview</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/iptables" style="font-size:1.0377358490566038rem">iptables</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ipvs" style="font-size:1.0188679245283019rem">ipvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/java" style="font-size:1.0754716981132075rem">java</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jeju" style="font-size:1rem">jeju</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jenkins" style="font-size:1.0943396226415094rem">jenkins</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jetbrains" style="font-size:1rem">jetbrains</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jumpserver" style="font-size:1.0566037735849056rem">jumpserver</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jvm" style="font-size:1rem">jvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/keepalived" style="font-size:1rem">keepalived</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kernel" style="font-size:1rem">kernel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/knowledge" style="font-size:1rem">knowledge</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kube-proxy" style="font-size:1.0188679245283019rem">kube-proxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetes" style="font-size:1.3962264150943395rem">kubernetes</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesrbac" style="font-size:1rem">kubernetesrbac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesssl" style="font-size:1.0188679245283019rem">kubernetesssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kuboard" style="font-size:1.0566037735849056rem">kuboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lb" style="font-size:1rem">lb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/learning" style="font-size:1.0566037735849056rem">learning</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/leetcode" style="font-size:1.0188679245283019rem">leetcode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libcurl" style="font-size:1rem">libcurl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libssh2" style="font-size:1rem">libssh2</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/link" style="font-size:1rem">link</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/linux" style="font-size:1.9811320754716981rem">linux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/living" style="font-size:1rem">living</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lnux" style="font-size:1rem">lnux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/log" style="font-size:1.0566037735849056rem">log</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logrus" style="font-size:1rem">logrus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logs" style="font-size:1rem">logs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logstash" style="font-size:1rem">logstash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/loki" style="font-size:1rem">loki</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lru" style="font-size:1rem">lru</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/luna" style="font-size:1rem">luna</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvm" style="font-size:1rem">lvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvs" style="font-size:1rem">lvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mac" style="font-size:1rem">mac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/malaysia" style="font-size:1rem">malaysia</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/manage" style="font-size:1rem">manage</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/map" style="font-size:1rem">map</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mariadb" style="font-size:1.0377358490566038rem">mariadb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/markdown" style="font-size:1.0188679245283019rem">markdown</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mfa" style="font-size:1rem">mfa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mha" style="font-size:1rem">mha</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mode" style="font-size:1rem">mode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/module" style="font-size:1rem">module</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mount" style="font-size:1rem">mount</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mysql" style="font-size:1.2452830188679245rem">mysql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/navicat" style="font-size:1rem">navicat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/network" style="font-size:1rem">network</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nfs" style="font-size:1.0754716981132075rem">nfs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginx" style="font-size:1.2264150943396226rem">nginx</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginxingress" style="font-size:1.0566037735849056rem">nginxingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/node_exporter" style="font-size:1.0188679245283019rem">node_exporter</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/numpy" style="font-size:1rem">numpy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ops" style="font-size:1.2452830188679245rem">ops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/owncloud" style="font-size:1rem">owncloud</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/password" style="font-size:1rem">password</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/paxos" style="font-size:1.0188679245283019rem">paxos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/php" style="font-size:1rem">php</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pipeline" style="font-size:1rem">pipeline</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/polynomial" style="font-size:1rem">polynomial</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/problem" style="font-size:1rem">problem</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/prometheus" style="font-size:1.0943396226415094rem">prometheus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pv" style="font-size:1.0754716981132075rem">pv</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pvc" style="font-size:1.0754716981132075rem">pvc</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/python" style="font-size:1.0943396226415094rem">python</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/queue" style="font-size:1rem">queue</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/qw3xt" style="font-size:1rem">qw3xt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rabbitmq" style="font-size:1.0188679245283019rem">rabbitmq</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/raft" style="font-size:1rem">raft</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rebase" style="font-size:1rem">rebase</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/redis" style="font-size:1.0377358490566038rem">redis</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/resources" style="font-size:1.0188679245283019rem">resources</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsa" style="font-size:1rem">rsa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsync" style="font-size:1.0188679245283019rem">rsync</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/safe" style="font-size:1.0754716981132075rem">safe</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/samba" style="font-size:1rem">samba</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sealos" style="font-size:1rem">sealos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/secure" style="font-size:1rem">secure</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sed" style="font-size:1rem">sed</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/server" style="font-size:1.2075471698113207rem">server</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sftp" style="font-size:1rem">sftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shadowsocks" style="font-size:1.0188679245283019rem">shadowsocks</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shell" style="font-size:1.0188679245283019rem">shell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slap" style="font-size:1rem">slap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slave" style="font-size:1rem">slave</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slb" style="font-size:1rem">slb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slowquery" style="font-size:1rem">slowquery</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sonar" style="font-size:1.0377358490566038rem">sonar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sourcetree" style="font-size:1.0188679245283019rem">sourcetree</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sql" style="font-size:1.0188679245283019rem">sql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ss" style="font-size:1rem">ss</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssh" style="font-size:1.0754716981132075rem">ssh</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssl" style="font-size:1.1132075471698113rem">ssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stack" style="font-size:1rem">stack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stress" style="font-size:1rem">stress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/style" style="font-size:1rem">style</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/switchyomega" style="font-size:1rem">switchyomega</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/syncd" style="font-size:1rem">syncd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/taint" style="font-size:1rem">taint</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tar" style="font-size:1rem">tar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tcp" style="font-size:1.0188679245283019rem">tcp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/testing" style="font-size:1rem">testing</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tomcat" style="font-size:1rem">tomcat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tour" style="font-size:1.0188679245283019rem">tour</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/trojan" style="font-size:1rem">trojan</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ubuntu" style="font-size:1.0566037735849056rem">ubuntu</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/udp" style="font-size:1rem">udp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/uk8s" style="font-size:1rem">uk8s</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unauthorized" style="font-size:1rem">unauthorized</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unblockneteasemusic" style="font-size:1rem">unblockneteasemusic</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upgrade" style="font-size:1.0188679245283019rem">upgrade</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upstream" style="font-size:1rem">upstream</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/v1.18.3" style="font-size:1rem">v1.18.3</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vim" style="font-size:1rem">vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/virtul" style="font-size:1rem">virtul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vpn" style="font-size:1.0754716981132075rem">vpn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vscode" style="font-size:1rem">vscode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/websocket" style="font-size:1rem">websocket</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/wifi" style="font-size:1rem">wifi</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xshell" style="font-size:1rem">xshell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xtrabackup" style="font-size:1rem">xtrabackup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/yum" style="font-size:1rem">yum</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/zabbix" style="font-size:1rem">zabbix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e6%95%b0%e6%8d%ae%e5%ba%93%e5%8e%9f%e7%90%86" style="font-size:1rem">数据库原理</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95" style="font-size:1rem">贪心算法</a>
+        
+      
+      </div>
+    
+  </div>
+
+  <!-- profile -->
+  <!-- toc -->
+  
+  <div class="bg-white px-4 py-5 box-shadow mb-5 sticky-top">
+    <h4 class="mb-4">目录</h4>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#教程">教程</a></li>
+    <li><a href="#笔记">笔记</a>
+      <ul>
+        <li><a href="#goroot-和-gopath">GOROOT 和 GOPATH</a></li>
+        <li><a href="#package-和-import">package 和 import</a></li>
+        <li><a href="#exported-names">Exported names</a></li>
+        <li><a href="#function">Function</a></li>
+        <li><a href="#variable-constants-and-type">Variable, Constants and Type</a></li>
+        <li><a href="#for--if--switch">for / if / switch</a></li>
+        <li><a href="#defer">defer</a></li>
+        <li><a href="#pointers">Pointers</a></li>
+        <li><a href="#struct">Struct</a></li>
+        <li><a href="#array">Array</a></li>
+        <li><a href="#slice">Slice</a></li>
+        <li><a href="#maps">Maps</a></li>
+        <li><a href="#methods">Methods</a></li>
+        <li><a href="#interfaces">Interfaces</a></li>
+        <li><a href="#goroutine">goroutine</a></li>
+        <li><a href="#channel">channel</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+
+</aside>
+<!-- /sidebar -->
+
+    </div>
+  </div>
+</section>
+<!-- /blog details -->
+
+
+
+<footer>
+	
+	<div class="section bg-secondary">
+		<div class="container">
+			<div class="row justify-content-between">
+				
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					<a class="mb-4 d-inline-block" href="/"><img class="img-fluid"
+																								src="/images/images/logo-alt.png" alt="Louis Blog" width="60%"></a>
+					<p class="text-light mb-5">每一个不曾起舞的日子都是对生命的辜负.</p>
+					<h4 class="text-white mb-4">关注我</h4>
+					
+					<ul class="list-inline social-icon-alt">
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://twitter.com/louishong17"><i class="fa fa-twitter"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://github.com/oldthreefeng"><i class="fa fa-github"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="/contact"><i class="fa fa-wechat"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="mailto:992165098@qq.com"><i class="fa fa-envelope"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://www.fenghong.tech/blog/index.xml"><i class="fa fa-rss"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					
+					
+					
+					
+					<div class="mb-5">
+						<h4 class="text-white mb-4">联系信息</h4>
+						<p class="text-light mb-3">上海 · 浦东新区</p>
+						<p class="text-light mb-3"></p>
+						<p class="text-light mb-3">微信联系方式</p>
+						<p class="text-light mb-3"><img src="/images/images/wechat-qrcode.png" width="356px"></p>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="bg-secondary-darken py-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+					<p class="mb-0 text-white">Copyright © 2020 Louis</p>
+				</div>
+				<div class="col-md-6 text-center text-md-right">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item mx-0"><a class="d-inline-block px-3 text-white" href="https://beian.miit.gov.cn/"
+																									class="text-white">鄂ICP备18027870号-1</a></li>
+						<p class="list-inline-item mx-0 text-white">本网站由</p>
+						<a target="_blank" rel="nofollow noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://pic.fenghong.tech/images/180803_logo30.png" style="margin-bottom:5px;height: 25px;"></a>
+						<p class="list-inline-item mx-0 text-white">提供CDN加速/云存储服务</p>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+<script>
+	var indexURL = "/index.json"
+</script>
+
+
+<!-- JS Plugins -->
+
+<script src="/plugins/jQuery/jquery.min.js"></script>
+
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="/plugins/slick/slick.min.js"></script>
+
+<script src="/plugins/google-map/gmap.js"></script>
+
+<script src="/plugins/venobox/venobox.min.js"></script>
+
+<script src="/plugins/filterizr/jquery.filterizr.min.js"></script>
+
+<script src="/plugins/search/fuse.min.js"></script>
+
+<script src="/plugins/search/mark.js"></script>
+
+<script src="/plugins/search/search.js"></script>
+
+<script src="/plugins/bigPicture/bigPicture.js"></script>
+
+<script src="/plugins/hex_md5/hex_md5.js"></script>
+
+
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+
+<!-- Algolia -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+<script>
+	docsearch({
+		apiKey: 'b4d47f0c039a84d4035305be829404dd',
+		indexName: 'DocSearch',
+		appId: 'CTH4P282IZ',
+		inputSelector: '#js-algolia-btn',
+		debug: false,
+	});
+</script>
+
+<!-- google analitycs -->
+
+<script>
+	(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-130595069-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https'){
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else{
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,2379 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn"><head>
+  <meta charset="utf-8">
+  <title>sealos etcd及exec子命令使用相关 | Louis Blog</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="sealos 基于etcd的api调用， 来备份kubernetes集群的etcd;调用kubernetes的api，获取主机`ip` 执行命令">
+  
+  <meta name="author" content="Louis ">
+  <meta name="generator" content="Hugo 0.73.0" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  
+  <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="/plugins/animate/animate.css">
+  
+  <link rel="stylesheet" href="/plugins/venobox/venobox.css">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="/images/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="/images/images/favicon.png " type="image/x-icon">
+
+  <!--Algolia-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css">
+</head>
+<body>
+<!-- header -->
+<header>
+  
+
+  <!-- navigation -->
+  <div class="navigation bg-white position-relative">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="/"><img class="img-fluid pb-lg-3" src="/images/images/logo.png" width="189px" alt="Louis Blog"></a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/"></a>
+            </li>
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                博客
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/categories/kubernetes">Kubernetes</a>
+                
+                <a class="dropdown-item" href="/categories/sealos">sealos</a>
+                
+                <a class="dropdown-item" href="/categories/ops">运维相关</a>
+                
+                <a class="dropdown-item" href="/categories/golang">golang</a>
+                
+                <a class="dropdown-item" href="/categories/algorithm">algorithm</a>
+                
+                <a class="dropdown-item" href="/categories/tools">tools</a>
+                
+                <a class="dropdown-item" href="/blog">全部</a>
+                
+              </div>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/team">友情链接</a>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                关于我
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/contact">about</a>
+                
+                <a class="dropdown-item" href="https://github.com/oldthreefeng">github</a>
+                
+              </div>
+            </li>
+            
+            
+          </ul>
+
+          
+          
+
+          
+          <!-- search -->
+          <div class="search px-4">
+            <button id="searchOpen" class="search-btn"><i class="fa fa-search text-dark"></i></button>
+            <div class="search-wrapper">
+              <form action="/search">
+                <input class="search-box form-control" id="js-algolia-btn" name="s" type="search" placeholder="输入搜索词">
+              </form>
+              <button id="searchClose" class="search-close"><i class="fa fa-close text-dark"></i></button>
+            </div>
+          </div>
+          
+          
+          <!-- get start btn -->
+          <a href="/contact" class="btn btn-primary hover-ripple">联系我</a>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- /navigation -->
+</header>
+<!-- /header -->
+
+
+<!-- page title -->
+<section class="section bg-cover overlay" style="background-image: url('/'),url('/'),url('/images/images/backgrounds/page-title.jpg');">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-white mb-3">sealos etcd及exec子命令使用相关</h2>
+        <!-- breadcrumb -->
+        
+        <p class="text-white">sealos 基于etcd的api调用， 来备份kubernetes集群的etcd;调用kubernetes的api，获取主机<code>ip</code> 执行命令</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /page title -->
+
+
+<!-- blog details -->
+<section class="section">
+  <div class="container blog">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- post thumb -->
+        <div class="position-relative mb-5">
+          <img src="/"  onerror="this.src='https:\/\/pic.fenghong.tech\/proto\/girls-602168__340.jpg'" alt="post thumb" class="img-fluid w-100">
+           <div class="card-type">Sealos</div>
+        </div>
+        <div class="card-meta text-uppercase mb-2">作者  <strong class="text-dark"><a href="https://www.fenghong.tech">Louis</a></strong>
+          
+            发表于 <strong class="text-dark">2020年9月20日</strong></div>
+        <hr>
+        <div class="content">
+          <h1 id="sealos-etcd-命令"><code>sealos etcd</code> 命令</h1>
+<h2 id="使用sealos-etcd-save">使用<code>sealos etcd save</code></h2>
+<p>备份落盘位置会在执行sealos的主机上. 同时, restore的时候, 也会恢复在<code>执行sealos的主机上</code>, <code>sealos save</code> 逻辑是<strong>调用 <code>etcd clientv3</code> 生成<code>snapshot</code>备份文件.</strong></p>
+<pre><code>$ sealos etcd save -h
+Flags:
+      --aliId string        aliyun accessKeyId to save snapshot
+      --aliKey string       aliyun accessKeySecrets to save snapshot
+      --backupPath string   Specify snapshot backup dir (default &quot;/opt/sealos/ectd-backup&quot;)
+      --bucket string       oss bucketName to save snapshot
+      --docker              snapshot your kubernets etcd in container, will add unix timestamp to snapshot name
+      --ep string           aliyun endpoints to save snapshot
+  -h, --help                help for save
+      --name string         Specify snapshot name (default &quot;snapshot&quot;)
+      --objectPath string   aliyun oss objectPath to save snapshot, like: /sealos/snapshots/
+</code></pre><p>说明一下选项</p>
+<ul>
+<li><code>--aliId</code>:  阿里云的<code>accessKeyId</code></li>
+<li><code>--aliKey</code>: 阿里云的<code>accessKeySecrets</code></li>
+<li><code>--backupPath</code>:  在执行sealos的主机以及master主机上的备份路径. 默认为<code>/opt/sealos/ectd-backup</code></li>
+<li><code>--bucket</code>: 阿里云的<code>oss bucketName</code></li>
+<li><code>--ep</code>: 阿里云<code>oss endpoint</code>. 例如: <code>oss-cn-hangzhou.aliyuncs.com</code></li>
+<li><code>--name</code>: 备份文件的名字, 默认为<code>snapshot</code></li>
+<li><code>--objectPath</code>: 阿里云<code>oss objectPath</code>. 例如:  <code>/sealos/snapshots/</code></li>
+</ul>
+<p>这里, 上传阿里云oss. 使用命令行或者编辑配置文件均可.</p>
+<pre><code>$ sealos etcd save --docker \
+    --aliId youraliyunkeyid \
+    --aliKey youraliyunkeysecrets \
+    --ep oss-cn-hangzhou.aliyuncs.com  \
+    --bucket etcdbackup  \
+    --objectPath /sealos/
+</code></pre><p>或者使用<code>vim</code> 编辑 <code>.sealos/config.yaml </code>文件. 均可</p>
+<pre><code>$ cat .sealos/config.yaml
+masters:
+- 192.168.0.31:22
+nodes:
+- 192.168.0.30:22
+- 192.168.0.88:22
+- 192.168.0.65:22
+dnsdomain: cluster.local
+apiservercertsans:
+- 127.0.0.1
+- apiserver.cluster.local
+- 192.168.0.31
+- 10.103.97.2
+user: root
+passwd: &quot;&quot;
+privatekey: /root/.ssh/id_rsa
+pkpassword: &quot;&quot;
+apiserverdomian: apiserver.cluster.local
+vip: 10.103.97.2
+pkgurl: /root/kube1.18.0.tar.gz
+version: v1.18.0
+repo: k8s.gcr.io
+podcidr: 100.64.0.0/10
+svccidr: 10.96.0.0/12
+certpath: /root/.sealos/pki
+certetcdpath: /root/.sealos/pki/etcd
+lvscarename: fanux/lvscare
+lvscaretag: latest
+alioss:
+  ossendpoint: oss-cn-hangzhou.aliyuncs.com
+  accesskeyid: *****
+  accesskeysecrets: ****
+  bucketname: etcdbackup
+  objectpath: /sealos/
+</code></pre><h3 id="在kubernetes-使用cronjob备份">在<code>kubernetes </code>使用<code>cronjob</code>备份</h3>
+<p>依赖 <code>~/.sealos/config.yaml</code>
+依赖 <code>etcd cacert，cert， key</code>， 目前读取的文件是 <code>~/.sealos/pki/etcd/</code>的证书。</p>
+<p>首先. 只需要挂载<code>~/.sealos/</code>到容器<code>~/.sealos/</code>.   挂载这个目录的目的是， 使用其中四个文件. 给四个文件创建<code>secret</code>感觉有点臃肿. 故而采用目录挂载.  我们假设<code>master-01</code>是您执行<code>sealos init</code>的主机.</p>
+<blockquote>
+<p>如果在集群外执行<code>init</code>. 请使用<code>scp</code>. 例如<code>scp -rf ~/.sealos master-01:/root/</code>.</p>
+</blockquote>
+<pre><code>$ kubectl label nodes master-01  name=sealos --overwrite
+</code></pre><p>如果你通过ssh连接到各master的方式如果为秘钥验证, 则需要添加一个<code>secret</code>保存秘钥即可.  为了安全，我这边使用在<code>kube-system</code>中创建的。</p>
+<pre><code>$ kubectl create secret generic pk-sealos --from-file=/root/.ssh/id_rsa  -n kube-system
+</code></pre><p>我们编辑<code>crontjob.yaml</code></p>
+<pre><code>apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: backup-etcd
+  namespace: kube-system   ## you can change to any namespace
+spec: #当没有指定pod选择器时它将根据pod模板中的标签创建
+  schedule: &quot;0 21 * * *&quot;  # backup everyday on 21：00
+  successfulJobsHistoryLimit: 3
+  jobTemplate: #创建新pod所使用的pod模板
+    spec:
+      template: # 此CronJob创建Job资源会用到的模板
+        spec:
+          restartPolicy: OnFailure  # Job不能使用Always作为默认的重新启动策略
+          nodeSelector:
+            name: sealos    ## this is your sealos init machine. so we can use hostPath.
+          volumes:
+          - hostPath:
+              path: /root/.sealos
+              type: DirectoryOrCreate
+            name: sealos-home
+          # if use password to auth, just remove this secret
+          # before use secret, you must create it.
+          - secret:
+              defaultMode: 420
+              items:
+                - key: id_rsa
+                  path: id_rsa
+              secretName: pk-sealos
+            name: pk-sealos
+          containers:
+          - name: sealos
+            image: louisehong/sealos:3.3.10
+            args:
+              - etcd
+              - save
+              - --docker
+            volumeMounts:
+              - mountPath: /root/.sealos
+                name: sealos-home
+              # if use password to auth, just remove this volumeMounts
+              - mountPath: /root/.ssh/id_rsa
+                name: pk-sealos
+                subPath: id_rsa
+</code></pre><p>然后执行<code>apply</code>即可.</p>
+<pre><code>$ kubectl apply -f crontjob.yaml
+$ kubectl get cronjobs.batch -n kube-system
+NAME          SCHEDULE     SUSPEND   ACTIVE   LAST SCHEDULE   AGE
+backup-etcd   0 21 * * *   False     0        20h             9d
+</code></pre><p>备份后, 可以查看具体的日志.</p>
+<pre><code>$ $ kubectl get pods -n kube-system| grep backup
+backup-etcd-1598662800-69sbh               0/1     Completed   0          2d8h
+backup-etcd-1598706000-vwhpz               0/1     Completed   0          44h
+backup-etcd-1598792400-m5z5z               0/1     Completed   0          20h
+$ kubectl logs -f backup-etcd-1598792400-m5z5z -n kube-system
+...
+13:00:12 [INFO] [etcd_save.go:120] Finished saving/uploading snapshot [snapshot-1598792407] on aliyun oss [etcdbackup] bucket
+13:00:12 [INFO] [etcd.go:111] Finished saving/uploading snapshot [snapshot-1598792407]
+13:00:12 [INFO] [etcd_save.go:259] health check for etcd: [{192.168.0.31:2379 true 18.571896ms }]
+</code></pre><h2 id="使用sealos-etcd-health">使用<code>sealos etcd health</code></h2>
+<p>很简单的调用<code>etcd clientv3</code>的sdk. 执行健康检查. 每次 <code>save</code> 也会进行健康检查.</p>
+<pre><code>$ sealos etcd health
+17:14:06 [INFO] [etcd_save.go:255] health check for etcd: [{192.168.0.31:2379 true 10.493436ms }]
+</code></pre><h2 id="使用sealos-etcd-restore">使用<code>sealos etcd restore</code></h2>
+<p><code>restore</code>的逻辑是(如果有高手有好的恢复逻辑, 请单独联系我):</p>
+<ol>
+<li>手动交互确认. 如果使用了<code>-f 或者 --force</code> 则跳过确认.</li>
+<li>通过<code>save</code>下来的文件, 进行<code>restore</code>操作. 会在执行<code>sealos etcd restore</code>的主机下生成目录<code>restorePath + hostname</code>.</li>
+<li>停止 <code>kubernetes kube-apiserver kube-controller-manager kube-scheduler etcd  </code>. 并备份<code>/var/lib/etcd/</code></li>
+<li>将2生成的备份目录打包成<code>tar</code>包, 复制到各<code>etcd</code>节点(一般是<code>master</code>节点).  然后在各节点分别解压到<code>/var/lib/etcd</code>.</li>
+<li>启动<code>kubernetes kube-apiserver kube-controller-manager kube-scheduler etcd</code></li>
+<li>最后做一次健康检查(60s).</li>
+<li>如果其中有错误发生. 则恢复3步骤的备份.</li>
+</ol>
+<pre><code>$ sealos etcd restore -h
+Restores an etcd member snapshot to an etcd directory
+
+Usage:
+  sealos etcd restore [flags]
+
+Flags:
+      --backupPath string    Specify snapshot backup dir (default &quot;/opt/sealos/ectd-backup&quot;)
+  -f, --force                restore need interactive to confirm
+  -h, --help                 help for restore
+      --name string          Specify snapshot name (default &quot;snapshot&quot;)
+      --restorePath string   Specify snapshot restore dir (default &quot;/opt/sealos/ectd-restore&quot;)
+
+Global Flags:
+      --config string   config file (default is $HOME/.sealos/config.yaml)
+</code></pre><p>与<code>sealos save</code> 相反的操作.  但是此操作比较危险.  所以添加了交互确认.</p>
+<p>选项说明</p>
+<ul>
+<li>
+<p><code>--backupPath</code>:  存储备份的文件夹. 默认和<code>save</code>下来的一致, <code>/opt/sealos/ectd-backup</code></p>
+</li>
+<li>
+<p><code>--restorePath</code>:  恢复文件夹. 默认<code>/opt/sealos/ectd-restore</code>. 配合主机名. 避免多<code>master</code>导致恢复文件夹重复.</p>
+</li>
+<li>
+<p><code>-f, --force</code>:  交互式确认是否要执行restore.</p>
+</li>
+<li>
+<p><code>--name</code>:  备份的文件名字. 默认和<code>save</code>下来的一致. <code>snapshot</code></p>
+</li>
+</ul>
+<h3 id="单机测试restore恢复">单机测试restore恢复</h3>
+<p>如下:</p>
+<pre><code>[root@dev-k8s-master ~]# ./sealos etcd restore
+restore cmd will stop your kubernetes cluster immediately and restore etcd from your backup snapshot file  (y/n)?y
+17:34:17 [INFO] [ssh.go:12] [ssh][192.168.160.243] hostname
+17:34:17 [DEBG] [ssh.go:24] [ssh][192.168.160.243]command result is: dev-k8s-master
+
+17:34:17 [INFO] [ssh.go:105] [ssh][192.168.160.243] cd /tmp &amp;&amp; rm -rf /opt/sealos/ectd-restore-dev-k8s-master
+17:34:17 [INFO] [ssh.go:12] [ssh][192.168.160.243] hostname
+17:34:18 [DEBG] [ssh.go:24] [ssh][192.168.160.243]command result is: dev-k8s-master
+
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:1598866458.160008,&quot;caller&quot;:&quot;snapshot/v3_snapshot.go:296&quot;,&quot;msg&quot;:&quot;restoring snapshot&quot;,&quot;path&quot;:&quot;/opt/sealos/ectd-backup/snapshot&quot;,&quot;wal-dir&quot;:&quot;/opt/sealos/ectd-restore-dev-k8s-master/member/wal&quot;,&quot;data-dir&quot;:&quot;/opt/sealos/ectd-restore-dev-k8s-master&quot;,&quot;snap-dir&quot;:&quot;/opt/sealos/ectd-restore-dev-k8s-master/member/snap&quot;}
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:1598866458.1982617,&quot;caller&quot;:&quot;mvcc/kvstore.go:380&quot;,&quot;msg&quot;:&quot;restored last compact revision&quot;,&quot;meta-bucket-name&quot;:&quot;meta&quot;,&quot;meta-bucket-name-key&quot;:&quot;finishedCompactRev&quot;,&quot;restored-compact-revision&quot;:970469}
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:1598866458.2281547,&quot;caller&quot;:&quot;membership/cluster.go:392&quot;,&quot;msg&quot;:&quot;added member&quot;,&quot;cluster-id&quot;:&quot;d12074ddc55c9483&quot;,&quot;local-member-id&quot;:&quot;0&quot;,&quot;added-peer-id&quot;:&quot;5dfe17d3cf203a7e&quot;,&quot;added-peer-peer-urls&quot;:[&quot;https://192.168.160.243:2380&quot;]}
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:1598866458.235216,&quot;caller&quot;:&quot;snapshot/v3_snapshot.go:309&quot;,&quot;msg&quot;:&quot;restored snapshot&quot;,&quot;path&quot;:&quot;/opt/sealos/ectd-backup/snapshot&quot;,&quot;wal-dir&quot;:&quot;/opt/sealos/ectd-restore-dev-k8s-master/member/wal&quot;,&quot;data-dir&quot;:&quot;/opt/sealos/ectd-restore-dev-k8s-master&quot;,&quot;snap-dir&quot;:&quot;/opt/sealos/ectd-restore-dev-k8s-master/member/snap&quot;}
+17:34:28 [INFO] [ssh.go:105] [ssh][192.168.160.243] cd /tmp &amp;&amp; mv /etc/kubernetes/manifests /etc/kubernetes/manifestslezSCljV
+17:34:28 [INFO] [ssh.go:105] [ssh][192.168.160.243] cd /tmp &amp;&amp; mv /var/lib/etcd /var/lib/etcdlezSCljV
+17:34:38 [INFO] [etcd.go:136] send restore file to etcd master node and start etcd
+17:34:38 [INFO] [ssh.go:12] [ssh][192.168.160.243] hostname
+17:34:38 [DEBG] [ssh.go:24] [ssh][192.168.160.243]command result is: dev-k8s-master
+
+17:34:39 [INFO] [etcd_restore.go:140] compress file
+17:34:39 [INFO] [ssh.go:57] [ssh][192.168.160.243] mkdir -p /var/lib || true
+17:34:39 [DEBG] [download.go:29] [192.168.160.243]please wait for mkDstDir
+17:34:39 [INFO] [ssh.go:12] [ssh][192.168.160.243] ls -l /var/lib/ectd-restore-dev-k8s-master.tar 2&gt;/dev/null |wc -l
+17:34:39 [DEBG] [ssh.go:24] [ssh][192.168.160.243]command result is: 0
+
+17:34:39 [DEBG] [scp.go:24] [ssh]source file md5 value is bc76f9bb1aea210fb815a43aed27aa29
+17:34:40 [ALRT] [scp.go:98] [ssh][192.168.160.243]transfer total size is: 1244.01KB ;speed is 1MB
+17:34:40 [INFO] [ssh.go:12] [ssh][192.168.160.243] md5sum /var/lib/ectd-restore-dev-k8s-master.tar | cut -d&quot; &quot; -f1
+17:34:40 [DEBG] [ssh.go:24] [ssh][192.168.160.243]command result is: bc76f9bb1aea210fb815a43aed27aa29
+
+17:34:40 [DEBG] [scp.go:27] [ssh]host: 192.168.160.243 , remote md5: bc76f9bb1aea210fb815a43aed27aa29
+17:34:40 [INFO] [scp.go:31] [ssh]md5 validate true
+17:34:40 [INFO] [download.go:38] [192.168.160.243]copy file md5 validate success
+17:34:40 [DEBG] [download.go:44] [192.168.160.243]please wait for after hook
+17:34:40 [INFO] [ssh.go:57] [ssh][192.168.160.243] tar xf /var/lib/ectd-restore-dev-k8s-master.tar -C /var/lib/  &amp;&amp; mv /var/lib/ectd-restore-dev-k8s-master  /var/lib/etcd &amp;&amp; rm -rf /var/lib/ectd-restore-dev-k8s-master.tar
+17:34:41 [INFO] [etcd.go:145] Start kube-apiserver kube-controller-manager kube-scheduler
+17:34:41 [INFO] [ssh.go:105] [ssh][192.168.160.243] cd /tmp &amp;&amp; mv /etc/kubernetes/manifestslezSCljV /etc/kubernetes/manifests
+17:34:41 [INFO] [etcd.go:148] Wait 60s to health check for etcd
+17:35:41 [INFO] [etcd_save.go:259] health check for etcd: [{192.168.160.243:2379 true 6.206351ms }]
+17:35:41 [INFO] [etcd.go:151] restore kubernetes yourself glad~
+</code></pre><h1 id="sealos-exec-命令"><code>sealos exec</code> 命令</h1>
+<blockquote>
+<p>支持在指定节点执行自定义命令, 拷贝一个文件到一些指定节点</p>
+</blockquote>
+<p>如在所有master节点创建一个目录</p>
+<pre><code>sealos exec --cmd &quot;mkdir /data&quot; --label node-role.kubernetes.io/master=&quot;&quot;
+sealos exec --cmd &quot;mkdir /data&quot; --node x.x.x.x
+sealos exec --cmd &quot;mkdir /data&quot; --node dev-k8s-mater
+</code></pre><p>拷贝一个文件到一些指定节点</p>
+<pre><code>sealos exec --src /data/foo --dst /root/foo --label node-role.kubernetes.io/master=&quot;&quot;
+sealos exec --src /data/foo --dst /root/foo --node x.x.x.x
+sealos exec --src /data/foo --dst /root/foo --node dev-k8s-mater
+</code></pre><h2 id="实现方法">实现方法</h2>
+<h3 id="获取待执行的ip序列逻辑">获取待执行的<code>ip</code>序列逻辑</h3>
+<p>将 <code>--label , --node hostname</code> 所关联的对象全部转为<code>ip</code>, 以<code>ip</code>为基点去执行<code>copy</code>或者是<code>cmd</code>.</p>
+<p>使用<code>ListOptions</code>, 通过<code>labelSelector</code>直接定位到相关的<code>nodeList</code>节点. 如果<code>label</code>为空, 则返回空. 如果不为空, 则返回的<code>ip</code> 加入到待执行的<code>ip</code>序列.</p>
+<pre><code>func GetNodeListByLabel(k8sClient *kubernetes.Clientset, label string) (*v1.NodeList, error) {
+	listOption := &amp;metav1.ListOptions{LabelSelector: label}
+	return k8sClient.CoreV1().Nodes().List(context.TODO(), *listOption)
+}
+func GetNodeIpByLabel(k8sClient *kubernetes.Clientset, label string) ([]string, error) {
+	var ips []string
+	if label == &quot;&quot; {
+		return ips, nil
+	}
+	nodes, err := GetNodeListByLabel(k8sClient, label)
+	if err != nil {
+		return nil, err
+	}
+	for _, node := range nodes.Items {
+		for _, v := range node.Status.Addresses {
+			if v.Type == v1.NodeInternalIP {
+				ips = append(ips, v.Address)
+			}
+		}
+	}
+	if len(ips) != 0 {
+		return ips, nil
+	}
+	return nil, fmt.Errorf(&quot;label %s is not fount in kubernetes nodes&quot;, label)
+}
+</code></pre><p>将 <code>--node</code> 进行区分, 如果是<code>ip</code> ,则加入执行<code>ip</code>序列, 如果是<code>hostname</code>, 则加入到<code>hostname</code>序列, 通过使用Get方法, 获取K8s的ClientSet资源对象.通过<code>nodename</code>直接找到定位到node节点. 在通过一次<code>for loop</code> 找到<code>hostname</code>对应的<code>ip</code>, 将得到的<code>ip</code>加入到待执行的<code>ip</code>序列.</p>
+<pre><code>node, err := k8sClient.CoreV1().Nodes().Get(context.TODO(), nodeName, metav1.GetOptions{})
+
+for _, node := range resHost {
+	ip, err := GetNodeIpByName(k8sClient, node)
+	if err == nil {
+		ips = append(ips, ip)
+	}
+}
+</code></pre><p>这里对<code>ips</code>没有进行过滤. 只要满足是ipv4, 即加入到执行序列, 没有对<code>master ips</code>及<code>nodes ips</code>进行比对.</p>
+<pre><code>// 集群
+k8s-master    192.168.0.31
+huohua-test   192.168.0.30
+server65      192.168.0.65
+server88-new  192.168.0.88
+
+// sealos exec --cmd &quot;hostname&quot;  --node 192.168.0.21
+// 192.168.0.21 is not in your kubernetes. but if your ssh access 192.168.0.21. the command will be exec in 192.168.0.21.
+</code></pre><h3 id="执行命令逻辑">执行命令逻辑</h3>
+<p>判断是执行<code>copy</code> 或者是 <code>cmd</code>方法如下. 如果两者都存在, 则先执行<code>copy</code>逻辑, 再执行<code>cmd</code>逻辑.</p>
+<pre><code>type ExecFlag struct {
+	Dst      string
+	Src      string
+	Cmd      string
+	Label    string
+	ExecNode []string
+	SealConfig
+}
+
+func (e *ExecFlag) IsUseCopy() bool {
+	return FileExist(e.Src) &amp;&amp; e.Dst != &quot;&quot;
+}
+
+func (e *ExecFlag) IsUseCmd() bool {
+	return e.Cmd != &quot;&quot;
+}
+</code></pre><h3 id="远程命令和复制实现">远程命令和复制实现</h3>
+<p>实现<code>scp</code>复制, 则是通过复制单个文件, 然后递归复制即可. 查看具体的<a href="https://github.com/fanux/sealos/blob/develop/pkg/sshcmd/sshutil/scp.go">源码</a>
+如果<code>--dst</code>在目标机器存在, 则不执行copy动作, 直接就跳过了.</p>
+<p>// todo
+这里是否需要添加一个flag, 比如<code>--force, -f</code>, 直接覆盖? 或者先删除再复制?</p>
+<pre><code>// CopyLocalToRemote is copy file or dir to remotePath
+func (ss *SSH) CopyLocalToRemote(host, localPath, remotePath string) {
+
+}
+// ssh session is a problem, 复用ssh链接
+func (ss *SSH) copyLocalDirToRemote(sftpClient *sftp.Client, localPath, remotePath string) {
+
+}
+// solve the session
+func (ss *SSH) copyLocalFileToRemote(sftpClient *sftp.Client, localPath, remotePath string) {
+
+}
+</code></pre><p>实现执行命令的逻辑. 这里是用的ssh. 具体不赘述.</p>
+<h2 id="使用方法">使用方法</h2>
+<pre><code>$ ./sealos exec -h
+support exec cmd or copy file by Label/nodes
+
+Usage:
+  sealos exec [flags]
+
+Examples:
+
+	# exec cmd by label or nodes.  when --label and --node is Exist, get Union of both.
+	sealos exec --cmd &quot;mkdir /data&quot; --label node-role.kubernetes.io/master= --node 192.168.0.2
+	sealos exec --cmd &quot;mkdir /data&quot; --node 192.168.0.2 --nodes dev-k8s-mater
+
+	# exec copy src file to dst by label or nodes. when --label and --node is Exist, get Union of both.
+	sealos exec --src /data/foo --dst /root/foo --label node-role.kubernetes.io/master=&quot;&quot;
+	sealos exec --src /data/foo --dst /root/foo --node 192.168.0.2
+
+
+Flags:
+      --cmd string     exec command string
+      --dst string     dest file location
+  -h, --help           help for exec
+      --label string   kubernetes labels like node-role.kubernetes.io/master=
+      --node strings   node ip or hostname in kubernetes
+      --src string     source file location
+
+Global Flags:
+      --config string   config file (default is $HOME/.sealos/config.yaml)
+</code></pre><p>选项说明:</p>
+<ul>
+<li><code>--cmd</code>:  执行的命令.</li>
+<li><code>--src</code>: 本地文件路径, 可以使文件或者是文件夹, 配合<code>--dst</code>使用.</li>
+<li><code>--dst</code>: 目标文件路径, 配合<code>--src</code>使用.</li>
+<li><code>--label</code>: <code>kubernetes</code>集群的<code>label</code>. 支持<code>label</code>逻辑表达式, 如 <code>kubernetes.io/arch!=amd64</code></li>
+<li><code>--node</code>: 节点的<code>ip</code>或者是<code>hostname</code></li>
+</ul>
+<h2 id="测试相关">测试相关</h2>
+<p>集群如下</p>
+<pre><code>$ kubectl get nodes --show-labels
+NAME           STATUS   ROLES    AGE   VERSION   LABELS
+huohua-test    Ready    &lt;none&gt;   93d   v1.18.3   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=huohua-test,kubernetes.io/os=linux,name=huohua
+k8s-master     Ready    master   93d   v1.18.3   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k8s-master,kubernetes.io/os=linux,node-role.kubernetes.io/master=
+server65       Ready    &lt;none&gt;   89d   v1.18.3   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=server65,kubernetes.io/os=linux
+server88-new   Ready    &lt;none&gt;   90d   v1.18.3   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=server88-new,kubernetes.io/os=linux,name=front
+</code></pre><h4 id="仅使用---label-执行-cmd-命令">仅使用 <code>--label</code> 执行 <code>cmd</code> 命令</h4>
+<p>Use &ndash;label to exec cmd</p>
+<pre><code>$ ./sealos exec --cmd &quot;hostname &quot;  --label beta.kubernetes.io/arch=amd64
+19:09:35 [INFO] [ssh.go:57] [ssh][192.168.0.88] cd /tmp &amp;&amp; hostname
+19:09:35 [INFO] [ssh.go:57] [ssh][192.168.0.31] cd /tmp &amp;&amp; hostname
+19:09:35 [INFO] [ssh.go:57] [ssh][192.168.0.30] cd /tmp &amp;&amp; hostname
+19:09:35 [INFO] [ssh.go:57] [ssh][192.168.0.65] cd /tmp &amp;&amp; hostname
+19:09:35 [INFO] [ssh.go:50] [192.168.0.88] server88-new
+19:09:35 [INFO] [ssh.go:50] [192.168.0.30] huohua-test
+19:09:35 [INFO] [ssh.go:50] [192.168.0.65] server65
+19:09:36 [INFO] [ssh.go:50] [192.168.0.31] k8s-master
+</code></pre><h4 id="仅使用---node-执行-cmd-命令">仅使用 <code>--node</code> 执行 <code>cmd</code> 命令</h4>
+<p>Use &ndash;node to exec cmd</p>
+<pre><code>$ ./sealos exec --cmd &quot;hostname -i&quot;  --node huohua-test --node 192.168.0.65
+19:20:47 [INFO] [ssh.go:57] [ssh][192.168.0.30] cd /tmp &amp;&amp; hostname -i
+19:20:47 [INFO] [ssh.go:57] [ssh][192.168.0.65] cd /tmp &amp;&amp; hostname -i
+19:20:47 [INFO] [ssh.go:50] [192.168.0.30] 192.168.0.30
+19:20:47 [INFO] [ssh.go:50] [192.168.0.65] 192.168.0.65
+</code></pre><h4 id="使用---label-和---node执行-cmd-命令">使用 <code>--label</code> 和 <code>--node</code>执行 <code>cmd</code> 命令</h4>
+<p>Use <code>--node  --label </code> to exec cmd</p>
+<pre><code>$ ./sealos exec --cmd &quot;hostname -i&quot;  --node huohua-test  --label node-role.kubernetes.io/master=
+19:21:44 [INFO] [ssh.go:57] [ssh][192.168.0.30] cd /tmp &amp;&amp; hostname -i
+19:21:44 [INFO] [ssh.go:57] [ssh][192.168.0.31] cd /tmp &amp;&amp; hostname -i
+19:21:44 [INFO] [ssh.go:50] [192.168.0.30] 192.168.0.30
+19:21:45 [INFO] [ssh.go:50] [192.168.0.31] 192.168.0.31
+</code></pre><h4 id="使用---label-和---node执行-cmd-命令和-复制文件">使用 <code>--label</code> 和 <code>--node</code>执行 <code>cmd</code> 命令和 复制文件</h4>
+<p>Use &ndash;node &amp; &ndash;label  to exec cmd &amp; copy files</p>
+<pre><code>$ ./sealos exec --cmd &quot;ls -lh /data/01.txt&quot; --src /root/01.txt --dst /data/01.txt  --node huohua-test  --label node-role.kubernetes.io/master=
+19:23:01 [INFO] [ssh.go:12] [ssh][192.168.0.30] ls -l /data/01.txt 2&gt;/dev/null |wc -l
+19:23:01 [INFO] [ssh.go:12] [ssh][192.168.0.31] ls -l /data/01.txt 2&gt;/dev/null |wc -l
+19:23:01 [DEBG] [ssh.go:24] [ssh][192.168.0.30]command result is: 0
+19:23:02 [INFO] [scp.go:328] [ssh]transfer [/root/01.txt] total size is: 2.11MB ;speed is 2MB
+19:23:02 [DEBG] [ssh.go:24] [ssh][192.168.0.31]command result is: 0
+19:23:02 [INFO] [scp.go:328] [ssh]transfer [/root/01.txt] total size is: 2.11MB ;speed is 2MB
+19:23:02 [INFO] [ssh.go:57] [ssh][192.168.0.30] cd /tmp &amp;&amp; ls -lh /data/01.txt
+19:23:02 [INFO] [ssh.go:57] [ssh][192.168.0.31] cd /tmp &amp;&amp; ls -lh /data/01.txt
+19:23:02 [INFO] [ssh.go:50] [192.168.0.30] -rw-r--r-- 1 root root 2.2M 9月   4 19:23 /data/01.txt
+19:23:03 [INFO] [ssh.go:50] [192.168.0.31] -rw-r--r--. 1 root root 2.2M Sep  4 19:23 /data/01.txt
+</code></pre><h4 id="使用---label-和---node执行-cmd-命令和-复制文件夹">使用 <code>--label</code> 和 <code>--node</code>执行 <code>cmd</code> 命令和 复制文件夹</h4>
+<p>Use &ndash;node &amp; &ndash;label  to exec cmd &amp; copy dir</p>
+<pre><code>$ ./sealos exec --cmd &quot;ls -lh /data/test&quot; --src /root/test --dst /data/test  --node huohua-test  --label node-role.kubernetes.io/master=
+19:24:24 [INFO] [ssh.go:12] [ssh][192.168.0.30] ls -l /data/test 2&gt;/dev/null |wc -l
+19:24:24 [INFO] [ssh.go:12] [ssh][192.168.0.31] ls -l /data/test 2&gt;/dev/null |wc -l
+19:24:24 [DEBG] [ssh.go:24] [ssh][192.168.0.30]command result is: 0
+19:24:24 [INFO] [scp.go:328] [ssh]transfer [/root/test/crontab.yaml] total size is: 1.19KB ;speed is 1KB
+19:24:24 [INFO] [scp.go:328] [ssh]transfer [/root/test/crontab.yaml.bak] total size is: 2.23KB ;speed is 2KB
+19:24:24 [DEBG] [ssh.go:24] [ssh][192.168.0.31]command result is: 0
+19:24:25 [INFO] [scp.go:328] [ssh]transfer [/root/test/crontab.yaml] total size is: 1.19KB ;speed is 1KB
+19:24:25 [INFO] [scp.go:328] [ssh]transfer [/root/test/crontab.yaml.bak] total size is: 2.23KB ;speed is 2KB
+19:24:25 [INFO] [ssh.go:57] [ssh][192.168.0.30] cd /tmp &amp;&amp; ls -lh /data/test
+19:24:25 [INFO] [ssh.go:57] [ssh][192.168.0.31] cd /tmp &amp;&amp; ls -lh /data/test
+19:24:25 [INFO] [ssh.go:50] [192.168.0.30] 总用量 8.0K
+19:24:25 [INFO] [ssh.go:50] [192.168.0.30] -rw-r--r-- 1 root root 1.2K 9月   4 19:24 crontab.yaml
+19:24:25 [INFO] [ssh.go:50] [192.168.0.31] total 8.0K
+</code></pre><h4 id="使用---label时--label-不存在">使用 <code>--label</code>时,  <code>label</code> 不存在</h4>
+<p>Use &ndash;label if label not exist</p>
+<pre><code>$ ./sealos exec --cmd &quot;hostname -i&quot;  --node huohua-test  --label node-role.kubernete.
+12:48:25 [EROR] [exec.go:53] get ips err:  unable to parse requirement: invalid label key &quot;node-role.kubernete.&quot;: name part must consist of alphanumeric characters, '-', '_' or '.', and must start and end with an alphanumeric character (e.g. 'MyName',  or 'my.name',  or '123-abc', regex used for validation is '([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]')
+$ ./sealos exec --cmd &quot;hostname -i&quot;  --node huohua-test  --label node-role.kubernete
+12:48:42 [EROR] [exec.go:53] get ips err:  label node-role.kubernete is not fount in kubernetes nodes
+</code></pre><h4 id="使用---node时--node不存在">使用 <code>--node</code>时,  <code>node</code>不存在</h4>
+<p>Use <code>--node</code> if node  not exist in kuernetes</p>
+<pre><code>12:50:05 [INFO] [ssh.go:50] [192.168.0.88] server88-new
+12:50:05 [INFO] [ssh.go:50] [192.168.0.30] huohua-test
+12:50:05 [INFO] [ssh.go:50] [192.168.0.65] server65
+12:50:05 [INFO] [ssh.go:50] [192.168.0.31] k8s-master
+## this will output nothing
+$ ./sealos exec --cmd &quot;hostname -i&quot;  --node huohua-test031
+## only exec on exsit nodes.
+./sealos exec --cmd &quot;hostname -i&quot;  --node huohua-test031 --node 192.168.0.65
+12:51:28 [INFO] [ssh.go:57] [ssh][192.168.0.65] cd /tmp &amp;&amp; hostname -i
+12:51:29 [INFO] [ssh.go:50] [192.168.0.65] 192.168.0.65
+## when nodes ip is format but is not in kubernetes, will appear ssh session error , timeout.
+$ ./sealos exec --cmd &quot;hostname -i&quot;  --node huohua-test031 --node 192.168.9.65
+12:52:14 [INFO] [ssh.go:57] [ssh][192.168.9.65] cd /tmp &amp;&amp; hostname -i
+12:53:14 [EROR] [ssh.go:60] [ssh][192.168.9.65]Error create ssh session failed,dial tcp 192.168.9.65:22: i/o timeout
+</code></pre><h4 id="支持kubernetes-label的逻辑表达式">支持<code>kubernetes label</code>的逻辑表达式.</h4>
+<p>support kubernetes label exp like <code>kubernetes.io/arch!=amd64</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl get nodes --show-labels
+NAME           STATUS   ROLES    AGE   VERSION   LABELS
+huohua-test    Ready    &lt;none&gt;   93d   v1.18.3   beta.kubernetes.io/arch<span style="color:#f92672">=</span>amd64,beta.kubernetes.io/os<span style="color:#f92672">=</span>linux,kubernetes.io/arch<span style="color:#f92672">=</span>amd64,kubernetes.io/hostname<span style="color:#f92672">=</span>huohua-test,kubernetes.io/os<span style="color:#f92672">=</span>linux,name<span style="color:#f92672">=</span>huohua
+k8s-master     Ready    master   93d   v1.18.3   beta.kubernetes.io/arch<span style="color:#f92672">=</span>amd64,beta.kubernetes.io/os<span style="color:#f92672">=</span>linux,kubernetes.io/arch<span style="color:#f92672">=</span>amd64,kubernetes.io/hostname<span style="color:#f92672">=</span>k8s-master,kubernetes.io/os<span style="color:#f92672">=</span>linux,node-role.kubernetes.io/master<span style="color:#f92672">=</span>
+server65       Ready    &lt;none&gt;   89d   v1.18.3   beta.kubernetes.io/arch<span style="color:#f92672">=</span>amd64,beta.kubernetes.io/os<span style="color:#f92672">=</span>linux,kubernetes.io/arch<span style="color:#f92672">=</span>amd64,kubernetes.io/hostname<span style="color:#f92672">=</span>server65,kubernetes.io/os<span style="color:#f92672">=</span>linux
+server88-new   Ready    &lt;none&gt;   89d   v1.18.3   beta.kubernetes.io/arch<span style="color:#f92672">=</span>amd64,beta.kubernetes.io/os<span style="color:#f92672">=</span>linux,kubernetes.io/arch<span style="color:#f92672">=</span>amd64,kubernetes.io/hostname<span style="color:#f92672">=</span>server88-new,kubernetes.io/os<span style="color:#f92672">=</span>linux,name<span style="color:#f92672">=</span>front
+$ ./sealos exec --cmd  <span style="color:#e6db74">&#34;hostname -i&#34;</span>  --label name!<span style="color:#f92672">=</span>front
+09:17:21 <span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>ssh.go:57<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>ssh<span style="color:#f92672">][</span>192.168.0.65<span style="color:#f92672">]</span> cd /tmp <span style="color:#f92672">&amp;&amp;</span> hostname -i
+09:17:21 <span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>ssh.go:57<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>ssh<span style="color:#f92672">][</span>192.168.0.30<span style="color:#f92672">]</span> cd /tmp <span style="color:#f92672">&amp;&amp;</span> hostname -i
+09:17:21 <span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>ssh.go:57<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>ssh<span style="color:#f92672">][</span>192.168.0.31<span style="color:#f92672">]</span> cd /tmp <span style="color:#f92672">&amp;&amp;</span> hostname -i
+09:17:21 <span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>ssh.go:50<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>192.168.0.30<span style="color:#f92672">]</span> 192.168.0.30
+09:17:21 <span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>ssh.go:50<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>192.168.0.65<span style="color:#f92672">]</span> 192.168.0.65
+09:17:21 <span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>ssh.go:50<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>192.168.0.31<span style="color:#f92672">]</span> 192.168.0.31
+</code></pre></div>
+        </div>
+        <!-- tags -->
+        <div class="mb-3">
+          <h5 class="d-inline-block mr-3">Tags:</h5>
+          <ul class="list-inline d-inline-block">
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/etcd"> 
+            Etcd</a>
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/backup"> , 
+            Backup</a>
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/exec"> , 
+            Exec</a>
+            
+          </ul>
+        </div>
+        <!-- previous -->
+        <div class="mb-3 link-article">
+    <div class="pre-article">
+        
+            <div><i class="fa fa-arrow-left"></i> 上一篇</div>
+            <a href="https://www.fenghong.tech/blog/technology/why-tcp-three-way-hanshake/">为什么 TCP 建立连接需要三次握手</a>
+        
+    </div>
+    <div class="next-article">
+        
+            <div>下一篇 <i class="fa fa-arrow-right"></i></div>
+            <a href="https://www.fenghong.tech/blog/kubernetes/sealos-multi-iface-solution/">sealos 多网卡安装解决方案</a>
+        
+    </div>
+</div>
+        <!-- previous -->
+
+        <!-- recommend -->
+        
+
+<div class="mb-3">
+  <h2>文章推荐</h2>
+  <ul class="related">
+  
+    <li><a href="/blog/2018/2018-06-13-mysql-06/">MYSQL备份</a></li>
+  
+  </ul>
+</div>
+
+
+        <!-- comments -->
+
+        
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script>
+          window.onload = function() {
+              const gitalk = new Gitalk({
+              clientID: 'a0a546df858aafb5300e',
+              clientSecret: '67d7b40de25c072fc38840ffb9c06ceab7ef5080',
+              repo: 'oldthreefeng.github.io',
+              owner: 'oldthreefeng',
+              admin: ['oldthreefeng'],
+              id: hex_md5(hex_md5(window.location.pathname + window.location.hash)), 
+              distractionFreeMode: false 
+            });
+            (function() {
+              if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+                document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+                return;
+              }
+              gitalk.render('gitalk-container');
+            })();
+          }
+        </script>
+        
+      </div>
+      <!-- sidebar -->
+<aside class="col-lg-4 order-1 order-lg-2">
+  <!-- tags -->
+  <div class="bg-white px-4 py-5 box-shadow mb-5 word-cloud">
+    <h4 class="mb-4">标签</h4>
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div id="tag-cloud" style="padding: 5px 15px">
+      
+        
+          
+          
+          
+          <a href="/tags/acme" style="font-size:1.0188679245283019rem">acme</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/acmetiny" style="font-size:1.0188679245283019rem">acmetiny</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/alertmanager" style="font-size:1rem">alertmanager</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/algorithm" style="font-size:1.1132075471698113rem">algorithm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/aliyun" style="font-size:1rem">aliyun</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ansible" style="font-size:1.0754716981132075rem">ansible</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/apisix" style="font-size:1rem">apisix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/arm64" style="font-size:1.0188679245283019rem">arm64</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/authorization" style="font-size:1rem">authorization</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/backup" style="font-size:1.0377358490566038rem">backup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binarysearch" style="font-size:1.0188679245283019rem">binarysearch</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binlog" style="font-size:1rem">binlog</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bit" style="font-size:1.0188679245283019rem">bit</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bug" style="font-size:1.0188679245283019rem">bug</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cache" style="font-size:1rem">cache</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/certbot" style="font-size:1rem">certbot</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/channel" style="font-size:1rem">channel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/chrome" style="font-size:1.0188679245283019rem">chrome</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ci" style="font-size:1rem">ci</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cluster" style="font-size:1.1132075471698113rem">cluster</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cobra" style="font-size:1rem">cobra</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coco" style="font-size:1.0377358490566038rem">coco</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coding" style="font-size:1rem">coding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/computer" style="font-size:1rem">computer</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/consul" style="font-size:1rem">consul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/containerd" style="font-size:1.0188679245283019rem">containerd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coredns" style="font-size:1rem">coredns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cors" style="font-size:1rem">cors</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/crypto" style="font-size:1rem">crypto</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/curl" style="font-size:1rem">curl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dashboard" style="font-size:1rem">dashboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dcdn" style="font-size:1rem">dcdn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/debt" style="font-size:1rem">debt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/devops" style="font-size:1.0188679245283019rem">devops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dingding" style="font-size:1rem">dingding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/disk" style="font-size:1rem">disk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dmesg" style="font-size:1rem">dmesg</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dns" style="font-size:1rem">dns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/docker" style="font-size:1.2264150943396226rem">docker</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/doublylinkedlist" style="font-size:1rem">doublylinkedlist</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/elk" style="font-size:1rem">elk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/error" style="font-size:1rem">error</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/etcd" style="font-size:1.0377358490566038rem">etcd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exec" style="font-size:1.0188679245283019rem">exec</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exp" style="font-size:1rem">exp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/federated" style="font-size:1rem">federated</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/filecoin" style="font-size:1rem">filecoin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/find" style="font-size:1rem">find</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/firewalld" style="font-size:1rem">firewalld</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/fix" style="font-size:1.0377358490566038rem">fix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flag" style="font-size:1.0188679245283019rem">flag</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flannel" style="font-size:1rem">flannel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/food" style="font-size:1.0188679245283019rem">food</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/frp" style="font-size:1.0377358490566038rem">frp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ftp" style="font-size:1.0188679245283019rem">ftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/games" style="font-size:1rem">games</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gin" style="font-size:1.0188679245283019rem">gin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/git" style="font-size:1.2075471698113207rem">git</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/github" style="font-size:1.0188679245283019rem">github</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gitlab" style="font-size:1rem">gitlab</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go" style="font-size:1.320754716981132rem">go</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go-vim" style="font-size:1rem">go-vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gogs" style="font-size:1.0566037735849056rem">gogs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/goland" style="font-size:1.0188679245283019rem">goland</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/golang" style="font-size:1.0377358490566038rem">golang</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gorequest" style="font-size:1rem">gorequest</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grafana" style="font-size:1.0188679245283019rem">grafana</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grub" style="font-size:1rem">grub</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hack" style="font-size:1.0188679245283019rem">hack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/haproxy" style="font-size:1.0377358490566038rem">haproxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/harbor" style="font-size:1.0188679245283019rem">harbor</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hash" style="font-size:1.0188679245283019rem">hash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hashmap" style="font-size:1rem">hashmap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/helm" style="font-size:1.0188679245283019rem">helm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hexo" style="font-size:1.0377358490566038rem">hexo</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/http" style="font-size:1.0754716981132075rem">http</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/https" style="font-size:1rem">https</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/index" style="font-size:1rem">index</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ingress" style="font-size:1.0377358490566038rem">ingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/inotify" style="font-size:1rem">inotify</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/internet" style="font-size:1.169811320754717rem">internet</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/interview" style="font-size:1rem">interview</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/iptables" style="font-size:1.0377358490566038rem">iptables</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ipvs" style="font-size:1.0188679245283019rem">ipvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/java" style="font-size:1.0754716981132075rem">java</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jeju" style="font-size:1rem">jeju</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jenkins" style="font-size:1.0943396226415094rem">jenkins</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jetbrains" style="font-size:1rem">jetbrains</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jumpserver" style="font-size:1.0566037735849056rem">jumpserver</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jvm" style="font-size:1rem">jvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/keepalived" style="font-size:1rem">keepalived</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kernel" style="font-size:1rem">kernel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/knowledge" style="font-size:1rem">knowledge</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kube-proxy" style="font-size:1.0188679245283019rem">kube-proxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetes" style="font-size:1.3962264150943395rem">kubernetes</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesrbac" style="font-size:1rem">kubernetesrbac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesssl" style="font-size:1.0188679245283019rem">kubernetesssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kuboard" style="font-size:1.0566037735849056rem">kuboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lb" style="font-size:1rem">lb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/learning" style="font-size:1.0566037735849056rem">learning</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/leetcode" style="font-size:1.0188679245283019rem">leetcode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libcurl" style="font-size:1rem">libcurl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libssh2" style="font-size:1rem">libssh2</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/link" style="font-size:1rem">link</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/linux" style="font-size:1.9811320754716981rem">linux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/living" style="font-size:1rem">living</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lnux" style="font-size:1rem">lnux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/log" style="font-size:1.0566037735849056rem">log</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logrus" style="font-size:1rem">logrus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logs" style="font-size:1rem">logs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logstash" style="font-size:1rem">logstash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/loki" style="font-size:1rem">loki</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lru" style="font-size:1rem">lru</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/luna" style="font-size:1rem">luna</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvm" style="font-size:1rem">lvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvs" style="font-size:1rem">lvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mac" style="font-size:1rem">mac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/malaysia" style="font-size:1rem">malaysia</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/manage" style="font-size:1rem">manage</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/map" style="font-size:1rem">map</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mariadb" style="font-size:1.0377358490566038rem">mariadb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/markdown" style="font-size:1.0188679245283019rem">markdown</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mfa" style="font-size:1rem">mfa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mha" style="font-size:1rem">mha</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mode" style="font-size:1rem">mode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/module" style="font-size:1rem">module</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mount" style="font-size:1rem">mount</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mysql" style="font-size:1.2452830188679245rem">mysql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/navicat" style="font-size:1rem">navicat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/network" style="font-size:1rem">network</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nfs" style="font-size:1.0754716981132075rem">nfs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginx" style="font-size:1.2264150943396226rem">nginx</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginxingress" style="font-size:1.0566037735849056rem">nginxingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/node_exporter" style="font-size:1.0188679245283019rem">node_exporter</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/numpy" style="font-size:1rem">numpy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ops" style="font-size:1.2452830188679245rem">ops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/owncloud" style="font-size:1rem">owncloud</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/password" style="font-size:1rem">password</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/paxos" style="font-size:1.0188679245283019rem">paxos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/php" style="font-size:1rem">php</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pipeline" style="font-size:1rem">pipeline</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/polynomial" style="font-size:1rem">polynomial</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/problem" style="font-size:1rem">problem</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/prometheus" style="font-size:1.0943396226415094rem">prometheus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pv" style="font-size:1.0754716981132075rem">pv</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pvc" style="font-size:1.0754716981132075rem">pvc</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/python" style="font-size:1.0943396226415094rem">python</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/queue" style="font-size:1rem">queue</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/qw3xt" style="font-size:1rem">qw3xt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rabbitmq" style="font-size:1.0188679245283019rem">rabbitmq</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/raft" style="font-size:1rem">raft</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rebase" style="font-size:1rem">rebase</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/redis" style="font-size:1.0377358490566038rem">redis</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/resources" style="font-size:1.0188679245283019rem">resources</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsa" style="font-size:1rem">rsa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsync" style="font-size:1.0188679245283019rem">rsync</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/safe" style="font-size:1.0754716981132075rem">safe</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/samba" style="font-size:1rem">samba</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sealos" style="font-size:1rem">sealos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/secure" style="font-size:1rem">secure</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sed" style="font-size:1rem">sed</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/server" style="font-size:1.2075471698113207rem">server</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sftp" style="font-size:1rem">sftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shadowsocks" style="font-size:1.0188679245283019rem">shadowsocks</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shell" style="font-size:1.0188679245283019rem">shell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slap" style="font-size:1rem">slap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slave" style="font-size:1rem">slave</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slb" style="font-size:1rem">slb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slowquery" style="font-size:1rem">slowquery</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sonar" style="font-size:1.0377358490566038rem">sonar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sourcetree" style="font-size:1.0188679245283019rem">sourcetree</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sql" style="font-size:1.0188679245283019rem">sql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ss" style="font-size:1rem">ss</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssh" style="font-size:1.0754716981132075rem">ssh</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssl" style="font-size:1.1132075471698113rem">ssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stack" style="font-size:1rem">stack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stress" style="font-size:1rem">stress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/style" style="font-size:1rem">style</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/switchyomega" style="font-size:1rem">switchyomega</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/syncd" style="font-size:1rem">syncd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/taint" style="font-size:1rem">taint</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tar" style="font-size:1rem">tar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tcp" style="font-size:1.0188679245283019rem">tcp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/testing" style="font-size:1rem">testing</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tomcat" style="font-size:1rem">tomcat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tour" style="font-size:1.0188679245283019rem">tour</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/trojan" style="font-size:1rem">trojan</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ubuntu" style="font-size:1.0566037735849056rem">ubuntu</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/udp" style="font-size:1rem">udp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/uk8s" style="font-size:1rem">uk8s</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unauthorized" style="font-size:1rem">unauthorized</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unblockneteasemusic" style="font-size:1rem">unblockneteasemusic</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upgrade" style="font-size:1.0188679245283019rem">upgrade</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upstream" style="font-size:1rem">upstream</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/v1.18.3" style="font-size:1rem">v1.18.3</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vim" style="font-size:1rem">vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/virtul" style="font-size:1rem">virtul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vpn" style="font-size:1.0754716981132075rem">vpn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vscode" style="font-size:1rem">vscode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/websocket" style="font-size:1rem">websocket</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/wifi" style="font-size:1rem">wifi</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xshell" style="font-size:1rem">xshell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xtrabackup" style="font-size:1rem">xtrabackup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/yum" style="font-size:1rem">yum</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/zabbix" style="font-size:1rem">zabbix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e6%95%b0%e6%8d%ae%e5%ba%93%e5%8e%9f%e7%90%86" style="font-size:1rem">数据库原理</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95" style="font-size:1rem">贪心算法</a>
+        
+      
+      </div>
+    
+  </div>
+
+  <!-- profile -->
+  <!-- toc -->
+  
+  <div class="bg-white px-4 py-5 box-shadow mb-5 sticky-top">
+    <h4 class="mb-4">目录</h4>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#使用sealos-etcd-save">使用<code>sealos etcd save</code></a>
+      <ul>
+        <li><a href="#在kubernetes-使用cronjob备份">在<code>kubernetes </code>使用<code>cronjob</code>备份</a></li>
+      </ul>
+    </li>
+    <li><a href="#使用sealos-etcd-health">使用<code>sealos etcd health</code></a></li>
+    <li><a href="#使用sealos-etcd-restore">使用<code>sealos etcd restore</code></a>
+      <ul>
+        <li><a href="#单机测试restore恢复">单机测试restore恢复</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#实现方法">实现方法</a>
+      <ul>
+        <li><a href="#获取待执行的ip序列逻辑">获取待执行的<code>ip</code>序列逻辑</a></li>
+        <li><a href="#执行命令逻辑">执行命令逻辑</a></li>
+        <li><a href="#远程命令和复制实现">远程命令和复制实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#使用方法">使用方法</a></li>
+    <li><a href="#测试相关">测试相关</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+
+</aside>
+<!-- /sidebar -->
+
+    </div>
+  </div>
+</section>
+<!-- /blog details -->
+
+
+
+<footer>
+	
+	<div class="section bg-secondary">
+		<div class="container">
+			<div class="row justify-content-between">
+				
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					<a class="mb-4 d-inline-block" href="/"><img class="img-fluid"
+																								src="/images/images/logo-alt.png" alt="Louis Blog" width="60%"></a>
+					<p class="text-light mb-5">每一个不曾起舞的日子都是对生命的辜负.</p>
+					<h4 class="text-white mb-4">关注我</h4>
+					
+					<ul class="list-inline social-icon-alt">
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://twitter.com/louishong17"><i class="fa fa-twitter"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://github.com/oldthreefeng"><i class="fa fa-github"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="/contact"><i class="fa fa-wechat"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="mailto:992165098@qq.com"><i class="fa fa-envelope"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://www.fenghong.tech/blog/index.xml"><i class="fa fa-rss"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					
+					
+					
+					
+					<div class="mb-5">
+						<h4 class="text-white mb-4">联系信息</h4>
+						<p class="text-light mb-3">上海 · 浦东新区</p>
+						<p class="text-light mb-3"></p>
+						<p class="text-light mb-3">微信联系方式</p>
+						<p class="text-light mb-3"><img src="/images/images/wechat-qrcode.png" width="356px"></p>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="bg-secondary-darken py-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+					<p class="mb-0 text-white">Copyright © 2020 Louis</p>
+				</div>
+				<div class="col-md-6 text-center text-md-right">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item mx-0"><a class="d-inline-block px-3 text-white" href="https://beian.miit.gov.cn/"
+																									class="text-white">鄂ICP备18027870号-1</a></li>
+						<p class="list-inline-item mx-0 text-white">本网站由</p>
+						<a target="_blank" rel="nofollow noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://pic.fenghong.tech/images/180803_logo30.png" style="margin-bottom:5px;height: 25px;"></a>
+						<p class="list-inline-item mx-0 text-white">提供CDN加速/云存储服务</p>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+<script>
+	var indexURL = "/index.json"
+</script>
+
+
+<!-- JS Plugins -->
+
+<script src="/plugins/jQuery/jquery.min.js"></script>
+
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="/plugins/slick/slick.min.js"></script>
+
+<script src="/plugins/google-map/gmap.js"></script>
+
+<script src="/plugins/venobox/venobox.min.js"></script>
+
+<script src="/plugins/filterizr/jquery.filterizr.min.js"></script>
+
+<script src="/plugins/search/fuse.min.js"></script>
+
+<script src="/plugins/search/mark.js"></script>
+
+<script src="/plugins/search/search.js"></script>
+
+<script src="/plugins/bigPicture/bigPicture.js"></script>
+
+<script src="/plugins/hex_md5/hex_md5.js"></script>
+
+
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+
+<!-- Algolia -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+<script>
+	docsearch({
+		apiKey: 'b4d47f0c039a84d4035305be829404dd',
+		indexName: 'DocSearch',
+		appId: 'CTH4P282IZ',
+		inputSelector: '#js-algolia-btn',
+		debug: false,
+	});
+</script>
+
+<!-- google analitycs -->
+
+<script>
+	(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-130595069-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https'){
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else{
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</body>
+
+</html>

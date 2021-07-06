@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on Louis Blog</title>
+    <link>https://www.fenghong.tech/categories/golang/</link>
+    <description>Recent content in golang on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Tue, 29 Jun 2021 09:54:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>记一次阿里云arms监控和log-pilot日志系统冲突及解决</title>
+      <link>https://www.fenghong.tech/blog/go/log-pilot/</link>
+      <pubDate>Tue, 29 Jun 2021 09:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/log-pilot/</guid>
+      <description>log-pilot分</description>
+    </item>
+    
+    <item>
+      <title>go实现对slice的去重并移除元素</title>
+      <link>https://www.fenghong.tech/blog/algorithm/go-slice-deduplicate/</link>
+      <pubDate>Sat, 05 Sep 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/go-slice-deduplicate/</guid>
+      <description>[TOC] 问题描述： 在写se</description>
+    </item>
+    
+    <item>
+      <title>vim-go插件安装</title>
+      <link>https://www.fenghong.tech/blog/go/go-vim/</link>
+      <pubDate>Wed, 08 Jul 2020 09:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/go-vim/</guid>
+      <description>[TOC] 前言 vim是lin</description>
+    </item>
+    
+    <item>
+      <title>LRU 算法</title>
+      <link>https://www.fenghong.tech/blog/algorithm/lrucache/</link>
+      <pubDate>Sat, 12 Oct 2019 12:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/lrucache/</guid>
+      <description>操作系统内存的管理 关</description>
+    </item>
+    
+    <item>
+      <title>Go 位运算续</title>
+      <link>https://www.fenghong.tech/blog/algorithm/2019-10-11-go-bit/</link>
+      <pubDate>Thu, 10 Oct 2019 14:40:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/2019-10-11-go-bit/</guid>
+      <description>[TOC] 背景 位运算上篇文章</description>
+    </item>
+    
+    <item>
+      <title>go-binarySearch</title>
+      <link>https://www.fenghong.tech/blog/algorithm/binarysearch/</link>
+      <pubDate>Thu, 26 Sep 2019 22:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/binarysearch/</guid>
+      <description>[TOC] 14. first-position-of-target Description** 给定一个排序</description>
+    </item>
+    
+    <item>
+      <title>Mounting Array</title>
+      <link>https://www.fenghong.tech/blog/algorithm/binarysearch-mt/</link>
+      <pubDate>Thu, 26 Sep 2019 22:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/binarysearch-mt/</guid>
+      <description>[TOC] 1095.山脉数组</description>
+    </item>
+    
+    <item>
+      <title>go马踏棋盘贪心算法</title>
+      <link>https://www.fenghong.tech/blog/algorithm/mataqipan/</link>
+      <pubDate>Thu, 26 Sep 2019 17:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/mataqipan/</guid>
+      <description>[TOC] 问题描述： 所谓“马</description>
+    </item>
+    
+    <item>
+      <title>go房贷计算器</title>
+      <link>https://www.fenghong.tech/blog/algorithm/paymydebt/</link>
+      <pubDate>Tue, 24 Sep 2019 17:40:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/paymydebt/</guid>
+      <description>[TOC] 前言 房贷，也被称为</description>
+    </item>
+    
+    <item>
+      <title>Go 位运算详解</title>
+      <link>https://www.fenghong.tech/blog/algorithm/2019-10-07-go-bit-byte/</link>
+      <pubDate>Tue, 17 Sep 2019 00:40:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/2019-10-07-go-bit-byte/</guid>
+      <description>[TOC] 背景 位运算一直都懵</description>
+    </item>
+    
+    <item>
+      <title>Go 运算表达式求值</title>
+      <link>https://www.fenghong.tech/blog/algorithm/go-exp-math/</link>
+      <pubDate>Fri, 13 Sep 2019 11:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/go-exp-math/</guid>
+      <description>[TOC] 运算表达式参考学习</description>
+    </item>
+    
+    <item>
+      <title>Go 多项式实现(1)</title>
+      <link>https://www.fenghong.tech/blog/algorithm/go-polyn-1/</link>
+      <pubDate>Wed, 04 Sep 2019 15:56:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/go-polyn-1/</guid>
+      <description>[TOC] 多项式链表的结构和</description>
+    </item>
+    
+    <item>
+      <title>go encrypt&amp;decrypt</title>
+      <link>https://www.fenghong.tech/blog/algorithm/go-crypto/</link>
+      <pubDate>Wed, 28 Aug 2019 18:10:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/go-crypto/</guid>
+      <description>[TOC] 密码学简介与Gol</description>
+    </item>
+    
+    <item>
+      <title>go flag</title>
+      <link>https://www.fenghong.tech/blog/go/go-flag/</link>
+      <pubDate>Wed, 28 Aug 2019 18:10:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/go-flag/</guid>
+      <description>[TOC] flag - 命令行参数解析</description>
+    </item>
+    
+    <item>
+      <title>go module</title>
+      <link>https://www.fenghong.tech/blog/go/go-mod/</link>
+      <pubDate>Wed, 28 Aug 2019 18:10:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/go-mod/</guid>
+      <description>[TOC] use go module easy 演示一个简</description>
+    </item>
+    
+    <item>
+      <title>go Paxos</title>
+      <link>https://www.fenghong.tech/blog/algorithm/paxos/</link>
+      <pubDate>Wed, 28 Aug 2019 18:10:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/paxos/</guid>
+      <description>[TOC] Paxos 问题描述和假设 分</description>
+    </item>
+    
+    <item>
+      <title>go filemode 源码理解</title>
+      <link>https://www.fenghong.tech/blog/go/go-filemode/</link>
+      <pubDate>Mon, 26 Aug 2019 14:56:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/go-filemode/</guid>
+      <description>[TOC] FileMode 官方的解释: A FileMode</description>
+    </item>
+    
+    <item>
+      <title>Go channel 理解</title>
+      <link>https://www.fenghong.tech/blog/go/go-channel/</link>
+      <pubDate>Fri, 09 Aug 2019 15:56:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/go-channel/</guid>
+      <description>[TOC] channel 为什么需要cha</description>
+    </item>
+    
+    <item>
+      <title>gin实现webhook</title>
+      <link>https://www.fenghong.tech/blog/go/gin-use-in-webhook/</link>
+      <pubDate>Wed, 07 Aug 2019 20:56:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/gin-use-in-webhook/</guid>
+      <description>[TOC] gin use 自动部署项目 Web</description>
+    </item>
+    
+    <item>
+      <title>前言</title>
+      <link>https://www.fenghong.tech/blog/go/preface/</link>
+      <pubDate>Sat, 10 Nov 2018 15:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/preface/</guid>
+      <description>[TOC] 前言 用更少的代码，</description>
+    </item>
+    
+    <item>
+      <title>Go 资源汇总</title>
+      <link>https://www.fenghong.tech/blog/go/go-resource/</link>
+      <pubDate>Fri, 09 Nov 2018 15:56:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/go-resource/</guid>
+      <description>[TOC] 资源/文章 全面型 The</description>
+    </item>
+    
+    <item>
+      <title>Go入门笔记</title>
+      <link>https://www.fenghong.tech/blog/go/go-tutorial/</link>
+      <pubDate>Fri, 09 Nov 2018 15:56:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/go-tutorial/</guid>
+      <description>[TOC] 教程 A Tour of Go Go by Example</description>
+    </item>
+    
+  </channel>
+</rss>

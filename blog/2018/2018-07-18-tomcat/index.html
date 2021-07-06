@@ -1,0 +1,2916 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn"><head>
+  <meta charset="utf-8">
+  <title>Tomcat | Louis Blog</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="有技术 有温度 有情怀">
+  
+  <meta name="author" content="Louis ">
+  <meta name="generator" content="Hugo 0.73.0" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  
+  <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="/plugins/animate/animate.css">
+  
+  <link rel="stylesheet" href="/plugins/venobox/venobox.css">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="/images/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="/images/images/favicon.png " type="image/x-icon">
+
+  <!--Algolia-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css">
+</head>
+<body>
+<!-- header -->
+<header>
+  
+
+  <!-- navigation -->
+  <div class="navigation bg-white position-relative">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="/"><img class="img-fluid pb-lg-3" src="/images/images/logo.png" width="189px" alt="Louis Blog"></a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/"></a>
+            </li>
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                博客
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/categories/kubernetes">Kubernetes</a>
+                
+                <a class="dropdown-item" href="/categories/sealos">sealos</a>
+                
+                <a class="dropdown-item" href="/categories/ops">运维相关</a>
+                
+                <a class="dropdown-item" href="/categories/golang">golang</a>
+                
+                <a class="dropdown-item" href="/categories/algorithm">algorithm</a>
+                
+                <a class="dropdown-item" href="/categories/tools">tools</a>
+                
+                <a class="dropdown-item" href="/blog">全部</a>
+                
+              </div>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/team">友情链接</a>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                关于我
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/contact">about</a>
+                
+                <a class="dropdown-item" href="https://github.com/oldthreefeng">github</a>
+                
+              </div>
+            </li>
+            
+            
+          </ul>
+
+          
+          
+
+          
+          <!-- search -->
+          <div class="search px-4">
+            <button id="searchOpen" class="search-btn"><i class="fa fa-search text-dark"></i></button>
+            <div class="search-wrapper">
+              <form action="/search">
+                <input class="search-box form-control" id="js-algolia-btn" name="s" type="search" placeholder="输入搜索词">
+              </form>
+              <button id="searchClose" class="search-close"><i class="fa fa-close text-dark"></i></button>
+            </div>
+          </div>
+          
+          
+          <!-- get start btn -->
+          <a href="/contact" class="btn btn-primary hover-ripple">联系我</a>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- /navigation -->
+</header>
+<!-- /header -->
+
+
+<!-- page title -->
+<section class="section bg-cover overlay" style="background-image: url('/'),url('/'),url('/images/images/backgrounds/page-title.jpg');">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-white mb-3">Tomcat</h2>
+        <!-- breadcrumb -->
+        
+        <p class="text-white"></p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /page title -->
+
+
+<!-- blog details -->
+<section class="section">
+  <div class="container blog">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- post thumb -->
+        <div class="position-relative mb-5">
+          <img src="/"  onerror="this.src='https:\/\/pic.fenghong.tech\/proto\/024.jpg'" alt="post thumb" class="img-fluid w-100">
+           <div class="card-type">Ops</div>
+        </div>
+        <div class="card-meta text-uppercase mb-2">作者  <strong class="text-dark"><a href="https://www.fenghong.tech">Louis</a></strong>
+          
+            发表于 <strong class="text-dark">2018年7月18日</strong></div>
+        <hr>
+        <div class="content">
+          <p>摘要：</p>
+<ul>
+<li>Tomcat相关的概念及安装</li>
+<li>Tomcat的配置及解释</li>
+<li>httpd/Nginx/Ajp下的tomcat集群实现</li>
+<li>Mencached下的Tomcat会话存储</li>
+</ul>
+<h1 id="tomcat相关概念">Tomcat相关概念</h1>
+<p>Tomcat是由Apache软件基金会下属的Jakarta项目开发的一个Servlet容器，按照Sun Microsystems提供的技术规范，实现了对Servlet和JavaServer Page（JSP）的支持，并提供了作为Web服务器的一些特有功能，如Tomcat管理和控制平台、安全域管理和Tomcat阀等。由于Tomcat本身也内含了一个HTTP服务器，它也可以被视作一个单独的Web服务器。但是，不能将Tomcat和Apache HTTP服务器混淆，Apache HTTP服务器是一个用C语言实现的HTTPWeb服务器；这两个HTTP web server不是捆绑在一起的。Apache Tomcat包含了一个配置管理工具，也可以通过编辑XML格式的配置文件来进行配置。Tomcat是Java 2 EE技术体系的不完整实现。</p>
+<p><img src="https://pic.fenghong.tech/others/jdk.png" alt="img"></p>
+<ul>
+<li>JDK：java工具箱</li>
+<li>JRE：java运行时环境</li>
+<li>JVM：C语言研发，java虚拟机</li>
+<li>ajp：AJP13是定向包协议，httpd支持此协议，nginx不支持</li>
+<li>jsp：java server page</li>
+<li>jasper：负责将.jsp 转换为 .java</li>
+<li>applet：Applet或Java小应用程序是一种在Web环境下，运行于客户端的Java程序组件</li>
+<li>servlet：全称Java Servlet， 是用Java编写的服务器端程序，其主要功能在于交互式地浏览和修改数据，生成动态Web内容，将.java转换成字节码</li>
+</ul>
+<h1 id="安装tomcat">安装Tomcat</h1>
+<h2 id="yum包安装">yum包安装</h2>
+<pre><code># yum install java-1.8.0-openjdk
+# yum install tomcat tomcat-webapps tomcat-admin-webapps tomcat-docs-webapp
+</code></pre><pre><code># java -version  #查看java版本信息
+# tomcat version  #查看tomcat版本信息
+</code></pre><p>启动服务：</p>
+<pre><code># systemctl start tomcat
+# ss -tnl
+LISTEN      0      1        ::ffff:127.0.0.1:8005  #管理端口，建议关闭
+LISTEN      0      100        :::8009              #AJP协议默认监听端口
+LISTEN      0      100        :::8080              #HTTP协议默认监听端口
+</code></pre><p>tomcat的目录结构：</p>
+<pre><code>配置文件目录：/etc/tomcat/
+主配置文件：server.xml
+webapps存放位置：/var/lib/tomcat/webapps/
+环境配置文件：/etc/sysconfig/tomcat
+</code></pre><h2 id="官方发行版安装">官方发行版安装</h2>
+<p>安装JDK：</p>
+<p>下载地址：<code>http://www.oracle.com/technetwork/java/javase/downloads/</code></p>
+<pre><code># rpm -ivh jdk-8u25-linux-x64.rpm
+# ll /usr/java/  #默认安装路径
+lrwxrwxrwx 1 root root  16 Jul 17 19:46 default -&gt; /usr/java/latest
+drwxr-xr-x 9 root root 268 Jul 17 19:46 jdk1.8.0_25
+lrwxrwxrwx 1 root root  21 Jul 17 19:46 latest -&gt; /usr/java/jdk1.8.0_25
+# vim /etc/profile.d/java.sh  #将java环境变量加入系统环境变量
+export JAVA_HOME=/usr/java/latest
+export PATH=$JAVA_HOME/bin:$PATH
+# . /etc/profile.d/java.sh
+</code></pre><p>安装Tomcat：</p>
+<p>下载地址：<code>http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.32/bin/apache-tomcat-8.5.32.tar.gz</code></p>
+<pre><code># useradd tomcat
+# tar xf apache-tomcat-8.5.32.tar.gz -C /usr/local/
+# cd /usr/local/
+local]# ln -sv apache-tomcat-8.5.32/ tomcat
+local]# cd tomcat/
+tomcat]# chgrp -R tomcat ./*
+tomcat]# chown -R tomcat logs/ temp/ work/
+tomcat]# chmod g+rx conf/
+tomcat]# chmod g+r conf/*
+# vim /etc/profile.d/tomcat.sh  #配置环境变量
+export CATALINA_BASE=/usr/local/tomcat
+export PATH=$CATALINA_BASE/bin:$PATH
+# . /etc/profile.d/tomcat.sh
+# su - tomcat -c 'catalina.sh start'
+</code></pre><blockquote>
+<p><code># ls -1 /usr/local/tomcat/</code>
+bin：脚本及启动时用到的类
+conf：配置文件目录
+lib：库文件，Java类库，jar
+logs：日志文件目录
+temp：临时文件目录
+webapps：webapp的默认目录
+work：工作目录</p>
+</blockquote>
+<pre><code># catalina.sh --help
+commands:
+  debug             #调试模式启动
+  jpda start        #jpda的debug模式启动
+  run               #前台启动
+  start             #后台启动
+  stop              #关闭
+  stop n            #n秒后关闭
+  stop -force       #强制关闭
+  stop n -force     #n秒后强制关闭
+  configtest        #测试配置文件语法
+  version           #查看相关版本信息
+</code></pre><pre><code># catalina.sh version
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /usr/java/latest
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Server version: Apache Tomcat/8.5.32
+Server built:   Jun 20 2018 19:50:35 UTC
+Server number:  8.5.32.0
+OS Name:        Linux
+OS Version:     3.10.0-862.el7.x86_64
+Architecture:   amd64
+JVM Version:    1.8.0_25-b17
+JVM Vendor:     Oracle Corporation
+</code></pre><h2 id="managerhost-manager和docs">manager、host-manager和docs</h2>
+<p>依赖包：</p>
+<ul>
+<li>tomcat-webapps</li>
+<li>tomcat-admin-webapps</li>
+<li>tomcat-docs-webapp</li>
+</ul>
+<h3 id="配置manager管理webapps应用程序">配置：manager管理webapps应用程序</h3>
+<pre><code># vim /etc/tomcat/tomcat-users.xml
+&lt;role rolename=&quot;manager-gui&quot;/&gt;
+&lt;user username=&quot;admin&quot; password=&quot;adminpass&quot; roles=&quot;manager-gui&quot;/&gt;
+# systemctl restart tomcat
+</code></pre><blockquote>
+<p>访问：http://192.168.0.8:8080/manager/进入管理页面</p>
+</blockquote>
+<h3 id="配置host-manager管理虚拟主机">配置：host-manager管理虚拟主机</h3>
+<pre><code># vim /etc/tomcat/tomcat-users.xml
+&lt;role rolename=&quot;admin-gui&quot;/&gt; 
+&lt;user username=&quot;admin&quot; password=&quot;admin&quot; roles=&quot;manager-gui,admin-gui&quot;/&gt;
+# systemctl restart tomcat
+</code></pre><blockquote>
+<p>访问：http://192.168.0.10:8080/host-manager/进入管理页面</p>
+</blockquote>
+<h3 id="docs获取离线文档">docs获取离线文档</h3>
+<blockquote>
+<p>访问：http://192.168.0.10:8080/docs/</p>
+</blockquote>
+<h2 id="tomcat的配置参数">Tomcat的配置参数</h2>
+<ul>
+<li>server.xml：主配置文件</li>
+<li>web.xml：每个webapp只有“部署”后才能被访问，它的部署方式通常由web.xml进行定义，其存放位置为WEB-INF/目录中；此文件为所有的webapps提供默认部署相关的配置</li>
+<li>context.xml：每个webapp都可以专用的配置文件，它通常由专用的配置文件context.xml来定义，其存放位置为WEB-INF/目录中；此文件为所有的webapps提供默认配置</li>
+<li>tomcat-users.xml：用户认证的账号和密码文件</li>
+<li>catalina.policy：当使用-security选项启动tomcat时，用于为tomcat设置安全策略</li>
+<li>catalina.properties：Java属性的定义文件，用于设定类加载器路径，以及一些与JVM调优相关参数</li>
+<li>logging.properties：日志系统相关的配置</li>
+</ul>
+<h3 id="tomcat的核心组件serverxml">tomcat的核心组件：server.xml</h3>
+<p>配置文件框架：</p>
+<pre><code>&lt;Server&gt;
+    &lt;Service&gt;
+        &lt;connector/&gt;
+        &lt;Engine&gt;
+            &lt;Host&gt;
+                &lt;Context&gt;
+                    &lt;Valve/&gt;
+                &lt;/Context/&gt;
+            &lt;/Host&gt;
+        &lt;/Engine&gt;
+    &lt;/Service&gt;
+&lt;/Server&gt;
+</code></pre><p>每一个组件都由一个Java“类”实现，这些组件大体可分为以下几个类型：</p>
+<ul>
+<li>顶级组件：Server</li>
+<li>服务类组件：Service</li>
+<li>连接器组件：http, https, ajp（apache jserv protocol）</li>
+<li>容器类：Engine, Host, Context</li>
+<li>被嵌套类：valve, logger, realm, loader, manager, &hellip;</li>
+<li>集群类组件：listener, cluster, &hellip;</li>
+</ul>
+<h3 id="tomcat的常用组件配置">Tomcat的常用组件配置：</h3>
+<ul>
+<li>Server：代表tomcat instance，即表现出的一个java进程；监听在8005端口，只接收“SHUTDOWN”。各server监听的端口不能相同，因此，在同一物理主机启动多个实例时，需要修改其监听端口为不同的端口；</li>
+<li>Service：用于实现将一个或多个connector组件关联至一个engine组件；</li>
+<li>Connector组件：负责接收请求，常见的有三类http/https/ajp；</li>
+</ul>
+<pre><code>port=&quot;8080&quot; 监听的端口
+protocol=&quot;HTTP/1.1&quot; 协议
+connectionTimeout=&quot;20000&quot; 连接超时时间，单位ms，2秒
+address：监听的IP地址；默认为本机所有可用地址；
+maxThreads：最大并发连接数，默认为200；
+enableLookups：是否启用DNS查询功能；
+acceptCount：等待队列的最大长度；
+secure：安全相关;
+sslProtocol：加密传输相关;
+</code></pre><ul>
+<li>Engine组件：Servlet实例，即servlet引擎，其内部可以一个或多个host组件来定义站点； 通常需要通过defaultHost属性来定义默认的虚拟主机；</li>
+</ul>
+<pre><code>name=
+defaultHost=&quot;localhost&quot;
+jvmRoute=
+</code></pre><ul>
+<li>Host组件：位于engine内部用于接收请求并进行相应处理的主机或虚拟主机</li>
+</ul>
+<pre><code>&lt;Host name=&quot;localhost&quot;  appBase=&quot;webapps&quot;
+      unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+&lt;/Host&gt;
+appBase：此Host的webapps的默认存放目录，指存放非归档的web应用程序的目录或归档的WAR文件目录路径；可以使用基于$CATALINA_BASE变量所定义的路径的相对路径；
+autoDeploy：在Tomcat处于运行状态时，将某webapp放置于appBase所定义的目录中时，是否自动将其部署至tomcat；
+</code></pre><ul>
+<li>Context组件：相当于nginx中的alias的功能</li>
+</ul>
+<pre><code>&lt;Context path=&quot;/PATH&quot; docBase=&quot;/PATH/TO/SOMEDIR&quot; reloadable=&quot;&quot;/&gt;
+path:url路径
+docBase:网页文件目录路径
+</code></pre><ul>
+<li>Valve组件：</li>
+</ul>
+<pre><code>定义访问日志：org.apache.catalina.valves.AccessLogValve
+&lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+       prefix=&quot;localhost_access_log.&quot; suffix=&quot;.txt&quot;
+       pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
+</code></pre><pre><code>定义访问控制：org.apache.catalina.valves.RemoteAddrValve
+&lt;Valve className=&quot;org.apache.catalina.valves.RemoteAddrValve&quot; deny=&quot;172\.16\.100\.67&quot;/&gt;
+</code></pre><h3 id="组件配置示例">组件配置示例：</h3>
+<ul>
+<li>配置示例：Host组件</li>
+</ul>
+<pre><code>[root@node1 ~]# vim /etc/tomcat/server.xml
+&lt;Engine&gt;
+  ...
+  &lt;Host name=&quot;node1.fenghong.tech&quot; appBase=&quot;/web/apps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;/&gt;
+&lt;/Engine&gt;
+[root@node1 ~]# mkdir -pv /web/apps/ROOT/
+[root@node1 ~]# vim /web/apps/ROOT/index.jsp
+&lt;%@ page language=&quot;java&quot; %&gt;
+&lt;html&gt;
+    &lt;head&gt;&lt;title&gt;TomcatA&lt;/title&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;&lt;font color=&quot;red&quot;&gt;TomcatA.fenghong.tech&lt;/font&gt;&lt;/h1&gt;
+        &lt;table align=&quot;centre&quot; border=&quot;1&quot;&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Session ID&lt;/td&gt;
+            &lt;% session.setAttribute(&quot;fenghong.tech&quot;,&quot;fenghong.tech&quot;); %&gt;
+                &lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Created on&lt;/td&gt;
+                &lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+[root@node1 ~]# systemctl restart tomcat
+测试访问：http://node1.fenghong.tech:8080/
+</code></pre><ul>
+<li>配置示例：Context组件</li>
+</ul>
+<pre><code>[root@node1 ~]# vim /etc/tomcat/server.xml
+&lt;Engine&gt;
+  ...
+    &lt;Host name=&quot;node1.fenghong.tech&quot; appBase=&quot;/web/apps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+      &lt;Context path=&quot;/testapp&quot; docBase=&quot;/web/testapp&quot; reloadable=&quot;&quot;/&gt;
+    &lt;/Host&gt;
+&lt;/Engine&gt;
+[root@node1 ~]# systemctl restart tomcat
+[root@node1 ~]# mkdir -pv /web/testapp/ROOT
+[root@node1 ~]# vim /web/testapp/index.jsp
+...
+测试访问：http://node1.fenghong.tech:8080/testapp/
+</code></pre><ul>
+<li>配置示例：Valve组件</li>
+</ul>
+<pre><code>[root@node1 ~]# vim /etc/tomcat/server.xml
+&lt;Host name=&quot;node1.fenghong.tech&quot; appBase=&quot;/web/apps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+  &lt;Context path=&quot;/testapp&quot; docBase=&quot;/web/testapp&quot; reloadable=&quot;&quot;&gt;
+    &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+      prefix=&quot;node1_test_access_&quot; suffix=&quot;.log&quot;
+      pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
+  &lt;/Context&gt;
+&lt;/Host&gt;
+[root@node1 ~]# systemctl restart tomcat
+[root@node1 ~]# tail /var/log/tomcat/node1_test_access_2018-07-17.log
+192.168.0.8 - - [17/Jul/2018:22:59:30 +0800] &quot;GET /testapp/ HTTP/1.1&quot; 200 334
+</code></pre><h3 id="jsp-webapp的组织结构">JSP WebAPP的组织结构：</h3>
+<ul>
+<li>index.jsp：主页；</li>
+<li>WEB-INF/：当前webapp的私有资源路径；通常用于存储当前webapp的web.xml和context.xml配置文件；</li>
+<li>META-INF/：类似于WEB-INF/；</li>
+<li>classes/：类文件，当前webapp所提供的类；</li>
+<li>lib/：类文件，当前webapp所提供的类，被打包为jar格式；</li>
+</ul>
+<h3 id="webapp归档格式">webapp归档格式：</h3>
+<ul>
+<li>.war：webapp</li>
+<li>.jar：EJB的类打包文件；</li>
+<li>.rar：资源适配器类打包文件；</li>
+<li>.ear：企业级webapp；</li>
+</ul>
+<h1 id="部署deploywebapp">部署(deploy)webapp</h1>
+<ul>
+<li>deploy：将webapp的源文件放置于目标目录(网页程序文件存放目录)，配置tomcat服务器能够基于web.xml和context.xml文件中定义的路径来访问此webapp；将其特有的类和依赖的类通过class loader装载至JVM；</li>
+<li>undeploy：反部署，停止webapp，并从tomcat实例上卸载webapp；</li>
+<li>start：启动处于停止状态的webapp；</li>
+<li>stop：停止webapp，不再向用户提供服务；其类依然在jvm上；</li>
+<li>redeploy：重新部署；</li>
+</ul>
+<p>部署可分为自动部署和手动部署；手动部署又有冷部署和热部署：</p>
+<ul>
+<li>冷部署：把webapp复制到指定的位置，而后才启动tomcat；</li>
+<li>热部署：在不停止tomcat的前提下进行部署；部署工具有manager、ant脚本、tcd(tomcat client deployer)等；</li>
+</ul>
+<p>示例：手动提供一测试类应用，并冷部署</p>
+<pre><code>[root@node1 ~]# mkdir -pv /var/lib/tomcat/webapps/test/{classes,lib,WEB-INF}
+[root@node1 ~]# vim /var/lib/tomcat/webapps/test/index.jsp
+&lt;%@ page language=&quot;java&quot; %&gt;
+&lt;%@ page import=&quot;java.util.*&quot; %&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Test Page&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;% out.println(&quot;hello world&quot;);
+        %&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+访问：http://192.168.0.10:8080/test/
+</code></pre><h1 id="ntnginx--httpd--tomcat">NT：nginx | httpd + tomcat</h1>
+<p><img src="https://pic.fenghong.tech/others/tomcat-nt.png" alt="img"></p>
+<h2 id="nginx和tomcat通过httphttps协议工作">nginx和Tomcat通过http/https协议工作</h2>
+<p>配置Tomcat：</p>
+<pre><code>[root@tomcat ~]# mkdir -pv /data/webapp/ROOT/
+[root@tomcat ~]# vim /data/webapp/ROOT/index.jsp  #提供jsp测试页
+&lt;%@ page language=&quot;java&quot; %&gt;
+&lt;html&gt;
+    &lt;head&gt;&lt;title&gt;TomcatA&lt;/title&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;&lt;font color=&quot;red&quot;&gt;TomcatA.fenghong.tech&lt;/font&gt;&lt;/h1&gt;
+        &lt;table align=&quot;centre&quot; border=&quot;1&quot;&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Session ID&lt;/td&gt;
+            &lt;% session.setAttribute(&quot;fenghong.tech&quot;,&quot;fenghong.tech&quot;); %&gt;
+                &lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Created on&lt;/td&gt;
+                &lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+[root@tomcat ~]# vim /data/webapp/ROOT/test.html  #提供静态测试页
+static page
+[root@tomcat ~]# vim /etc/tomcat/server.xml  #修改Tomcat配置，如下
+&lt;?xml version='1.0' encoding='utf-8'?&gt;
+&lt;Server port=&quot;-1&quot; shutdown=&quot;SHUTDOWN&quot;&gt;
+  &lt;Listener className=&quot;org.apache.catalina.startup.VersionLoggerListener&quot; /&gt;
+  &lt;Listener className=&quot;org.apache.catalina.core.AprLifecycleListener&quot; SSLEngine=&quot;on&quot; /&gt;
+  &lt;Listener className=&quot;org.apache.catalina.core.JasperListener&quot; /&gt;
+  &lt;Listener className=&quot;org.apache.catalina.core.JreMemoryLeakPreventionListener&quot; /&gt;
+  &lt;Listener className=&quot;org.apache.catalina.mbeans.GlobalResourcesLifecycleListener&quot; /&gt;
+  &lt;Listener className=&quot;org.apache.catalina.core.ThreadLocalLeakPreventionListener&quot; /&gt;
+  &lt;GlobalNamingResources&gt;
+    &lt;Resource name=&quot;UserDatabase&quot; auth=&quot;Container&quot;
+              type=&quot;org.apache.catalina.UserDatabase&quot;
+              description=&quot;User database that can be updated and saved&quot;
+              factory=&quot;org.apache.catalina.users.MemoryUserDatabaseFactory&quot;
+              pathname=&quot;conf/tomcat-users.xml&quot; /&gt;
+  &lt;/GlobalNamingResources&gt;
+  &lt;Service name=&quot;Catalina&quot;&gt;
+    &lt;Connector address=&quot;127.0.0.1&quot; port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot;
+               connectionTimeout=&quot;20000&quot;
+               redirectPort=&quot;8443&quot; /&gt;
+    &lt;!-- &lt;Connector address=&quot;127.0.0.1&quot; port=&quot;8009&quot; protocol=&quot;AJP/1.3&quot; redirectPort=&quot;8443&quot; /&gt; --&gt;
+    &lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;node1.fenghong.tech&quot;&gt;
+      &lt;Realm className=&quot;org.apache.catalina.realm.LockOutRealm&quot;&gt;
+        &lt;Realm className=&quot;org.apache.catalina.realm.UserDatabaseRealm&quot;
+               resourceName=&quot;UserDatabase&quot;/&gt;
+      &lt;/Realm&gt;
+      &lt;Host name=&quot;localhost&quot;  appBase=&quot;webapps&quot;
+            unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+        &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+               prefix=&quot;localhost_access_log.&quot; suffix=&quot;.txt&quot;
+               pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
+      &lt;/Host&gt;
+      &lt;Host name=&quot;node1.fenghong.tech&quot; appBase=&quot;/data/webapp&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+        &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+               prefix=&quot;node1-dongfei-tech_access.&quot; suffix=&quot;.log&quot;
+               pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
+          &lt;/Host&gt;
+    &lt;/Engine&gt;
+  &lt;/Service&gt;
+&lt;/Server&gt;
+[root@tomcat ~]# systemctl start tomcat
+</code></pre><p>配置nginx：</p>
+<pre><code>[root@tomcat ~]# vim /etc/nginx/conf.d/nginx_tomcat.conf
+server {
+        listen 80;
+        server_name node1.fenghong.tech;
+        index index.jsp index.html;
+        location / {
+                root &quot;/data/webapp/ROOT/&quot;;
+        }
+        location ~* \.(jsp|do)$ {
+                proxy_pass http://127.0.0.1:8080;
+        }
+}
+[root@tomcat ~]# nginx
+</code></pre><blockquote>
+<p>测试访问：</p>
+<ul>
+<li><a href="http://node1.fenghong.tech/">http://node1.fenghong.tech/</a></li>
+<li><a href="http://node1.fenghong.tech/test.html">http://node1.fenghong.tech/test.html</a></li>
+</ul>
+</blockquote>
+<h2 id="httpd和tomcat通过httphttps协议工作">httpd和Tomcat通过http/https协议工作</h2>
+<pre><code>[root@tomcat ~]# httpd -M |grep proxy
+ proxy_module (shared) #代理模块
+ proxy_ajp_module (shared) #适配ajp协议客户端
+ proxy_balancer_module (shared)
+ proxy_connect_module (shared)
+ proxy_express_module (shared)
+ proxy_fcgi_module (shared)
+ proxy_fdpass_module (shared)
+ proxy_ftp_module (shared)
+ proxy_http_module (shared) #适配http协议客户端
+ proxy_scgi_module (shared)
+ proxy_wstunnel_module (shared)
+</code></pre><p>配置Tomcat：如上</p>
+<p>配置httpd：</p>
+<pre><code>[root@tomcat ~]# vim /etc/httpd/conf.d/http_tomcat.conf
+&lt;VirtualHost *:80&gt;
+    ServerName node1.fenghong.tech
+    ProxyRequests Off  #关闭正向代理
+    ProxyVia On
+    ProxyPreserveHost On  #将请求头HOST发送给后端主机
+    &lt;Proxy *&gt;
+        Require all granted
+    &lt;/Proxy&gt;
+    ProxyPass / http://127.0.0.1:8080/
+    &lt;Location /&gt;
+        Require all granted
+    &lt;/Location&gt;
+&lt;/VirtualHost&gt;
+[root@tomcat ~]# systemctl start httpd
+</code></pre><h2 id="http和tomcat通过ajp协议工作">http和Tomcat通过ajp协议工作</h2>
+<p>配置Tomcat：</p>
+<pre><code>[root@tomcat ~]# vim /etc/tomcat/server.xml
+&lt;Connector address=&quot;127.0.0.1&quot; port=&quot;8009&quot; protocol=&quot;AJP/1.3&quot; redirectPort=&quot;8443&quot; /&gt;
+[root@tomcat ~]# systemctl restart tomcat
+</code></pre><p>配置httpd：</p>
+<pre><code>[root@tomcat ~]# vim /etc/httpd/conf.d/http_tomcat.conf
+&lt;VirtualHost *:80&gt;
+        ServerName node1.fenghong.tech
+        ProxyRequests Off
+        ProxyVia On
+        ProxyPreserveHost On
+        &lt;Proxy *&gt;
+                Require all granted
+        &lt;/Proxy&gt;
+        ProxyPass / ajp://127.0.0.1:8009/
+        &lt;Location /&gt;
+                Require all granted
+        &lt;/Location&gt;
+&lt;/VirtualHost&gt;
+[root@tomcat ~]# systemctl restart httpd
+</code></pre><h1 id="nntm的会话保持实现">nntm的会话保持实现</h1>
+<ul>
+<li>
+<p>session sticky：会话绑定</p>
+<ul>
+<li>source_ip：基于源地址做会话绑定；nginx: ip_hash，haproxy: source，lvs: sh</li>
+<li>cookie：基于cookie做会话绑定；nginx：hash，haproxy: cookie</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://pic.fenghong.tech/others/nntm.png" alt="img"></p>
+<h2 id="httpd--nginx--tomcat-cluster基于cookie实现会话绑定">httpd + nginx + tomcat cluster：基于cookie实现会话绑定</h2>
+<p>前端httpd调度器：</p>
+<pre><code>[root@Director ~]# httpd -M |grep balancer
+ proxy_balancer_module (shared)
+[root@Director ~]# vim /etc/httpd/conf.d/httpd-tomcat.conf
+Header add Set-Cookie &quot;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&quot; env=BALANCER_ROUTE_CHANGED
+&lt;proxy balancer://tcsrvs&gt;
+    BalancerMember http://192.168.0.10:80 route=TomcatA loadfactor=1
+    BalancerMember http://192.168.0.11:80 route=TomcatB loadfactor=2
+    ProxySet lbmethod=byrequests
+    ProxySet stickysession=ROUTEID
+&lt;/Proxy&gt;
+&lt;VirtualHost *:80&gt;
+    ServerName www.fenghong.tech
+    ProxyVia On 
+    ProxyRequests Off
+    ProxyPreserveHost On
+    &lt;Proxy *&gt;   
+        Require all granted 
+    &lt;/Proxy&gt;    
+    ProxyPass / balancer://tcsrvs/
+    ProxyPassReverse / balancer://tcsrvs/
+    &lt;Location /&gt;
+        Require all granted 
+    &lt;/Location&gt; 
+&lt;/VirtualHost&gt;
+[root@Director ~]# systemctl start httpd
+</code></pre><p>tomcat-node-1：</p>
+<pre><code>[root@tomcat-node-1 ~]# vim /etc/nginx/conf.d/nginx_tomcat.conf 
+server {
+    listen 80 default_server;
+    server_name node1.fenghong.tech;
+    index index.jsp index.html;
+    location / {
+        root &quot;/data/webapp/ROOT/&quot;;
+    }
+    location ~* \.(jsp|do)$ {
+        proxy_pass http://127.0.0.1:8080;
+    }
+}
+[root@tomcat-node-1 ~]# vim /etc/tomcat/server.xml
+&lt;Server port=&quot;-1&quot; shutdown=&quot;SHUTDOWN&quot;&gt;
+  &lt;Service name=&quot;Catalina&quot;&gt;
+    &lt;Connector address=&quot;127.0.0.1&quot; port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot;
+               connectionTimeout=&quot;20000&quot;
+               redirectPort=&quot;8443&quot; /&gt;
+    &lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;node1.fenghong.tech&quot; jvmRoute=&quot;TomcatA&quot;&gt;
+      &lt;Host name=&quot;node1.fenghong.tech&quot; appBase=&quot;/data/webapp&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+        &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+               prefix=&quot;node1-dongfei-tech_access.&quot; suffix=&quot;.log&quot;
+               pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
+          &lt;/Host&gt;
+    &lt;/Engine&gt;
+  &lt;/Service&gt;
+&lt;/Server&gt;
+[root@tomcat-node-1 ~]# vim /data/webapp/ROOT/index.jsp
+&lt;%@ page language=&quot;java&quot; %&gt;
+&lt;html&gt;
+    &lt;head&gt;&lt;title&gt;TomcatA&lt;/title&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;&lt;font color=&quot;red&quot;&gt;TomcatA.fenghong.tech&lt;/font&gt;&lt;/h1&gt;
+        &lt;table align=&quot;centre&quot; border=&quot;1&quot;&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Session ID&lt;/td&gt;
+            &lt;% session.setAttribute(&quot;fenghong.tech&quot;,&quot;fenghong.tech&quot;); %&gt;
+                &lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Created on&lt;/td&gt;
+                &lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+[root@tomcat-node-1 ~]# systemctl start nginx tomcat
+</code></pre><p>tomcat-node-2：</p>
+<pre><code>[root@tomcat-node-2 ~]# vim /etc/nginx/conf.d/nginx_tomcat.conf
+server {
+    listen 80 default_server;
+    server_name node2.fenghong.tech;
+    index index.jsp index.html;
+    location / {
+        root &quot;/data/webapp/ROOT/&quot;;
+    }
+    location ~* \.(jsp|do)$ {
+        proxy_pass http://127.0.0.1:8080;
+    }
+}
+[root@tomcat-node-2 ~]# vim /etc/tomcat/server.xml
+&lt;Server port=&quot;-1&quot; shutdown=&quot;SHUTDOWN&quot;&gt;
+  &lt;Service name=&quot;Catalina&quot;&gt;
+    &lt;Connector address=&quot;127.0.0.1&quot; port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot;
+               connectionTimeout=&quot;20000&quot;
+               redirectPort=&quot;8443&quot; /&gt;
+    &lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;node2.fenghong.tech&quot; jvmRoute=&quot;TomcatB&quot;&gt;
+      &lt;Host name=&quot;node2.fenghong.tech&quot; appBase=&quot;/data/webapp&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+        &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+               prefix=&quot;node2-dongfei-tech_access.&quot; suffix=&quot;.log&quot;
+               pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
+          &lt;/Host&gt;
+    &lt;/Engine&gt;
+  &lt;/Service&gt;
+&lt;/Server&gt;
+[root@tomcat-node-2 ~]# vim /data/webapp/ROOT/index.jsp 
+&lt;%@ page language=&quot;java&quot; %&gt;
+&lt;html&gt;
+    &lt;head&gt;&lt;title&gt;TomcatB&lt;/title&gt;&lt;/head&gt;
+        &lt;body&gt;
+        &lt;h1&gt;&lt;font color=&quot;blue&quot;&gt;TomcatB.fenghong.tech&lt;/font&gt;&lt;/h1&gt;
+        &lt;table align=&quot;centre&quot; border=&quot;1&quot;&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Session ID&lt;/td&gt;
+            &lt;% session.setAttribute(&quot;fenghong.tech&quot;,&quot;fenghong.tech&quot;); %&gt;
+                &lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Created on&lt;/td&gt;
+                &lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+        &lt;/body&gt;
+&lt;/html&gt;
+[root@tomcat-node-2 ~]# systemctl start nginx tomcat
+</code></pre><blockquote>
+<p>测试访问：http://www.fenghong.tech/；实现同一cookie的客户端调度到同一后端server上</p>
+</blockquote>
+<ul>
+<li>httpd反代启用管理接口：</li>
+</ul>
+<pre><code>&lt;Location /balancer-manager&gt;
+	SetHandler balancer-manager
+	ProxyPass !
+	Require all granted
+&lt;/Location&gt;
+</code></pre><h2 id="nginx--nginx--tomcat-cluster基于源地址hash调度">nginx + nginx + tomcat cluster：基于源地址hash调度</h2>
+<p>前端nginx调度器：</p>
+<pre><code>[root@Director ~]# vim /etc/nginx/conf.d/nginx_tomcat.conf
+upstream tcsrvs {
+        ip_hash;
+        server 192.168.0.10:80;
+        server 192.168.0.11:80;
+}
+server {
+        listen 80;
+        server_name www.fenghong.tech;
+        location / {
+                proxy_pass http://tcsrvs;
+        }
+}
+[root@Director ~]# nginx
+</code></pre><p>tomcat-node-1和tomcat-node-2：参考以上配置</p>
+<blockquote>
+<p>测试访问：http://www.fenghong.tech/；实现同一IP的客户端调度到同一后端server上</p>
+</blockquote>
+<h1 id="tomcat的会话集群">Tomcat的会话集群</h1>
+<ul>
+<li>session cluster：delta session manager；会话集群，对带宽消耗较大，集群规模建议3-5台</li>
+</ul>
+<ol>
+<li>默认多播地址：228.0.0.4</li>
+<li>多播通信使用的端口：45564</li>
+<li>IP广播的方式来实现获取主机名，主机IP地址等，不能是监听在127.0.0.1</li>
+<li>侦听复制消息的TCP端口是范围：4000-4100</li>
+<li>必须配置集群会话监听器</li>
+<li>各集群时间必须同步</li>
+</ol>
+<p><img src="https://pic.fenghong.tech/others/nntm.png" alt="img"></p>
+<p>前端nginx配置：</p>
+<pre><code>upstream tcsrvs {
+        server 192.168.0.10:80;
+        server 192.168.0.11:80;
+}
+server {
+        listen 80;
+        server_name www.fenghong.tech;
+        location / {
+                proxy_pass http://tcsrvs;
+        }
+}
+</code></pre><p>tomcat-node-1：</p>
+<pre><code>[root@tomcat-node-1 ~]# vim /etc/tomcat/server.xml
+      &lt;Host name=&quot;node1.fenghong.tech&quot; appBase=&quot;/data/webapp&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+        &lt;Cluster className=&quot;org.apache.catalina.ha.tcp.SimpleTcpCluster&quot;
+                 channelSendOptions=&quot;8&quot;&gt;
+#channelSendOptions：发送消息的信道选项，0-15
+          &lt;Manager className=&quot;org.apache.catalina.ha.session.DeltaManager&quot;
+                   expireSessionsOnShutdown=&quot;false&quot;
+                   notifyListenersOnReplication=&quot;true&quot;/&gt;
+#Manager：定义新的会话管理器DeltaManager
+#expireSessionsOnShutdown：一旦把当前Tomcat节点关闭，是否将这节点的Tomcat会话失效，false表示不失效
+#notifyListenersOnReplication：现在如果要发送资源同步给其他节点，是否通知侦听器资源变动，必须打开
+          &lt;Channel className=&quot;org.apache.catalina.tribes.group.GroupChannel&quot;&gt;
+            &lt;Membership className=&quot;org.apache.catalina.tribes.membership.McastService&quot;
+                        address=&quot;228.0.0.4&quot;
+                        port=&quot;45564&quot;
+                        frequency=&quot;500&quot;
+                        dropTime=&quot;3000&quot;/&gt;
+             #McastService：多播通信
+             #address：多播通信地址
+             #port：端口
+             #frequency：每隔多长时间发送一次自己的心跳信息，单位ms
+             #dropTime：在3000ms内没有收到对方的心跳信息表示已经不是集群成员了
+            &lt;Receiver className=&quot;org.apache.catalina.tribes.transport.nio.NioReceiver&quot;
+                      address=&quot;192.168.0.10&quot;
+                      port=&quot;4000&quot;
+                      autoBind=&quot;100&quot;
+                      selectorTimeout=&quot;5000&quot;
+                      maxThreads=&quot;6&quot;/&gt;
+             #NioReceiver：异步IO
+             #address：监听地址，需要修改为集群成员通信的网卡
+             #port：端口，如果不指定则自动选择4000-4100内从4000开始选择一个没有被占用的端口
+             #autoBind：自动绑定
+             #selectorTimeout：挑选器的超时时长
+             #maxThreads：最大线程数，集群成员节点数 - 1
+            &lt;Sender className=&quot;org.apache.catalina.tribes.transport.ReplicationTransmitter&quot;&gt;
+              &lt;Transport className=&quot;org.apache.catalina.tribes.transport.nio.PooledParallelSender&quot;/&gt;
+            &lt;/Sender&gt;
+            &lt;Interceptor className=&quot;org.apache.catalina.tribes.group.interceptors.TcpFailureDetector&quot;/&gt;
+            &lt;Interceptor className=&quot;org.apache.catalina.tribes.group.interceptors.MessageDispatch15Interceptor&quot;/&gt;
+          &lt;/Channel&gt;
+#Channel：定义多播集群通信信道
+#Membership：定义成员关系
+#Receiver：接受器
+#Sender：将自己的会话资源变动同步给其他节点
+          &lt;Valve className=&quot;org.apache.catalina.ha.tcp.ReplicationValve&quot;
+                 filter=&quot;&quot;/&gt;
+          &lt;Valve className=&quot;org.apache.catalina.ha.session.JvmRouteBinderValve&quot;/&gt;
+
+          &lt;Deployer className=&quot;org.apache.catalina.ha.deploy.FarmWarDeployer&quot;
+                    tempDir=&quot;/tmp/war-temp/&quot;
+                    deployDir=&quot;/tmp/war-deploy/&quot;
+                    watchDir=&quot;/tmp/war-listen/&quot;
+                    watchEnabled=&quot;false&quot;/&gt;
+          &lt;ClusterListener className=&quot;org.apache.catalina.ha.session.JvmRouteSessionIDBinderListener&quot;/&gt;
+          &lt;ClusterListener className=&quot;org.apache.catalina.ha.session.ClusterSessionListener&quot;/&gt;
+        &lt;/Cluster&gt;
+        &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+               prefix=&quot;node1-dongfei-tech_access.&quot; suffix=&quot;.log&quot;
+               pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
+          &lt;/Host&gt;
+[root@tomcat-node-1 ~]# mkdir /data/webapp/ROOT/WEB-INF
+[root@tomcat-node-1 ~]# cp /etc/tomcat/web.xml /data/webapp/ROOT/WEB-INF/
+[root@tomcat-node-1 ~]# vim /data/webapp/ROOT/WEB-INF/web.xml
+    &lt;distributable/&gt;  #添加到web-app内
+[root@tomcat-node-1 ~]# systemctl restart tomcat
+</code></pre><p>tomcat-node-2：</p>
+<pre><code>[root@tomcat-node-2 ~]# vim /etc/tomcat/server.xml
+      &lt;Host name=&quot;node2.fenghong.tech&quot; appBase=&quot;/data/webapp&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+        &lt;Cluster className=&quot;org.apache.catalina.ha.tcp.SimpleTcpCluster&quot;
+                 channelSendOptions=&quot;8&quot;&gt;
+          &lt;Manager className=&quot;org.apache.catalina.ha.session.DeltaManager&quot;
+                   expireSessionsOnShutdown=&quot;false&quot;
+                   notifyListenersOnReplication=&quot;true&quot;/&gt;
+          &lt;Channel className=&quot;org.apache.catalina.tribes.group.GroupChannel&quot;&gt;
+            &lt;Membership className=&quot;org.apache.catalina.tribes.membership.McastService&quot;
+                        address=&quot;228.0.0.4&quot;
+                        port=&quot;45564&quot;
+                        frequency=&quot;500&quot;
+                        dropTime=&quot;3000&quot;/&gt;
+            &lt;Receiver className=&quot;org.apache.catalina.tribes.transport.nio.NioReceiver&quot;
+                      address=&quot;192.168.0.11&quot;
+                      port=&quot;4000&quot;
+                      autoBind=&quot;100&quot;
+                      selectorTimeout=&quot;5000&quot;
+                      maxThreads=&quot;6&quot;/&gt;
+            &lt;Sender className=&quot;org.apache.catalina.tribes.transport.ReplicationTransmitter&quot;&gt;
+              &lt;Transport className=&quot;org.apache.catalina.tribes.transport.nio.PooledParallelSender&quot;/&gt;
+            &lt;/Sender&gt;
+            &lt;Interceptor className=&quot;org.apache.catalina.tribes.group.interceptors.TcpFailureDetector&quot;/&gt;
+            &lt;Interceptor className=&quot;org.apache.catalina.tribes.group.interceptors.MessageDispatch15Interceptor&quot;/&gt;
+          &lt;/Channel&gt;
+          &lt;Valve className=&quot;org.apache.catalina.ha.tcp.ReplicationValve&quot;
+                 filter=&quot;&quot;/&gt;
+          &lt;Valve className=&quot;org.apache.catalina.ha.session.JvmRouteBinderValve&quot;/&gt;
+          &lt;Deployer className=&quot;org.apache.catalina.ha.deploy.FarmWarDeployer&quot;
+                    tempDir=&quot;/tmp/war-temp/&quot;
+                    deployDir=&quot;/tmp/war-deploy/&quot;
+                    watchDir=&quot;/tmp/war-listen/&quot;
+                    watchEnabled=&quot;false&quot;/&gt;
+          &lt;ClusterListener className=&quot;org.apache.catalina.ha.session.JvmRouteSessionIDBinderListener&quot;/&gt;
+          &lt;ClusterListener className=&quot;org.apache.catalina.ha.session.ClusterSessionListener&quot;/&gt;
+        &lt;/Cluster&gt;
+        &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+               prefix=&quot;node2-dongfei-tech_access.&quot; suffix=&quot;.log&quot;
+               pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
+          &lt;/Host&gt;
+[root@tomcat-node-2 ~]# mkdir /data/webapp/ROOT/WEB-INF
+[root@tomcat-node-2 ~]# cp /etc/tomcat/web.xml /data/webapp/ROOT/WEB-INF
+[root@tomcat-node-2 ~]# vim /data/webapp/ROOT/WEB-INF/web.xml
+    &lt;distributable/&gt;  #添加到web-app内
+[root@tomcat-node-2 ~]# systemctl restart tomcat
+</code></pre><blockquote>
+<p>需要在前端调度器做将会话绑定，配置后端的Tomcat会话集群一同使用</p>
+</blockquote>
+<h1 id="使用mencached保存tomcat会话信息">使用mencached保存Tomcat会话信息</h1>
+<ul>
+<li>session server：redis(store), memcached(cache)；利用会话服务器保存会话信息</li>
+</ul>
+<p><img src="https://pic.fenghong.tech/others/tomcat-session-memcached.png" alt="img"></p>
+<p>mencached配置：</p>
+<pre><code>[root@mem-1 ~]# yum install memcached -y
+[root@mem-1 ~]# systemctl start memcached
+[root@mem-1 ~]# ss -tnl |grep 11211
+LISTEN     0      128          *:11211                    *:*
+LISTEN     0      128         :::11211                   :::*
+</code></pre><p>msm配置：在tomcat服务器中配置</p>
+<p>项目地址：https://github.com/magro/memcached-session-manager</p>
+<pre><code>[root@tomcat-node-1 ~]# mkdir msm
+[root@tomcat-node-1 ~]# cd msm
+[root@tomcat-node-1 msm]# wget http://repo1.maven.org/maven2/de/javakaffee/msm/memcached-session-manager/2.3.0/memcached-session-manager-2.3.0.jar
+[root@tomcat-node-1 msm]# wget http://repo1.maven.org/maven2/de/javakaffee/msm/memcached-session-manager-tc7/2.3.0/memcached-session-manager-tc7-2.3.0.jar
+[root@tomcat-node-1 msm]# wget http://repo1.maven.org/maven2/net/spy/spymemcached/2.12.3/spymemcached-2.12.3.jar
+[root@tomcat-node-1 msm]# mkdir kryo
+[root@tomcat-node-1 msm]# cd kryo/
+[root@tomcat-node-1 kryo]# wget http://repo1.maven.org/maven2/de/javakaffee/msm/msm-kryo-serializer/2.3.0/msm-kryo-serializer-2.3.0.jar
+[root@tomcat-node-1 kryo]# wget http://repo1.maven.org/maven2/de/javakaffee/kryo-serializers/0.42/kryo-serializers-0.42.jar
+[root@tomcat-node-1 kryo]# wget http://repo1.maven.org/maven2/com/esotericsoftware/kryo/4.0.2/kryo-4.0.2.jar
+[root@tomcat-node-1 kryo]# wget http://repo1.maven.org/maven2/com/esotericsoftware/minlog/1.3.0/minlog-1.3.0.jar
+[root@tomcat-node-1 kryo]# wget http://repo1.maven.org/maven2/com/esotericsoftware/reflectasm/1.11.7/reflectasm-1.11.7.jar
+[root@tomcat-node-1 kryo]# wget http://repo1.maven.org/maven2/org/ow2/asm/asm/6.2/asm-6.2.jar
+[root@tomcat-node-1 kryo]# wget http://repo1.maven.org/maven2/org/objenesis/objenesis/2.6/objenesis-2.6.jar
+[root@tomcat-node-1 ~]# tree msm/
+msm/
+├── kryo
+│   ├── asm-6.2.jar
+│   ├── kryo-4.0.2.jar
+│   ├── kryo-serializers-0.42.jar
+│   ├── minlog-1.3.0.jar
+│   ├── msm-kryo-serializer-2.3.0.jar
+│   ├── objenesis-2.6.jar
+│   └── reflectasm-1.11.7.jar
+├── memcached-session-manager-2.3.0.jar
+├── memcached-session-manager-tc7-2.3.0.jar
+└── spymemcached-2.12.3.jar
+[root@tomcat-node-1 ~]# cp msm/*.jar /usr/share/java/tomcat/
+[root@tomcat-node-1 ~]# scp msm/*.jar 192.168.0.11:/usr/share/java/tomcat/
+[root@tomcat-node-1 ~]# scp msm/kryo/*.jar 192.168.0.11:/usr/share/java/tomcat/
+</code></pre><p>tomcat-1配置：</p>
+<pre><code>[root@tomcat-node-1 ~]# vim /etc/tomcat/server.xml
+&lt;Host name=&quot;node1.fenghong.tech&quot; appBase=&quot;/data/webapp&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+  &lt;Context path=&quot;/&quot; docBase=&quot;ROOT&quot; reloadable=&quot;&quot;&gt;
+    &lt;Manager className=&quot;de.javakaffee.web.msm.MemcachedBackupSessionManager&quot;
+      memcachedNodes=&quot;n1:192.168.0.12:11211,n2:192.168.0.13:11211&quot;
+      failoverNodes=&quot;n2&quot;
+      requestUriIgnorePattern=&quot;.*\.(ico|png|gif|jpg|css|js)$&quot;
+      transcoderFactoryClass=&quot;de.javakaffee.web.msm.serializer.kryo.KryoTranscoderFactory&quot;
+      /&gt;
+  &lt;/Context&gt;
+  &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+         prefix=&quot;node1-dongfei-tech_access.&quot; suffix=&quot;.log&quot;
+         pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
+&lt;/Host&gt;
+[root@tomcat-node-1 ~]# cat /data/webapp/ROOT/index.jsp 
+&lt;%@ page language=&quot;java&quot; %&gt;
+&lt;html&gt;
+        &lt;head&gt;&lt;title&gt;TomcatA&lt;/title&gt;&lt;/head&gt;
+        &lt;body&gt;
+                &lt;h1&gt;&lt;font color=&quot;red&quot;&gt;TomcatA.fenghong.tech&lt;/font&gt;&lt;/h1&gt;
+                &lt;table align=&quot;centre&quot; border=&quot;1&quot;&gt;
+                        &lt;tr&gt;
+                                &lt;td&gt;Session ID&lt;/td&gt;
+                        &lt;% session.setAttribute(&quot;fenghong.tech&quot;,&quot;fenghong.tech&quot;); %&gt;
+                                &lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                                &lt;td&gt;Created on&lt;/td&gt;
+                                &lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                &lt;/table&gt;
+        &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>tomcat-2配置：</p>
+<pre><code>[root@tomcat-node-2 ~]# vim /etc/tomcat/server.xml
+&lt;Host name=&quot;node2.fenghong.tech&quot; appBase=&quot;/data/webapp&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+  &lt;Context path=&quot;/&quot; docBase=&quot;ROOT&quot; reloadable=&quot;&quot;&gt;
+    &lt;Manager className=&quot;de.javakaffee.web.msm.MemcachedBackupSessionManager&quot;
+      memcachedNodes=&quot;n1:192.168.0.12:11211,n2:192.168.0.13:11211&quot;
+      failoverNodes=&quot;n2&quot;
+      requestUriIgnorePattern=&quot;.*\.(ico|png|gif|jpg|css|js)$&quot;
+      transcoderFactoryClass=&quot;de.javakaffee.web.msm.serializer.kryo.KryoTranscoderFactory&quot;
+      /&gt;
+  &lt;/Context&gt;
+  &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+         prefix=&quot;node2-dongfei-tech_access.&quot; suffix=&quot;.log&quot;
+         pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
+&lt;/Host&gt;
+[root@tomcat-node-2 ~]# cat /data/webapp/ROOT/index.jsp 
+&lt;%@ page language=&quot;java&quot; %&gt;
+&lt;html&gt;
+        &lt;head&gt;&lt;title&gt;TomcatB&lt;/title&gt;&lt;/head&gt;
+                &lt;body&gt;
+                &lt;h1&gt;&lt;font color=&quot;blue&quot;&gt;TomcatB.fenghong.tech&lt;/font&gt;&lt;/h1&gt;
+                &lt;table align=&quot;centre&quot; border=&quot;1&quot;&gt;
+                        &lt;tr&gt;
+                                &lt;td&gt;Session ID&lt;/td&gt;
+                        &lt;% session.setAttribute(&quot;fenghong.tech&quot;,&quot;fenghong.tech&quot;); %&gt;
+                                &lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                                &lt;td&gt;Created on&lt;/td&gt;
+                                &lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                &lt;/table&gt;
+                &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><blockquote>
+<p>测试：</p>
+<p>访问www.fenghong.tech查看会话是否会变动</p>
+<p>将memcached-1停止会话是否正常保持</p>
+</blockquote>
+<h1 id="tomcat的常用优化配置">Tomcat的常用优化配置</h1>
+<ul>
+<li>/etc/sysconfig/tomcat, /etc/tomcat/tomcat.conf</li>
+</ul>
+<p>内存空间：</p>
+<pre><code>JAVA_OPTS=&quot;-server -Xms32g -Xmx32g -XX:NewSize= -XX:MaxNewSize= &quot;
+	-server：服务器模式
+	-Xms：堆内存初始化大小；
+	-Xmx：堆内存空间上限；
+	-XX:NewSize=：新生代空间初始化大小；					
+	-XX:MaxNewSize=：新生代空间最大值；
+</code></pre><p>线程池设置：</p>
+<pre><code>&lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot;  connectionTimeout=&quot;20000&quot; redirectPort=&quot;8443&quot; /&gt;
+	maxThreads：最大线程数；
+	minSpareThreads：最小空闲线程数；
+	maxSpareThreads：最大空闲线程数；
+	acceptCount：等待队列的最大长度；
+	URIEncoding：URI地址编码格式，建议使用UTF-8；
+	enableLookups：是否启用dns解析，建议禁用； 
+	compression：是否启用传输压缩机制，建议“on&quot;;
+	compressionMinSize：启用压缩传输的数据流最小值，单位是字节；
+	compressableMimeType：定义启用压缩功能的MIME类型；
+		text/html, text/xml, text/css, text/javascript
+</code></pre><p>禁用8005端口；</p>
+<pre><code>&lt;Server port=&quot;-1&quot; shutdown=&quot;SHUTDOWN&quot;&gt;
+</code></pre><p>隐藏版本信息：</p>
+<pre><code>&lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot;  connectionTimeout=&quot;20000&quot; redirectPort=&quot;8443&quot; /&gt;
+	Server=&quot;SOME STRING&quot;
+</code></pre><h1 id="jvm">JVM</h1>
+<p>内存分配参数：</p>
+<pre><code>-Xmx：堆内存（新生代和老年代）的最大空间；
+-Xms：初始分配内存空间；
+-XX:NewSize：新生代空间大小；
+    -Xms-(-XX:NewSize)
+-XX:MaxNewSize：新生代的最大空间；
+    -Xmx-（-XX:MaxNewSize）
+</code></pre><p>指定垃圾收集器：-XX:</p>
+<pre><code>UseSerialGC：运行于Client模式下，新生代是Serial, 老年代使用SerialOld
+UseParNewGC：新生代使用ParNew，老年代使用SerialOld
+UseParalellGC：运行于server模式下，新生代使用Serial Scavenge, 老年代使用SerialOld
+UseParalessOldGC：新生代使用Paralell Scavenge, 老年代使用Paralell Old
+UseConcMarkSweepGC：新生代使用ParNew, 老年代优先使用CMS，备选方式为Serial Old
+    CMSInitiatingOccupancyFraction：设定老年代空间占用比例达到多少后触发回收操作，默认为68%；
+    UseCMSCompactAtFullCollection：CMS完成内存回收后是否要进行内存碎片整理；
+    CMSFullGCsBeforeCompaction：在多次回收后执行一次内存碎片整理；
+ParalellGCThreads：并行GC线程的数量；
+</code></pre><p>JVM常用的分析工具：</p>
+<ul>
+<li>jps：用来查看运行的所有jvm进程；</li>
+<li>jinfo：查看进程的运行环境参数，主要是jvm命令行参数；</li>
+<li>jstat：对jvm应用程序的资源和性能进行实时监控；</li>
+<li>jstack：查看所有线程的运行状态；</li>
+<li>jmap：查看jvm占用物理内存的状态；</li>
+<li>jhat：+UseParNew</li>
+<li>jconsole：</li>
+<li>jvisualvm：</li>
+</ul>
+<p><strong>jps</strong>：Java virutal machine Process Status tool</p>
+<pre><code>jps [-q] [-mlvV] [&lt;hostid&gt;]
+	-q：静默模式；
+	-v：显示传递给jvm的命令行参数；
+	-m：输出传入main方法的参数；
+	-l：输出main类或jar完全限定名称；
+	-V：显示通过flag文件传递给jvm的参数；
+	[&lt;hostid&gt;]：主机id，默认为localhost；
+</code></pre><p><strong>jinfo</strong>：输出给定的java进程的所有配置信息</p>
+<pre><code>jinfo [option] &lt;pid&gt;
+	-flags：to print VM flags
+	-sysprops：to print Java system properties
+	-flag &lt;name&gt;：to print the value of the named VM flag
+</code></pre><p><strong>jstack</strong>：查看指定的java进程的线程栈的相关信息</p>
+<pre><code>jstack [-l] &lt;pid&gt;
+jstack -F [-m] [-l] &lt;pid&gt;
+	-l：long listings，会显示额外的锁信息，因此，发生死锁时常用此选项；
+	-m：混合模式，既输出java堆栈信息，也输出C/C++堆栈信息；
+	-F：当使用“jstack -l PID&quot;无响应，可以使用-F强制输出信息；
+</code></pre><p><strong>jstat</strong>：输出指定的java进程的统计信息</p>
+<pre><code>jstat -&lt;option&gt; [-t] [-h&lt;lines&gt;] &lt;vmid&gt; [&lt;interval&gt; [&lt;count&gt;]]
+-option：
+	-class：class loader
+	-compiler：JIT
+	-gc：gc
+		YGC：新生代的垃圾回收次数；
+		YGCT：新生代垃圾回收消耗的时长；
+		FGC：Full GC的次数；
+		FGCT：Full GC消耗的时长；
+		GCT：GC消耗的总时长；
+	-gccapacity：统计堆中各代的容量
+	-gccause：
+	-gcmetacapacity
+	-gcnew：新生代
+	-gcnewcapacity
+	-gcold：老年代
+	-gcoldcapacity
+	-gcutil
+	-printcompilation
+interval：时间间隔，单位是毫秒；
+count：显示的次数；
+</code></pre><p><strong>jmap</strong>：Memory Map, 用于查看堆内存的使用状态</p>
+<p><strong>jhat</strong>：Java Heap Analysis Tool</p>
+<pre><code>jmap [option] &lt;pid&gt;
+jmap -heap &lt;pid&gt;  #查看堆空间的详细信息
+jmap -histo[:live] &lt;pid&gt;  #查看堆内存中的对象的数目,live：只统计活动对象
+jmap -dump:&lt;dump-options&gt; &lt;pid&gt;  #保存堆内存数据至文件中，而后使用jvisualvm或jhat进行查看
+	dump-options:
+		live       
+		format=b
+		file=&lt;file&gt;
+</code></pre><p>感谢阅读！</p>
+
+        </div>
+        <!-- tags -->
+        <div class="mb-3">
+          <h5 class="d-inline-block mr-3">Tags:</h5>
+          <ul class="list-inline d-inline-block">
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/linux"> 
+            Linux</a>
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/internet"> , 
+            Internet</a>
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/server"> , 
+            Server</a>
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/tomcat"> , 
+            Tomcat</a>
+            
+          </ul>
+        </div>
+        <!-- previous -->
+        <div class="mb-3 link-article">
+    <div class="pre-article">
+        
+            <div><i class="fa fa-arrow-left"></i> 上一篇</div>
+            <a href="https://www.fenghong.tech/blog/2018/2018-07-15-varnish/">Varnish</a>
+        
+    </div>
+    <div class="next-article">
+        
+            <div>下一篇 <i class="fa fa-arrow-right"></i></div>
+            <a href="https://www.fenghong.tech/blog/2018/2018-07-20-redis/">Redis</a>
+        
+    </div>
+</div>
+        <!-- previous -->
+
+        <!-- recommend -->
+        
+
+<div class="mb-3">
+  <h2>文章推荐</h2>
+  <ul class="related">
+  
+    <li><a href="/blog/2018/2018-07-15-varnish/">Varnish</a></li>
+  
+    <li><a href="/blog/2018/2018-07-07-nginx/">Nginx</a></li>
+  
+    <li><a href="/blog/2018/2018-07-02-io/">I/O</a></li>
+  
+    <li><a href="/blog/2018/2018-07-06-lvstest/">LvsTest</a></li>
+  
+    <li><a href="/blog/2018/2018-07-09-haproxy/">HAProxy</a></li>
+  
+  </ul>
+</div>
+
+
+        <!-- comments -->
+
+        
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script>
+          window.onload = function() {
+              const gitalk = new Gitalk({
+              clientID: 'a0a546df858aafb5300e',
+              clientSecret: '67d7b40de25c072fc38840ffb9c06ceab7ef5080',
+              repo: 'oldthreefeng.github.io',
+              owner: 'oldthreefeng',
+              admin: ['oldthreefeng'],
+              id: hex_md5(hex_md5(window.location.pathname + window.location.hash)), 
+              distractionFreeMode: false 
+            });
+            (function() {
+              if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+                document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+                return;
+              }
+              gitalk.render('gitalk-container');
+            })();
+          }
+        </script>
+        
+      </div>
+      <!-- sidebar -->
+<aside class="col-lg-4 order-1 order-lg-2">
+  <!-- tags -->
+  <div class="bg-white px-4 py-5 box-shadow mb-5 word-cloud">
+    <h4 class="mb-4">标签</h4>
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div id="tag-cloud" style="padding: 5px 15px">
+      
+        
+          
+          
+          
+          <a href="/tags/acme" style="font-size:1.0188679245283019rem">acme</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/acmetiny" style="font-size:1.0188679245283019rem">acmetiny</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/alertmanager" style="font-size:1rem">alertmanager</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/algorithm" style="font-size:1.1132075471698113rem">algorithm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/aliyun" style="font-size:1rem">aliyun</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ansible" style="font-size:1.0754716981132075rem">ansible</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/apisix" style="font-size:1rem">apisix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/arm64" style="font-size:1.0188679245283019rem">arm64</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/authorization" style="font-size:1rem">authorization</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/backup" style="font-size:1.0377358490566038rem">backup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binarysearch" style="font-size:1.0188679245283019rem">binarysearch</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binlog" style="font-size:1rem">binlog</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bit" style="font-size:1.0188679245283019rem">bit</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bug" style="font-size:1.0188679245283019rem">bug</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cache" style="font-size:1rem">cache</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/certbot" style="font-size:1rem">certbot</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/channel" style="font-size:1rem">channel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/chrome" style="font-size:1.0188679245283019rem">chrome</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ci" style="font-size:1rem">ci</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cluster" style="font-size:1.1132075471698113rem">cluster</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cobra" style="font-size:1rem">cobra</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coco" style="font-size:1.0377358490566038rem">coco</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coding" style="font-size:1rem">coding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/computer" style="font-size:1rem">computer</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/consul" style="font-size:1rem">consul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/containerd" style="font-size:1.0188679245283019rem">containerd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coredns" style="font-size:1rem">coredns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cors" style="font-size:1rem">cors</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/crypto" style="font-size:1rem">crypto</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/curl" style="font-size:1rem">curl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dashboard" style="font-size:1rem">dashboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dcdn" style="font-size:1rem">dcdn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/debt" style="font-size:1rem">debt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/devops" style="font-size:1.0188679245283019rem">devops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dingding" style="font-size:1rem">dingding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/disk" style="font-size:1rem">disk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dmesg" style="font-size:1rem">dmesg</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dns" style="font-size:1rem">dns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/docker" style="font-size:1.2264150943396226rem">docker</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/doublylinkedlist" style="font-size:1rem">doublylinkedlist</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/elk" style="font-size:1rem">elk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/error" style="font-size:1rem">error</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/etcd" style="font-size:1.0377358490566038rem">etcd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exec" style="font-size:1.0188679245283019rem">exec</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exp" style="font-size:1rem">exp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/federated" style="font-size:1rem">federated</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/filecoin" style="font-size:1rem">filecoin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/find" style="font-size:1rem">find</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/firewalld" style="font-size:1rem">firewalld</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/fix" style="font-size:1.0377358490566038rem">fix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flag" style="font-size:1.0188679245283019rem">flag</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flannel" style="font-size:1rem">flannel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/food" style="font-size:1.0188679245283019rem">food</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/frp" style="font-size:1.0377358490566038rem">frp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ftp" style="font-size:1.0188679245283019rem">ftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/games" style="font-size:1rem">games</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gin" style="font-size:1.0188679245283019rem">gin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/git" style="font-size:1.2075471698113207rem">git</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/github" style="font-size:1.0188679245283019rem">github</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gitlab" style="font-size:1rem">gitlab</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go" style="font-size:1.320754716981132rem">go</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go-vim" style="font-size:1rem">go-vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gogs" style="font-size:1.0566037735849056rem">gogs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/goland" style="font-size:1.0188679245283019rem">goland</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/golang" style="font-size:1.0377358490566038rem">golang</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gorequest" style="font-size:1rem">gorequest</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grafana" style="font-size:1.0188679245283019rem">grafana</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grub" style="font-size:1rem">grub</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hack" style="font-size:1.0188679245283019rem">hack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/haproxy" style="font-size:1.0377358490566038rem">haproxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/harbor" style="font-size:1.0188679245283019rem">harbor</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hash" style="font-size:1.0188679245283019rem">hash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hashmap" style="font-size:1rem">hashmap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/helm" style="font-size:1.0188679245283019rem">helm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hexo" style="font-size:1.0377358490566038rem">hexo</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/http" style="font-size:1.0754716981132075rem">http</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/https" style="font-size:1rem">https</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/index" style="font-size:1rem">index</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ingress" style="font-size:1.0377358490566038rem">ingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/inotify" style="font-size:1rem">inotify</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/internet" style="font-size:1.169811320754717rem">internet</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/interview" style="font-size:1rem">interview</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/iptables" style="font-size:1.0377358490566038rem">iptables</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ipvs" style="font-size:1.0188679245283019rem">ipvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/java" style="font-size:1.0754716981132075rem">java</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jeju" style="font-size:1rem">jeju</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jenkins" style="font-size:1.0943396226415094rem">jenkins</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jetbrains" style="font-size:1rem">jetbrains</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jumpserver" style="font-size:1.0566037735849056rem">jumpserver</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jvm" style="font-size:1rem">jvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/keepalived" style="font-size:1rem">keepalived</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kernel" style="font-size:1rem">kernel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/knowledge" style="font-size:1rem">knowledge</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kube-proxy" style="font-size:1.0188679245283019rem">kube-proxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetes" style="font-size:1.3962264150943395rem">kubernetes</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesrbac" style="font-size:1rem">kubernetesrbac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesssl" style="font-size:1.0188679245283019rem">kubernetesssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kuboard" style="font-size:1.0566037735849056rem">kuboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lb" style="font-size:1rem">lb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/learning" style="font-size:1.0566037735849056rem">learning</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/leetcode" style="font-size:1.0188679245283019rem">leetcode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libcurl" style="font-size:1rem">libcurl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libssh2" style="font-size:1rem">libssh2</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/link" style="font-size:1rem">link</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/linux" style="font-size:1.9811320754716981rem">linux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/living" style="font-size:1rem">living</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lnux" style="font-size:1rem">lnux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/log" style="font-size:1.0566037735849056rem">log</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logrus" style="font-size:1rem">logrus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logs" style="font-size:1rem">logs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logstash" style="font-size:1rem">logstash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/loki" style="font-size:1rem">loki</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lru" style="font-size:1rem">lru</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/luna" style="font-size:1rem">luna</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvm" style="font-size:1rem">lvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvs" style="font-size:1rem">lvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mac" style="font-size:1rem">mac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/malaysia" style="font-size:1rem">malaysia</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/manage" style="font-size:1rem">manage</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/map" style="font-size:1rem">map</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mariadb" style="font-size:1.0377358490566038rem">mariadb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/markdown" style="font-size:1.0188679245283019rem">markdown</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mfa" style="font-size:1rem">mfa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mha" style="font-size:1rem">mha</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mode" style="font-size:1rem">mode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/module" style="font-size:1rem">module</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mount" style="font-size:1rem">mount</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mysql" style="font-size:1.2452830188679245rem">mysql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/navicat" style="font-size:1rem">navicat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/network" style="font-size:1rem">network</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nfs" style="font-size:1.0754716981132075rem">nfs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginx" style="font-size:1.2264150943396226rem">nginx</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginxingress" style="font-size:1.0566037735849056rem">nginxingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/node_exporter" style="font-size:1.0188679245283019rem">node_exporter</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/numpy" style="font-size:1rem">numpy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ops" style="font-size:1.2452830188679245rem">ops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/owncloud" style="font-size:1rem">owncloud</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/password" style="font-size:1rem">password</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/paxos" style="font-size:1.0188679245283019rem">paxos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/php" style="font-size:1rem">php</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pipeline" style="font-size:1rem">pipeline</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/polynomial" style="font-size:1rem">polynomial</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/problem" style="font-size:1rem">problem</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/prometheus" style="font-size:1.0943396226415094rem">prometheus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pv" style="font-size:1.0754716981132075rem">pv</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pvc" style="font-size:1.0754716981132075rem">pvc</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/python" style="font-size:1.0943396226415094rem">python</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/queue" style="font-size:1rem">queue</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/qw3xt" style="font-size:1rem">qw3xt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rabbitmq" style="font-size:1.0188679245283019rem">rabbitmq</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/raft" style="font-size:1rem">raft</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rebase" style="font-size:1rem">rebase</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/redis" style="font-size:1.0377358490566038rem">redis</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/resources" style="font-size:1.0188679245283019rem">resources</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsa" style="font-size:1rem">rsa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsync" style="font-size:1.0188679245283019rem">rsync</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/safe" style="font-size:1.0754716981132075rem">safe</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/samba" style="font-size:1rem">samba</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sealos" style="font-size:1rem">sealos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/secure" style="font-size:1rem">secure</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sed" style="font-size:1rem">sed</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/server" style="font-size:1.2075471698113207rem">server</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sftp" style="font-size:1rem">sftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shadowsocks" style="font-size:1.0188679245283019rem">shadowsocks</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shell" style="font-size:1.0188679245283019rem">shell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slap" style="font-size:1rem">slap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slave" style="font-size:1rem">slave</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slb" style="font-size:1rem">slb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slowquery" style="font-size:1rem">slowquery</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sonar" style="font-size:1.0377358490566038rem">sonar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sourcetree" style="font-size:1.0188679245283019rem">sourcetree</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sql" style="font-size:1.0188679245283019rem">sql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ss" style="font-size:1rem">ss</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssh" style="font-size:1.0754716981132075rem">ssh</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssl" style="font-size:1.1132075471698113rem">ssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stack" style="font-size:1rem">stack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stress" style="font-size:1rem">stress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/style" style="font-size:1rem">style</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/switchyomega" style="font-size:1rem">switchyomega</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/syncd" style="font-size:1rem">syncd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/taint" style="font-size:1rem">taint</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tar" style="font-size:1rem">tar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tcp" style="font-size:1.0188679245283019rem">tcp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/testing" style="font-size:1rem">testing</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tomcat" style="font-size:1rem">tomcat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tour" style="font-size:1.0188679245283019rem">tour</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/trojan" style="font-size:1rem">trojan</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ubuntu" style="font-size:1.0566037735849056rem">ubuntu</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/udp" style="font-size:1rem">udp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/uk8s" style="font-size:1rem">uk8s</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unauthorized" style="font-size:1rem">unauthorized</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unblockneteasemusic" style="font-size:1rem">unblockneteasemusic</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upgrade" style="font-size:1.0188679245283019rem">upgrade</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upstream" style="font-size:1rem">upstream</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/v1.18.3" style="font-size:1rem">v1.18.3</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vim" style="font-size:1rem">vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/virtul" style="font-size:1rem">virtul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vpn" style="font-size:1.0754716981132075rem">vpn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vscode" style="font-size:1rem">vscode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/websocket" style="font-size:1rem">websocket</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/wifi" style="font-size:1rem">wifi</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xshell" style="font-size:1rem">xshell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xtrabackup" style="font-size:1rem">xtrabackup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/yum" style="font-size:1rem">yum</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/zabbix" style="font-size:1rem">zabbix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e6%95%b0%e6%8d%ae%e5%ba%93%e5%8e%9f%e7%90%86" style="font-size:1rem">数据库原理</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95" style="font-size:1rem">贪心算法</a>
+        
+      
+      </div>
+    
+  </div>
+
+  <!-- profile -->
+  <!-- toc -->
+  
+  <div class="bg-white px-4 py-5 box-shadow mb-5 sticky-top">
+    <h4 class="mb-4">目录</h4>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#yum包安装">yum包安装</a></li>
+    <li><a href="#官方发行版安装">官方发行版安装</a></li>
+    <li><a href="#managerhost-manager和docs">manager、host-manager和docs</a>
+      <ul>
+        <li><a href="#配置manager管理webapps应用程序">配置：manager管理webapps应用程序</a></li>
+        <li><a href="#配置host-manager管理虚拟主机">配置：host-manager管理虚拟主机</a></li>
+        <li><a href="#docs获取离线文档">docs获取离线文档</a></li>
+      </ul>
+    </li>
+    <li><a href="#tomcat的配置参数">Tomcat的配置参数</a>
+      <ul>
+        <li><a href="#tomcat的核心组件serverxml">tomcat的核心组件：server.xml</a></li>
+        <li><a href="#tomcat的常用组件配置">Tomcat的常用组件配置：</a></li>
+        <li><a href="#组件配置示例">组件配置示例：</a></li>
+        <li><a href="#jsp-webapp的组织结构">JSP WebAPP的组织结构：</a></li>
+        <li><a href="#webapp归档格式">webapp归档格式：</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#nginx和tomcat通过httphttps协议工作">nginx和Tomcat通过http/https协议工作</a></li>
+    <li><a href="#httpd和tomcat通过httphttps协议工作">httpd和Tomcat通过http/https协议工作</a></li>
+    <li><a href="#http和tomcat通过ajp协议工作">http和Tomcat通过ajp协议工作</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#httpd--nginx--tomcat-cluster基于cookie实现会话绑定">httpd + nginx + tomcat cluster：基于cookie实现会话绑定</a></li>
+    <li><a href="#nginx--nginx--tomcat-cluster基于源地址hash调度">nginx + nginx + tomcat cluster：基于源地址hash调度</a></li>
+  </ul>
+</nav>
+  </div>
+
+</aside>
+<!-- /sidebar -->
+
+    </div>
+  </div>
+</section>
+<!-- /blog details -->
+
+
+
+<footer>
+	
+	<div class="section bg-secondary">
+		<div class="container">
+			<div class="row justify-content-between">
+				
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					<a class="mb-4 d-inline-block" href="/"><img class="img-fluid"
+																								src="/images/images/logo-alt.png" alt="Louis Blog" width="60%"></a>
+					<p class="text-light mb-5">每一个不曾起舞的日子都是对生命的辜负.</p>
+					<h4 class="text-white mb-4">关注我</h4>
+					
+					<ul class="list-inline social-icon-alt">
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://twitter.com/louishong17"><i class="fa fa-twitter"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://github.com/oldthreefeng"><i class="fa fa-github"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="/contact"><i class="fa fa-wechat"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="mailto:992165098@qq.com"><i class="fa fa-envelope"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://www.fenghong.tech/blog/index.xml"><i class="fa fa-rss"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					
+					
+					
+					
+					<div class="mb-5">
+						<h4 class="text-white mb-4">联系信息</h4>
+						<p class="text-light mb-3">上海 · 浦东新区</p>
+						<p class="text-light mb-3"></p>
+						<p class="text-light mb-3">微信联系方式</p>
+						<p class="text-light mb-3"><img src="/images/images/wechat-qrcode.png" width="356px"></p>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="bg-secondary-darken py-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+					<p class="mb-0 text-white">Copyright © 2020 Louis</p>
+				</div>
+				<div class="col-md-6 text-center text-md-right">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item mx-0"><a class="d-inline-block px-3 text-white" href="https://beian.miit.gov.cn/"
+																									class="text-white">鄂ICP备18027870号-1</a></li>
+						<p class="list-inline-item mx-0 text-white">本网站由</p>
+						<a target="_blank" rel="nofollow noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://pic.fenghong.tech/images/180803_logo30.png" style="margin-bottom:5px;height: 25px;"></a>
+						<p class="list-inline-item mx-0 text-white">提供CDN加速/云存储服务</p>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+<script>
+	var indexURL = "/index.json"
+</script>
+
+
+<!-- JS Plugins -->
+
+<script src="/plugins/jQuery/jquery.min.js"></script>
+
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="/plugins/slick/slick.min.js"></script>
+
+<script src="/plugins/google-map/gmap.js"></script>
+
+<script src="/plugins/venobox/venobox.min.js"></script>
+
+<script src="/plugins/filterizr/jquery.filterizr.min.js"></script>
+
+<script src="/plugins/search/fuse.min.js"></script>
+
+<script src="/plugins/search/mark.js"></script>
+
+<script src="/plugins/search/search.js"></script>
+
+<script src="/plugins/bigPicture/bigPicture.js"></script>
+
+<script src="/plugins/hex_md5/hex_md5.js"></script>
+
+
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+
+<!-- Algolia -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+<script>
+	docsearch({
+		apiKey: 'b4d47f0c039a84d4035305be829404dd',
+		indexName: 'DocSearch',
+		appId: 'CTH4P282IZ',
+		inputSelector: '#js-algolia-btn',
+		debug: false,
+	});
+</script>
+
+<!-- google analitycs -->
+
+<script>
+	(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-130595069-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https'){
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else{
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>backup on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/backup/</link>
+    <description>Recent content in backup on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Mon, 21 Sep 2020 21:34:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/backup/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>sealos 多网卡安装解决方案</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sealos-multi-iface-solution/</link>
+      <pubDate>Mon, 21 Sep 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sealos-multi-iface-solution/</guid>
+      <description>多网卡在sealos</description>
+    </item>
+    
+    <item>
+      <title>sealos etcd及exec子命令使用相关</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sealos-etcd-backup-exec/</link>
+      <pubDate>Sun, 20 Sep 2020 10:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sealos-etcd-backup-exec/</guid>
+      <description>sealos etcd 命令 使用seal</description>
+    </item>
+    
+    <item>
+      <title>MYSQL备份</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-13-mysql-06/</link>
+      <pubDate>Wed, 13 Jun 2018 10:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-13-mysql-06/</guid>
+      <description>摘要：MYSQL的l</description>
+    </item>
+    
+  </channel>
+</rss>

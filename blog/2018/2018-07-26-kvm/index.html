@@ -1,0 +1,2462 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn"><head>
+  <meta charset="utf-8">
+  <title>Kvm初探 | Louis Blog</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="有技术 有温度 有情怀">
+  
+  <meta name="author" content="Louis ">
+  <meta name="generator" content="Hugo 0.73.0" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  
+  <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="/plugins/animate/animate.css">
+  
+  <link rel="stylesheet" href="/plugins/venobox/venobox.css">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="/images/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="/images/images/favicon.png " type="image/x-icon">
+
+  <!--Algolia-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css">
+</head>
+<body>
+<!-- header -->
+<header>
+  
+
+  <!-- navigation -->
+  <div class="navigation bg-white position-relative">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="/"><img class="img-fluid pb-lg-3" src="/images/images/logo.png" width="189px" alt="Louis Blog"></a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/"></a>
+            </li>
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                博客
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/categories/kubernetes">Kubernetes</a>
+                
+                <a class="dropdown-item" href="/categories/sealos">sealos</a>
+                
+                <a class="dropdown-item" href="/categories/ops">运维相关</a>
+                
+                <a class="dropdown-item" href="/categories/golang">golang</a>
+                
+                <a class="dropdown-item" href="/categories/algorithm">algorithm</a>
+                
+                <a class="dropdown-item" href="/categories/tools">tools</a>
+                
+                <a class="dropdown-item" href="/blog">全部</a>
+                
+              </div>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/team">友情链接</a>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                关于我
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/contact">about</a>
+                
+                <a class="dropdown-item" href="https://github.com/oldthreefeng">github</a>
+                
+              </div>
+            </li>
+            
+            
+          </ul>
+
+          
+          
+
+          
+          <!-- search -->
+          <div class="search px-4">
+            <button id="searchOpen" class="search-btn"><i class="fa fa-search text-dark"></i></button>
+            <div class="search-wrapper">
+              <form action="/search">
+                <input class="search-box form-control" id="js-algolia-btn" name="s" type="search" placeholder="输入搜索词">
+              </form>
+              <button id="searchClose" class="search-close"><i class="fa fa-close text-dark"></i></button>
+            </div>
+          </div>
+          
+          
+          <!-- get start btn -->
+          <a href="/contact" class="btn btn-primary hover-ripple">联系我</a>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- /navigation -->
+</header>
+<!-- /header -->
+
+
+<!-- page title -->
+<section class="section bg-cover overlay" style="background-image: url('/'),url('/'),url('/images/images/backgrounds/page-title.jpg');">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-white mb-3">Kvm初探</h2>
+        <!-- breadcrumb -->
+        
+        <p class="text-white"></p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /page title -->
+
+
+<!-- blog details -->
+<section class="section">
+  <div class="container blog">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- post thumb -->
+        <div class="position-relative mb-5">
+          <img src="/"  onerror="this.src='https:\/\/pic.fenghong.tech\/proto\/020.jpg'" alt="post thumb" class="img-fluid w-100">
+           <div class="card-type">Ops</div>
+        </div>
+        <div class="card-meta text-uppercase mb-2">作者  <strong class="text-dark"><a href="https://www.fenghong.tech">Louis</a></strong>
+          
+            发表于 <strong class="text-dark">2018年7月26日</strong></div>
+        <hr>
+        <div class="content">
+          <p>摘要：</p>
+<ul>
+<li>虚拟化技术</li>
+<li>KVM： <code>Kernel-based Virtual Machine</code></li>
+<li>qemu-kvm管理</li>
+<li>libvirt工具管理</li>
+</ul>
+<h1 id="虚拟化技术">虚拟化技术</h1>
+<blockquote>
+<p>第一代：真空管，穿孔卡片</p>
+<p>第二代：晶体管，批处理系统</p>
+<p>第三代：集成电路，多道程序设计</p>
+</blockquote>
+<blockquote>
+<p>第四代：PC</p>
+</blockquote>
+<h2 id="虚拟化要求">虚拟化要求</h2>
+<pre><code>Poke, Glodberg 提出虚拟化的三要素
+	等价执行
+	性能良好
+	安全隔离
+</code></pre><ul>
+<li>CPU虚拟化</li>
+</ul>
+<pre><code>emulation   	模拟r0-r3	          ---60%
+virtulization	模拟r0
+	完全虚拟化（full-virtulazition）
+		BT：binary translation  二进制翻译（软件上）   ----85%
+		HVM：硬件辅助虚拟化
+	半虚拟化（para-virtulation）     ---必须修改cpu内核，才可以实现半虚拟化   ---95%
+		各Guest的主机明确知道Host主机的存在
+		vm monitor == hypeivisor   ----hyper call特权指令的调用
+</code></pre><ul>
+<li>HVM</li>
+</ul>
+<pre><code>cpu有5个环，比传统的多一个环。
+	r-1 -----Host 主机内核上的特权指令
+	r 0
+	r 1
+	r 2
+	r 3 -----Guest 用户空间
+</code></pre><ul>
+<li>Memory的虚拟</li>
+</ul>
+<pre><code>进程：线性地址空间
+内核：物理地址空间
+
+Guest 的虚拟内存必须是连续的，但是hypervisor给其分配的物理内存分散的
+	shadow page table
+	tlb缓存命中率低下
+
+mmu虚拟化：GVA---GPA，同步进行GVA---HPA
+	intel：EPT，Extended page table
+	AMD:NTP,Nested Page Table
+		GVA：guest virtul address
+		GPA：guest visible address
+		HPA：hypervisor visible address
+TLB 虚拟化
+	tagged TLB ----&gt; 直接缓存GVA---HPA记录，命中率大大提高
+</code></pre><h3 id="io">I/O</h3>
+<pre><code>外存
+	硬盘/光盘/U盘
+网络设备
+	网卡
+显示设备
+	VGA：frame buffer机制，由于存在硬件加速，显卡虚拟效果不佳
+键盘鼠标
+	PS/2，usb
+	
+I/O的虚拟化方式：
+	模拟：使用软件模拟真实硬件
+		在Guest也存在调用设备，然后在hypervisor上存在 IO stack，继续调用。
+	半虚拟化：和CPU半虚拟化类似
+		IO frontend  ----&gt; IO backend
+	I/O-through：I/O透传技术
+		guest直接访问真实的I/O设备----VT-d+IOV技术
+
+Intel: VT-d
+	IOmmu技术
+	基于北桥的硬件辅助的虚拟化技术
+</code></pre><ul>
+<li>两种技术实现方式</li>
+</ul>
+<pre><code>Type—I型
+	硬件上安装hypervisor
+	xens，vmware ESX/ESXi
+Type-II型
+	硬件上安装hosts
+	kvm，virtualbox，vmware workstation
+</code></pre><h2 id="总结">总结</h2>
+<ul>
+<li>Interl硬件辅助的虚拟化</li>
+</ul>
+<pre><code>cpu：vt-x,EPT,tagged-TLB
+IO/CPU:vt-d,vt-x,IOV,VMDq
+
+处理器相关：vt-x
+芯片相关：vt-d
+IO相关：SR-IOV，VMDq
+</code></pre><ul>
+<li>虚拟化技术</li>
+</ul>
+<pre><code>模拟：著名的模拟器，Pearpc，Bochs，QEMU
+	上层-------guest
+	上层-------emulation
+	上层-------hosts
+	底层-------硬件
+完全虚拟化
+	native virtulizition
+		加速方式：BT，HVM
+	VMware Workstation,VMware Server，Parallels Desktop，KVM,Xens(HVM)
+
+半虚拟化:para-virtulizition
+	上层---------guest（需要修改内核参数）
+	上层---------hypercisor，hyper call
+	底层---------硬件
+	xen,uml(user-mode linux)
+	
+OS级别虚拟化：
+	上层---------用户空间，虚拟管理器
+	上层---------内核
+	底层---------硬件
+	OpenVZ，lxc，Solris Containers，FreeBSd jails
+
+库虚拟化：
+	wine，
+	如在ubuntu上安装qq，魔兽等windows。
+应用程序虚拟化：
+	jvm，
+</code></pre><ul>
+<li>虚拟化网络</li>
+</ul>
+<pre><code>桥接
+	hsots上的网卡，可以看成一个交换机设备。各虚拟机和hosts处于等同地位
+路由模型
+	hosts软件虚拟一网卡，仅主机
+nat
+	hosts软件虚拟化一个网卡。将guset元ip地址改为hosts的ip地址。
+</code></pre><ul>
+<li>tun与tap</li>
+</ul>
+<pre><code>在计算机网络中，TUN与TAP是操作系统内核中的虚拟网络设备，不同于普通依赖硬件网路板卡实现的设备。
+
+TAP等同于一个以太网设备，操作第二层数据包如以太网数据帧。
+TUN模拟了网络层设备，操作第三层数据包如IP数据包。
+
+操作系统通过TUN/TAP设备向绑定该设备的用户空间的程序发送数据，
+反之，用户空间程序也可以像操作硬件网络设备一样，通过TUN/TAP设备发送数据。
+	TUN/TAP设备宝贝向操作系统的网络栈发送投递数据包，从而模拟从外部接受数据的过程。
+</code></pre><ul>
+<li>安装创建桥服务，重启会丢失数据。建议写成脚本。</li>
+</ul>
+<pre><code>$ chkconfig disable NetworkManager
+$ chkconfig enable network
+$ yum install bridge-utils -y
+$ brctl addbr br0
+$ ifconfig eth0 0 up
+$ brctl addif br0 eth0
+$ ifconfig br0 172.20.0.24/16 up
+$ route add default gw 172.20.0.1
+</code></pre><h1 id="kvm">KVM</h1>
+<p>KVM：<code>Kernel-based Virtual Machine</code>,以色列Qumranet公司开发，2009年被redhat收购</p>
+<p>qemu：创建并管理虚拟机的工具，额外实现模拟I/O的工具。</p>
+<pre><code>	将guest的内核空间转移---r1上
+$ modprobe kvm
+$ lsmod |grep kvm
+kvm_intel             204800  0
+kvm                   593920  1 kvm_intel
+irqbypass              16384  1 kvm
+$ ll /dev/kvm
+crw------- 1 root root 10, 232 jul  26 09:35 /dev/kvm
+</code></pre><ul>
+<li>KVM组件</li>
+</ul>
+<pre><code>/dev/kvm: 管理虚拟机的设备文件
+	创建虚拟机
+	为虚拟机分配内存
+	读写VCPU的寄存器
+	向VCPU注入中断
+	运行VCPU
+qemu进程：工作与用户空间的组建，用于仿真PC机的I/O类硬件设备。
+</code></pre><ul>
+<li>virt</li>
+</ul>
+<pre><code>$ yum list *virt*  		#redhat安装kvm的虚拟库，如果要安装zens，则需要用到zen的库
+$ yum info qemu-kvm qemu-kvm-tools
+$ yum install -y qemu-kvm qemu-kvm-tools
+$ ln -sv /usr/libexec/qemu-kvm  /usr/sbin/  #软链接一个，没有PATH变量
+</code></pre><h3 id="qemu-kvm的用法">qemu-kvm的用法</h3>
+<ul>
+<li>标准选项</li>
+</ul>
+<pre><code>qemu-kvm的标准选项主要涉及指定主机类型、CPU模式、NUMA、软驱设备、光驱设备及硬件设备等。
+	-name name：设定虚拟机名称；
+	-M machine：指定要模拟的主机类型，如Standard PC、ISA-only PC或Intel-Mac等，可以使用“qemu-kvm -M ?”获取所支持的所有类型；
+	-m megs：设定虚拟机的RAM大小；
+	-cpu model：设定CPU模型，如coreduo、qemu64等，可以使用“qemu-kvm -cpu ?”获取所支持的所有模型；
+	-smp n[,cores=cores][,threads=threads][,sockets=sockets][,maxcpus=maxcpus]：设定模拟的SMP架构中CPU的个数等、每个CPU的核心数及CPU的socket数目等；PC机上最多可以模拟255颗CPU；maxcpus用于指定热插入的CPU个数上限；
+	-numa opts：指定模拟多节点的numa设备；
+	-fda file
+	-fdb file：使用指定文件(file)作为软盘镜像，file为/dev/fd0表示使用物理软驱；
+	-hda file
+	-hdb file
+	-hdc file
+	-hdd file：使用指定file作为硬盘镜像；
+	-cdrom file：使用指定file作为CD-ROM镜像，需要注意的是-cdrom和-hdc不能同时使用；将file指定为/dev/cdrom可以直接使用物理光驱；
+	-drive option[,option[,option[,...]]]：定义一个新的硬盘设备；可用子选项有很多。
+	file=/path/to/somefile：硬件映像文件路径；
+	if=interface：指定硬盘设备所连接的接口类型，即控制器类型，如ide、scsi、sd、mtd、floppy、pflash及virtio等；
+	index=index：设定同一种控制器类型中不同设备的索引号，即标识号；
+	media=media：定义介质类型为硬盘(disk)还是光盘(cdrom)；
+	snapshot=snapshot：指定当前硬盘设备是否支持快照功能：on或off；
+	cache=cache：定义如何使用物理机缓存来访问块数据，其可用值有none、writeback、unsafe和writethrough四个；
+	format=format：指定映像文件的格式，具体格式可参见qemu-img命令；
+	-boot [order=drives][,once=drives][,menu=on|off]：定义启动设备的引导次序，每种设备使用一个字符表示；不同的架构所支持的设备及其表示字符不尽相同，在x86 PC架构上，a、b表示软驱、c表示第一块硬盘，d表示第一个光驱设备，n-p表示网络适配器；默认为硬盘设备；
+</code></pre><ul>
+<li>显示选项</li>
+</ul>
+<pre><code>显示选项用于定义虚拟机启动后的显示接口相关类型及属性等。
+	-nographic：默认情况下，qemu使用SDL来显示VGA输出；而此选项用于禁止图形接口，此时,qemu类似一个简单的命令行程序，其仿真串口设备将被重定向到控制台；
+	-curses：禁止图形接口，并使用curses/ncurses作为交互接口；
+	-alt-grab：使用Ctrl+Alt+Shift组合键释放鼠标；
+	-ctrl-grab：使用右Ctrl键释放鼠标；
+	-sdl：启用SDL；
+	-spice option[,option[,...]]：启用spice远程桌面协议；其有许多子选项，具体请参照qemu-kvm的手册；
+	-vga type：指定要仿真的VGA接口类型，常见类型有：
+	cirrus：Cirrus Logic GD5446显示卡；
+	std：带有Bochs VBI扩展的标准VGA显示卡；
+	vmware：VMWare SVGA-II兼容的显示适配器；
+	qxl：QXL半虚拟化显示卡；与VGA兼容；在Guest中安装qxl驱动后能以很好的方式工作，在使用spice协议时推荐使用此类型；
+	none：禁用VGA卡；
+	-vnc display[,option[,option[,...]]]：默认情况下，qemu使用SDL显示VGA输出；使用-vnc选项，可以让qemu监听在VNC上，并将VGA输出重定向至VNC会话；使用此选项时，必须使用-k选项指定键盘布局类型；其有许多子选项，具体请参照qemu-kvm的手册；
+</code></pre><ul>
+<li>网络选项</li>
+</ul>
+<pre><code>网络属性相关选项用于定义网络设备接口类型及其相关的各属性等信息。这里只介绍nic、tap和user三种类型网络接口的属性，其它类型请参照qemu-kvm手册。
+
+	-net nic[,vlan=n][,macaddr=mac][,model=type][,name=name][,addr=addr][,vectors=v]：创建一个新的网卡设备并连接至vlan n中；PC架构上默认的NIC为e1000，macaddr用于为其指定MAC地址，name用于指定一个在监控时显示的网上设备名称；emu可以模拟多个类型的网卡设备，如virtio、i82551、i82557b、i82559er、ne2k_isa、pcnet、rtl8139、e1000、smc91c111、lance及mcf_fec等；不过，不同平台架构上，其支持的类型可能只包含前述列表的一部分，可以使用“qemu-kvm -net nic,mode=?”来获取当前平台支持的类型；
+	-net tap[,vlan=n][,name=name][,fd=h][,ifname=name][,script=file][,downscript=dfile]：通过物理机的TAP网络接口连接至vlan n中，使用script=file指定的脚本(默认为/etc/qemu-ifup)来配置当前网络接口，并使用downscript=file指定的脚本(默认为/etc/qemu-ifdown)来撤消接口配置；使用script=no和downscript=no可分别用来禁止执行脚本；
+	-net user[,option][,option][,...]：在用户模式配置网络栈，其不依赖于管理权限；有效选项有：
+	vlan=n：连接至vlan n，默认n=0；
+	name=name：指定接口的显示名称，常用于监控模式中；
+	net=addr[/mask]：设定GuestOS可见的IP网络，掩码可选，默认为10.0.2.0/8；
+	host=addr：指定GuestOS中看到的物理机的IP地址，默认为指定网络中的第二个，即x.x.x.2；
+	dhcpstart=addr：指定DHCP服务地址池中16个地址的起始IP，默认为第16个至第31个，即x.x.x.16-x.x.x.31；
+	dns=addr：指定GuestOS可见的dns服务器地址；默认为GuestOS网络中的第三个地址，即x.x.x.3；
+	tftp=dir：激活内置的tftp服务器，并使用指定的dir作为tftp服务器的默认根目录；
+	bootfile=file：BOOTP文件名称，用于实现网络引导GuestOS；如：qemu -hda linux.img -boot n -net user,tftp=/tftpserver/pub,bootfile=/pxelinux.0
+</code></pre><ul>
+<li>一个例子</li>
+</ul>
+<pre><code>下面的命令创建了一个名为rhel7.5的虚拟机，其RAM大小为512MB，有两颗CPU的SMP架构，默认引导设备为硬盘，有一个硬盘设备和一个光驱设备，网络接口类型为virtio，VGA模式为cirrus，并启用了balloon功能。
+
+$ qemu-kvm -name &quot;rhel7.5&quot; -m 512 \
+-smp 2 -boot d \
+-drive file=/VM/images/rhel7.5/hda,if=virtio,index=0,media=disk,format=qcow2 \
+-drive file=/isos/rhel-7.5.iso,index=1,media=cdrom \
+-net nic,model=virtio,macaddr=52:54:00:A5:41:1E \
+-vga cirrus -balloon virtio
+</code></pre><h2 id="qemu-img命令使用">qemu-img命令使用</h2>
+<p>选项</p>
+<pre><code>#create   创建
+#resize   增加大小
+#convert  转化
+#snapshot 快照
+
+$ qemu-img --help
+$ qemu-img create -f  qcow2 -o size=20G /images/vm1/c1.qcow2
+$ qemu-img conver -O vmdk -o adapter_type=lsilogic c1.qcow2 c1.vmdk
+$ qemu-img snapshot -c c1.snap c1.qcow2
+</code></pre><ul>
+<li>安装虚拟机实验</li>
+</ul>
+<pre><code>下载iso镜像 
+$ modprobe kvm
+$ modprobe kvm_intel
+$ mkdir /images/vml -pv
+$ qemu-img create -f qcow2 -o size=40G /images/vml/ubuntu.qcow2
+$ qemu-img resize /images/vml/ubuntu.qcow2 50G
+$ ls -lh /images/vml/ubuntu.qcow2
+$ yum install -y tigervnc   #安装vnc客户端
+
+
+#had模式
+$ qemu-kvm -name 'ubuntu' -m 768 -smp 4 -hda /images/vml/ubuntu.qcow2 \
+-cdrom ubuntu-16.10-desktop-amd64.iso -boot order=dc
+#前台运行的
+
+$ vncviewer ：5900
+进行安装界面
+
+#drive模式
+$ qemu-kvm -name 'win7' -m 768 -smp 4 -drive \
+file=/images/vml/ubuntu.qcow2,if=ide,index=0,media=disk,format=qcow2 \
+-drive file=/root/cn_windows_7_ultimate_with_sp1_x64_dvd_u_677408.iso,\
+media=cdrom,index=1 -boot order=dc
+</code></pre><ul>
+<li>qemu-KVM其他可能用到的选项</li>
+</ul>
+<pre><code>#在monitor下实现实时迁移：-incoming tcp:0:port
+#qemu-kvm运行后台：-daemonize
+#打开声音设备：-soundhw
+
+#设定iscsi存储设备
+	# qemu-kvm -iscsi initiator-name=  -drive \
+	file=iscsi://&lt;ip&gt;[:port]/&lt;target_iqn&gt;/&lt;lun&gt;
+
+#设定bios：
+	-bios /path/to/some_bios_program
+</code></pre><h1 id="kvm-libvirt">KVM-libvirt</h1>
+<p>基于C/S架构，<code>virsh，virt-manager，virt-install，virt-clone，virt-convert，virt-copy</code>等管理工具，使用原始的<code>qemu-kvm</code>管理过于繁琐，命令行复杂。需要对很多选项熟悉才能玩得转。</p>
+<ul>
+<li>前期环境准备</li>
+</ul>
+<pre><code>$ yum install -y libvirt libvirt-daemon-kvm qemu-kvm virt-manager
+$ systemctl start libvirtd.service
+
+#######创建br0容易发生错误########### 
+###ens37为桥接网卡，且获取ip为dhcp方式###
+$ virsh iface-bridge ens37 br1  || systemctl restart network
+$ virt-install -n &quot;centos6&quot; 
+--vcpus 2 -r 512 \
+-l http://172.20.0.1/cobbler/ks_centsos6.9 \
+--disk path=/images/vm/centos6.qcow2,bus=virtio,size=120,sparse
+--network bridge=br0,model=virtio
+--force
+$ virt-manager &amp;
+</code></pre><p>virt-install是一个命令行工具，它能够为KVM、Xen或其它支持libvrit API的hypervisor创建虚拟机并完成GuestOS安装；此外，它能够基于串行控制台、VNC或SDL支持文本或图形安装界面。安装过程可以使用本地的安装介质如CDROM，也可以通过网络方式如NFS、HTTP或FTP服务实现。对于通过网络安装的方式，virt-install可以自动加载必要的文件以启动安装过程而无须额外提供引导工具。当然，virt-install也支持PXE方式的安装过程，也能够直接使用现有的磁盘映像直接启动安装过程。</p>
+<pre><code>virt-install命令有许多选项，这些选项大体可分为下面几大类，同时对每类中的常用选项也做出简单说明。
+	一般选项：指定虚拟机的名称、内存大小、VCPU个数及特性等；
+	-n NAME, --name=NAME：虚拟机名称，需全局惟一；
+	-r MEMORY, --ram=MEMORY：虚拟机内在大小，单位为MB；
+	--vcpus=VCPUS[,maxvcpus=MAX][,sockets=#][,cores=#][,threads=#]：VCPU个数及相关配置；
+	--cpu=CPU：CPU模式及特性，如coreduo等；可以使用qemu-kvm -cpu ?来获取支持的CPU模式；
+	安装方法：指定安装方法、GuestOS类型等；
+	-c CDROM, --cdrom=CDROM：光盘安装介质；
+	-l LOCATION, --location=LOCATION：安装源URL，支持FTP、HTTP及NFS等，如ftp://172.16.0.1/pub；
+	--pxe：基于PXE完成安装；
+	--livecd: 把光盘当作LiveCD；
+	--os-type=DISTRO_TYPE：操作系统类型，如linux、unix或windows等；
+	--os-variant=DISTRO_VARIANT：某类型操作系统的变体，如rhel5、fedora8等；
+	-x EXTRA, --extra-args=EXTRA：根据--location指定的方式安装GuestOS时，用于传递给内核的额外选项，例如指定kickstart文件的位置，--extra-args &quot;ks=http://172.16.0.1/class.cfg&quot;
+	--boot=BOOTOPTS：指定安装过程完成后的配置选项，如指定引导设备次序、使用指定的而非安装的kernel/initrd来引导系统启动等 ；例如：
+	--boot  cdrom,hd,network：指定引导次序；
+	--boot kernel=KERNEL,initrd=INITRD,kernel_args=”console=/dev/ttyS0”：指定启动系统的内核及initrd文件；
+	存储配置：指定存储类型、位置及属性等；
+	--disk=DISKOPTS：指定存储设备及其属性；格式为--disk /some/storage/path,opt1=val1，opt2=val2等；常用的选项有：
+	device：设备类型，如cdrom、disk或floppy等，默认为disk；
+	bus：磁盘总结类型，其值可以为ide、scsi、usb、virtio或xen；
+	perms：访问权限，如rw、ro或sh（共享的可读写），默认为rw；
+	size：新建磁盘映像的大小，单位为GB；
+	cache：缓存模型，其值有none、writethrouth（缓存读）及writeback（缓存读写）；
+	format：磁盘映像格式，如raw、qcow2、vmdk等；
+	sparse：磁盘映像使用稀疏格式，即不立即分配指定大小的空间；
+	--nodisks：不使用本地磁盘，在LiveCD模式中常用；
+	网络配置：指定网络接口的网络类型及接口属性如MAC地址、驱动模式等；
+	-w NETWORK, --network=NETWORK,opt1=val1,opt2=val2：将虚拟机连入宿主机的网络中，其中NETWORK可以为：
+	bridge=BRIDGE：连接至名为“BRIDEG”的桥设备；
+	network=NAME：连接至名为“NAME”的网络；
+它常用的选项还有：
+	model：GuestOS中看到的网络设备型号，如e1000、rtl8139或virtio等；
+	mac：固定的MAC地址；省略此选项时将使用随机地址，但无论何种方式，对于KVM来说，其前三段必须为52:54:00；
+	--nonetworks：虚拟机不使用网络功能；
+	图形配置：定义虚拟机显示功能相关的配置，如VNC相关配置；
+	--graphics TYPE,opt1=val1,opt2=val2：指定图形显示相关的配置，此选项不会配置任何显示硬件（如显卡），而是仅指定虚拟机启动后对其进行访问的接口；
+	TYPE：指定显示类型，可以为vnc、sdl、spice或none等，默认为vnc；
+	port：TYPE为vnc或spice时其监听的端口；
+	listen：TYPE为vnc或spice时所监听的IP地址，默认为127.0.0.1，可以通过修改/etc/libvirt/qemu.conf定义新的默认值；
+	password：TYPE为vnc或spice时，为远程访问监听的服务进指定认证密码；
+	--noautoconsole：禁止自动连接至虚拟机的控制台；
+	设备选项：指定文本控制台、声音设备、串行接口、并行接口、显示接口等；
+	--serial=CHAROPTS：附加一个串行设备至当前虚拟机，根据设备类型的不同，可以使用不同的选项，格式为“--serial type,opt1=val1,opt2=val2,...”，例如：
+	--serial pty：创建伪终端；
+	--serial dev,path=HOSTPATH：附加主机设备至此虚拟机；
+	--video=VIDEO：指定显卡设备模型，可用取值为cirrus、vga、qxl或vmvga；
+
+	虚拟化平台：虚拟化模型（hvm或paravirt）、模拟的CPU平台类型、模拟的主机类型、hypervisor类型（如kvm、xen或qemu等）以及当前虚拟机的UUID等；
+	-v, --hvm：当物理机同时支持完全虚拟化和半虚拟化时，指定使用完全虚拟化；
+	-p, --paravirt：指定使用半虚拟化；
+	--virt-type：使用的hypervisor，如kvm、qemu、xen等；所有可用值可以使用’virsh capabilities’命令获取；
+	其它：
+	--autostart：指定虚拟机是否在物理启动后自动启动；
+	--print-xml：如果虚拟机不需要安装过程(--import、--boot)，则显示生成的XML而不是创建此虚拟机；默认情况下，此选项仍会创建磁盘映像；
+	--force：禁止命令进入交互式模式，如果有需要回答yes或no选项，则自动回答为yes；
+	--dry-run：执行创建虚拟机的整个过程，但不真正创建虚拟机、改变主机上的设备配置信息及将其创建的需求通知给libvirt；
+	-d, --debug：显示debug信息；
+
+尽管virt-install命令有着类似上述的众多选项，但实际使用中，其必须提供的选项仅包括--name、--ram、--disk（也可是--nodisks）及安装过程相关的选项。此外，有时还需要使用括--connect=CONNCT选项来指定连接至一个非默认的hypervisor。
+</code></pre><ul>
+<li>一个例子</li>
+</ul>
+<pre><code>下面的示例将创建一个名为rhel6的虚拟机，其有两个虚拟CPU，安装方法为FTP，并指定了ks文件的位置，磁盘映像文件为稀疏格式，连接至物理主机上的名为brnet0的桥接网络：
+
+$ virt-install \
+    --connect qemu:///system \
+    --virt-type kvm \
+    --name rhel6 \
+    --ram 1024 \
+    --vcpus 2 \
+    --network bridge=brnet0 \
+    --disk path=/VMs/images/rhel6.img,size=120,sparse \
+    --location ftp://172.16.0.1/rhel6/dvd \
+    --extra_args “ks=http://172.16.0.1/rhel6.cfg” \
+    --os-variant rhel6 \
+    --force
+</code></pre><ul>
+<li>img安装</li>
+</ul>
+<pre><code>$ mv cirros-no_cloud-0.3.0-x86_64-disk.img c1.img
+[root@master ~]# qemu-img info c1.img 
+file format: qcow2
+virtual size: 39M (41126400 bytes)
+disk size: 11M
+cluster_size: 65536
+Format specific information:
+    compat: 0.10
+
+$ virt-manager &amp;
+#采用import镜像文件方法，第四项进行图形安装。
+$ virsh list
+ Id    Name                           State
+----------------------------------------------------
+ 2     centos6.9                      running
+
+$ virsh
+Welcome to virsh, the virtualization interactive terminal.
+
+Type:  'help' for help with commands
+       'quit' to quit
+virsh # console centos6.9
+Connected to domain centos6.9
+Escape character is ^]
+login as 'mageedu' user. default password: 'mageedu.com'. use 'sudo' for root.
+cirros login: mageedu 
+Password: 
+$ sudo su -
+# ls
+
+#### ctrl+] 退出终端 ####
+
+virsh # help domain   #虚拟机管理
+virsh # domstats centos6.9
+Domain: 'centos6.9'
+  state.state=1
+  state.reason=1
+  cpu.time=16312974545
+  cpu.user=1730000000
+····
+
+------管理虚拟机domain------
+$ virsh list  
+$ virsh start c2
+$ virsh destroy c2      
+$ virsh reboot c2
+$ virsh undefine c2
+$ virsh save c2 /tmp/c2.sanp
+$ virsh restore /tmp/c2.sanp
+
+
+----hypervisor----
+$ virsh nodeinfo
+$ virsh capabilities
+
+----Interface----- 
+#管理hypervisor的网络iface
+----Networking----
+#管理guest的网络
+----Storage Pool----
+#存储池管理
+</code></pre><p>配置文件<code>/etc/libvirt/qemu/centos6.9.xml</code>,修改部分内容即可复制新虚拟机.</p>
+<pre><code>$ cp /etc/libvirt/qemu/centos6.9.xml /etc/libvirt/qemu/c2.xml
+$ vim /etc/libvirt/qemu/c2.xml   
+###将centos6.9替换成c2，uuid,source的path等修改即可
+##准备qcow2及img文件
+$ qemu-img create -f qcow2 -o size=40G /images/vml/c2.qcow2
+$ mv cirros-no_cloud-0.3.0-x86_64-disk.img c2.img
+
+#创建虚拟机并进入终端。
+$ virsh create --console /etc/libvirt/qemu/c2.xml
+</code></pre><h2 id="批量创建虚拟机">批量创建虚拟机</h2>
+<p>当然，如果批量创建虚拟机机，上面的操作依然繁琐，这里推荐一个脚本复制，时间会稍长。</p>
+<pre><code>for i in {1..30}; do 
+	virt-clone --connect=qemu:///system -o temp -n node$i -f /data/node$i.img
+done
+</code></pre><p>当然，也有批量删除的.</p>
+<pre><code>for i in {1..30}; do 
+	do virsh undefine node$i
+done
+</code></pre><p>这里，每个虚拟机都有相应的ip,桥接的网卡是172.20/16网段的。要求能获取每个虚拟机的Ip,这里推荐一个脚本获取，当然，需要相应主机是running状态的。</p>
+<pre><code>$ vim vish.sh
+#!/bin/bash 
+#ping当前网段内在线的主机,以便产生arp记录. 
+for ip in 172.20.128.{1..253};do
+        { ping -c1 $ip &gt;/dev/null 2&gt;&amp;1 
+        }&amp; 
+done
+#依次查找arp记录. 
+running_vms=`virsh list |grep running` 
+echo -ne &quot;共有`echo &quot;$running_vms&quot;|wc -l`个虚拟机在运行.\n&quot; 
+for i in `echo &quot;$running_vms&quot; | awk '{ print $2 }'`;do 
+        mac=`virsh dumpxml $i |grep &quot;mac address&quot;|sed &quot;s/.*'\(.*\)'.*/\1/g&quot;`
+        ip=`arp -ne |grep &quot;$mac&quot; |awk '{printf $1}'` 
+        printf &quot;%-30s %-30s\n&quot; $i $ip 
+done
+
+$ chmod +x virsh.sh
+$ ./virt.sh 
+共有31个虚拟机在运行.
+ubuntu16.04                    172.20.128.166                
+node1                          172.20.128.201                
+node2                          172.20.128.202                
+node3                          172.20.128.203                
+node4                          172.20.128.204                
+node5                          172.20.128.205                
+node6                          172.20.128.206                
+node7                          172.20.128.207                
+node8                          172.20.128.208                
+node9                          172.20.128.209                
+node10                         172.20.128.210                
+node11                         172.20.128.211                
+node12                         172.20.128.212                
+node13                         172.20.128.213                
+node14                         172.20.128.215                
+node15                         172.20.128.214                
+node16                         172.20.128.217                
+node17                         172.20.128.216                
+node18                         172.20.128.218                
+node19                         172.20.128.219                
+node20                         172.20.128.220                
+node21                         172.20.128.222                
+node22                         172.20.128.221                
+node23                         172.20.128.224                
+node24                         172.20.128.229                
+node25                         172.20.128.227                
+node26                         172.20.128.225                
+node27                         172.20.128.223                
+node28                         172.20.128.226                
+node29                         172.20.128.230                
+node30                         172.20.128.228
+</code></pre>
+        </div>
+        <!-- tags -->
+        <div class="mb-3">
+          <h5 class="d-inline-block mr-3">Tags:</h5>
+          <ul class="list-inline d-inline-block">
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/linux"> 
+            Linux</a>
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/virtul"> , 
+            Virtul</a>
+            
+          </ul>
+        </div>
+        <!-- previous -->
+        <div class="mb-3 link-article">
+    <div class="pre-article">
+        
+            <div><i class="fa fa-arrow-left"></i> 上一篇</div>
+            <a href="https://www.fenghong.tech/blog/2018/2018-07-25-kubuntu/">Kubuntu 从安装到科学上网</a>
+        
+    </div>
+    <div class="next-article">
+        
+            <div>下一篇 <i class="fa fa-arrow-right"></i></div>
+            <a href="https://www.fenghong.tech/blog/2018/2018-08-01-manage-disk/">磁盘清理</a>
+        
+    </div>
+</div>
+        <!-- previous -->
+
+        <!-- recommend -->
+        
+
+<div class="mb-3">
+  <h2>文章推荐</h2>
+  <ul class="related">
+  
+    <li><a href="/blog/2018/2018-07-25-kubuntu/">Kubuntu 从安装到科学上网</a></li>
+  
+    <li><a href="/blog/2018/2018-07-21-zabbix/">Zabbix</a></li>
+  
+    <li><a href="/blog/2018/2018-07-20-redis/">Redis</a></li>
+  
+    <li><a href="/blog/2018/2018-07-18-tomcat/">Tomcat</a></li>
+  
+    <li><a href="/blog/2018/2018-07-15-varnish/">Varnish</a></li>
+  
+  </ul>
+</div>
+
+
+        <!-- comments -->
+
+        
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script>
+          window.onload = function() {
+              const gitalk = new Gitalk({
+              clientID: 'a0a546df858aafb5300e',
+              clientSecret: '67d7b40de25c072fc38840ffb9c06ceab7ef5080',
+              repo: 'oldthreefeng.github.io',
+              owner: 'oldthreefeng',
+              admin: ['oldthreefeng'],
+              id: hex_md5(hex_md5(window.location.pathname + window.location.hash)), 
+              distractionFreeMode: false 
+            });
+            (function() {
+              if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+                document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+                return;
+              }
+              gitalk.render('gitalk-container');
+            })();
+          }
+        </script>
+        
+      </div>
+      <!-- sidebar -->
+<aside class="col-lg-4 order-1 order-lg-2">
+  <!-- tags -->
+  <div class="bg-white px-4 py-5 box-shadow mb-5 word-cloud">
+    <h4 class="mb-4">标签</h4>
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div id="tag-cloud" style="padding: 5px 15px">
+      
+        
+          
+          
+          
+          <a href="/tags/acme" style="font-size:1.0188679245283019rem">acme</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/acmetiny" style="font-size:1.0188679245283019rem">acmetiny</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/alertmanager" style="font-size:1rem">alertmanager</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/algorithm" style="font-size:1.1132075471698113rem">algorithm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/aliyun" style="font-size:1rem">aliyun</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ansible" style="font-size:1.0754716981132075rem">ansible</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/apisix" style="font-size:1rem">apisix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/arm64" style="font-size:1.0188679245283019rem">arm64</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/authorization" style="font-size:1rem">authorization</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/backup" style="font-size:1.0377358490566038rem">backup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binarysearch" style="font-size:1.0188679245283019rem">binarysearch</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binlog" style="font-size:1rem">binlog</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bit" style="font-size:1.0188679245283019rem">bit</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bug" style="font-size:1.0188679245283019rem">bug</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cache" style="font-size:1rem">cache</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/certbot" style="font-size:1rem">certbot</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/channel" style="font-size:1rem">channel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/chrome" style="font-size:1.0188679245283019rem">chrome</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ci" style="font-size:1rem">ci</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cluster" style="font-size:1.1132075471698113rem">cluster</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cobra" style="font-size:1rem">cobra</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coco" style="font-size:1.0377358490566038rem">coco</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coding" style="font-size:1rem">coding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/computer" style="font-size:1rem">computer</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/consul" style="font-size:1rem">consul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/containerd" style="font-size:1.0188679245283019rem">containerd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coredns" style="font-size:1rem">coredns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cors" style="font-size:1rem">cors</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/crypto" style="font-size:1rem">crypto</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/curl" style="font-size:1rem">curl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dashboard" style="font-size:1rem">dashboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dcdn" style="font-size:1rem">dcdn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/debt" style="font-size:1rem">debt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/devops" style="font-size:1.0188679245283019rem">devops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dingding" style="font-size:1rem">dingding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/disk" style="font-size:1rem">disk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dmesg" style="font-size:1rem">dmesg</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dns" style="font-size:1rem">dns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/docker" style="font-size:1.2264150943396226rem">docker</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/doublylinkedlist" style="font-size:1rem">doublylinkedlist</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/elk" style="font-size:1rem">elk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/error" style="font-size:1rem">error</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/etcd" style="font-size:1.0377358490566038rem">etcd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exec" style="font-size:1.0188679245283019rem">exec</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exp" style="font-size:1rem">exp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/federated" style="font-size:1rem">federated</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/filecoin" style="font-size:1rem">filecoin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/find" style="font-size:1rem">find</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/firewalld" style="font-size:1rem">firewalld</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/fix" style="font-size:1.0377358490566038rem">fix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flag" style="font-size:1.0188679245283019rem">flag</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flannel" style="font-size:1rem">flannel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/food" style="font-size:1.0188679245283019rem">food</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/frp" style="font-size:1.0377358490566038rem">frp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ftp" style="font-size:1.0188679245283019rem">ftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/games" style="font-size:1rem">games</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gin" style="font-size:1.0188679245283019rem">gin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/git" style="font-size:1.2075471698113207rem">git</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/github" style="font-size:1.0188679245283019rem">github</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gitlab" style="font-size:1rem">gitlab</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go" style="font-size:1.320754716981132rem">go</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go-vim" style="font-size:1rem">go-vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gogs" style="font-size:1.0566037735849056rem">gogs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/goland" style="font-size:1.0188679245283019rem">goland</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/golang" style="font-size:1.0377358490566038rem">golang</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gorequest" style="font-size:1rem">gorequest</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grafana" style="font-size:1.0188679245283019rem">grafana</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grub" style="font-size:1rem">grub</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hack" style="font-size:1.0188679245283019rem">hack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/haproxy" style="font-size:1.0377358490566038rem">haproxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/harbor" style="font-size:1.0188679245283019rem">harbor</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hash" style="font-size:1.0188679245283019rem">hash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hashmap" style="font-size:1rem">hashmap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/helm" style="font-size:1.0188679245283019rem">helm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hexo" style="font-size:1.0377358490566038rem">hexo</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/http" style="font-size:1.0754716981132075rem">http</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/https" style="font-size:1rem">https</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/index" style="font-size:1rem">index</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ingress" style="font-size:1.0377358490566038rem">ingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/inotify" style="font-size:1rem">inotify</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/internet" style="font-size:1.169811320754717rem">internet</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/interview" style="font-size:1rem">interview</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/iptables" style="font-size:1.0377358490566038rem">iptables</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ipvs" style="font-size:1.0188679245283019rem">ipvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/java" style="font-size:1.0754716981132075rem">java</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jeju" style="font-size:1rem">jeju</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jenkins" style="font-size:1.0943396226415094rem">jenkins</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jetbrains" style="font-size:1rem">jetbrains</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jumpserver" style="font-size:1.0566037735849056rem">jumpserver</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jvm" style="font-size:1rem">jvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/keepalived" style="font-size:1rem">keepalived</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kernel" style="font-size:1rem">kernel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/knowledge" style="font-size:1rem">knowledge</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kube-proxy" style="font-size:1.0188679245283019rem">kube-proxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetes" style="font-size:1.3962264150943395rem">kubernetes</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesrbac" style="font-size:1rem">kubernetesrbac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesssl" style="font-size:1.0188679245283019rem">kubernetesssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kuboard" style="font-size:1.0566037735849056rem">kuboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lb" style="font-size:1rem">lb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/learning" style="font-size:1.0566037735849056rem">learning</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/leetcode" style="font-size:1.0188679245283019rem">leetcode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libcurl" style="font-size:1rem">libcurl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libssh2" style="font-size:1rem">libssh2</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/link" style="font-size:1rem">link</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/linux" style="font-size:1.9811320754716981rem">linux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/living" style="font-size:1rem">living</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lnux" style="font-size:1rem">lnux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/log" style="font-size:1.0566037735849056rem">log</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logrus" style="font-size:1rem">logrus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logs" style="font-size:1rem">logs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logstash" style="font-size:1rem">logstash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/loki" style="font-size:1rem">loki</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lru" style="font-size:1rem">lru</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/luna" style="font-size:1rem">luna</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvm" style="font-size:1rem">lvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvs" style="font-size:1rem">lvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mac" style="font-size:1rem">mac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/malaysia" style="font-size:1rem">malaysia</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/manage" style="font-size:1rem">manage</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/map" style="font-size:1rem">map</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mariadb" style="font-size:1.0377358490566038rem">mariadb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/markdown" style="font-size:1.0188679245283019rem">markdown</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mfa" style="font-size:1rem">mfa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mha" style="font-size:1rem">mha</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mode" style="font-size:1rem">mode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/module" style="font-size:1rem">module</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mount" style="font-size:1rem">mount</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mysql" style="font-size:1.2452830188679245rem">mysql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/navicat" style="font-size:1rem">navicat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/network" style="font-size:1rem">network</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nfs" style="font-size:1.0754716981132075rem">nfs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginx" style="font-size:1.2264150943396226rem">nginx</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginxingress" style="font-size:1.0566037735849056rem">nginxingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/node_exporter" style="font-size:1.0188679245283019rem">node_exporter</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/numpy" style="font-size:1rem">numpy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ops" style="font-size:1.2452830188679245rem">ops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/owncloud" style="font-size:1rem">owncloud</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/password" style="font-size:1rem">password</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/paxos" style="font-size:1.0188679245283019rem">paxos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/php" style="font-size:1rem">php</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pipeline" style="font-size:1rem">pipeline</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/polynomial" style="font-size:1rem">polynomial</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/problem" style="font-size:1rem">problem</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/prometheus" style="font-size:1.0943396226415094rem">prometheus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pv" style="font-size:1.0754716981132075rem">pv</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pvc" style="font-size:1.0754716981132075rem">pvc</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/python" style="font-size:1.0943396226415094rem">python</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/queue" style="font-size:1rem">queue</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/qw3xt" style="font-size:1rem">qw3xt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rabbitmq" style="font-size:1.0188679245283019rem">rabbitmq</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/raft" style="font-size:1rem">raft</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rebase" style="font-size:1rem">rebase</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/redis" style="font-size:1.0377358490566038rem">redis</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/resources" style="font-size:1.0188679245283019rem">resources</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsa" style="font-size:1rem">rsa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsync" style="font-size:1.0188679245283019rem">rsync</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/safe" style="font-size:1.0754716981132075rem">safe</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/samba" style="font-size:1rem">samba</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sealos" style="font-size:1rem">sealos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/secure" style="font-size:1rem">secure</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sed" style="font-size:1rem">sed</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/server" style="font-size:1.2075471698113207rem">server</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sftp" style="font-size:1rem">sftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shadowsocks" style="font-size:1.0188679245283019rem">shadowsocks</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shell" style="font-size:1.0188679245283019rem">shell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slap" style="font-size:1rem">slap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slave" style="font-size:1rem">slave</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slb" style="font-size:1rem">slb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slowquery" style="font-size:1rem">slowquery</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sonar" style="font-size:1.0377358490566038rem">sonar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sourcetree" style="font-size:1.0188679245283019rem">sourcetree</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sql" style="font-size:1.0188679245283019rem">sql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ss" style="font-size:1rem">ss</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssh" style="font-size:1.0754716981132075rem">ssh</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssl" style="font-size:1.1132075471698113rem">ssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stack" style="font-size:1rem">stack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stress" style="font-size:1rem">stress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/style" style="font-size:1rem">style</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/switchyomega" style="font-size:1rem">switchyomega</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/syncd" style="font-size:1rem">syncd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/taint" style="font-size:1rem">taint</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tar" style="font-size:1rem">tar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tcp" style="font-size:1.0188679245283019rem">tcp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/testing" style="font-size:1rem">testing</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tomcat" style="font-size:1rem">tomcat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tour" style="font-size:1.0188679245283019rem">tour</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/trojan" style="font-size:1rem">trojan</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ubuntu" style="font-size:1.0566037735849056rem">ubuntu</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/udp" style="font-size:1rem">udp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/uk8s" style="font-size:1rem">uk8s</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unauthorized" style="font-size:1rem">unauthorized</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unblockneteasemusic" style="font-size:1rem">unblockneteasemusic</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upgrade" style="font-size:1.0188679245283019rem">upgrade</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upstream" style="font-size:1rem">upstream</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/v1.18.3" style="font-size:1rem">v1.18.3</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vim" style="font-size:1rem">vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/virtul" style="font-size:1rem">virtul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vpn" style="font-size:1.0754716981132075rem">vpn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vscode" style="font-size:1rem">vscode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/websocket" style="font-size:1rem">websocket</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/wifi" style="font-size:1rem">wifi</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xshell" style="font-size:1rem">xshell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xtrabackup" style="font-size:1rem">xtrabackup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/yum" style="font-size:1rem">yum</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/zabbix" style="font-size:1rem">zabbix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e6%95%b0%e6%8d%ae%e5%ba%93%e5%8e%9f%e7%90%86" style="font-size:1rem">数据库原理</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95" style="font-size:1rem">贪心算法</a>
+        
+      
+      </div>
+    
+  </div>
+
+  <!-- profile -->
+  <!-- toc -->
+  
+  <div class="bg-white px-4 py-5 box-shadow mb-5 sticky-top">
+    <h4 class="mb-4">目录</h4>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#虚拟化要求">虚拟化要求</a>
+      <ul>
+        <li><a href="#io">I/O</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#qemu-kvm的用法">qemu-kvm的用法</a></li>
+      </ul>
+    </li>
+    <li><a href="#qemu-img命令使用">qemu-img命令使用</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#批量创建虚拟机">批量创建虚拟机</a></li>
+  </ul>
+</nav>
+  </div>
+
+</aside>
+<!-- /sidebar -->
+
+    </div>
+  </div>
+</section>
+<!-- /blog details -->
+
+
+
+<footer>
+	
+	<div class="section bg-secondary">
+		<div class="container">
+			<div class="row justify-content-between">
+				
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					<a class="mb-4 d-inline-block" href="/"><img class="img-fluid"
+																								src="/images/images/logo-alt.png" alt="Louis Blog" width="60%"></a>
+					<p class="text-light mb-5">每一个不曾起舞的日子都是对生命的辜负.</p>
+					<h4 class="text-white mb-4">关注我</h4>
+					
+					<ul class="list-inline social-icon-alt">
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://twitter.com/louishong17"><i class="fa fa-twitter"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://github.com/oldthreefeng"><i class="fa fa-github"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="/contact"><i class="fa fa-wechat"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="mailto:992165098@qq.com"><i class="fa fa-envelope"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://www.fenghong.tech/blog/index.xml"><i class="fa fa-rss"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					
+					
+					
+					
+					<div class="mb-5">
+						<h4 class="text-white mb-4">联系信息</h4>
+						<p class="text-light mb-3">上海 · 浦东新区</p>
+						<p class="text-light mb-3"></p>
+						<p class="text-light mb-3">微信联系方式</p>
+						<p class="text-light mb-3"><img src="/images/images/wechat-qrcode.png" width="356px"></p>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="bg-secondary-darken py-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+					<p class="mb-0 text-white">Copyright © 2020 Louis</p>
+				</div>
+				<div class="col-md-6 text-center text-md-right">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item mx-0"><a class="d-inline-block px-3 text-white" href="https://beian.miit.gov.cn/"
+																									class="text-white">鄂ICP备18027870号-1</a></li>
+						<p class="list-inline-item mx-0 text-white">本网站由</p>
+						<a target="_blank" rel="nofollow noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://pic.fenghong.tech/images/180803_logo30.png" style="margin-bottom:5px;height: 25px;"></a>
+						<p class="list-inline-item mx-0 text-white">提供CDN加速/云存储服务</p>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+<script>
+	var indexURL = "/index.json"
+</script>
+
+
+<!-- JS Plugins -->
+
+<script src="/plugins/jQuery/jquery.min.js"></script>
+
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="/plugins/slick/slick.min.js"></script>
+
+<script src="/plugins/google-map/gmap.js"></script>
+
+<script src="/plugins/venobox/venobox.min.js"></script>
+
+<script src="/plugins/filterizr/jquery.filterizr.min.js"></script>
+
+<script src="/plugins/search/fuse.min.js"></script>
+
+<script src="/plugins/search/mark.js"></script>
+
+<script src="/plugins/search/search.js"></script>
+
+<script src="/plugins/bigPicture/bigPicture.js"></script>
+
+<script src="/plugins/hex_md5/hex_md5.js"></script>
+
+
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+
+<!-- Algolia -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+<script>
+	docsearch({
+		apiKey: 'b4d47f0c039a84d4035305be829404dd',
+		indexName: 'DocSearch',
+		appId: 'CTH4P282IZ',
+		inputSelector: '#js-algolia-btn',
+		debug: false,
+	});
+</script>
+
+<!-- google analitycs -->
+
+<script>
+	(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-130595069-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https'){
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else{
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</body>
+
+</html>

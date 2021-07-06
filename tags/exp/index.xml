@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>exp on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/exp/</link>
+    <description>Recent content in exp on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Fri, 13 Sep 2019 11:40:10 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/exp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go 运算表达式求值</title>
+      <link>https://www.fenghong.tech/blog/algorithm/go-exp-math/</link>
+      <pubDate>Fri, 13 Sep 2019 11:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/go-exp-math/</guid>
+      <description>[TOC] 运算表达式参考学习</description>
+    </item>
+    
+  </channel>
+</rss>

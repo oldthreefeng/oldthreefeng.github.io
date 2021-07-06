@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ingress on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/ingress/</link>
+    <description>Recent content in ingress on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Tue, 28 Jul 2020 21:34:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/ingress/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>kubernetes traefik简单应用</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-traefik/</link>
+      <pubDate>Tue, 28 Jul 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-traefik/</guid>
+      <description>[TOC] Traefik 是一个边缘路由器</description>
+    </item>
+    
+    <item>
+      <title>kubernetes ingress rewrite配置</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-ingress-rewrite/</link>
+      <pubDate>Mon, 20 Jul 2020 11:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-ingress-rewrite/</guid>
+      <description>[TOC] 可以直接在 Ingress 中配置</description>
+    </item>
+    
+    <item>
+      <title>kuberbetes ingress ssl证书配置</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-ingress-ssl/</link>
+      <pubDate>Wed, 08 Jul 2020 11:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-ingress-ssl/</guid>
+      <description>[TOC] 可以直接在 Ingress 中配置</description>
+    </item>
+    
+  </channel>
+</rss>

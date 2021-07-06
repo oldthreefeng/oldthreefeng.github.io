@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>server on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/server/</link>
+    <description>Recent content in server on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Wed, 20 May 2020 10:54:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/server/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>openvpn实现tcp和udp共存</title>
+      <link>https://www.fenghong.tech/blog/ops/openvpn-tcp-udp/</link>
+      <pubDate>Wed, 20 May 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/openvpn-tcp-udp/</guid>
+      <description>[toc] 背景: 疫情期间， 在</description>
+    </item>
+    
+    <item>
+      <title>openvpn实现内网权限隔离</title>
+      <link>https://www.fenghong.tech/blog/ops/openvpn-iptables/</link>
+      <pubDate>Sat, 09 Nov 2019 02:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/openvpn-iptables/</guid>
+      <description>背景: 公司内网繁多,</description>
+    </item>
+    
+    <item>
+      <title>Zabbix</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-21-zabbix/</link>
+      <pubDate>Tue, 24 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-21-zabbix/</guid>
+      <description>摘要： 监控系统满足的</description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-20-redis/</link>
+      <pubDate>Fri, 20 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-20-redis/</guid>
+      <description>摘要： 分布式系统存储</description>
+    </item>
+    
+    <item>
+      <title>Tomcat</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-18-tomcat/</link>
+      <pubDate>Wed, 18 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-18-tomcat/</guid>
+      <description>摘要： Tomcat相</description>
+    </item>
+    
+    <item>
+      <title>Varnish</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-15-varnish/</link>
+      <pubDate>Sun, 15 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-15-varnish/</guid>
+      <description>摘要： 缓存相关的概念</description>
+    </item>
+    
+    <item>
+      <title>Nginx</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-07-nginx/</link>
+      <pubDate>Sun, 08 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-07-nginx/</guid>
+      <description>摘要： Nginx简介</description>
+    </item>
+    
+    <item>
+      <title>I/O</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-02-io/</link>
+      <pubDate>Sat, 07 Jul 2018 17:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-02-io/</guid>
+      <description>摘要： I/O模型; 同</description>
+    </item>
+    
+    <item>
+      <title>LvsTest</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-06-lvstest/</link>
+      <pubDate>Fri, 06 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-06-lvstest/</guid>
+      <description>摘要： ipvsadm</description>
+    </item>
+    
+    <item>
+      <title>Linux Vitual Server</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-29-linux-vitual-server/</link>
+      <pubDate>Fri, 29 Jun 2018 16:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-29-linux-vitual-server/</guid>
+      <description>摘要： 集群概念 LVS</description>
+    </item>
+    
+    <item>
+      <title>firewalld</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-29-firewalld/</link>
+      <pubDate>Fri, 29 Jun 2018 15:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-29-firewalld/</guid>
+      <description>摘要： firewal</description>
+    </item>
+    
+    <item>
+      <title>IptablesTest</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-27-iptablestest/</link>
+      <pubDate>Wed, 27 Jun 2018 15:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-27-iptablestest/</guid>
+      <description>摘要：iptabel</description>
+    </item>
+    
+  </channel>
+</rss>

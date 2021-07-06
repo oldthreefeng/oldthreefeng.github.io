@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>node_exporter on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/node_exporter/</link>
+    <description>Recent content in node_exporter on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Fri, 24 Apr 2020 11:54:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/node_exporter/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>配置prometheus告警规则</title>
+      <link>https://www.fenghong.tech/blog/ops/prometheus-alertmanager/</link>
+      <pubDate>Fri, 24 Apr 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/prometheus-alertmanager/</guid>
+      <description>[TOC] 摘要： 系统监控报警</description>
+    </item>
+    
+    <item>
+      <title>搭建prometheus监控系统</title>
+      <link>https://www.fenghong.tech/blog/ops/grafana-prometheus-node_exporter-mysql/</link>
+      <pubDate>Wed, 08 Apr 2020 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/grafana-prometheus-node_exporter-mysql/</guid>
+      <description>[TOC] 摘要： 系统监控 prometheus 背</description>
+    </item>
+    
+  </channel>
+</rss>

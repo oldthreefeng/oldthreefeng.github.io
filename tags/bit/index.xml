@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bit on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/bit/</link>
+    <description>Recent content in bit on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Thu, 10 Oct 2019 14:40:32 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/bit/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go 位运算续</title>
+      <link>https://www.fenghong.tech/blog/algorithm/2019-10-11-go-bit/</link>
+      <pubDate>Thu, 10 Oct 2019 14:40:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/2019-10-11-go-bit/</guid>
+      <description>[TOC] 背景 位运算上篇文章</description>
+    </item>
+    
+    <item>
+      <title>Go 位运算详解</title>
+      <link>https://www.fenghong.tech/blog/algorithm/2019-10-07-go-bit-byte/</link>
+      <pubDate>Tue, 17 Sep 2019 00:40:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/2019-10-07-go-bit-byte/</guid>
+      <description>[TOC] 背景 位运算一直都懵</description>
+    </item>
+    
+  </channel>
+</rss>

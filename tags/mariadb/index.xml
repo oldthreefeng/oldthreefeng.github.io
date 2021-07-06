@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mariaDB on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/mariadb/</link>
+    <description>Recent content in mariaDB on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Sat, 08 Sep 2018 09:59:32 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/mariadb/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>jumpserver架构</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-03/</link>
+      <pubDate>Sat, 08 Sep 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-19-jumpserver-03/</guid>
+      <description>架构说明 组件说明 Jumpserver 现</description>
+    </item>
+    
+    <item>
+      <title>jumpServer安装</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-14-jumpserver/</link>
+      <pubDate>Sat, 18 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-14-jumpserver/</guid>
+      <description>CentOS 6 安装文档 说明 # 开</description>
+    </item>
+    
+    <item>
+      <title>MYSQL安装及多实例</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-10-mysql-01/</link>
+      <pubDate>Thu, 07 Jun 2018 20:33:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-10-mysql-01/</guid>
+      <description>安装MariaDB yum</description>
+    </item>
+    
+  </channel>
+</rss>

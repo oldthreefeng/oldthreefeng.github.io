@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hexo on Louis Blog</title>
+    <link>https://www.fenghong.tech/categories/hexo/</link>
+    <description>Recent content in hexo on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Wed, 06 Jun 2018 22:33:14 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/categories/hexo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>hexo简易部署到云主机</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-10-hexo-easy-deploy/</link>
+      <pubDate>Wed, 06 Jun 2018 22:33:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-10-hexo-easy-deploy/</guid>
+      <description>hexo简易部署到云</description>
+    </item>
+    
+    <item>
+      <title>hexo进阶</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-10-hexo-developed/</link>
+      <pubDate>Tue, 05 Jun 2018 22:33:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-10-hexo-developed/</guid>
+      <description>hexo部署命令 常用</description>
+    </item>
+    
+    <item>
+      <title>hexo安装使用</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-10-hexo/</link>
+      <pubDate>Tue, 05 Jun 2018 20:33:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-10-hexo/</guid>
+      <description>hexo初识及准备 H</description>
+    </item>
+    
+  </channel>
+</rss>

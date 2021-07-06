@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cache on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/cache/</link>
+    <description>Recent content in cache on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Sun, 15 Jul 2018 19:59:32 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/cache/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Varnish</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-15-varnish/</link>
+      <pubDate>Sun, 15 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-15-varnish/</guid>
+      <description>摘要： 缓存相关的概念</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,2698 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn"><head>
+  <meta charset="utf-8">
+  <title>Git | Louis Blog</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="有技术 有温度 有情怀">
+  
+  <meta name="author" content="Louis ">
+  <meta name="generator" content="Hugo 0.73.0" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  
+  <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="/plugins/animate/animate.css">
+  
+  <link rel="stylesheet" href="/plugins/venobox/venobox.css">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="/images/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="/images/images/favicon.png " type="image/x-icon">
+
+  <!--Algolia-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css">
+</head>
+<body>
+<!-- header -->
+<header>
+  
+
+  <!-- navigation -->
+  <div class="navigation bg-white position-relative">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="/"><img class="img-fluid pb-lg-3" src="/images/images/logo.png" width="189px" alt="Louis Blog"></a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/"></a>
+            </li>
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                博客
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/categories/kubernetes">Kubernetes</a>
+                
+                <a class="dropdown-item" href="/categories/sealos">sealos</a>
+                
+                <a class="dropdown-item" href="/categories/ops">运维相关</a>
+                
+                <a class="dropdown-item" href="/categories/golang">golang</a>
+                
+                <a class="dropdown-item" href="/categories/algorithm">algorithm</a>
+                
+                <a class="dropdown-item" href="/categories/tools">tools</a>
+                
+                <a class="dropdown-item" href="/blog">全部</a>
+                
+              </div>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/team">友情链接</a>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                关于我
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/contact">about</a>
+                
+                <a class="dropdown-item" href="https://github.com/oldthreefeng">github</a>
+                
+              </div>
+            </li>
+            
+            
+          </ul>
+
+          
+          
+
+          
+          <!-- search -->
+          <div class="search px-4">
+            <button id="searchOpen" class="search-btn"><i class="fa fa-search text-dark"></i></button>
+            <div class="search-wrapper">
+              <form action="/search">
+                <input class="search-box form-control" id="js-algolia-btn" name="s" type="search" placeholder="输入搜索词">
+              </form>
+              <button id="searchClose" class="search-close"><i class="fa fa-close text-dark"></i></button>
+            </div>
+          </div>
+          
+          
+          <!-- get start btn -->
+          <a href="/contact" class="btn btn-primary hover-ripple">联系我</a>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- /navigation -->
+</header>
+<!-- /header -->
+
+
+<!-- page title -->
+<section class="section bg-cover overlay" style="background-image: url('/'),url('/'),url('/images/images/backgrounds/page-title.jpg');">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-white mb-3">Git</h2>
+        <!-- breadcrumb -->
+        
+        <p class="text-white"></p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /page title -->
+
+
+<!-- blog details -->
+<section class="section">
+  <div class="container blog">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- post thumb -->
+        <div class="position-relative mb-5">
+          <img src="/"  onerror="this.src='https:\/\/pic.fenghong.tech\/proto\/lake-1915846__340.jpg'" alt="post thumb" class="img-fluid w-100">
+           <div class="card-type">Ops</div>
+        </div>
+        <div class="card-meta text-uppercase mb-2">作者  <strong class="text-dark"><a href="https://www.fenghong.tech">Louis</a></strong>
+          
+            发表于 <strong class="text-dark">2018年11月8日</strong></div>
+        <hr>
+        <div class="content">
+          <p>[TOC]</p>
+<p>Git的<code>help</code>信息非常好，很多可以直接help来了解</p>
+<h2 id="给git输出信息增加颜色">给Git输出信息增加颜色</h2>
+<p>编辑<code>~/.gitconfig</code>
+比如要对<code>git status</code>设置颜色，可以:</p>
+<pre><code>[color]
+    ui = auto
+[color &quot;branch&quot;]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color &quot;diff&quot;]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color &quot;status&quot;]
+    added = yellow
+    changed = green
+    untracked = cyan
+</code></pre><p>参考:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/12255028/how-to-show-git-colors-on-zsh">How to show git colors on zsh</a></li>
+<li><a href="http://stackoverflow.com/questions/8131322/enabling-git-syntax-highlighting-for-macs-terminal">Enabling git syntax highlighting for macs terminal</a></li>
+<li><a href="http://nathanhoad.net/how-to-colours-in-git">How to colours in git</a></li>
+</ul>
+<h2 id="关于git的分支">关于Git的分支</h2>
+<p>参考的 <a href="http://git-scm.com/book/zh/Git-%E5%88%86%E6%94%AF-%E4%BD%95%E8%B0%93%E5%88%86%E6%94%AF">何谓分支</a></p>
+<p>因为Git是保存的快照，Git仓库有以下几个基本对象</p>
+<ul>
+<li><code>blob</code> 对象用于表示文件快照内容</li>
+<li><code>tree</code> 对象记录目录树内容和各个文件对应的blob对象索引</li>
+<li><code>commit</code> 对象记录提交信息，指向tree对象或其他commit对象</li>
+</ul>
+<p>Git的分支，其本质是一个指向commit对象的可变<code>指针</code>，Git使用<code>master</code>作为分支的默认名字</p>
+<p><code>HEAD</code>指针指向当前的分支指针</p>
+<p>使用<code>git branch</code>是查看当前的分支列表</p>
+<p>使用<code>git branch branch_name</code>新建分支，然后可以使用<code>git checkout branch_name</code>切换分支</p>
+<p>最后可以用<code>git merge branch_name</code>来合并分支</p>
+<p>如果遇到冲突，需要到冲突的文件下根据提示编辑后再commit</p>
+<h2 id="远程分支">远程分支</h2>
+<p>参考的 <a href="http://git-scm.com/book/zh/Git-%E5%88%86%E6%94%AF-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF">远程分支</a></p>
+<p>从远程Git repo克隆，Git会自动将此remote repo命名为<code>origin</code>，并下载其中所有的数据，建立一个指向它的<code>master</code>分支的指针，在本地命名为<code>origin/master</code></p>
+<p>但无法在本地更改其数据。接着，Git建立一个属于自己的本地<code>master</code>分支，始于<code>origin</code>上<code>master</code>分支相同的位置，这样可以就此开始工作</p>
+<pre><code>touch README.md
+git init
+git add README.md
+git commit -m &quot;first commit&quot;
+git remote add origin git@github.com:tankywoo/test.git
+git push -u origin master
+</code></pre><p>这里origin是remote repo name，branch name 是master</p>
+<h3 id="关于fetch和pull区别">关于fetch和pull区别</h3>
+<p>What is <code>git fetch</code>? and what is the difference to <code>git pull</code>?</p>
+<p><code>git fetch</code>是update from remote repo，但是不合并</p>
+<p><code>git pull</code>是fetch and merge</p>
+<h2 id="git标签">Git标签</h2>
+<ul>
+<li>含附注的标签(annotated)</li>
+<li>轻量级标签(lightweight)</li>
+</ul>
+<p><a href="http://git-scm.com/book/zh/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE">2.6 Git 基础 - 打标签</a></p>
+<p>删除远程标签:</p>
+<pre><code>git push origin :tagname
+</code></pre><p>或</p>
+<pre><code>git push --delete origin tagname
+</code></pre><p><a href="http://stackoverflow.com/a/5480292/1276501">参考</a></p>
+<h2 id="git-全局配置">Git 全局配置</h2>
+<p>全局忽略文件</p>
+<ul>
+<li><a href="http://git-scm.com/book/zh/%E8%87%AA%E5%AE%9A%E4%B9%89-Git-%E9%85%8D%E7%BD%AE-Git">忽略文件</a></li>
+<li><a href="https://github.com/GitHub/gitignore">git ignore repo</a></li>
+</ul>
+<h2 id="使用vimdiff">使用vimdiff</h2>
+<p>默认的diff应该是使用diff命令, 这个命令也非常有必要掌握.</p>
+<p>但是, 更直观的, 可以选择vimdiff.</p>
+<pre><code># 配置Git使用vimdiff来做差异比较
+git config --global diff.tool vimdiff
+# 在merge时使用
+git config --global merge.tool vimdiff
+# 因为在使用vimdiff时, vim会有如下提示:
+# Viewing: 'tkwiki/tool/git.wiki'
+# Launch 'vimdiff' [Y/n]: y
+# 可以取消这个提示
+git config --global difftool.prompt false
+</code></pre><p>然后就可以</p>
+<pre><code>git difftool tkwiki/tool/git.wiki
+</code></pre><p>来查看修改的地方, 效果图:</p>
+<p><img src="https://pic.fenghong.tech/tools/git_vimdiff.png" alt="git vimdiff"></p>
+<p>参考:</p>
+<ul>
+<li><a href="http://usevim.com/2012/03/21/git-and-vimdiff/">Git and Vimdiff</a></li>
+<li><a href="http://agileadam.com/using-vimdiff-git">Using Vimdiff with Git</a></li>
+</ul>
+<h2 id="查看提交log">查看提交log</h2>
+<p>git log 会查看当前git repo里所有的提交历史</p>
+<p>git log filename 会查看这个文件的所有提交历史</p>
+<p>git log -p -2 [filename] 会把最近的2次提交变更展开</p>
+<p>git log &ndash;pretty=oneline [filename] 这个太牛逼了, 只显示id和提交说明.</p>
+<p>git log &ndash;pretty=format:&ldquo;xxxx&rdquo; 这个更牛逼, 自定义查看log的输出格式</p>
+<p>参考:</p>
+<ul>
+<li><a href="http://git-scm.com/book/zh/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2">查看提交历史</a></li>
+</ul>
+<h2 id="文件中文名问题">文件中文名问题</h2>
+<p>最近遇到同步文件下来, 中文文件名全部是unicode, 解决这个问题加配置:</p>
+<pre><code>git config --global core.quotepath false
+</code></pre><h2 id="git-mv-日志问题">Git mv 日志问题</h2>
+<p>在 <code>git mv</code> (rename) 文件后, 直接 git log 只能看到这个文件被 rename 后的日志, 想要看到完整的日志, 要用 <code>git log --follow xxx</code></p>
+<p>参考:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/2314652/is-it-possible-to-move-rename-files-in-git-and-maintain-their-history">Is it possible to move/rename files in git and maintain their history?</a></li>
+<li><a href="http://stackoverflow.com/questions/1094269/whats-the-purpose-of-git-mv">What&rsquo;s the purpose of git-mv?</a></li>
+</ul>
+<h2 id="指定路径pull">指定路径pull</h2>
+<p>以前都是 cd 到仓库当前目录然后 pull. 因为想到 <code>svn up</code> 可以直接指定路径, 这种基本功能 git 肯定会有的, 但是直接指定路径不行.</p>
+<p>搜了下, StackOverflow 上的 <a href="http://stackoverflow.com/a/9876901/1276501">回答1</a> 和 <a href="http://stackoverflow.com/a/9746005/1276501">回答2</a> 非常给力.</p>
+<p>Git 的参数 <code>--git-dir</code> 可以指定 Git 的路径, 即使用这个 <code>.git</code> 的配置等来更新 repo. 但是这个会以 <code>pwd</code> 为要更新的 repo 路径.
+所以还需要 <code>--work-tree</code> 来指定要更新的 repo 的路径, 而不需要 cd 过去.</p>
+<pre><code>git --git-dir=/path/to/git-repo/.git --work-tree=/path/to/git-repo/ pull
+</code></pre><h2 id="查看指定目录下的-status">查看指定目录下的 status</h2>
+<pre><code>git status [path]
+</code></pre><p>比如当前目录下的 status:</p>
+<pre><code>git status .
+</code></pre><p><a href="http://stackoverflow.com/questions/715321/git-status-is-there-a-way-to-show-changes-only-in-a-specific-directory">git status - is there a way to show changes only in a specific directory?</a></p>
+<h2 id="选择一部分修改提交">选择一部分修改提交</h2>
+<p>使用 <code>git add -p filename</code>。</p>
+<p>具体见:</p>
+<ul>
+<li><a href="http://git-scm.com/book/zh/Git-%E5%B7%A5%E5%85%B7-%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%9A%82%E5%AD%98">Git 工具 - 交互式暂存</a></li>
+<li><a href="http://stackoverflow.com/questions/1085162/how-can-i-commit-only-part-of-a-file-in-git">How can I commit only part of a file in git</a></li>
+</ul>
+<h2 id="只从-git-repo-中移除文件-但不删除实际文件">只从 git repo 中移除文件, 但不删除实际文件</h2>
+<pre><code>git rm --cached file
+</code></pre><p>默认使用 <code>git rm</code> 会把文件也一并删除掉.</p>
+<h2 id="修改最后一次提交">修改最后一次提交</h2>
+<p>使用:</p>
+<pre><code>git commit --amend
+</code></pre><p>如果当前 stage区 没有东西, 则相当于可以修改 commit comment.</p>
+<p>如果 stage区 有新的文件, 比如有个文件staged后忘了和上次的提交一次commit, 则可以撤销并重新提交.</p>
+<h2 id="修改commit的author">修改commit的author</h2>
+<p>如果是staged的文件，提交时直接指定 <code>--author</code> 就可以了:</p>
+<pre><code>git commit -m &quot;xxx&quot; --author=&quot;Tanky Woo &lt;noreply@tankywoo.com&gt;&quot;
+</code></pre><p>修改最后一次提交的author，可以配合 <code>--amend</code>:</p>
+<pre><code>git commit --amend --author=&quot;Tanky Woo &lt;noreply@tankywoo.com&gt;&quot;
+</code></pre><p>如果user config配置修改了，可以直接<code>--reset-author</code>:</p>
+<pre><code>git commit --amend --reset-author
+</code></pre><p>修改指定commit的author:</p>
+<pre><code>* 2f1e828 - (HEAD, origin/test, origin/master, test, master) update test-git-submodule (2 days ago) &lt;Tanky Woo&gt;
+* 3243b09 - first commit with submodule (2 days ago) &lt;Tanky Woo&gt;
+* 5956ab0 - why conflict and merge? (3 weeks ago) &lt;Tanky Woo&gt;
+</code></pre><p>现在想修改 3243b09 的 author name，需要从它之前的一个commit开始<code>rebase</code>:</p>
+<pre><code>TankyWoo@Mac::test-git/ (master) » git rebase -i 5956ab0
+</code></pre><p>Git 会使用设置的编辑器打开如下:</p>
+<pre><code>pick 3243b09 first commit with submodule
+pick 2f1e828 update test-git-submodule
+
+# Rebase 5956ab0..2f1e828 onto 5956ab0
+#
+# Commands:
+#  p, pick = use commit
+#  r, reword = use commit, but edit the commit message
+#  e, edit = use commit, but stop for amending
+#  s, squash = use commit, but meld into previous commit
+#  f, fixup = like &quot;squash&quot;, but discard this commit's log message
+#  x, exec = run command (the rest of the line) using shell
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+</code></pre><p>根据提示，把需要修改的一行用<code>edit</code>替换<code>pick</code>:</p>
+<pre><code>edit 3243b09 first commit with submodule
+pick 2f1e828 update test-git-submodule
+</code></pre><p>保存关闭后会提示:</p>
+<pre><code>Stopped at 3243b09... first commit with submodule
+You can amend the commit now, with
+
+        git commit --amend
+
+Once you are satisfied with your changes, run
+
+        git rebase --continue
+</code></pre><p>如果要对first commit开始做rebase:</p>
+<pre><code>git rebase -i --root
+</code></pre><p>我设置的PS1的括号里是分支名，可以看到现在的分支是这个要修改的commit id:</p>
+<pre><code>TankyWoo@Mac::test-git/ (3243b09*) » git commit --amend --author=&quot;Tanky &lt;noreply@tankywoo.com&gt;&quot;
+</code></pre><p>修改完后会进入下一个commit id分支，直接<code>--continue</code>，因为604c35c这个commit设置的是pick，所以不会做改动:</p>
+<pre><code>TankyWoo@Mac::test-git/ (604c35c*) » git rebase --continue
+Successfully rebased and updated refs/heads/master.
+</code></pre><p>再查看日志:</p>
+<pre><code>* 16c4757 - (HEAD, master) update test-git-submodule (2 seconds ago) &lt;Tanky Woo&gt;
+* b9fbd8a - first commit with submodule (15 seconds ago) &lt;Tanky&gt;
+* 5956ab0 - why conflict and merge? (3 weeks ago) &lt;Tanky Woo&gt;
+</code></pre><p><a href="http://stackoverflow.com/a/3042512/1276501">SO</a>上的回答:</p>
+<blockquote>
+<p>For example, if your commit history is <code>A-B-C-D-E-F</code> with <code>F</code> as <code>HEAD</code>, and you want to change the author of <code>C</code> and <code>D</code>, then you would&hellip;</p>
+<ol>
+<li>Specify <code>git rebase -i B</code></li>
+<li>change the lines for both <code>C</code> and <code>D</code> to <code>edit</code></li>
+<li>Once the rebase started, it would first pause at <code>C</code></li>
+<li>You would <code>git commit --amend --author=&quot;Author Name &lt;email@address.com&gt;&quot;</code></li>
+<li>Then <code>git rebase --continue</code></li>
+<li>It would pause again at <code>D</code></li>
+<li>Then you would <code>git commit --amend --author=&quot;Author Name &lt;email@address.com&gt;&quot;</code> again</li>
+<li><code>git rebase --continue</code></li>
+<li>The rebase would complete.</li>
+</ol>
+</blockquote>
+<p>如果要修改指定用户全部commit的author:</p>
+<pre><code>git filter-branch -f --env-filter '
+an=&quot;$GIT_AUTHOR_NAME&quot;
+am=&quot;$GIT_AUTHOR_EMAIL&quot;
+cn=&quot;$GIT_COMMITTER_NAME&quot;
+cm=&quot;$GIT_COMMITTER_EMAIL&quot;
+
+if [ &quot;$GIT_COMMITTER_EMAIL&quot; = &quot;&lt;OLD EMAIL&gt;&quot; ] ; then
+    cn=&quot;&lt;NEW NAME&gt;&quot;
+    cm=&quot;&lt;NEW EMAIL&gt;&quot;
+    export GIT_COMMITTER_NAME=&quot;$cn&quot;
+    export GIT_COMMITTER_EMAIL=&quot;$cm&quot;
+fi
+if [ &quot;$GIT_AUTHOR_EMAIL&quot; = &quot;&lt;OLD EMAIL&gt;&quot; ] ; then
+    an=&quot;&lt;NEW NAME&gt;&quot;
+    am=&quot;&lt;NEW EMAIL&gt;&quot;
+    export GIT_AUTHOR_NAME=&quot;$an&quot;
+    export GIT_AUTHOR_EMAIL=&quot;$am&quot;
+fi
+'
+</code></pre><p>这个在<a href="https://help.github.com/articles/changing-author-info">github官方help</a>里也有脚本。</p>
+<p>StackOverflow上有两篇讨论非常好:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/750172/how-do-i-change-the-author-of-a-commit-in-git">How do I change the author of a commit in git?</a></li>
+<li><a href="http://stackoverflow.com/questions/3042437/change-commit-author-at-one-specific-commit">Change commit author at one specific commit</a></li>
+</ul>
+<p>（2017-12-20补充）</p>
+<p>强制同步远程并覆盖本地历史。</p>
+<p>比如某个项目，用如上方法修改了所有提交的用户名和邮箱，然后想更新线上一批机器的这个项目。第一个是想到 <code>git pull --force</code>，但是此方法会做一个合并，所以不行；另外想到 <code>git fetch; git merge -X theirs master</code> 也不行。</p>
+<p>后来搜到 <a href="https://gist.github.com/vladimirtsyupko/10964772">这个回答</a>：</p>
+<pre><code>git fetch
+git reset --hard origin/master
+</code></pre><p>首先在线上环境这种只做 <code>clone</code>、<code>pull</code> 等操作（核心是 <code>fetch</code>），如果没有异同，则没有 <code>.git/refs/remote/origin/master</code> 文件（指向远程的最新 commit id）。</p>
+<p>如果有异同，如上修改了提交者姓名和邮箱，会生成 <code>origin/master</code>，然后 <code>git reset</code> 即将当前 <code>head</code> 变更为指定的状态，也就是远程更新后的。</p>
+<h2 id="git-diff-技巧">Git diff 技巧</h2>
+<p>(待整理)</p>
+<pre><code>git diff tag                    比较tag和HEAD之间的不同。
+git diff tag file               比较一个文件在两者之间的不同。
+git diff tag1..tag2             比较两个tag之间的不同。
+git diff SHA11..SHA12           比较两个提交之间的不同。
+git diff tag1 tag2 file or
+git diff tag1:file tag2:file    比较一个文件在两个tag之间的不同。
+</code></pre><p><code>ORIG_HEAD</code> 用于指向前一个操作状态，因此在git pull之后如果想得到pull的
+内容就可以：</p>
+<pre><code>git diff ORIG_HEAD
+
+git diff --stat                 用于生成统计信息。
+git diff --stat ORIG_HEAD
+</code></pre><h2 id="head-vs-orig_head"><code>HEAD</code> vs <code>ORIG_HEAD</code></h2>
+<p>关于 <code>HEAD</code> 和 <code>ORIG_HEAD</code> 的区别，来至StackOverflow的<a href="http://stackoverflow.com/a/967611/1276501">回答</a>:</p>
+<blockquote>
+<p><code>HEAD</code> is (direct or indirect, i.e. symbolic) reference to the current commit. It is a commit that you have checked in the working directory (unless you made some changes, or equivalent), and it is a commit on top of which &ldquo;git commit&rdquo; would make a new one. Usually <code>HEAD</code> is symbolic reference to some other named branch; this branch is currently checked out branch, or current branch. <code>HEAD</code> can also point directly to a commit; this state is called &ldquo;detached HEAD&rdquo;, and can be understood as being on unnamed, anonymous branch.</p>
+<p><code>ORIG_HEAD</code> is previous state of <code>HEAD</code>, set by commands that have possibly dangerous behavior, to be easy to revert them. It is less useful now that Git has reflog: <code>HEAD@{1}</code> is roughly equivalent to <code>ORIG_HEAD</code> (<code>HEAD@{1}</code> is always last value of <code>HEAD</code>, <code>ORIG_HEAD</code> is last value of <code>HEAD</code> before dangerous operation).</p>
+</blockquote>
+<p>For more information read <a href="http://www.kernel.org/pub/software/scm/git/docs/git.html">git(1) manpage</a>, <a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">Git User&rsquo;s Manual</a>, the <a href="http://book.git-scm.com/">Git Community Book</a> and <a href="http://www.kernel.org/pub/software/scm/git/docs/gitglossary.html">Git Glossary</a></p>
+<p>其它的一些讲解:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/17595524/orig-head-fetch-head-merge-head-etc">ORIG_HEAD, FETCH_HEAD, MERGE_HEAD etc</a></li>
+<li><a href="http://guibin.iteye.com/blog/1014369">GIT基本概念和用法总结</a></li>
+</ul>
+<h2 id="git-revertresetcheckout-区别">git revert/reset/checkout 区别</h2>
+<p>讲得挺好的一篇 <a href="https://www.atlassian.com/git/tutorial/undoing-changes">Undoing Git Changes</a>，关于<code>git checkout</code>, <code>git revert</code>,<code>git reset</code>, <code>git clean</code> 的对比。</p>
+<h2 id="统计每个提交者的提交次数">统计每个提交者的提交次数</h2>
+<pre><code>git shortlog --numbered --summary
+</code></pre><h2 id="git-reflog">git reflog</h2>
+<p>TODO</p>
+<h2 id="git-cherry-pick">git cherry-pick</h2>
+<p>TODO</p>
+<h2 id="git-commit-message-基本准则">Git Commit Message 基本准则</h2>
+<p>一些基本的准则:</p>
+<ul>
+<li>
+<p>commmit时不建议使用<code>-m/--message</code>，这样能提交的信息太简单的；建议直接commit通过编辑器来撰写message.</p>
+</li>
+<li>
+<p><strong>第一行不</strong>超过50个字符，作为简单的描述，第二行为空行，第三行开始再做详细描述，例子(<a href="http://git-scm.com/book/ch5-2.html">http://git-scm.com/book/ch5-2.html</a>):</p>
+<pre><code>Short (50 chars or less) summary of changes
+  
+More detailed explanatory text, if necessary.  Wrap it to about 72
+characters or so.  In some contexts, the first line is treated as the
+subject of an email and the rest of the text as the body.  The blank
+line separating the summary from the body is critical (unless you omit
+the body entirely); tools like rebase can get confused if you run the
+two together.
+  
+Further paragraphs come after blank lines.
+  
+ - Bullet points are okay, too
+  
+ - Typically a hyphen or asterisk is used for the bullet, preceded by a
+   single space, with blank lines in between, but conventions vary here
+</code></pre></li>
+<li>
+<p><strong>第一行</strong> 结尾不要用句号，这个可以认为是一个标题</p>
+</li>
+<li>
+<p><strong>第三行</strong> 开始的详细描述长度不超过72个字符</p>
+</li>
+<li>
+<p>使用 <code>git diff --check</code> 对无用的空白做检查:</p>
+<pre><code>--check -- warn if changes introduce trailing whitespace or space/tab indents
+</code></pre></li>
+<li>
+<p>使用 <code>fix</code>, <code>add</code>, <code>change</code> 而不是 <code>fixed</code>, <code>added</code>, <code>changed</code></p>
+<blockquote>
+<p>Write the summary line and description of what you have done in the imperative mode, that is as if you were commanding someone. Write &ldquo;fix&rdquo;, &ldquo;add&rdquo;, &ldquo;change&rdquo; instead of &ldquo;fixed&rdquo;, &ldquo;added&rdquo;, &ldquo;changed&rdquo;.</p>
+</blockquote>
+</li>
+<li>
+<p>尽量使用英文提交</p>
+</li>
+<li>
+<p>针对Github，在commit message中使用 <code>#id</code>(id 为具体issue的标号)，可以把message关联到具体的issue</p>
+</li>
+</ul>
+<p>可以看看Git源码的提交log : <a href="https://git.kernel.org/cgit/git/git.git/log/">https://git.kernel.org/cgit/git/git.git/log/</a></p>
+<p>一些不错的文章:</p>
+<ul>
+<li><a href="http://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message">5 Useful Tips For A Better Commit Message</a></li>
+<li><a href="http://www.fwolf.com/blog/post/14">Git commit 注释格式</a></li>
+<li><a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">http://www.fwolf.com/blog/post/14</a></li>
+<li><a href="https://github.com/erlang/otp/wiki/Writing-good-commit-messages">Writing good commit messages</a></li>
+<li><a href="http://git-scm.com/book/en/Distributed-Git-Contributing-to-a-Project">Distributed Git - Contributing to a Project</a></li>
+</ul>
+<h2 id="git-add-只添加-tracked-的文件">git add 只添加 tracked 的文件</h2>
+<p>git add 有一个 <code>-u</code> 选项，会只添加tracked的文件，比如在项目根目录下，可以添加所有修改过的已经tracked的文件:</p>
+<pre><code>git add -u .
+</code></pre><p>如果单纯的<code>git add .</code> 会把untracked的文件也加进去</p>
+<h2 id="删除untracked-files">删除untracked files</h2>
+<pre><code>git clean -f
+</code></pre><p><strong>But beware&hellip; there&rsquo;s no going back. Use -n or &ndash;dry-run to preview the damage you&rsquo;ll do.</strong></p>
+<p>If you want to also remove directories, run <code>git clean -f -d</code></p>
+<p>If you just want to remove ignored files, run <code>git clean -f -X</code></p>
+<p>If you want to remove ignored as well as non-ignored files, run <code>git clean -f -x</code></p>
+<p>Note the case difference on the X for the two latter commands.</p>
+<p>If <code>clean.requireForce</code> is set to &ldquo;true&rdquo; (the default) in your configuration, then unless you specify -f nothing will actually happen, with a recent enough version of git.</p>
+<p>See the <a href="http://git-scm.com/docs/git-clean">git-clean docs</a> for more information.</p>
+<p><a href="http://stackoverflow.com/a/64966/1276501">from</a></p>
+<h2 id="同一个文件选择部分提交">同一个文件选择部分提交</h2>
+<p>You can do <code>git add -p filename</code>, and it&rsquo;ll ask you what you want to stage. You can then:</p>
+<ul>
+<li>hit <code>s</code> to split whatever change into smaller hunks. This only works if there is at least one unchanged line in the &ldquo;middle&rdquo; of the hunk, which is where the hunk will be split</li>
+<li>then hit either:
+<ul>
+<li><code>y</code> to stage that hunk, or</li>
+<li><code>n</code> to not stage that hunk, or</li>
+<li><code>e</code> to manually edit the hunk (useful when git can&rsquo;t split it automatically)</li>
+</ul>
+</li>
+<li>and <code>d</code> to exit or go to the next file.</li>
+<li>Use <code>?</code> to get the whole list of available options.</li>
+</ul>
+<p>If the file is not in the repository yet, do first <code>git add -N filename</code>. Afterwards you can go on with <code>git add -p filename</code>.</p>
+<p><a href="http://stackoverflow.com/a/1085191/1276501">Source</a></p>
+<h2 id="checkout-指定的-tag">checkout 指定的 tag</h2>
+<pre><code>git checkout tags/&lt;tag_name&gt;
+</code></pre><p><a href="http://stackoverflow.com/questions/791959/download-a-specific-tag-with-git">参考</a></p>
+<h2 id="git-add的几个参数和通配符">git add的几个参数和通配符</h2>
+<ul>
+<li><code>git add .</code> stages new and modified, in Git 1.x, <strong>without deleted</strong>, in Git 2.x, <strong>with deleted</strong></li>
+<li><code>git add -u</code> stages modified and deleted, <strong>without new</strong></li>
+<li><code>git add -A</code> stages <strong>All</strong></li>
+<li><code>git add *</code> stages new(except name begin with <code>dot</code>) and modified, <strong>without deleted</strong></li>
+</ul>
+<p>这里得注意, <code>git add .</code> 在 Git 1.x 和 Git 2.0以后是不一样的.</p>
+<p>详细讨论见:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/572549/difference-between-git-add-a-and-git-add/16162511#16162511">Difference between “git add -A” and “git add .”</a></li>
+<li><a href="http://stackoverflow.com/questions/26042390/git-add-asterisk-vs-git-add-period">git add * (asterisk) vs git add . (period)</a></li>
+</ul>
+<h2 id="检查repo是否dirty">检查repo是否dirty</h2>
+<pre><code>git status --porcelain
+</code></pre><p>关于git提示的状态, 见<code>man git-status</code>的 <code>[OUTPUT] -&gt; [Short Format]</code> 一节</p>
+<p>参考:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/2657935/checking-for-a-dirty-index-or-untracked-files-with-git">Checking for a dirty index or untracked files with Git</a></li>
+<li><a href="http://stackoverflow.com/questions/5143795/how-can-i-check-in-a-bash-script-if-my-local-git-repo-has-changes">How can I check in a bash script if my local git repo has changes</a></li>
+<li><a href="http://stackoverflow.com/questions/3878624/how-do-i-programmatically-determine-if-there-are-uncommited-changes">How do I programmatically determine if there are uncommited changes?</a></li>
+</ul>
+<h2 id="检查repo当前head是否提示ahead或behind远程仓库分支">检查repo当前HEAD是否提示ahead或behind远程仓库分支</h2>
+<p>比如像这样的:</p>
+<pre><code>$ /opt/nlo/nginx# git status
+# On branch master
+# Your branch is ahead of 'origin/master' by 13 commits.
+#
+nothing to commit (working directory clean)
+</code></pre><p>使用:</p>
+<pre><code>git rev-list --left-right --count origin/master...master
+</code></pre><p>将master与远程仓库origin/master作比较.</p>
+<p>如果master的HEAD比origin/master新则报ahead, 否则behind.</p>
+<p>返回结果格式是:</p>
+<pre><code>{behind}\t{ahead}
+</code></pre><p>参考:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/2969214/git-programmatically-know-by-how-much-the-branch-is-ahead-behind-a-remote-branc">git: programmatically know by how much the branch is ahead/behind a remote branch</a></li>
+<li><a href="http://stackoverflow.com/questions/20433867/git-ahead-behind-info-between-master-and-branch">git ahead/behind info between master and branch?</a></li>
+<li><a href="https://gist.github.com/vitalk/8639831">git-branch-status</a></li>
+</ul>
+<h2 id="获取当前分支名">获取当前分支名</h2>
+<p>在<code>Git 1.8</code>及以后:</p>
+<pre><code>$ git symbolic-ref --short HEAD
+</code></pre><p><code>Git 1.7+</code>:</p>
+<pre><code>$ git rev-parse --abbrev-ref HEAD
+</code></pre><p><a href="http://stackoverflow.com/questions/6245570/how-to-get-current-branch-name-in-git">参考</a></p>
+<h2 id="删除分支">删除分支</h2>
+<p>远程分支被删除后(如Github在页面上删除分支), 本地删除追踪分支:</p>
+<pre><code>git fetch -p
+</code></pre><p>定期清除远程分支和本地已合并分支是一个好习惯，否则有时会遇到这种本地refs冲突:</p>
+<pre><code>$ git pull
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (3/3), done.
+error: cannot lock ref 'refs/remotes/origin/feature/new': 'refs/remotes/origin/feature' exists; cannot create 'refs/remotes/origin/feature/new'
+From git.coding.net:tankywoo/test-repo
+ ! [new branch]      feature/new -&gt; origin/feature/new  (unable to update local ref)
+error: some local refs could not be updated; try running
+ 'git remote prune origin' to remove any old, conflicting branches
+</code></pre><p>因为远程有一个老的分支叫feature在本地有refs, 现在又有一个新的分支叫feature/new, 这样就没法在系统上建立refs目录了。</p>
+<p>提示已经很清楚了, 请出指定remote的stale分支, 即远程分支已被删除(上面那条命令效果类似，不过在清除的时候还会下拉新的分支)。</p>
+<pre><code>git remote prune origin
+</code></pre><h2 id="git本地设置某个远程库readonly">Git本地设置某个远程库readonly</h2>
+<p>如Github, Gitlab等可以在页面上设置某个用户的权限. 不过有时为了防止出问题, 在本地也可以设置.</p>
+<p>其实就是简单的将remote url的push地址重写为任意字符串.</p>
+<pre><code>$ git remote set-url --push origin 'do not push'
+</code></pre><h2 id="关于-head-和-head-的区别">关于 HEAD^ 和 HEAD~ 的区别</h2>
+<p><code>HEAD^</code> 表示当前分支的第一个父分支的第一个点, 等同于 <code>HEAD^1</code>; <code>HEAD^2</code>表示第二个父分支的第一个点</p>
+<p><code>HEAD~1</code> 表示当前分支的第一个父分支的第一个点, 等同于 <code>HEAD~1</code>, 效果也等同于 <code>HEAD^</code>; <code>HEAD~2</code>表示第一个父分支的第二个点.</p>
+<p>stackoverflow上这个<a href="http://stackoverflow.com/a/12527561/1276501">回答</a>描述的很详细:</p>
+<pre><code>G   H   I   J
+ \ /     \ /
+  D   E   F
+   \  |  / \
+    \ | /   |
+     \|/    |
+      B     C
+       \   /
+        \ /
+         A
+A =      = A^0
+B = A^   = A^1     = A~1
+C = A^2  = A^2
+D = A^^  = A^1^1   = A~2
+E = B^2  = A^^2
+F = B^3  = A^^3
+G = A^^^ = A^1^1^1 = A~3
+H = D^2  = B^^2    = A^^^2  = A~2^2
+I = F^   = B^3^    = A^^3^
+J = F^2  = B^3^2   = A^^3^2
+</code></pre><p>其它讲解:</p>
+<ul>
+<li><a href="http://www.gitguys.com/topics/head-where-are-we-where-were-we/?lang=zh">head where are we where were we</a></li>
+</ul>
+<h2 id="查看两个分支的差异">查看两个分支的差异</h2>
+<p>遇到一个问题, 删除一个已合并分支时, 提示此分支没有完全合并:</p>
+<blockquote>
+<p>error: The branch &lsquo;xxx&rsquo; is not fully merged</p>
+</blockquote>
+<p>在so上发现一个给力的<a href="http://stackoverflow.com/a/7549118/1276501">回答</a></p>
+<pre><code>$ git log --graph --left-right --cherry-pick --oneline master...experiment
+</code></pre><h2 id="查看某个commit在哪些releasetag引进">查看某个commit在哪些release(tag)引进</h2>
+<p>之前考虑的是知道某个commit, 这时就知道它的提交时间, 然后找出release/tag在它之后即可, 也就是:</p>
+<pre><code>$ git log --tags --simplify-by-decoration --pretty=&quot;format:%ai %d&quot;
+</code></pre><p>然后根据commit的提交时间找到从那个tag开始有.</p>
+<p>不过后来想了下, 这块有问题, 因为当前发布分支不一定merge了这个commit.</p>
+<p>后来搜到git tag有这个功能<code>--contains</code>选项:</p>
+<pre><code>$ git tag --contains &lt;commit id&gt;
+</code></pre><p>延伸下: 如果查看哪些分支包含某个指定commit id:</p>
+<pre><code>$ git branch --contains &lt;commit id&gt;
+</code></pre><h2 id="git-subtree--submodule">Git subtree &amp; submodule</h2>
+<p>对<code>submodule</code>的使用应该是非常熟悉了. 听过subtree这个东西有1、2年了, 一直没时间去了解, 前阵子简单了解过, 今晚又看了下文档和一些博客并尝试了(2015-11-11, 好吧, 双十一, 刚剁手完~~~), 也算大致有了一个了解认识.</p>
+<p>首先说一下, 国内很多博客人云亦云, 都没什么实践场景, 就跟着别人说: submodule太复杂, 不好用, 应该用subtree. 这个是相当坑爹的.</p>
+<p>然后放几个链接, 技术上就不详细说明:</p>
+<ul>
+<li>man git-subtree</li>
+<li><a href="https://medium.com/@v/git-subtrees-a-tutorial-6ff568381844">git subtrees: a tutorial</a> 很好的入门资料, 详细的例子</li>
+<li><a href="https://www.atlassian.com/git/articles/alternatives-to-git-submodule-git-subtree/">Alternatives To Git Submodule: Git Subtree</a></li>
+<li><a href="http://blog.zlxstar.me/blog/2014/07/18/git-submodule-vs-git-subtree/">Git submodule 还是 Git Subtree</a> 评价还算中肯</li>
+<li><a href="http://aoxuis.me/post/2013-08-06-git-subtree">使用GIT SUBTREE集成项目到子目录</a> 里面提到的一些链接文章可以看看</li>
+</ul>
+<p>简单说下使用(merge和split还没去尝试):</p>
+<pre><code>git subtree add   -P &lt;prefix&gt; &lt;repository&gt; &lt;ref&gt;
+git subtree pull  -P &lt;prefix&gt; &lt;repository&gt; &lt;ref&gt;
+git subtree push  -P &lt;prefix&gt; &lt;repository&gt; &lt;ref&gt;
+</code></pre><p>subtree add命令将一个项目拉到本地作为一个子目录, 这个和submodule类似. prefix执行子目录名.</p>
+<p>子仓库独立更新, 主仓库使用subtree pull命令下拉作更新, 会产生一个merge commit</p>
+<p>主仓库下子目录的仓库作了更新, 可以使用subtree push将修改推到子仓库</p>
+<p>子仓库可以修改并提交, 这个提交是在主仓库历史可以直接git log看到的(不同于submodule)</p>
+<p>因为每次都要敲repository, 可以把这个用git remote增加一个remote alias.</p>
+<p>建议:</p>
+<ul>
+<li>subtree pull建议加上<code>--squash</code>, 将子仓库的多个提交合并为一个提交merge到主仓库, 否则会增加一堆commit.</li>
+<li>主仓库的修改和子仓库的修改分开提交, 主库和子库互相pull/push时会比较混乱</li>
+</ul>
+<p>实例:</p>
+<ul>
+<li><a href="https://gist.github.com/cobyism/4730490">Deploying a subfolder to GitHub Pages</a> Jekyll可以用到的一个例子.</li>
+</ul>
+<p>感受:</p>
+<ul>
+<li>至少目前来说, 我还是喜欢submodule</li>
+<li>说submodule麻烦是因为不了解, 有人说需要.gitmodule配置文件, 我觉得这个的优点之一就是简化文件, 不然每次都要敲prefix, repository很麻烦不是?</li>
+<li>subtree导致历史看起来比较脏, 对于submodule, 主库一个逻辑提交可以直接包含子库的相应commit id即可</li>
+<li>subtree对于一些小项目比较合适</li>
+<li>subtree依赖使用团队的规范约束, 否则历史容易乱.</li>
+</ul>
+<p>当然, 上面也只是我了解一些皮毛的感受, 希望后续有机会能更多的去实践.</p>
+<p>另外, submodule的教程:</p>
+<ul>
+<li><a href="http://www.kafeitu.me/git/2012/03/27/git-submodule.html">Git Submodule使用完整教程</a></li>
+</ul>
+<p>关于子模块：</p>
+<p><code>git submodule status</code>可以用于查看子模块的状态：</p>
+<pre><code>$ git submodule status
+abf682ed9f412b28e3147e6774b2dc3daa96efbd themes/yasimple (heads/master)
++a26442b58f9d709802af7e07d95657a7ddf3194c themes/yasimple_x2 (heads/master)
+</code></pre><p>其中SHA-1 hash前的flag表示状态：<code>-</code>表示模板在本地没有初始化; <code>+</code>表示子模块的HEAD和被引入的id不一致，即有新的提交没有合并到仓库里。</p>
+<p>撤销子模块在本地的注册：</p>
+<pre><code>$ git submodule deinit -f --all
+Cleared directory 'themes/yasimple'
+Submodule 'themes/yasimple' (git@github.com:tankywoo/yasimple.git) unregistered for path 'themes/yasimple'
+Cleared directory 'themes/yasimple_x2'
+Submodule 'themes/yasimple_x2' (git@git.coding.net:tankywoo/yasimple_x2.git) unregistered for path 'themes/yasimple_x2'
+
+$ git submodule status
+-abf682ed9f412b28e3147e6774b2dc3daa96efbd themes/yasimple
+-691af22bdfe5315540934809fb9374567f9b7af8 themes/yasimple_x2
+</code></pre><p>如果要删除子模块，而不是撤销，则需要使用<code>git rm</code>命令：</p>
+<pre><code>$ git rm themes/yasimple themes/yasimple_x2
+rm 'themes/yasimple'
+rm 'themes/yasimple_x2'
+
+$ git submodule status  # 输出空
+</code></pre><p>之前没注意，使用deinit后发现没完全清除子模块，于是直接手动删掉<code>.gitmodules</code>文件，导致后来clone报错：</p>
+<blockquote>
+<p>No submodule mapping found in .gitmodule for &hellip;</p>
+</blockquote>
+<p>子模块的文件mode是<code>160000</code>:</p>
+<pre><code>$ git ls-files --stage | grep 160000
+</code></pre><p>这样也可以看到实际上子模块还存在，没彻底删除。<a href="http://stackoverflow.com/questions/4185365/no-submodule-mapping-found-in-gitmodule-for-a-path-thats-not-a-submodule">参考</a></p>
+<h2 id="git-diff-相关">git diff 相关</h2>
+<p>关于 <code>git diff A..B</code> 和 <code>git diff A...B</code>:</p>
+<p><img src="https://pic.fenghong.tech/tools/git-diff-help.png" alt="git diff help"><a href="http://stackoverflow.com/questions/7251477/what-are-the-differences-between-double-dot-and-triple-dot-in-git-dif">图片来源</a></p>
+<p>参考:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/7251477/what-are-the-differences-between-double-dot-and-triple-dot-in-git-dif">What are the differences between double-dot “..” and triple-dot “…” in Git diff commit ranges?</a></li>
+<li><a href="http://stackoverflow.com/questions/5256249/git-diff-doesnt-show-enough/5257065#5257065">git diff doesn&rsquo;t show enough</a></li>
+<li><a href="http://stackoverflow.com/questions/462974/what-are-the-differences-between-double-dot-and-triple-dot-in-git-com">What are the differences between double-dot “..” and triple-dot “…” in Git commit ranges?</a></li>
+</ul>
+<h2 id="git-diff-一行太长-输出混乱">git diff 一行太长, 输出混乱</h2>
+<p>比如一行非常长, 超过了一行, 导致git diff时的输出比较混乱, 超过一行的会覆盖行首的内容, 而不是换行.</p>
+<p>本地的环境变量如下:</p>
+<pre><code>$ echo $PAGER
+less
+$ echo $LESS
+-R
+</code></pre><p><code>$PAGER</code> 用于控制文件的显示, 被<code>man</code>或其它程序使用. 可以定义为常用的命令如<code>less</code>, <code>more</code>等.</p>
+<p><code>$PAGER</code>也可以配置为命令加参数选项, 不过更好的方式是配置在各自的环境变量, 如less的<code>$LESS</code>, more的<code>$MORE</code>.</p>
+<blockquote>
+<p>The pager called by man and other such programs when you tell them to view a file.</p>
+</blockquote>
+<p>git自身也有一个环境变量<code>$GIT_PAGER</code>, 如果配置了, 则会覆盖系统的<code>$PAGER</code>.</p>
+<p>所以这里的情况可以:</p>
+<pre><code>GIT_PAGER='less -RS' git diff /path/to/file
+</code></pre><p>或者应用到git配置中:</p>
+<pre><code>git config core.pager 'less -RS'
+</code></pre><p>默认情况, 超过一个屏幕的一行, 会使用<code>wrapped</code>换行, <code>-S</code>将行为改为<code>chopped (truncated)</code>, 即隐藏超出一个屏幕宽度的内容, 但是可以右移来显示出来.</p>
+<p>另外, <code>-R</code>和<code>-r</code>这两个的区别我还没弄清楚:</p>
+<blockquote>
+<p>Like -r, but only ANSI &ldquo;color&rdquo; escape sequences are output in &ldquo;raw&rdquo; form. Unlike -r, the screen appearance is maintained correctly in most cases</p>
+</blockquote>
+<p>在<code>$TERM=screen</code>和<code>$TERM=screen-256color</code>时, <code>-r</code>可以正确的wrapped换行, 而<code>-R</code>不行, 不过在指定<code>git diff --no-color</code>时<code>-R</code>可以正确换行. <strong>TODO</strong></p>
+<p>另外, 我平时经常实用的一个工具<code>cdiff</code>, 没有使用<code>$GIT_PAGER</code>, 所以需要配置<code>$PAGER</code></p>
+<p>参考:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/136178/git-diff-handling-long-lines">git diff - handling long lines?</a></li>
+<li><a href="http://www.refining-linux.org/archives/3/Configuring-your-console-pager/">Configuring your console pager</a></li>
+</ul>
+<h2 id="git-fetchpull-小记">git fetch/pull 小记</h2>
+<p>一个需求: 假设我在dev分支, 现在我想先更新master分支的代码, 再checkout过去。解决办法:</p>
+<pre><code>git fetch origin master:master
+</code></pre><p>在这块遇到了一些之前没注意的问题, 简单记录下。</p>
+<p>首先完整的fetch/pull命令是:</p>
+<pre><code>git fetch/pull [&lt;options&gt;] [&lt;repository&gt; [&lt;refspec&gt;...]]
+</code></pre><p>基本都知道的是pull就是比fetch多了一个merge。</p>
+<p>主仓库master:</p>
+<pre><code>*   2d666bc - (HEAD -&gt; master) Merge branch 'dev' (2 hours ago) &lt;Tanky Woo&gt;
+|\
+| * 9337ee5 - dev 1 (2 hours ago) &lt;Tanky Woo&gt;
+|/
+* 66f72b2 - init (2 hours ago) &lt;Tanky Woo&gt;
+</code></pre><p>主仓库dev:</p>
+<pre><code>* 07e3298 - (HEAD -&gt; dev) dev 2 (61 minutes ago) &lt;Tanky Woo&gt;
+* 9337ee5 - dev 1 (2 hours ago) &lt;Tanky Woo&gt;
+* 66f72b2 - init (2 hours ago) &lt;Tanky Woo&gt;
+</code></pre><p>子仓库master:</p>
+<pre><code>* 66f72b2 - (HEAD -&gt; master, origin/master) init (2 hours ago) &lt;Tanky Woo&gt;
+</code></pre><p>子仓库dev:</p>
+<pre><code>* 9337ee5 - (HEAD -&gt; dev, origin/dev, origin/HEAD) dev 1 (2 hours ago) &lt;Tanky Woo&gt;
+* 66f72b2 - (origin/master, master) init (2 hours ago) &lt;Tanky Woo&gt;
+</code></pre><p>即master合并了dev的9337ee5提交后, dev又新增了一个提交。</p>
+<p>最常规的操作就是直接执行<code>git pull</code>:</p>
+<pre><code>$ git pull
+remote: Counting objects: 4, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 4 (delta 1), reused 0 (delta 0)
+Unpacking objects: 100% (4/4), done.
+From /path/to/repo
+   9337ee5..07e3298  dev        -&gt; origin/dev
+   66f72b2..2d666bc  master     -&gt; origin/master
+Updating 9337ee5..07e3298
+Fast-forward
+ hello.txt | 1 +
+ 1 file changed, 1 insertion(+)
+</code></pre><p>子仓库master提交没有任何更新, 有behind提示:</p>
+<pre><code>Your branch is behind 'origin/master' by 2 commits, and can be fast-forwarded.
+  (use &quot;git pull&quot; to update your local branch)
+nothing to commit, working directory clean
+</code></pre><p>子仓库dev:</p>
+<pre><code>* 07e3298 - (HEAD -&gt; dev, origin/dev, origin/HEAD) dev 2 (64 minutes ago) &lt;Tanky Woo&gt;
+* 9337ee5 - dev 1 (2 hours ago) &lt;Tanky Woo&gt;
+* 66f72b2 - (master) init (2 hours ago) &lt;Tanky Woo&gt;
+</code></pre><p>输出的内容分为两部分:</p>
+<pre><code># -------- fetch的内容 --------
+From /path/to/repo
+   9337ee5..07e3298  dev        -&gt; origin/dev
+   66f72b2..2d666bc  master     -&gt; origin/master
+Updating 9337ee5..07e3298
+
+# -------- merge的内容 --------
+Fast-forward
+ hello.txt | 1 +
+ 1 file changed, 1 insertion(+)
+</code></pre><p>之前对这块研究过一次, 不过时间有点久远, 给忘了。</p>
+<p><code>dev -&gt; origin/dev</code> 表示远端的dev写入到本地的origin/dev。</p>
+<p>输出(或者说实际结果)表示, 默认情况下(可以看看<code>.git/config</code>下的fetch配置), 这个操作会:</p>
+<ol>
+<li>(fetch)遍历远端所有的refs, 然后更新到本地的remote/refs</li>
+<li>(merge)远端跟踪分支到当前分支(dev分支)</li>
+</ol>
+<p>按照之前的需求, 我猜测pull执行refspec应该可以, 于是执行下面:</p>
+<pre><code>$ git pull origin master:master
+remote: Counting objects: 1, done.
+remote: Total 1 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (1/1), done.
+From /path/to/repo
+   66f72b2..2d666bc  master     -&gt; master
+   66f72b2..2d666bc  master     -&gt; origin/master
+Updating 9337ee5..2d666bc
+Fast-forward
+</code></pre><p>子仓库master分支:</p>
+<pre><code>*   2d666bc - (HEAD -&gt; master, origin/master, dev) Merge branch 'dev' (2 hours ago) &lt;Tanky Woo&gt;
+|\
+| * 9337ee5 - (origin/dev, origin/HEAD) dev 1 (2 hours ago) &lt;Tanky Woo&gt;
+|/
+* 66f72b2 - init (2 hours ago) &lt;Tanky Woo&gt;
+</code></pre><p>子仓库dev分支:</p>
+<pre><code>*   2d666bc - (HEAD -&gt; dev, origin/master, master) Merge branch 'dev' (2 hours ago) &lt;Tanky Woo&gt;
+|\
+| * 9337ee5 - (origin/dev, origin/HEAD) dev 1 (2 hours ago) &lt;Tanky Woo&gt;
+|/
+* 66f72b2 - init (2 hours ago) &lt;Tanky Woo&gt;
+</code></pre><p>可以看到, 子仓库的master分支和dev分支变成一样的历史, 且都和主仓库的master分支历史树一样。</p>
+<p><code>git pull repo src:dst</code> 的实际操作就是:</p>
+<ol>
+<li>如果可以做fast-forward, 那么做ff操作把本地的master同步为远端的master</li>
+<li><strong>然后把本地master合并到当前分支</strong></li>
+</ol>
+<p><code>man git-pull</code>:</p>
+<blockquote>
+<p>The remote ref that matches is fetched, and if is not empty string, the local ref that matches it is fast-forwarded using .</p>
+</blockquote>
+<p>也就是dev作了一次: <code>(at dev) $ git merge --ff-only master</code>。</p>
+<p>最后正确的办法, 也就是不需要上面pull的第二步merge, 即只使用fetch:</p>
+<pre><code>$ git fetch origin master:master
+remote: Counting objects: 1, done.
+remote: Total 1 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (1/1), done.
+From /path/to/repo
+   66f72b2..2d666bc  master     -&gt; master
+   66f72b2..2d666bc  master     -&gt; origin/master
+</code></pre><p>子仓库master分支:</p>
+<pre><code>*   2d666bc - (HEAD -&gt; master, origin/master) Merge branch 'dev' (2 hours ago) &lt;Tanky Woo&gt;
+|\
+| * 9337ee5 - (origin/dev, origin/HEAD, dev) dev 1 (2 hours ago) &lt;Tanky Woo&gt;
+|/
+* 66f72b2 - init (2 hours ago) &lt;Tanky Woo&gt;
+</code></pre><p>子仓库dev分支:</p>
+<pre><code>* 9337ee5 - (HEAD -&gt; dev, origin/dev, origin/HEAD) dev 1 (2 hours ago) &lt;Tanky Woo&gt;
+* 66f72b2 - init (2 hours ago) &lt;Tanky Woo&gt;
+</code></pre><p>之前只是单纯的以为fetch只做拉去更新remote/ref, 但是不做实际的本地合并等修改, 看来这个认识是错的。</p>
+<p>另外, 这个还有 <code>+</code>加号的涉及到的no-ff问题, 后续再研究下。</p>
+<p>参考:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/3216360/merge-update-and-pull-git-branches-without-using-checkouts">Merge, update, and pull Git branches without using checkouts</a></li>
+<li><a href="http://stackoverflow.com/questions/7169103/git-pull-fetch-with-refspec-differences">Git pull/fetch with refspec differences</a></li>
+<li><a href="https://git-scm.com/book/zh/v1/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-The-Refspec">pro git: 9.5 Git 内部原理 - The Refspec</a></li>
+</ul>
+<h2 id="缓存用户名密码">缓存用户名/密码</h2>
+<p>Git 的 pull/push url 如果是 <code>http/https</code> 的情况下，每次执行 pull 或 push 都需要交互式输入用户名和密码。</p>
+<p>Git 提供了 credential cache 的功能，就是将第一次输入的用户名密码缓存到内存一段时间，后续这个时间段内的 git 操作如果需要输入用户名密码，都可以从这个缓存中获取。</p>
+<p>详细见文档：<a href="https://git-scm.com/docs/git-credential-cache#_name">git-credential-cache</a> 和 <a href="https://help.github.com/articles/caching-your-github-password-in-git/#platform-linux">Caching your GitHub password in Git</a></p>
+<p>比如在一个 git 项目里，执行（例子来源上面链接的文档）：</p>
+<pre><code>$ git config credential.helper cache
+$ git push http://example.com/repo.git
+Username: &lt;type your username&gt;
+Password: &lt;type your password&gt;
+
+[work for 5 more minutes]
+$ git push http://example.com/repo.git
+[your credentials are used automatically]
+</code></pre><p>如果 <code>git config</code> 没有指定 <code>--global</code> 全局配置，则写操作默认（<code>--local</code>）只针对当前项目，后续还有其它项目，则需要在 pull/push 之前先再执行 <code>git config credential.helper cache</code> 使这个项目也配置 cache。</p>
+<p>另外，默认的缓存时间目前是 900s，也可以改超时时间：</p>
+<pre><code>$ git config credential.helper 'cache --timeout=300'
+</code></pre><p>题外话：</p>
+<p>最近写一个脚本，习惯在脚本开始获取 git 的用户名密码保存在变量中，然后后续使用，也可以如下：</p>
+<pre><code>read -p &quot;Input git username: &quot; GIT_USER
+read -s -p &quot;Input git password: &quot; GIT_PASS
+git clone http://${GIT_USER}:${GIT_PASS}@example.com/repo.git
+</code></pre><p>另外一个情况，很多工具可以通过环境变量指定用户名密码，如：<code>USERNAME=tankywoo PASSWORD=*** my-command</code></p>
+<p>git 也可以实现这种情况，关于 credential，git 默认提供两种方式（<code>helper</code>）：<code>cache</code> 和 <code>store</code>，后者存在磁盘。</p>
+<p>但是其也支持使用第三方 helper，可以实现这个功能：</p>
+<pre><code># on Gentoo
+$ cat /usr/libexec/git-core/git-credential-read-env
+#!/bin/bash
+
+if [[ $# -eq 1 &amp;&amp; $1 == &quot;get&quot; ]] ; then
+    if [[ -z ${USERNAME} || -z ${PASSWORD} ]] ; then
+        exit 0
+    fi
+    echo &quot;username=${USERNAME}&quot;
+    echo &quot;password=${PASSWORD}&quot;
+fi
+
+exit 0
+
+$ cat ~/.gitconfig
+[credential]
+    helper = read-env
+
+$ USERNAME=tankywoo PASSWORD=*** git pull
+</code></pre><p>具体需要看 <a href="https://git-scm.com/docs/gitcredentials">gitcredentials</a> 和 <code>man git-credential</code>。</p>
+<p>将自定义的脚本放到指令路径下，通过<code>git help -a | grep credential-</code> 可以搜到，然后配置 <code>[credential]</code>，名称为不包含<code>git-credential-</code>的名字即可。</p>
+<p>（TODO：有一个坑，在 <code>zsh</code> 下报错：<code>remote: HTTP Basic: Access denied</code>，暂时未找到原因。）</p>
+<h2 id="git资料">Git资料</h2>
+<ul>
+<li><a href="http://git-scm.com/book/zh">ProGit中文版</a></li>
+<li><a href="http://gitref.org/">Git Reference</a></li>
+</ul>
+
+        </div>
+        <!-- tags -->
+        <div class="mb-3">
+          <h5 class="d-inline-block mr-3">Tags:</h5>
+          <ul class="list-inline d-inline-block">
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/git"> 
+            Git</a>
+            
+          </ul>
+        </div>
+        <!-- previous -->
+        <div class="mb-3 link-article">
+    <div class="pre-article">
+        
+            <div><i class="fa fa-arrow-left"></i> 上一篇</div>
+            <a href="https://www.fenghong.tech/blog/2018/2018-11-07-rsync-inotify/">rsync和inotify实现文件同步</a>
+        
+    </div>
+    <div class="next-article">
+        
+            <div>下一篇 <i class="fa fa-arrow-right"></i></div>
+            <a href="https://www.fenghong.tech/blog/tools/markdown/">Markdown</a>
+        
+    </div>
+</div>
+        <!-- previous -->
+
+        <!-- recommend -->
+        
+
+<div class="mb-3">
+  <h2>文章推荐</h2>
+  <ul class="related">
+  
+    <li><a href="/blog/2018/2018-09-05-opsenv/">运维桌面软件应用安装</a></li>
+  
+  </ul>
+</div>
+
+
+        <!-- comments -->
+
+        
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script>
+          window.onload = function() {
+              const gitalk = new Gitalk({
+              clientID: 'a0a546df858aafb5300e',
+              clientSecret: '67d7b40de25c072fc38840ffb9c06ceab7ef5080',
+              repo: 'oldthreefeng.github.io',
+              owner: 'oldthreefeng',
+              admin: ['oldthreefeng'],
+              id: hex_md5(hex_md5(window.location.pathname + window.location.hash)), 
+              distractionFreeMode: false 
+            });
+            (function() {
+              if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+                document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+                return;
+              }
+              gitalk.render('gitalk-container');
+            })();
+          }
+        </script>
+        
+      </div>
+      <!-- sidebar -->
+<aside class="col-lg-4 order-1 order-lg-2">
+  <!-- tags -->
+  <div class="bg-white px-4 py-5 box-shadow mb-5 word-cloud">
+    <h4 class="mb-4">标签</h4>
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div id="tag-cloud" style="padding: 5px 15px">
+      
+        
+          
+          
+          
+          <a href="/tags/acme" style="font-size:1.0188679245283019rem">acme</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/acmetiny" style="font-size:1.0188679245283019rem">acmetiny</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/alertmanager" style="font-size:1rem">alertmanager</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/algorithm" style="font-size:1.1132075471698113rem">algorithm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/aliyun" style="font-size:1rem">aliyun</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ansible" style="font-size:1.0754716981132075rem">ansible</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/apisix" style="font-size:1rem">apisix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/arm64" style="font-size:1.0188679245283019rem">arm64</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/authorization" style="font-size:1rem">authorization</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/backup" style="font-size:1.0377358490566038rem">backup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binarysearch" style="font-size:1.0188679245283019rem">binarysearch</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binlog" style="font-size:1rem">binlog</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bit" style="font-size:1.0188679245283019rem">bit</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bug" style="font-size:1.0188679245283019rem">bug</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cache" style="font-size:1rem">cache</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/certbot" style="font-size:1rem">certbot</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/channel" style="font-size:1rem">channel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/chrome" style="font-size:1.0188679245283019rem">chrome</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ci" style="font-size:1rem">ci</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cluster" style="font-size:1.1132075471698113rem">cluster</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cobra" style="font-size:1rem">cobra</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coco" style="font-size:1.0377358490566038rem">coco</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coding" style="font-size:1rem">coding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/computer" style="font-size:1rem">computer</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/consul" style="font-size:1rem">consul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/containerd" style="font-size:1.0188679245283019rem">containerd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coredns" style="font-size:1rem">coredns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cors" style="font-size:1rem">cors</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/crypto" style="font-size:1rem">crypto</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/curl" style="font-size:1rem">curl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dashboard" style="font-size:1rem">dashboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dcdn" style="font-size:1rem">dcdn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/debt" style="font-size:1rem">debt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/devops" style="font-size:1.0188679245283019rem">devops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dingding" style="font-size:1rem">dingding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/disk" style="font-size:1rem">disk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dmesg" style="font-size:1rem">dmesg</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dns" style="font-size:1rem">dns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/docker" style="font-size:1.2264150943396226rem">docker</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/doublylinkedlist" style="font-size:1rem">doublylinkedlist</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/elk" style="font-size:1rem">elk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/error" style="font-size:1rem">error</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/etcd" style="font-size:1.0377358490566038rem">etcd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exec" style="font-size:1.0188679245283019rem">exec</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exp" style="font-size:1rem">exp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/federated" style="font-size:1rem">federated</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/filecoin" style="font-size:1rem">filecoin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/find" style="font-size:1rem">find</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/firewalld" style="font-size:1rem">firewalld</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/fix" style="font-size:1.0377358490566038rem">fix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flag" style="font-size:1.0188679245283019rem">flag</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flannel" style="font-size:1rem">flannel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/food" style="font-size:1.0188679245283019rem">food</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/frp" style="font-size:1.0377358490566038rem">frp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ftp" style="font-size:1.0188679245283019rem">ftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/games" style="font-size:1rem">games</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gin" style="font-size:1.0188679245283019rem">gin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/git" style="font-size:1.2075471698113207rem">git</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/github" style="font-size:1.0188679245283019rem">github</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gitlab" style="font-size:1rem">gitlab</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go" style="font-size:1.320754716981132rem">go</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go-vim" style="font-size:1rem">go-vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gogs" style="font-size:1.0566037735849056rem">gogs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/goland" style="font-size:1.0188679245283019rem">goland</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/golang" style="font-size:1.0377358490566038rem">golang</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gorequest" style="font-size:1rem">gorequest</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grafana" style="font-size:1.0188679245283019rem">grafana</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grub" style="font-size:1rem">grub</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hack" style="font-size:1.0188679245283019rem">hack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/haproxy" style="font-size:1.0377358490566038rem">haproxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/harbor" style="font-size:1.0188679245283019rem">harbor</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hash" style="font-size:1.0188679245283019rem">hash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hashmap" style="font-size:1rem">hashmap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/helm" style="font-size:1.0188679245283019rem">helm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hexo" style="font-size:1.0377358490566038rem">hexo</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/http" style="font-size:1.0754716981132075rem">http</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/https" style="font-size:1rem">https</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/index" style="font-size:1rem">index</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ingress" style="font-size:1.0377358490566038rem">ingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/inotify" style="font-size:1rem">inotify</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/internet" style="font-size:1.169811320754717rem">internet</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/interview" style="font-size:1rem">interview</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/iptables" style="font-size:1.0377358490566038rem">iptables</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ipvs" style="font-size:1.0188679245283019rem">ipvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/java" style="font-size:1.0754716981132075rem">java</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jeju" style="font-size:1rem">jeju</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jenkins" style="font-size:1.0943396226415094rem">jenkins</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jetbrains" style="font-size:1rem">jetbrains</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jumpserver" style="font-size:1.0566037735849056rem">jumpserver</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jvm" style="font-size:1rem">jvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/keepalived" style="font-size:1rem">keepalived</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kernel" style="font-size:1rem">kernel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/knowledge" style="font-size:1rem">knowledge</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kube-proxy" style="font-size:1.0188679245283019rem">kube-proxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetes" style="font-size:1.3962264150943395rem">kubernetes</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesrbac" style="font-size:1rem">kubernetesrbac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesssl" style="font-size:1.0188679245283019rem">kubernetesssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kuboard" style="font-size:1.0566037735849056rem">kuboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lb" style="font-size:1rem">lb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/learning" style="font-size:1.0566037735849056rem">learning</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/leetcode" style="font-size:1.0188679245283019rem">leetcode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libcurl" style="font-size:1rem">libcurl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libssh2" style="font-size:1rem">libssh2</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/link" style="font-size:1rem">link</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/linux" style="font-size:1.9811320754716981rem">linux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/living" style="font-size:1rem">living</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lnux" style="font-size:1rem">lnux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/log" style="font-size:1.0566037735849056rem">log</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logrus" style="font-size:1rem">logrus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logs" style="font-size:1rem">logs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logstash" style="font-size:1rem">logstash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/loki" style="font-size:1rem">loki</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lru" style="font-size:1rem">lru</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/luna" style="font-size:1rem">luna</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvm" style="font-size:1rem">lvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvs" style="font-size:1rem">lvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mac" style="font-size:1rem">mac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/malaysia" style="font-size:1rem">malaysia</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/manage" style="font-size:1rem">manage</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/map" style="font-size:1rem">map</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mariadb" style="font-size:1.0377358490566038rem">mariadb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/markdown" style="font-size:1.0188679245283019rem">markdown</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mfa" style="font-size:1rem">mfa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mha" style="font-size:1rem">mha</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mode" style="font-size:1rem">mode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/module" style="font-size:1rem">module</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mount" style="font-size:1rem">mount</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mysql" style="font-size:1.2452830188679245rem">mysql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/navicat" style="font-size:1rem">navicat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/network" style="font-size:1rem">network</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nfs" style="font-size:1.0754716981132075rem">nfs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginx" style="font-size:1.2264150943396226rem">nginx</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginxingress" style="font-size:1.0566037735849056rem">nginxingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/node_exporter" style="font-size:1.0188679245283019rem">node_exporter</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/numpy" style="font-size:1rem">numpy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ops" style="font-size:1.2452830188679245rem">ops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/owncloud" style="font-size:1rem">owncloud</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/password" style="font-size:1rem">password</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/paxos" style="font-size:1.0188679245283019rem">paxos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/php" style="font-size:1rem">php</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pipeline" style="font-size:1rem">pipeline</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/polynomial" style="font-size:1rem">polynomial</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/problem" style="font-size:1rem">problem</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/prometheus" style="font-size:1.0943396226415094rem">prometheus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pv" style="font-size:1.0754716981132075rem">pv</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pvc" style="font-size:1.0754716981132075rem">pvc</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/python" style="font-size:1.0943396226415094rem">python</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/queue" style="font-size:1rem">queue</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/qw3xt" style="font-size:1rem">qw3xt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rabbitmq" style="font-size:1.0188679245283019rem">rabbitmq</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/raft" style="font-size:1rem">raft</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rebase" style="font-size:1rem">rebase</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/redis" style="font-size:1.0377358490566038rem">redis</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/resources" style="font-size:1.0188679245283019rem">resources</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsa" style="font-size:1rem">rsa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsync" style="font-size:1.0188679245283019rem">rsync</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/safe" style="font-size:1.0754716981132075rem">safe</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/samba" style="font-size:1rem">samba</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sealos" style="font-size:1rem">sealos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/secure" style="font-size:1rem">secure</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sed" style="font-size:1rem">sed</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/server" style="font-size:1.2075471698113207rem">server</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sftp" style="font-size:1rem">sftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shadowsocks" style="font-size:1.0188679245283019rem">shadowsocks</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shell" style="font-size:1.0188679245283019rem">shell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slap" style="font-size:1rem">slap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slave" style="font-size:1rem">slave</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slb" style="font-size:1rem">slb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slowquery" style="font-size:1rem">slowquery</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sonar" style="font-size:1.0377358490566038rem">sonar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sourcetree" style="font-size:1.0188679245283019rem">sourcetree</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sql" style="font-size:1.0188679245283019rem">sql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ss" style="font-size:1rem">ss</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssh" style="font-size:1.0754716981132075rem">ssh</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssl" style="font-size:1.1132075471698113rem">ssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stack" style="font-size:1rem">stack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stress" style="font-size:1rem">stress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/style" style="font-size:1rem">style</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/switchyomega" style="font-size:1rem">switchyomega</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/syncd" style="font-size:1rem">syncd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/taint" style="font-size:1rem">taint</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tar" style="font-size:1rem">tar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tcp" style="font-size:1.0188679245283019rem">tcp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/testing" style="font-size:1rem">testing</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tomcat" style="font-size:1rem">tomcat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tour" style="font-size:1.0188679245283019rem">tour</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/trojan" style="font-size:1rem">trojan</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ubuntu" style="font-size:1.0566037735849056rem">ubuntu</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/udp" style="font-size:1rem">udp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/uk8s" style="font-size:1rem">uk8s</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unauthorized" style="font-size:1rem">unauthorized</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unblockneteasemusic" style="font-size:1rem">unblockneteasemusic</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upgrade" style="font-size:1.0188679245283019rem">upgrade</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upstream" style="font-size:1rem">upstream</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/v1.18.3" style="font-size:1rem">v1.18.3</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vim" style="font-size:1rem">vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/virtul" style="font-size:1rem">virtul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vpn" style="font-size:1.0754716981132075rem">vpn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vscode" style="font-size:1rem">vscode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/websocket" style="font-size:1rem">websocket</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/wifi" style="font-size:1rem">wifi</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xshell" style="font-size:1rem">xshell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xtrabackup" style="font-size:1rem">xtrabackup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/yum" style="font-size:1rem">yum</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/zabbix" style="font-size:1rem">zabbix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e6%95%b0%e6%8d%ae%e5%ba%93%e5%8e%9f%e7%90%86" style="font-size:1rem">数据库原理</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95" style="font-size:1rem">贪心算法</a>
+        
+      
+      </div>
+    
+  </div>
+
+  <!-- profile -->
+  <!-- toc -->
+  
+  <div class="bg-white px-4 py-5 box-shadow mb-5 sticky-top">
+    <h4 class="mb-4">目录</h4>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#给git输出信息增加颜色">给Git输出信息增加颜色</a></li>
+    <li><a href="#关于git的分支">关于Git的分支</a></li>
+    <li><a href="#远程分支">远程分支</a>
+      <ul>
+        <li><a href="#关于fetch和pull区别">关于fetch和pull区别</a></li>
+      </ul>
+    </li>
+    <li><a href="#git标签">Git标签</a></li>
+    <li><a href="#git-全局配置">Git 全局配置</a></li>
+    <li><a href="#使用vimdiff">使用vimdiff</a></li>
+    <li><a href="#查看提交log">查看提交log</a></li>
+    <li><a href="#文件中文名问题">文件中文名问题</a></li>
+    <li><a href="#git-mv-日志问题">Git mv 日志问题</a></li>
+    <li><a href="#指定路径pull">指定路径pull</a></li>
+    <li><a href="#查看指定目录下的-status">查看指定目录下的 status</a></li>
+    <li><a href="#选择一部分修改提交">选择一部分修改提交</a></li>
+    <li><a href="#只从-git-repo-中移除文件-但不删除实际文件">只从 git repo 中移除文件, 但不删除实际文件</a></li>
+    <li><a href="#修改最后一次提交">修改最后一次提交</a></li>
+    <li><a href="#修改commit的author">修改commit的author</a></li>
+    <li><a href="#git-diff-技巧">Git diff 技巧</a></li>
+    <li><a href="#head-vs-orig_head"><code>HEAD</code> vs <code>ORIG_HEAD</code></a></li>
+    <li><a href="#git-revertresetcheckout-区别">git revert/reset/checkout 区别</a></li>
+    <li><a href="#统计每个提交者的提交次数">统计每个提交者的提交次数</a></li>
+    <li><a href="#git-reflog">git reflog</a></li>
+    <li><a href="#git-cherry-pick">git cherry-pick</a></li>
+    <li><a href="#git-commit-message-基本准则">Git Commit Message 基本准则</a></li>
+    <li><a href="#git-add-只添加-tracked-的文件">git add 只添加 tracked 的文件</a></li>
+    <li><a href="#删除untracked-files">删除untracked files</a></li>
+    <li><a href="#同一个文件选择部分提交">同一个文件选择部分提交</a></li>
+    <li><a href="#checkout-指定的-tag">checkout 指定的 tag</a></li>
+    <li><a href="#git-add的几个参数和通配符">git add的几个参数和通配符</a></li>
+    <li><a href="#检查repo是否dirty">检查repo是否dirty</a></li>
+    <li><a href="#检查repo当前head是否提示ahead或behind远程仓库分支">检查repo当前HEAD是否提示ahead或behind远程仓库分支</a></li>
+    <li><a href="#获取当前分支名">获取当前分支名</a></li>
+    <li><a href="#删除分支">删除分支</a></li>
+    <li><a href="#git本地设置某个远程库readonly">Git本地设置某个远程库readonly</a></li>
+    <li><a href="#关于-head-和-head-的区别">关于 HEAD^ 和 HEAD~ 的区别</a></li>
+    <li><a href="#查看两个分支的差异">查看两个分支的差异</a></li>
+    <li><a href="#查看某个commit在哪些releasetag引进">查看某个commit在哪些release(tag)引进</a></li>
+    <li><a href="#git-subtree--submodule">Git subtree &amp; submodule</a></li>
+    <li><a href="#git-diff-相关">git diff 相关</a></li>
+    <li><a href="#git-diff-一行太长-输出混乱">git diff 一行太长, 输出混乱</a></li>
+    <li><a href="#git-fetchpull-小记">git fetch/pull 小记</a></li>
+    <li><a href="#缓存用户名密码">缓存用户名/密码</a></li>
+    <li><a href="#git资料">Git资料</a></li>
+  </ul>
+</nav>
+  </div>
+
+</aside>
+<!-- /sidebar -->
+
+    </div>
+  </div>
+</section>
+<!-- /blog details -->
+
+
+
+<footer>
+	
+	<div class="section bg-secondary">
+		<div class="container">
+			<div class="row justify-content-between">
+				
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					<a class="mb-4 d-inline-block" href="/"><img class="img-fluid"
+																								src="/images/images/logo-alt.png" alt="Louis Blog" width="60%"></a>
+					<p class="text-light mb-5">每一个不曾起舞的日子都是对生命的辜负.</p>
+					<h4 class="text-white mb-4">关注我</h4>
+					
+					<ul class="list-inline social-icon-alt">
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://twitter.com/louishong17"><i class="fa fa-twitter"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://github.com/oldthreefeng"><i class="fa fa-github"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="/contact"><i class="fa fa-wechat"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="mailto:992165098@qq.com"><i class="fa fa-envelope"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://www.fenghong.tech/blog/index.xml"><i class="fa fa-rss"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					
+					
+					
+					
+					<div class="mb-5">
+						<h4 class="text-white mb-4">联系信息</h4>
+						<p class="text-light mb-3">上海 · 浦东新区</p>
+						<p class="text-light mb-3"></p>
+						<p class="text-light mb-3">微信联系方式</p>
+						<p class="text-light mb-3"><img src="/images/images/wechat-qrcode.png" width="356px"></p>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="bg-secondary-darken py-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+					<p class="mb-0 text-white">Copyright © 2020 Louis</p>
+				</div>
+				<div class="col-md-6 text-center text-md-right">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item mx-0"><a class="d-inline-block px-3 text-white" href="https://beian.miit.gov.cn/"
+																									class="text-white">鄂ICP备18027870号-1</a></li>
+						<p class="list-inline-item mx-0 text-white">本网站由</p>
+						<a target="_blank" rel="nofollow noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://pic.fenghong.tech/images/180803_logo30.png" style="margin-bottom:5px;height: 25px;"></a>
+						<p class="list-inline-item mx-0 text-white">提供CDN加速/云存储服务</p>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+<script>
+	var indexURL = "/index.json"
+</script>
+
+
+<!-- JS Plugins -->
+
+<script src="/plugins/jQuery/jquery.min.js"></script>
+
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="/plugins/slick/slick.min.js"></script>
+
+<script src="/plugins/google-map/gmap.js"></script>
+
+<script src="/plugins/venobox/venobox.min.js"></script>
+
+<script src="/plugins/filterizr/jquery.filterizr.min.js"></script>
+
+<script src="/plugins/search/fuse.min.js"></script>
+
+<script src="/plugins/search/mark.js"></script>
+
+<script src="/plugins/search/search.js"></script>
+
+<script src="/plugins/bigPicture/bigPicture.js"></script>
+
+<script src="/plugins/hex_md5/hex_md5.js"></script>
+
+
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+
+<!-- Algolia -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+<script>
+	docsearch({
+		apiKey: 'b4d47f0c039a84d4035305be829404dd',
+		indexName: 'DocSearch',
+		appId: 'CTH4P282IZ',
+		inputSelector: '#js-algolia-btn',
+		debug: false,
+	});
+</script>
+
+<!-- google analitycs -->
+
+<script>
+	(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-130595069-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https'){
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else{
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</body>
+
+</html>

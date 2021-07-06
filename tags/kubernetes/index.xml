@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kubernetes on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/kubernetes/</link>
+    <description>Recent content in kubernetes on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Tue, 06 Jul 2021 10:34:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>一键在arm64架构上部署高可用kubernetes v1.20.0集群</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sealos-install-arm64-1.20/</link>
+      <pubDate>Wed, 16 Dec 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sealos-install-arm64-1.20/</guid>
+      <description>[TOC] 项目的由来 随着“中</description>
+    </item>
+    
+    <item>
+      <title>一键在arm64架构上部署高可用kubernetes v1.19.0集群</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sealos-install-arm64/</link>
+      <pubDate>Sun, 06 Dec 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sealos-install-arm64/</guid>
+      <description>[TOC] 一个二进制工具加一</description>
+    </item>
+    
+    <item>
+      <title>基于sni使用apisix代理四层TCP/UDP</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sni-apisix-tcp/</link>
+      <pubDate>Tue, 06 Jul 2021 10:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sni-apisix-tcp/</guid>
+      <description>背景 公司内网kube</description>
+    </item>
+    
+    <item>
+      <title>记一次dcdn加apisix的sni报错。</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-debug-tls-handshake/</link>
+      <pubDate>Wed, 09 Jun 2021 10:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-debug-tls-handshake/</guid>
+      <description>[TOC] 背景 由于生产环境需</description>
+    </item>
+    
+    <item>
+      <title>记一次kubernetes使用hostnetwork网络相关问题及解决。</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-dns-error-withhostnetwork/</link>
+      <pubDate>Mon, 10 May 2021 10:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-dns-error-withhostnetwork/</guid>
+      <description>[TOC] 由于集群的kube</description>
+    </item>
+    
+    <item>
+      <title>kubernetes 调度策略</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-taints-tolerations/</link>
+      <pubDate>Wed, 14 Apr 2021 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-taints-tolerations/</guid>
+      <description>[TOC] 调度器通过 kubernetes 的监测</description>
+    </item>
+    
+    <item>
+      <title>记一次kubernetes升级1.18.8后的helm相关问题及解决。</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-1.18-helm-upgrade-error/</link>
+      <pubDate>Tue, 30 Mar 2021 15:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-1.18-helm-upgrade-error/</guid>
+      <description>[TOC] 由于集群的kube</description>
+    </item>
+    
+    <item>
+      <title>k8s中Prometheus监控redis-exporter</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-prometheus-redis-exporter/</link>
+      <pubDate>Wed, 27 Jan 2021 15:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-prometheus-redis-exporter/</guid>
+      <description>[TOC] 在使用数据库 Redis 过程</description>
+    </item>
+    
+    <item>
+      <title>记一次kubernetes v1.18.7 ingress访问异常问题及解决</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-ingress-bug-1.18.8/</link>
+      <pubDate>Tue, 15 Dec 2020 23:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-ingress-bug-1.18.8/</guid>
+      <description>[TOC] 安装kubenet</description>
+    </item>
+    
+    <item>
+      <title>kubernetes1.18.0部署harborv2.0.2</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-harbor-nginx-ingress/</link>
+      <pubDate>Tue, 01 Sep 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-harbor-nginx-ingress/</guid>
+      <description>[TOC] Harbor 支持多种安装方式</description>
+    </item>
+    
+    <item>
+      <title>kubernetes traefik简单应用</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-traefik/</link>
+      <pubDate>Tue, 28 Jul 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-traefik/</guid>
+      <description>[TOC] Traefik 是一个边缘路由器</description>
+    </item>
+    
+    <item>
+      <title>kubernetes ingress rewrite配置</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-ingress-rewrite/</link>
+      <pubDate>Mon, 20 Jul 2020 11:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-ingress-rewrite/</guid>
+      <description>[TOC] 可以直接在 Ingress 中配置</description>
+    </item>
+    
+    <item>
+      <title>jenkins&#43;java&#43;docker&#43;kubernetes实现自动化部署</title>
+      <link>https://www.fenghong.tech/blog/ops/jenkins-java-docker-kubernetes/</link>
+      <pubDate>Wed, 24 Jun 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/jenkins-java-docker-kubernetes/</guid>
+      <description>[TOC] 背景 基于sprin</description>
+    </item>
+    
+    <item>
+      <title>k8s基于helm安装loki并持久化数据</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-loki-logs/</link>
+      <pubDate>Fri, 19 Jun 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-loki-logs/</guid>
+      <description>[TOC] 基本的集群监控部署</description>
+    </item>
+    
+    <item>
+      <title>kubernetes集群升级至v1.18.3且调整证书年限</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-upgrade-1.18.3/</link>
+      <pubDate>Tue, 16 Jun 2020 20:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-upgrade-1.18.3/</guid>
+      <description>[TOC] 安装kubenet</description>
+    </item>
+    
+    <item>
+      <title>记一次kubernetes v1.18.0 svc名称空间地址解析异常问题及解决</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-svc-reslove-bug-1.18.0/</link>
+      <pubDate>Mon, 15 Jun 2020 09:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-svc-reslove-bug-1.18.0/</guid>
+      <description>[TOC] 安装kubenet</description>
+    </item>
+    
+    <item>
+      <title>k8s安装prometheus并持久化数据</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-promtheus-persist-storage/</link>
+      <pubDate>Thu, 11 Jun 2020 15:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-promtheus-persist-storage/</guid>
+      <description>[TOC] Prometheus 部署已经完成, 但</description>
+    </item>
+    
+    <item>
+      <title>sealos 一键安装 kubernetes1.18.0[deprecated]</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sealos-install/</link>
+      <pubDate>Mon, 01 Jun 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sealos-install/</guid>
+      <description>[TOC] 一个二进制工具加一</description>
+    </item>
+    
+    <item>
+      <title>基于uk8s部署的CI/CD</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-uk8s-ci-cd/</link>
+      <pubDate>Fri, 01 Nov 2019 21:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-uk8s-ci-cd/</guid>
+      <description>基于uk8s部署CI</description>
+    </item>
+    
+    <item>
+      <title>kuberbetes 基于nfs的pvc</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubeadm-pvc/</link>
+      <pubDate>Mon, 09 Sep 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubeadm-pvc/</guid>
+      <description>[TOC] k8s提供了emp</description>
+    </item>
+    
+    <item>
+      <title>kuberbetes 网络排错</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubeadm-network-debug/</link>
+      <pubDate>Fri, 06 Sep 2019 15:56:11 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubeadm-network-debug/</guid>
+      <description>[TOC] 转载知乎大佬 知乎专</description>
+    </item>
+    
+    <item>
+      <title>kubeadm 安装 kubernetes1.15.3</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubeadm-install-kubernetes1.15.3/</link>
+      <pubDate>Thu, 29 Aug 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubeadm-install-kubernetes1.15.3/</guid>
+      <description>[TOC] kubeadm是K</description>
+    </item>
+    
+  </channel>
+</rss>

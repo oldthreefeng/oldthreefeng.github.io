@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rsync on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/rsync/</link>
+    <description>Recent content in rsync on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Mon, 10 Feb 2020 11:12:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/rsync/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>rsync大文件传输导致磁盘异常爆增</title>
+      <link>https://www.fenghong.tech/blog/ops/rsync-with-big-file/</link>
+      <pubDate>Mon, 10 Feb 2020 11:12:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/rsync-with-big-file/</guid>
+      <description>[TOC] 背景： 每天四次服务</description>
+    </item>
+    
+    <item>
+      <title>rsync和inotify实现文件同步</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-11-07-rsync-inotify/</link>
+      <pubDate>Wed, 07 Nov 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-11-07-rsync-inotify/</guid>
+      <description>rsync 什么是rsync r</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/docker/</link>
+    <description>Recent content in docker on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Tue, 29 Jun 2021 09:54:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>一键在arm64架构上部署高可用kubernetes v1.19.0集群</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sealos-install-arm64/</link>
+      <pubDate>Sun, 06 Dec 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sealos-install-arm64/</guid>
+      <description>[TOC] 一个二进制工具加一</description>
+    </item>
+    
+    <item>
+      <title>记一次阿里云arms监控和log-pilot日志系统冲突及解决</title>
+      <link>https://www.fenghong.tech/blog/go/log-pilot/</link>
+      <pubDate>Tue, 29 Jun 2021 09:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/log-pilot/</guid>
+      <description>log-pilot分</description>
+    </item>
+    
+    <item>
+      <title>jenkins&#43;java&#43;docker&#43;kubernetes实现自动化部署</title>
+      <link>https://www.fenghong.tech/blog/ops/jenkins-java-docker-kubernetes/</link>
+      <pubDate>Wed, 24 Jun 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/jenkins-java-docker-kubernetes/</guid>
+      <description>[TOC] 背景 基于sprin</description>
+    </item>
+    
+    <item>
+      <title>sealos 一键安装 kubernetes1.18.0[deprecated]</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sealos-install/</link>
+      <pubDate>Mon, 01 Jun 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sealos-install/</guid>
+      <description>[TOC] 一个二进制工具加一</description>
+    </item>
+    
+    <item>
+      <title>node项目docker化</title>
+      <link>https://www.fenghong.tech/blog/docker/node-with-docker/</link>
+      <pubDate>Thu, 05 Dec 2019 17:42:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/docker/node-with-docker/</guid>
+      <description>node项目dock</description>
+    </item>
+    
+    <item>
+      <title>搭建https镜像仓库harbor记录</title>
+      <link>https://www.fenghong.tech/blog/docker/harbor-registry/</link>
+      <pubDate>Wed, 27 Nov 2019 15:22:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/docker/harbor-registry/</guid>
+      <description>[TOC] 说明 # 开头的行表示</description>
+    </item>
+    
+    <item>
+      <title>docker 小技巧</title>
+      <link>https://www.fenghong.tech/blog/docker/docker-tools/</link>
+      <pubDate>Mon, 25 Nov 2019 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/docker/docker-tools/</guid>
+      <description>小记一下, 经常用到的</description>
+    </item>
+    
+    <item>
+      <title>java的spring-boot项目docker化</title>
+      <link>https://www.fenghong.tech/blog/docker/java-with-docker/</link>
+      <pubDate>Sat, 23 Nov 2019 15:42:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/docker/java-with-docker/</guid>
+      <description>创建spring-b</description>
+    </item>
+    
+    <item>
+      <title>golang项目docker化</title>
+      <link>https://www.fenghong.tech/blog/docker/golang-with-docker/</link>
+      <pubDate>Thu, 21 Nov 2019 15:42:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/docker/golang-with-docker/</guid>
+      <description>golang 项目 docker化</description>
+    </item>
+    
+    <item>
+      <title>Gogs仓库迁移</title>
+      <link>https://www.fenghong.tech/blog/ops/gogs-repo-move-to-annother-host/</link>
+      <pubDate>Mon, 09 Sep 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/gogs-repo-move-to-annother-host/</guid>
+      <description>[TOC] 公司服务器缩减，运</description>
+    </item>
+    
+    <item>
+      <title>jenkins自动化发布工具迁移</title>
+      <link>https://www.fenghong.tech/blog/ops/jenkins-move-to-annother-host/</link>
+      <pubDate>Mon, 09 Sep 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/jenkins-move-to-annother-host/</guid>
+      <description>[TOC] 背景 公司服务器缩减</description>
+    </item>
+    
+    <item>
+      <title>kubeadm 安装 kubernetes1.15.3</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubeadm-install-kubernetes1.15.3/</link>
+      <pubDate>Thu, 29 Aug 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubeadm-install-kubernetes1.15.3/</guid>
+      <description>[TOC] kubeadm是K</description>
+    </item>
+    
+    <item>
+      <title>docker部署企业级应用openvpn</title>
+      <link>https://www.fenghong.tech/blog/ops/openvpn-in-docker/</link>
+      <pubDate>Wed, 07 Aug 2019 10:08:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/openvpn-in-docker/</guid>
+      <description>[TOC] 部署openvpn</description>
+    </item>
+    
+  </channel>
+</rss>

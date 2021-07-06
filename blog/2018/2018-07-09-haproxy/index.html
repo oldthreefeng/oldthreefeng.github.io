@@ -1,0 +1,2536 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn"><head>
+  <meta charset="utf-8">
+  <title>HAProxy | Louis Blog</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="有技术 有温度 有情怀">
+  
+  <meta name="author" content="Louis ">
+  <meta name="generator" content="Hugo 0.73.0" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  
+  <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="/plugins/animate/animate.css">
+  
+  <link rel="stylesheet" href="/plugins/venobox/venobox.css">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="/images/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="/images/images/favicon.png " type="image/x-icon">
+
+  <!--Algolia-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css">
+</head>
+<body>
+<!-- header -->
+<header>
+  
+
+  <!-- navigation -->
+  <div class="navigation bg-white position-relative">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="/"><img class="img-fluid pb-lg-3" src="/images/images/logo.png" width="189px" alt="Louis Blog"></a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/"></a>
+            </li>
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                博客
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/categories/kubernetes">Kubernetes</a>
+                
+                <a class="dropdown-item" href="/categories/sealos">sealos</a>
+                
+                <a class="dropdown-item" href="/categories/ops">运维相关</a>
+                
+                <a class="dropdown-item" href="/categories/golang">golang</a>
+                
+                <a class="dropdown-item" href="/categories/algorithm">algorithm</a>
+                
+                <a class="dropdown-item" href="/categories/tools">tools</a>
+                
+                <a class="dropdown-item" href="/blog">全部</a>
+                
+              </div>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/team">友情链接</a>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                关于我
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/contact">about</a>
+                
+                <a class="dropdown-item" href="https://github.com/oldthreefeng">github</a>
+                
+              </div>
+            </li>
+            
+            
+          </ul>
+
+          
+          
+
+          
+          <!-- search -->
+          <div class="search px-4">
+            <button id="searchOpen" class="search-btn"><i class="fa fa-search text-dark"></i></button>
+            <div class="search-wrapper">
+              <form action="/search">
+                <input class="search-box form-control" id="js-algolia-btn" name="s" type="search" placeholder="输入搜索词">
+              </form>
+              <button id="searchClose" class="search-close"><i class="fa fa-close text-dark"></i></button>
+            </div>
+          </div>
+          
+          
+          <!-- get start btn -->
+          <a href="/contact" class="btn btn-primary hover-ripple">联系我</a>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- /navigation -->
+</header>
+<!-- /header -->
+
+
+<!-- page title -->
+<section class="section bg-cover overlay" style="background-image: url('/'),url('/'),url('/images/images/backgrounds/page-title.jpg');">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-white mb-3">HAProxy</h2>
+        <!-- breadcrumb -->
+        
+        <p class="text-white"></p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /page title -->
+
+
+<!-- blog details -->
+<section class="section">
+  <div class="container blog">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- post thumb -->
+        <div class="position-relative mb-5">
+          <img src="/"  onerror="this.src='https:\/\/pic.fenghong.tech\/proto\/108.webp'" alt="post thumb" class="img-fluid w-100">
+           <div class="card-type">Ops</div>
+        </div>
+        <div class="card-meta text-uppercase mb-2">作者  <strong class="text-dark"><a href="https://www.fenghong.tech">Louis</a></strong>
+          
+            发表于 <strong class="text-dark">2018年7月9日</strong></div>
+        <hr>
+        <div class="content">
+          <p>摘要：</p>
+<ul>
+<li>HAproxy的介绍安装及使用</li>
+<li>配置文件的说明及用法</li>
+<li>ACL的配置文件选项说明</li>
+<li>常用用法及实验</li>
+</ul>
+<h1 id="haproxy">HAProxy</h1>
+<ul>
+<li>官网：</li>
+</ul>
+<p><a href="http://www.haproxy.org">http://www.haproxy.org</a></p>
+<p><a href="http://www.haproxy.com">http://www.haproxy.com</a></p>
+<ul>
+<li>官方文档：</li>
+</ul>
+<p><a href="http://cbonte.github.io/haproxy-dconv/">http://cbonte.github.io/haproxy-dconv/</a></p>
+<ul>
+<li>HAProxy简介：</li>
+</ul>
+<pre><code>HAProxy is a TCP/HTTP reverse proxy which is particularly suited
+            : for high availability environments. Indeed, it can:
+            :  - route HTTP requests depending on statically assigned cookies
+            :  - spread load among several servers while assuring server 
+            : 	 persistence through the use of HTTP cookies
+            :  - switch to backup servers in the event a main server fails
+            :  - accept connections to special ports dedicated to service monitoring
+            :  - stop accepting connections without breaking existing ones
+            :  - add, modify, and delete HTTP headers in both directions
+            :  - block requests matching particular patterns
+            :  - report detailed status to authenticated users from a URI  
+            :    intercepted by the application
+</code></pre><ul>
+<li>反向代理的集群环境</li>
+</ul>
+<pre><code>七层反代：
+	nginx(http, ngx_http_upstream_module), haproxy(mode http), httpd, ats, perlbal, pound...
+	ssl/tls 会话卸载器
+四层反代：
+	lvs, nginx(stream)，haproxy(mode tcp)
+数据分布:
+	结构化数据：mysql，50-100次/s
+	半结构化数据：mangodb，redis,50-100万次/s
+	非结构化数据：分布式存储系统
+</code></pre><ul>
+<li>调度器</li>
+</ul>
+<pre><code>众多调度算法
+事件驱动模型，单进程模型处理多应用请求
+最好使用单线程
+
+
+</code></pre><ul>
+<li>安装</li>
+</ul>
+<pre><code>$ yum install -y haproxy
+$ rpm -ql haproxy
+/etc/haproxy/haproxy.cfg	#主配置文件
+/etc/logrotate.d/haproxy	
+/etc/sysconfig/haproxy		#Uint file配置文件
+/usr/bin/halog
+/usr/bin/iprange
+/usr/lib/systemd/system/haproxy.service		#Uint file
+/usr/sbin/haproxy			#主程序
+</code></pre><h1 id="haproxy配置说明">Haproxy配置说明</h1>
+<p>配置文件：<a href="http://cbonte.github.io/haproxy-dconv/1.5/configuration.html">官网配置</a></p>
+<ul>
+<li>global全局配置段</li>
+</ul>
+<pre><code>配置段内容：
+	进程及安全配置相关的参数
+	性能调整相关参数
+	Debug参数
+	用户列表
+	peers
+配置参数
+	进程及安全管理：chroot, daemon，user, group, uid, gid
+		log：定义全局的syslog服务器；最多可以定义两个；
+			log &lt;address&gt; [len &lt;length&gt;] &lt;facility&gt; [max level [min level]]			
+		nbproc &lt;number&gt;：要启动的haproxy的进程数量；
+		ulimit-n &lt;number&gt;：每个haproxy进程可打开的最大文件数；
+</code></pre><ul>
+<li>性能配置</li>
+</ul>
+<pre><code>maxconn &lt;number&gt;：设定每个haproxy进程所能接受的最大并发连接数；
+	Sets the maximum per-process number of concurrent connections to &lt;number&gt;. 
+    总体的并发连接数：nbproc * maxconn
+maxconnrate &lt;number&gt;：每个进程每秒种所能创建的最大连接数量；
+	Sets the maximum per-process number of connections per second to &lt;number&gt;. 
+maxsessrate &lt;number&gt;：
+maxsslconn &lt;number&gt;: 设定每个haproxy进程所能接受的ssl的最大并发连接数；
+	Sets the maximum per-process number of concurrent SSL connections to &lt;number&gt;.
+    spread-checks &lt;0..50, in percent&gt;
+</code></pre><ul>
+<li>代理配置段</li>
+</ul>
+<pre><code>defaults：为frontend, listen, backend提供默认配置；
+fronted：前端，相当于nginx, server {}
+backend：后端，相当于nginx, upstream {}
+listen：同时拥前端和后端
+</code></pre><ul>
+<li>代理配置端解释</li>
+</ul>
+<blockquote>
+<p>A &ldquo;frontend&rdquo; section describes a set of listening sockets accepting client connections.</p>
+<p>A &ldquo;backend&rdquo; section describes a set of servers to which the proxy will connect to forward incoming connections.</p>
+<p>A &ldquo;listen&rdquo; section defines a complete proxy with its frontend and backend parts combined in one section. It is generally useful for TCP-only traffic.</p>
+<p>All proxy names must be formed from upper and lower case letters, digits, &lsquo;-&rsquo; (dash), &lsquo;_&rsquo; (underscore) , &lsquo;.&rsquo; (dot) and &lsquo;:&rsquo; (colon). 区分字符大小写；</p>
+</blockquote>
+<ul>
+<li>简单配置示例</li>
+</ul>
+<pre><code>frontend web
+	bind *:80
+	default_backend     websrvs
+
+backend websrvs
+	balance roundrobin
+	server srv1 192.168.1.20:80 check
+	server srv2 192.168.1.13:80 check	
+</code></pre><h1 id="代理参数说明">代理参数说明</h1>
+<ul>
+<li><strong>bind</strong></li>
+</ul>
+<pre><code>bind：Define one or several listening addresses and/or ports in a frontend.
+	bind [&lt;address&gt;]:&lt;port_range&gt; [, ...] [param*]
+	
+	listen http_proxy
+		bind :80,:443
+		bind 10.0.0.1:10080,10.0.0.1:10443
+		bind /var/run/ssl-frontend.sock user root mode 600 accept-proxy
+</code></pre><ul>
+<li>balance</li>
+</ul>
+<pre><code>balance：后端服务器组内的服务器调度算法
+	balance &lt;algorithm&gt; [ &lt;arguments&gt; ]
+	balance url_param &lt;param&gt; [check_post]				
+
+算法：
+	roundrobin：Each server is used in turns, according to their weights.
+		server options： weight #
+		动态算法：支持权重的运行时调整，支持慢启动；每个后端中最多支持4095个server；
+	static-rr：
+		静态算法：不支持权重的运行时调整及慢启动；后端主机数量无上限；
+		
+	leastconn：
+		推荐使用在具有较长会话的场景中，例如MySQL、LDAP等；
+		
+	first：
+		根据服务器在列表中的位置，自上而下进行调度；
+		前面服务器的连接数达到上限，新请求才会分配给下一台服务；
+		
+	source：源地址hash；
+		除权取余法：
+		一致性哈希：
+		
+	uri：
+		对URI的左半部分做hash计算，并由服务器总权重相除以后派发至某挑出的服务器；
+			&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;
+				左半部分：/&lt;path&gt;;&lt;params&gt;
+				整个uri：/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;
+				username=jerry				
+	url_param：
+		对用户请求的uri的&lt;params&gt;部分中的参数的值作hash计算;
+		并由服务器总权重相除以后派发至某挑出的服务器；
+		通常用于追踪用户，以确保来自同一个用户的请求始终发往同一个Backend Server；
+	
+	hdr(&lt;name&gt;)：
+		对于每个http请求，此处由&lt;name&gt;指定的http首部将会被取出做hash计算； 
+		并由服务器总权重相除以后派发至某挑出的服务器；没有有效值的会被轮询调度； 
+		hdr(Cookie)
+		
+	rdp-cookie
+	rdp-cookie(&lt;name&gt;)	
+	
+
+</code></pre><ul>
+<li>log</li>
+</ul>
+<pre><code>log &lt;address&gt; [len &lt;length&gt;] &lt;facility&gt; [max level [min level]]
+
+[root@haproxy ~]# vim /etc/haproxy/haproxy.cfg
+log         127.0.0.1 local2
+[root@haproxy ~]# systemctl restart haproxy
+[root@haproxy ~]# vim /etc/rsyslog.conf
+#### MODULES ####
+$ModLoad imudp
+$UDPServerRun 514
+#### RULES ####
+# Save haproxy log to haproxy.log
+local2.*      /var/log/haproxy.log
+[root@haproxy ~]# systemctl restart rsyslog
+</code></pre><ul>
+<li>hash-type</li>
+</ul>
+<pre><code>hash-type：哈希算法
+	hash-type &lt;method&gt; &lt;function&gt; &lt;modifier&gt;
+		map-based：除权取余法，哈希数据结构是静态的数组；
+		consistent：一致性哈希，哈希数据结构是一个树；
+		
+	&lt;function&gt; is the hash function to be used : 哈希函数
+		sdbm
+		djb2
+		wt6
+</code></pre><ul>
+<li>server</li>
+</ul>
+<pre><code>server &lt;name&gt; &lt;address&gt;[:[port]] [param*]
+定义后端主机的各服务器及其选项；
+
+ server &lt;name&gt; &lt;address&gt;[:port] [settings ...]
+default-server [settings ...]
+
+&lt;name&gt;：服务器在haproxy上的内部名称；出现在日志及警告信息中；
+&lt;address&gt;：服务器地址，支持使用主机名；
+[:[port]]：端口映射；省略时，表示同bind中绑定的端口；
+[param*]：参数
+	maxconn &lt;maxconn&gt;：当前server的最大并发连接数；
+	backlog &lt;backlog&gt;：当前server的连接数达到上限后的后援队列长度；
+	backup：设定当前server为备用服务器；
+	check：对当前server做健康状态检测；
+		addr ：检测时使用的IP地址；
+		port ：针对此端口进行检测；
+		inter &lt;delay&gt;：连续两次检测之间的时间间隔，默认为2000ms; 
+		rise &lt;count&gt;：连续多少次检测结果为“成功”才标记服务器为可用；默认为2；
+		fall &lt;count&gt;：连续多少次检测结果为“失败”才标记服务器为不可用；默认为3；
+			
+			注意：option httpchk，&quot;smtpchk&quot;, &quot;mysql-check&quot;, &quot;pgsql-check&quot; and &quot;ssl-hello-chk&quot; 用于定义应用层检测方法；
+			
+	cookie &lt;value&gt;：为当前server指定其cookie值，用于实现基于cookie的会话黏性；
+	disabled：标记为不可用；
+	on-error &lt;mode&gt;：后端服务故障时的行动策略；
+        - fastinter: force fastinter
+        - fail-check: simulate a failed check, also forces fastinter (default)
+        - sudden-death: simulate a pre-fatal failed health check, one more failed
+        check will mark a server down, forces fastinter
+        - mark-down: mark the server immediately down and force fastinter
+	redir &lt;prefix&gt;：将发往此server的所有GET和HEAD类的请求重定向至指定的URL；
+	weight &lt;weight&gt;：权重，默认为1; 	
+	
+</code></pre><ul>
+<li>option httpchk</li>
+</ul>
+<pre><code>option httpchk
+option httpchk &lt;uri&gt;
+option httpchk &lt;method&gt; &lt;uri&gt;
+option httpchk &lt;method&gt; &lt;uri&gt; &lt;version&gt;
+#用于定义应用层检测方法
+http-check expect [!] &lt;match&gt; &lt;pattern&gt;
+</code></pre><ul>
+<li>修改报文头部</li>
+</ul>
+<pre><code>reqadd  &lt;string&gt; [{if | unless} &lt;cond&gt;] 在HTTP请求的末尾添加标头
+rspadd  &lt;string&gt; [{if | unless} &lt;cond&gt;] 在HTTP响应的末尾添加标头
+reqdel  &lt;search&gt; [{if | unless} &lt;cond&gt;] 删除与HTTP请求中的正则表达式匹配的所有标头
+reqidel &lt;search&gt; [{if | unless} &lt;cond&gt;]  (ignore case)
+rspdel  &lt;search&gt; [{if | unless} &lt;cond&gt;] 删除与HTTP响应中的正则表达式匹配的所有标头
+rspidel &lt;search&gt; [{if | unless} &lt;cond&gt;]  (ignore case)
+
+#删除响应报文中的Server字段信息
+rspidel  Server.* 
+</code></pre><ul>
+<li>
+<h4 id="errorfile-和-errorloc">errorfile 和 errorloc</h4>
+</li>
+</ul>
+<pre><code>errorfile &lt;code&gt; &lt;file&gt;
+errorloc &lt;code&gt; &lt;url&gt;
+errorloc302 &lt;code&gt; &lt;url&gt;
+
+#code：HTTP状态代码。 目前HAProxy能够支持的代码：
+	200, 400, 403, 408, 500, 502, 503, and 504
+#file：指定包含完整HTTP响应的文件
+
+errorfile 400 /etc/haproxy/errorfiles/400badreq.http
+errorfile 408 /dev/null  #解决方法Chrome预连接错误
+errorfile 403 /etc/haproxy/errorfiles/403forbid.http
+errorfile 503 /etc/haproxy/errorfiles/503sorry.http
+</code></pre><ul>
+<li>统计接口</li>
+</ul>
+<pre><code>统计接口启用相关的参数：
+stats enable
+	启用统计页；基于默认的参数启用stats page；
+		- stats uri   : /haproxy?stats
+		- stats realm : &quot;HAProxy Statistics&quot;
+		- stats auth  : no authentication
+		- stats scope : no restriction
+
+stats auth &lt;user&gt;:&lt;passwd&gt;
+	认证时的账号和密码，可使用多次；
+	
+stats realm &lt;realm&gt;
+	认证时的realm；
+	
+stats uri &lt;prefix&gt;
+	自定义stats page uri
+	
+stats refresh &lt;delay&gt;
+	设定自动刷新时间间隔；
+	
+stats admin { if | unless } &lt;cond&gt;
+	启用stats page中的管理功能
+	
+配置示例：
+listen stats
+	bind :9099
+	stats enable
+	stats realm HAPorxy\ Stats\ Page
+	stats auth admin:admin
+	stats admin if TRUE	
+</code></pre><h1 id="acl">ACL</h1>
+<p>访问控制列表的使用提供了一种灵活的解决方案来执行内容切换，并且通常基于从请求，响应或任何环境状态中提取的内容来做出决策</p>
+<pre><code>acl &lt;aclname&gt; &lt;criterion&gt; [flags] [operator] [&lt;value&gt;] ...
+</code></pre><ul>
+<li>aclname：ACL名称必须由大写和小写字母，数字，’ – ‘（短划线），’_’（下划线），’.’ 组成。ACL名称区分大小写</li>
+<li>value：值</li>
+</ul>
+<pre><code>boolean 布尔型
+integer or integer range 整数或整数范围
+IP address / network IP或网络地址
+string (exact精确匹配, substring子串匹配, suffix前缀匹配, prefix后缀匹配, subdir子路径匹配, domain子域名匹配) 字符串匹配
+regular expression 正则表示式匹配
+hex block 16进制的块匹配
+</code></pre><ul>
+<li>flags：标志</li>
+</ul>
+<pre><code>-i : 忽略字符大小写
+-m : 特定的模式
+-n : 禁止DNS解析
+-u : 要求acl使用唯一的名称
+</code></pre><ul>
+<li>operator：操作符</li>
+</ul>
+<pre><code>匹配整数值：eq、ge、gt、le、lt
+匹配字符串：
+    exact match 精确匹配
+    substring match 子串匹配
+    prefix match 前缀匹配
+    suffix match 后缀匹配
+    subdir match 子路径匹配
+    domain match 子域名匹配
+</code></pre><ul>
+<li>acl作为条件时的逻辑关系：</li>
+</ul>
+<pre><code>if invalid_src invalid_port  或关系
+if invalid_src || invalid_port  与关系
+if ! invalid_src invalid_port  非invalid_src
+</code></pre><ul>
+<li>检查URL的路径</li>
+</ul>
+<pre><code>path     : 精确匹配
+path_beg : 前缀匹配
+path_dir : 子串匹配
+path_dom : 子域名匹配
+path_end : 路径后缀匹配
+path_len : 路径长度匹配
+path_reg : 路径的正则表达式模式匹配
+path_sub : 路径的子字串匹配
+</code></pre><ul>
+<li>整个URL检查</li>
+</ul>
+<pre><code>url     : 精确匹配
+url_beg : 前缀匹配
+url_dir : 子串匹配
+url_dom : 子域名匹配
+url_end : 后缀匹配
+url_len : 长度匹配
+url_reg : 正则表达式匹配
+url_sub : 子字串匹配
+</code></pre><ul>
+<li>请求报文的指定头部检查</li>
+</ul>
+<pre><code>req.hdr([&lt;name&gt;[,&lt;occ&gt;]]) : string
+	This extracts the last occurrence of header &lt;name&gt; in an HTTP request.
+	
+	hdr([&lt;name&gt;[,&lt;occ&gt;]])     : exact string match
+	hdr_beg([&lt;name&gt;[,&lt;occ&gt;]]) : prefix match
+	hdr_dir([&lt;name&gt;[,&lt;occ&gt;]]) : subdir match
+	hdr_dom([&lt;name&gt;[,&lt;occ&gt;]]) : domain match
+	hdr_end([&lt;name&gt;[,&lt;occ&gt;]]) : suffix match
+	hdr_len([&lt;name&gt;[,&lt;occ&gt;]]) : length match
+	hdr_reg([&lt;name&gt;[,&lt;occ&gt;]]) : regex match
+	hdr_sub([&lt;name&gt;[,&lt;occ&gt;]]) : substring match					
+	
+示例：
+	acl bad_curl hdr_sub(User-Agent) -i curl
+	block if bad_curl
+</code></pre><ul>
+<li>示例：阻止curl访问</li>
+</ul>
+<pre><code>frontend web *:80
+    acl bad_curl hdr_sub(User-Agent) -i curl
+    block if bad_curl
+    default_backend appsrvs
+</code></pre><ul>
+<li>示例:</li>
+</ul>
+<ol>
+<li>配置简单的动静分离</li>
+</ol>
+<pre><code>$ cp /etc/haproxy/haproxy.cfg{.bak}
+$ vim /etc/haproxy/haproxy.cfg
+global
+	log 127.0.0.1 local2
+···
+frontend main *:80
+    mode http
+    default_backend websrvs
+
+backend websrvs
+    balance roundrobin
+    server websrv1 192.168.1.20:80 check
+    server websrv2 192.168.1.8:80 check
+</code></pre><ol start="2">
+<li>apache服务的搭建</li>
+</ol>
+<pre><code>~]#yum install -y httpd
+~]#echo srv1 &gt; /var/www/html/index.html
+~]#systemctl start httpd
+
+~]#yum install -y httpd
+~]#echo srv2 &gt; /var/www/html/index.html
+~]#systemctl start httpd
+</code></pre><ol start="3">
+<li>测试均衡调度</li>
+</ol>
+<pre><code>~]#for i in {1..10};do curl 192.168.1.18;done
+srv1
+srv2
+srv1
+srv2
+srv1
+srv2
+srv1
+srv2
+srv1
+srv2
+</code></pre><h1 id="实验wordpress的负载均衡">实验wordpress的负载均衡</h1>
+<p>需求：</p>
+<pre><code>http:
+  (1) 动静分离部署wordpress，动静都要能实现负载均衡，要注意会话的问题；
+  (2) 给出设计拓扑，写成博客；	
+  (3) haproxy的设定要求：
+  	(a) stats page，要求仅能通过本地访问使用管理接口； 
+  	(b) 动静分离；
+  	(c) 分别考虑不同的服务器组的调度算法；
+  	(d) 压缩合适的内容类型；
+</code></pre><ul>
+<li>首先，在192.168.1.8/24上实现lamp架构</li>
+</ul>
+<pre><code>1. 安装必要的软件
+	]# yum install -y mariadb-server httpd php-fpm php-mysql
+	]# wget https://cn.wordpress.org/wordpress-4.9.4-zh_CN.tar.gz
+	]# tar xf wordpress-4.9.4-zh_CN.tar.gz -C /var/www/html
+	]# chown -R apache.apache  /var/www/html/*
+	]# cd /var/www/html/
+	]# cp wp-config-sample.php wp-config.php
+	]# vim wp-config.php 
+	define('DB_NAME', 'wpdb');
+	/** MySQL数据库用户名 */
+	define('DB_USER', 'test');
+	/** MySQL数据库密码 */
+	define('DB_PASSWORD', 'centos');
+	/** MySQL主机 */
+	define('DB_HOST', '127.0.0.1');
+2. 修改http配置文件
+	]# vim /etc/httpd/conf.d/fcgi.conf
+	DirectoryIndex index.php
+	ProxyRequests Off
+	ProxyPassMatch ^/(.*\.php)$ fcgi://127.0.0.1:9000/var/www/html/$1 
+3. 授权mysql账户
+	]# systemctl start mariadb httpd
+	]# mysql -e &quot;grant all on *.* to test@'192.168.1.%' identified by 'centos'&quot;
+	]# mysql -e 'flush privileges'
+4. 启动服务
+	]# systemctl start httpd
+	]# systemctl start php-fpm
+	]# systemctl start mariadb
+5. 测试动静分离，停止服务，依旧能访问另一他台服务器的静态资源
+	]# systemctl stop httpd
+</code></pre><ul>
+<li>其次，在192.168.1.20/24上实现静态资源</li>
+</ul>
+<pre><code>$ yum install -y httpd
+$ wget https://cn.wordpress.org/wordpress-4.9.4-zh_CN.tar.gz
+$ tar xf wordpress-4.9.4-zh_CN.tar.gz -C /var/www/html
+$ chown -R apache.apache  /var/www/html/*
+</code></pre><ul>
+<li>最后，在haproxy服务器上配置动静分离</li>
+</ul>
+<pre><code>$ yum install -y haproaxy
+$ cp /etc/haproxy/haproxy.cfg{,.bak}
+$ vim /etc/haproxy/haproxy.cfg
+···
+frontend main *:80
+    mode http
+    acl url_static path_beg -i /static /images /javascript /stylesheets
+    acl url_static path_end -i .jpg .gif .png .css .js .html .txt .htm
+
+    use_backend staticsrvs  if url_static 
+    default_backend phpsrvs
+
+backend staticsrvs
+    balance roundrobin
+    #option httpchk GET /test1.html
+    #cookie WEBSRV insert nocache indirect
+    #server websrv1 192.168.1.20:80 weight 2 check cookie websrv1
+    #server websrv2 192.168.1.8:80 weight 1 check cookie websrv2
+    server websrv2 192.168.1.8:80 check
+
+backend phpsrvs
+    balance roundrobin
+    server websrv1 192.168.1.20:80 check
+
+listen stats
+    bind 127.0.0.1:80                                                           
+    stats enable
+    stats uri /admin?stats
+    stats realm HAProxy\ Stats
+    stats auth admin:admin
+    stats admin if TRUE
+</code></pre><h1 id="常用功能实现">常用功能实现</h1>
+<ol>
+<li>压缩</li>
+</ol>
+<pre><code>frontend web *:80
+    default_backend appsrvs
+    compression algo gzip
+    compression type text/html text/plain
+backend appsrvs
+    balance roundrobin
+    server app1 192.168.0.10:80 check
+    server app2 192.168.0.11:80 check
+</code></pre><ol start="2">
+<li>stats page</li>
+</ol>
+<pre><code>listen stats
+    bind :8080
+    stats realm &quot;HAProxy Stats Page&quot;
+    stats auth admin:adminpass  #认证用户：密码
+    stats admin if TRUE
+访问：http://192.168.0.8:8080/haproxy?stats进入状态管理页
+</code></pre><ol start="3">
+<li>自定义错误页</li>
+</ol>
+<pre><code>[root@haproxy ~]# vim /etc/haproxy/haproxy.cfg
+frontend web *:80
+        default_backend appsrvs
+        acl bad_guy src 192.168.0.7
+        block if bad_guy
+        errorfile 403 /etc/haproxy/errorfiles/403forbid.http
+backend appsrvs
+        balance roundrobin
+        server app1 192.168.0.10:80 check
+        server app2 192.168.0.11:80 check
+[root@haproxy ~]# mkdir /etc/haproxy/errorfiles/ -p
+[root@haproxy ~]# echo 'forbid' &gt;/etc/haproxy/errorfiles/403forbid.http
+[root@haproxy ~]# systemctl restart haproxy
+[root@client ~]# curl http://192.168.0.8/
+forbid
+</code></pre><ol start="4">
+<li>访问控制</li>
+</ol>
+<pre><code>listen stats
+    bind :8080
+    stats realm &quot;HAProxy Stats Page&quot;
+    stats auth admin:adminpass
+    stats admin if TRUE
+    acl admin_client src 192.168.0.254
+    block unless admin_client  #只允许192.168.0.254访问状态管理页
+</code></pre><ol start="5">
+<li>日志功能</li>
+</ol>
+<pre><code>调度器中配置
+[root@haproxy ~]# vim /etc/haproxy/haproxy.cfg 
+backend appsrvs
+    balance roundrobin
+    option forwardfor
+    server app1 192.168.0.10:80 check
+    server app2 192.168.0.11:80 check
+[root@haproxy haproxy]# systemctl restart haproxy.service
+</code></pre><pre><code>后端服务器配置（Apache）
+[root@web2 ~]# vim /etc/httpd/conf/httpd.conf
+LogFormat &quot;%{X-Forwarded-For}i %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent
+}i\&quot;&quot; combined  #改变日志记录方式
+[root@web2 ~]# systemctl restart httpd
+[root@web2 ~]# tail -f /var/log/httpd/access_log
+</code></pre><ol start="6">
+<li>基于cookie的session粘滞</li>
+</ol>
+<pre><code>[root@haproxy ~]# vim /etc/haproxy/haproxy.cfg
+frontend web *:80
+    mode http
+    default_backend appsrvs
+backend appsrvs
+    balance roundrobin
+    option forwardfor
+    cookie WEBSRV insert nocache indirect
+    server app1 192.168.0.10:80 check inter 1000 rise 1 fall 2 maxconn 2000 cookie websrv1
+    server app2 192.168.0.11:80 check maxconn 1500 cookie websrv2
+[root@client ~]# curl -b &quot;WEBSRV=websrv1&quot; http://192.168.0.8/
+web1
+[root@client ~]# curl -b &quot;WEBSRV=websrv2&quot; http://192.168.0.8/ 
+web2
+</code></pre><ol start="7">
+<li>后端主机的健康状态检测</li>
+</ol>
+<pre><code>backend appsrvs
+    balance roundrobin
+    option httpchk GET /test.html
+    server app1 192.168.0.10:80 check 
+    server app2 192.168.0.11:80 check
+</code></pre><ol start="8">
+<li>请求和响应报文首部的操纵：替换响应报文的Server字段信息</li>
+</ol>
+<pre><code>[root@haproxy ~]# vim /etc/haproxy/haproxy.cfg
+frontend web *:80
+    mode http
+    rspidel ^Server:.*
+    rspadd Server:\ Apache\ or\ Nginx
+    default_backend appsrvs
+[root@client ~]# curl -I http://192.168.0.8/
+Server: Apache or Nginx  #掩人耳目
+</code></pre>
+        </div>
+        <!-- tags -->
+        <div class="mb-3">
+          <h5 class="d-inline-block mr-3">Tags:</h5>
+          <ul class="list-inline d-inline-block">
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/linux"> 
+            Linux</a>
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/internet"> , 
+            Internet</a>
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/haproxy"> , 
+            Haproxy</a>
+            
+          </ul>
+        </div>
+        <!-- previous -->
+        <div class="mb-3 link-article">
+    <div class="pre-article">
+        
+            <div><i class="fa fa-arrow-left"></i> 上一篇</div>
+            <a href="https://www.fenghong.tech/blog/2018/2018-07-07-nginx/">Nginx</a>
+        
+    </div>
+    <div class="next-article">
+        
+            <div>下一篇 <i class="fa fa-arrow-right"></i></div>
+            <a href="https://www.fenghong.tech/blog/2018/2018-07-11-keepalive/">KeepAlive</a>
+        
+    </div>
+</div>
+        <!-- previous -->
+
+        <!-- recommend -->
+        
+
+<div class="mb-3">
+  <h2>文章推荐</h2>
+  <ul class="related">
+  
+    <li><a href="/blog/2018/2018-07-07-nginx/">Nginx</a></li>
+  
+    <li><a href="/blog/2018/2018-07-02-io/">I/O</a></li>
+  
+    <li><a href="/blog/2018/2018-07-06-lvstest/">LvsTest</a></li>
+  
+    <li><a href="/blog/2018/2018-04-20-linux_router/">Linux下路由配置梳理</a></li>
+  
+    <li><a href="/blog/2018/2018-06-29-linux-vitual-server/">Linux Vitual Server</a></li>
+  
+  </ul>
+</div>
+
+
+        <!-- comments -->
+
+        
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script>
+          window.onload = function() {
+              const gitalk = new Gitalk({
+              clientID: 'a0a546df858aafb5300e',
+              clientSecret: '67d7b40de25c072fc38840ffb9c06ceab7ef5080',
+              repo: 'oldthreefeng.github.io',
+              owner: 'oldthreefeng',
+              admin: ['oldthreefeng'],
+              id: hex_md5(hex_md5(window.location.pathname + window.location.hash)), 
+              distractionFreeMode: false 
+            });
+            (function() {
+              if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+                document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+                return;
+              }
+              gitalk.render('gitalk-container');
+            })();
+          }
+        </script>
+        
+      </div>
+      <!-- sidebar -->
+<aside class="col-lg-4 order-1 order-lg-2">
+  <!-- tags -->
+  <div class="bg-white px-4 py-5 box-shadow mb-5 word-cloud">
+    <h4 class="mb-4">标签</h4>
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div id="tag-cloud" style="padding: 5px 15px">
+      
+        
+          
+          
+          
+          <a href="/tags/acme" style="font-size:1.0188679245283019rem">acme</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/acmetiny" style="font-size:1.0188679245283019rem">acmetiny</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/alertmanager" style="font-size:1rem">alertmanager</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/algorithm" style="font-size:1.1132075471698113rem">algorithm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/aliyun" style="font-size:1rem">aliyun</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ansible" style="font-size:1.0754716981132075rem">ansible</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/apisix" style="font-size:1rem">apisix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/arm64" style="font-size:1.0188679245283019rem">arm64</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/authorization" style="font-size:1rem">authorization</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/backup" style="font-size:1.0377358490566038rem">backup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binarysearch" style="font-size:1.0188679245283019rem">binarysearch</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binlog" style="font-size:1rem">binlog</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bit" style="font-size:1.0188679245283019rem">bit</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bug" style="font-size:1.0188679245283019rem">bug</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cache" style="font-size:1rem">cache</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/certbot" style="font-size:1rem">certbot</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/channel" style="font-size:1rem">channel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/chrome" style="font-size:1.0188679245283019rem">chrome</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ci" style="font-size:1rem">ci</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cluster" style="font-size:1.1132075471698113rem">cluster</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cobra" style="font-size:1rem">cobra</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coco" style="font-size:1.0377358490566038rem">coco</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coding" style="font-size:1rem">coding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/computer" style="font-size:1rem">computer</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/consul" style="font-size:1rem">consul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/containerd" style="font-size:1.0188679245283019rem">containerd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coredns" style="font-size:1rem">coredns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cors" style="font-size:1rem">cors</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/crypto" style="font-size:1rem">crypto</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/curl" style="font-size:1rem">curl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dashboard" style="font-size:1rem">dashboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dcdn" style="font-size:1rem">dcdn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/debt" style="font-size:1rem">debt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/devops" style="font-size:1.0188679245283019rem">devops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dingding" style="font-size:1rem">dingding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/disk" style="font-size:1rem">disk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dmesg" style="font-size:1rem">dmesg</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dns" style="font-size:1rem">dns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/docker" style="font-size:1.2264150943396226rem">docker</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/doublylinkedlist" style="font-size:1rem">doublylinkedlist</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/elk" style="font-size:1rem">elk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/error" style="font-size:1rem">error</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/etcd" style="font-size:1.0377358490566038rem">etcd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exec" style="font-size:1.0188679245283019rem">exec</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exp" style="font-size:1rem">exp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/federated" style="font-size:1rem">federated</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/filecoin" style="font-size:1rem">filecoin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/find" style="font-size:1rem">find</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/firewalld" style="font-size:1rem">firewalld</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/fix" style="font-size:1.0377358490566038rem">fix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flag" style="font-size:1.0188679245283019rem">flag</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flannel" style="font-size:1rem">flannel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/food" style="font-size:1.0188679245283019rem">food</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/frp" style="font-size:1.0377358490566038rem">frp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ftp" style="font-size:1.0188679245283019rem">ftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/games" style="font-size:1rem">games</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gin" style="font-size:1.0188679245283019rem">gin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/git" style="font-size:1.2075471698113207rem">git</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/github" style="font-size:1.0188679245283019rem">github</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gitlab" style="font-size:1rem">gitlab</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go" style="font-size:1.320754716981132rem">go</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go-vim" style="font-size:1rem">go-vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gogs" style="font-size:1.0566037735849056rem">gogs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/goland" style="font-size:1.0188679245283019rem">goland</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/golang" style="font-size:1.0377358490566038rem">golang</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gorequest" style="font-size:1rem">gorequest</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grafana" style="font-size:1.0188679245283019rem">grafana</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grub" style="font-size:1rem">grub</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hack" style="font-size:1.0188679245283019rem">hack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/haproxy" style="font-size:1.0377358490566038rem">haproxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/harbor" style="font-size:1.0188679245283019rem">harbor</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hash" style="font-size:1.0188679245283019rem">hash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hashmap" style="font-size:1rem">hashmap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/helm" style="font-size:1.0188679245283019rem">helm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hexo" style="font-size:1.0377358490566038rem">hexo</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/http" style="font-size:1.0754716981132075rem">http</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/https" style="font-size:1rem">https</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/index" style="font-size:1rem">index</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ingress" style="font-size:1.0377358490566038rem">ingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/inotify" style="font-size:1rem">inotify</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/internet" style="font-size:1.169811320754717rem">internet</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/interview" style="font-size:1rem">interview</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/iptables" style="font-size:1.0377358490566038rem">iptables</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ipvs" style="font-size:1.0188679245283019rem">ipvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/java" style="font-size:1.0754716981132075rem">java</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jeju" style="font-size:1rem">jeju</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jenkins" style="font-size:1.0943396226415094rem">jenkins</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jetbrains" style="font-size:1rem">jetbrains</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jumpserver" style="font-size:1.0566037735849056rem">jumpserver</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jvm" style="font-size:1rem">jvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/keepalived" style="font-size:1rem">keepalived</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kernel" style="font-size:1rem">kernel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/knowledge" style="font-size:1rem">knowledge</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kube-proxy" style="font-size:1.0188679245283019rem">kube-proxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetes" style="font-size:1.3962264150943395rem">kubernetes</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesrbac" style="font-size:1rem">kubernetesrbac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesssl" style="font-size:1.0188679245283019rem">kubernetesssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kuboard" style="font-size:1.0566037735849056rem">kuboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lb" style="font-size:1rem">lb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/learning" style="font-size:1.0566037735849056rem">learning</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/leetcode" style="font-size:1.0188679245283019rem">leetcode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libcurl" style="font-size:1rem">libcurl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libssh2" style="font-size:1rem">libssh2</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/link" style="font-size:1rem">link</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/linux" style="font-size:1.9811320754716981rem">linux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/living" style="font-size:1rem">living</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lnux" style="font-size:1rem">lnux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/log" style="font-size:1.0566037735849056rem">log</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logrus" style="font-size:1rem">logrus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logs" style="font-size:1rem">logs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logstash" style="font-size:1rem">logstash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/loki" style="font-size:1rem">loki</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lru" style="font-size:1rem">lru</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/luna" style="font-size:1rem">luna</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvm" style="font-size:1rem">lvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvs" style="font-size:1rem">lvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mac" style="font-size:1rem">mac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/malaysia" style="font-size:1rem">malaysia</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/manage" style="font-size:1rem">manage</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/map" style="font-size:1rem">map</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mariadb" style="font-size:1.0377358490566038rem">mariadb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/markdown" style="font-size:1.0188679245283019rem">markdown</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mfa" style="font-size:1rem">mfa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mha" style="font-size:1rem">mha</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mode" style="font-size:1rem">mode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/module" style="font-size:1rem">module</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mount" style="font-size:1rem">mount</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mysql" style="font-size:1.2452830188679245rem">mysql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/navicat" style="font-size:1rem">navicat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/network" style="font-size:1rem">network</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nfs" style="font-size:1.0754716981132075rem">nfs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginx" style="font-size:1.2264150943396226rem">nginx</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginxingress" style="font-size:1.0566037735849056rem">nginxingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/node_exporter" style="font-size:1.0188679245283019rem">node_exporter</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/numpy" style="font-size:1rem">numpy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ops" style="font-size:1.2452830188679245rem">ops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/owncloud" style="font-size:1rem">owncloud</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/password" style="font-size:1rem">password</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/paxos" style="font-size:1.0188679245283019rem">paxos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/php" style="font-size:1rem">php</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pipeline" style="font-size:1rem">pipeline</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/polynomial" style="font-size:1rem">polynomial</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/problem" style="font-size:1rem">problem</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/prometheus" style="font-size:1.0943396226415094rem">prometheus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pv" style="font-size:1.0754716981132075rem">pv</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pvc" style="font-size:1.0754716981132075rem">pvc</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/python" style="font-size:1.0943396226415094rem">python</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/queue" style="font-size:1rem">queue</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/qw3xt" style="font-size:1rem">qw3xt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rabbitmq" style="font-size:1.0188679245283019rem">rabbitmq</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/raft" style="font-size:1rem">raft</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rebase" style="font-size:1rem">rebase</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/redis" style="font-size:1.0377358490566038rem">redis</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/resources" style="font-size:1.0188679245283019rem">resources</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsa" style="font-size:1rem">rsa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsync" style="font-size:1.0188679245283019rem">rsync</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/safe" style="font-size:1.0754716981132075rem">safe</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/samba" style="font-size:1rem">samba</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sealos" style="font-size:1rem">sealos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/secure" style="font-size:1rem">secure</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sed" style="font-size:1rem">sed</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/server" style="font-size:1.2075471698113207rem">server</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sftp" style="font-size:1rem">sftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shadowsocks" style="font-size:1.0188679245283019rem">shadowsocks</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shell" style="font-size:1.0188679245283019rem">shell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slap" style="font-size:1rem">slap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slave" style="font-size:1rem">slave</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slb" style="font-size:1rem">slb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slowquery" style="font-size:1rem">slowquery</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sonar" style="font-size:1.0377358490566038rem">sonar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sourcetree" style="font-size:1.0188679245283019rem">sourcetree</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sql" style="font-size:1.0188679245283019rem">sql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ss" style="font-size:1rem">ss</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssh" style="font-size:1.0754716981132075rem">ssh</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssl" style="font-size:1.1132075471698113rem">ssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stack" style="font-size:1rem">stack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stress" style="font-size:1rem">stress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/style" style="font-size:1rem">style</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/switchyomega" style="font-size:1rem">switchyomega</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/syncd" style="font-size:1rem">syncd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/taint" style="font-size:1rem">taint</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tar" style="font-size:1rem">tar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tcp" style="font-size:1.0188679245283019rem">tcp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/testing" style="font-size:1rem">testing</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tomcat" style="font-size:1rem">tomcat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tour" style="font-size:1.0188679245283019rem">tour</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/trojan" style="font-size:1rem">trojan</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ubuntu" style="font-size:1.0566037735849056rem">ubuntu</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/udp" style="font-size:1rem">udp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/uk8s" style="font-size:1rem">uk8s</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unauthorized" style="font-size:1rem">unauthorized</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unblockneteasemusic" style="font-size:1rem">unblockneteasemusic</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upgrade" style="font-size:1.0188679245283019rem">upgrade</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upstream" style="font-size:1rem">upstream</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/v1.18.3" style="font-size:1rem">v1.18.3</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vim" style="font-size:1rem">vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/virtul" style="font-size:1rem">virtul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vpn" style="font-size:1.0754716981132075rem">vpn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vscode" style="font-size:1rem">vscode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/websocket" style="font-size:1rem">websocket</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/wifi" style="font-size:1rem">wifi</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xshell" style="font-size:1rem">xshell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xtrabackup" style="font-size:1rem">xtrabackup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/yum" style="font-size:1rem">yum</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/zabbix" style="font-size:1rem">zabbix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e6%95%b0%e6%8d%ae%e5%ba%93%e5%8e%9f%e7%90%86" style="font-size:1rem">数据库原理</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95" style="font-size:1rem">贪心算法</a>
+        
+      
+      </div>
+    
+  </div>
+
+  <!-- profile -->
+  <!-- toc -->
+  
+  <div class="bg-white px-4 py-5 box-shadow mb-5 sticky-top">
+    <h4 class="mb-4">目录</h4>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+
+</aside>
+<!-- /sidebar -->
+
+    </div>
+  </div>
+</section>
+<!-- /blog details -->
+
+
+
+<footer>
+	
+	<div class="section bg-secondary">
+		<div class="container">
+			<div class="row justify-content-between">
+				
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					<a class="mb-4 d-inline-block" href="/"><img class="img-fluid"
+																								src="/images/images/logo-alt.png" alt="Louis Blog" width="60%"></a>
+					<p class="text-light mb-5">每一个不曾起舞的日子都是对生命的辜负.</p>
+					<h4 class="text-white mb-4">关注我</h4>
+					
+					<ul class="list-inline social-icon-alt">
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://twitter.com/louishong17"><i class="fa fa-twitter"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://github.com/oldthreefeng"><i class="fa fa-github"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="/contact"><i class="fa fa-wechat"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="mailto:992165098@qq.com"><i class="fa fa-envelope"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://www.fenghong.tech/blog/index.xml"><i class="fa fa-rss"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					
+					
+					
+					
+					<div class="mb-5">
+						<h4 class="text-white mb-4">联系信息</h4>
+						<p class="text-light mb-3">上海 · 浦东新区</p>
+						<p class="text-light mb-3"></p>
+						<p class="text-light mb-3">微信联系方式</p>
+						<p class="text-light mb-3"><img src="/images/images/wechat-qrcode.png" width="356px"></p>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="bg-secondary-darken py-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+					<p class="mb-0 text-white">Copyright © 2020 Louis</p>
+				</div>
+				<div class="col-md-6 text-center text-md-right">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item mx-0"><a class="d-inline-block px-3 text-white" href="https://beian.miit.gov.cn/"
+																									class="text-white">鄂ICP备18027870号-1</a></li>
+						<p class="list-inline-item mx-0 text-white">本网站由</p>
+						<a target="_blank" rel="nofollow noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://pic.fenghong.tech/images/180803_logo30.png" style="margin-bottom:5px;height: 25px;"></a>
+						<p class="list-inline-item mx-0 text-white">提供CDN加速/云存储服务</p>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+<script>
+	var indexURL = "/index.json"
+</script>
+
+
+<!-- JS Plugins -->
+
+<script src="/plugins/jQuery/jquery.min.js"></script>
+
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="/plugins/slick/slick.min.js"></script>
+
+<script src="/plugins/google-map/gmap.js"></script>
+
+<script src="/plugins/venobox/venobox.min.js"></script>
+
+<script src="/plugins/filterizr/jquery.filterizr.min.js"></script>
+
+<script src="/plugins/search/fuse.min.js"></script>
+
+<script src="/plugins/search/mark.js"></script>
+
+<script src="/plugins/search/search.js"></script>
+
+<script src="/plugins/bigPicture/bigPicture.js"></script>
+
+<script src="/plugins/hex_md5/hex_md5.js"></script>
+
+
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+
+<!-- Algolia -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+<script>
+	docsearch({
+		apiKey: 'b4d47f0c039a84d4035305be829404dd',
+		indexName: 'DocSearch',
+		appId: 'CTH4P282IZ',
+		inputSelector: '#js-algolia-btn',
+		debug: false,
+	});
+</script>
+
+<!-- google analitycs -->
+
+<script>
+	(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-130595069-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https'){
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else{
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</body>
+
+</html>

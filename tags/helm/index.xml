@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>helm on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/helm/</link>
+    <description>Recent content in helm on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Mon, 10 May 2021 10:34:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/helm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>记一次kubernetes使用hostnetwork网络相关问题及解决。</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-dns-error-withhostnetwork/</link>
+      <pubDate>Mon, 10 May 2021 10:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-dns-error-withhostnetwork/</guid>
+      <description>[TOC] 由于集群的kube</description>
+    </item>
+    
+    <item>
+      <title>记一次kubernetes升级1.18.8后的helm相关问题及解决。</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-1.18-helm-upgrade-error/</link>
+      <pubDate>Tue, 30 Mar 2021 15:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-1.18-helm-upgrade-error/</guid>
+      <description>[TOC] 由于集群的kube</description>
+    </item>
+    
+  </channel>
+</rss>

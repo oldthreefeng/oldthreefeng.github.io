@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>harbor on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/harbor/</link>
+    <description>Recent content in harbor on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Tue, 01 Sep 2020 17:34:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/harbor/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>kubernetes1.18.0部署harborv2.0.2</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-harbor-nginx-ingress/</link>
+      <pubDate>Tue, 01 Sep 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-harbor-nginx-ingress/</guid>
+      <description>[TOC] Harbor 支持多种安装方式</description>
+    </item>
+    
+    <item>
+      <title>搭建https镜像仓库harbor记录</title>
+      <link>https://www.fenghong.tech/blog/docker/harbor-registry/</link>
+      <pubDate>Wed, 27 Nov 2019 15:22:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/docker/harbor-registry/</guid>
+      <description>[TOC] 说明 # 开头的行表示</description>
+    </item>
+    
+  </channel>
+</rss>

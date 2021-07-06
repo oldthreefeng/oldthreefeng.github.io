@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tcp on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/tcp/</link>
+    <description>Recent content in tcp on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Wed, 20 May 2020 10:54:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>openvpn实现tcp和udp共存</title>
+      <link>https://www.fenghong.tech/blog/ops/openvpn-tcp-udp/</link>
+      <pubDate>Wed, 20 May 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/openvpn-tcp-udp/</guid>
+      <description>[toc] 背景: 疫情期间， 在</description>
+    </item>
+    
+    <item>
+      <title>Linux上tcp处于time_wait</title>
+      <link>https://www.fenghong.tech/blog/tools/linnux-tcp-timewait/</link>
+      <pubDate>Fri, 22 Feb 2019 23:48:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/tools/linnux-tcp-timewait/</guid>
+      <description>[TOC] linux上大量t</description>
+    </item>
+    
+  </channel>
+</rss>

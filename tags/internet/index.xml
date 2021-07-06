@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>internet on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/internet/</link>
+    <description>Recent content in internet on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Wed, 25 Jul 2018 09:59:32 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/internet/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubuntu 从安装到科学上网</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-25-kubuntu/</link>
+      <pubDate>Wed, 25 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-25-kubuntu/</guid>
+      <description>摘要： 科学上网 lxc</description>
+    </item>
+    
+    <item>
+      <title>Zabbix</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-21-zabbix/</link>
+      <pubDate>Tue, 24 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-21-zabbix/</guid>
+      <description>摘要： 监控系统满足的</description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-20-redis/</link>
+      <pubDate>Fri, 20 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-20-redis/</guid>
+      <description>摘要： 分布式系统存储</description>
+    </item>
+    
+    <item>
+      <title>Tomcat</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-18-tomcat/</link>
+      <pubDate>Wed, 18 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-18-tomcat/</guid>
+      <description>摘要： Tomcat相</description>
+    </item>
+    
+    <item>
+      <title>Varnish</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-15-varnish/</link>
+      <pubDate>Sun, 15 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-15-varnish/</guid>
+      <description>摘要： 缓存相关的概念</description>
+    </item>
+    
+    <item>
+      <title>HAProxy</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-09-haproxy/</link>
+      <pubDate>Mon, 09 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-09-haproxy/</guid>
+      <description>摘要： HAproxy</description>
+    </item>
+    
+    <item>
+      <title>Nginx</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-07-nginx/</link>
+      <pubDate>Sun, 08 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-07-nginx/</guid>
+      <description>摘要： Nginx简介</description>
+    </item>
+    
+    <item>
+      <title>I/O</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-02-io/</link>
+      <pubDate>Sat, 07 Jul 2018 17:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-02-io/</guid>
+      <description>摘要： I/O模型; 同</description>
+    </item>
+    
+    <item>
+      <title>LvsTest</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-06-lvstest/</link>
+      <pubDate>Fri, 06 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-06-lvstest/</guid>
+      <description>摘要： ipvsadm</description>
+    </item>
+    
+    <item>
+      <title>Linux下路由配置梳理</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-04-20-linux_router/</link>
+      <pubDate>Fri, 20 Apr 2018 17:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-04-20-linux_router/</guid>
+      <description>摘要：路由的基本知识</description>
+    </item>
+    
+  </channel>
+</rss>

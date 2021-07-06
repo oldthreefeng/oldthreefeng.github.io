@@ -1,0 +1,1879 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/</link>
+    <description>Recent content in Tags on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Tue, 06 Jul 2021 10:34:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>apisix</title>
+      <link>https://www.fenghong.tech/tags/apisix/</link>
+      <pubDate>Tue, 06 Jul 2021 10:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/apisix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://www.fenghong.tech/tags/kubernetes/</link>
+      <pubDate>Tue, 06 Jul 2021 10:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://www.fenghong.tech/tags/docker/</link>
+      <pubDate>Tue, 29 Jun 2021 09:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>log</title>
+      <link>https://www.fenghong.tech/tags/log/</link>
+      <pubDate>Tue, 29 Jun 2021 09:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/log/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dcdn</title>
+      <link>https://www.fenghong.tech/tags/dcdn/</link>
+      <pubDate>Wed, 09 Jun 2021 10:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/dcdn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>helm</title>
+      <link>https://www.fenghong.tech/tags/helm/</link>
+      <pubDate>Mon, 10 May 2021 10:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/helm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>taint</title>
+      <link>https://www.fenghong.tech/tags/taint/</link>
+      <pubDate>Wed, 14 Apr 2021 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/taint/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>prometheus</title>
+      <link>https://www.fenghong.tech/tags/prometheus/</link>
+      <pubDate>Wed, 27 Jan 2021 15:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/prometheus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redis</title>
+      <link>https://www.fenghong.tech/tags/redis/</link>
+      <pubDate>Wed, 27 Jan 2021 15:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://www.fenghong.tech/tags/golang/</link>
+      <pubDate>Thu, 21 Jan 2021 12:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vscode</title>
+      <link>https://www.fenghong.tech/tags/vscode/</link>
+      <pubDate>Thu, 21 Jan 2021 12:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/vscode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>map</title>
+      <link>https://www.fenghong.tech/tags/map/</link>
+      <pubDate>Wed, 30 Dec 2020 19:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/map/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nginx</title>
+      <link>https://www.fenghong.tech/tags/nginx/</link>
+      <pubDate>Wed, 30 Dec 2020 19:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm64</title>
+      <link>https://www.fenghong.tech/tags/arm64/</link>
+      <pubDate>Wed, 16 Dec 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/arm64/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>containerd</title>
+      <link>https://www.fenghong.tech/tags/containerd/</link>
+      <pubDate>Wed, 16 Dec 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/containerd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iptables</title>
+      <link>https://www.fenghong.tech/tags/iptables/</link>
+      <pubDate>Tue, 15 Dec 2020 23:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/iptables/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ipvs</title>
+      <link>https://www.fenghong.tech/tags/ipvs/</link>
+      <pubDate>Tue, 15 Dec 2020 23:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/ipvs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kube-proxy</title>
+      <link>https://www.fenghong.tech/tags/kube-proxy/</link>
+      <pubDate>Tue, 15 Dec 2020 23:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/kube-proxy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>etcd</title>
+      <link>https://www.fenghong.tech/tags/etcd/</link>
+      <pubDate>Fri, 09 Oct 2020 20:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/etcd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sealos</title>
+      <link>https://www.fenghong.tech/tags/sealos/</link>
+      <pubDate>Fri, 09 Oct 2020 20:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/sealos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>backup</title>
+      <link>https://www.fenghong.tech/tags/backup/</link>
+      <pubDate>Mon, 21 Sep 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/backup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>exec</title>
+      <link>https://www.fenghong.tech/tags/exec/</link>
+      <pubDate>Mon, 21 Sep 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/exec/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ops</title>
+      <link>https://www.fenghong.tech/tags/ops/</link>
+      <pubDate>Wed, 09 Sep 2020 11:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/ops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>algorithm</title>
+      <link>https://www.fenghong.tech/tags/algorithm/</link>
+      <pubDate>Sat, 05 Sep 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://www.fenghong.tech/tags/go/</link>
+      <pubDate>Sat, 05 Sep 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>harbor</title>
+      <link>https://www.fenghong.tech/tags/harbor/</link>
+      <pubDate>Tue, 01 Sep 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/harbor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kernel</title>
+      <link>https://www.fenghong.tech/tags/kernel/</link>
+      <pubDate>Tue, 18 Aug 2020 20:11:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/kernel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>stress</title>
+      <link>https://www.fenghong.tech/tags/stress/</link>
+      <pubDate>Wed, 05 Aug 2020 18:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/stress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>https://www.fenghong.tech/tags/testing/</link>
+      <pubDate>Wed, 05 Aug 2020 18:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ingress</title>
+      <link>https://www.fenghong.tech/tags/ingress/</link>
+      <pubDate>Tue, 28 Jul 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/ingress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github</title>
+      <link>https://www.fenghong.tech/tags/github/</link>
+      <pubDate>Mon, 27 Jul 2020 16:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lvm</title>
+      <link>https://www.fenghong.tech/tags/lvm/</link>
+      <pubDate>Fri, 17 Jul 2020 13:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/lvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>frp</title>
+      <link>https://www.fenghong.tech/tags/frp/</link>
+      <pubDate>Tue, 14 Jul 2020 17:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/frp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes，ssl</title>
+      <link>https://www.fenghong.tech/tags/kubernetesssl/</link>
+      <pubDate>Wed, 08 Jul 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/kubernetesssl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unauthorized</title>
+      <link>https://www.fenghong.tech/tags/unauthorized/</link>
+      <pubDate>Wed, 08 Jul 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/unauthorized/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go-vim</title>
+      <link>https://www.fenghong.tech/tags/go-vim/</link>
+      <pubDate>Wed, 08 Jul 2020 09:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/go-vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://www.fenghong.tech/tags/git/</link>
+      <pubDate>Tue, 30 Jun 2020 10:18:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rebase</title>
+      <link>https://www.fenghong.tech/tags/rebase/</link>
+      <pubDate>Tue, 30 Jun 2020 10:18:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/rebase/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>curl</title>
+      <link>https://www.fenghong.tech/tags/curl/</link>
+      <pubDate>Sun, 28 Jun 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/curl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>libcurl</title>
+      <link>https://www.fenghong.tech/tags/libcurl/</link>
+      <pubDate>Sun, 28 Jun 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/libcurl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>libssh2</title>
+      <link>https://www.fenghong.tech/tags/libssh2/</link>
+      <pubDate>Sun, 28 Jun 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/libssh2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>yum</title>
+      <link>https://www.fenghong.tech/tags/yum/</link>
+      <pubDate>Sun, 28 Jun 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/yum/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jenkins</title>
+      <link>https://www.fenghong.tech/tags/jenkins/</link>
+      <pubDate>Wed, 24 Jun 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/jenkins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CORS</title>
+      <link>https://www.fenghong.tech/tags/cors/</link>
+      <pubDate>Mon, 22 Jun 2020 14:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/cors/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>http</title>
+      <link>https://www.fenghong.tech/tags/http/</link>
+      <pubDate>Mon, 22 Jun 2020 14:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/http/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssl</title>
+      <link>https://www.fenghong.tech/tags/ssl/</link>
+      <pubDate>Mon, 22 Jun 2020 14:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/ssl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kuboard</title>
+      <link>https://www.fenghong.tech/tags/kuboard/</link>
+      <pubDate>Fri, 19 Jun 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/kuboard/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>loki</title>
+      <link>https://www.fenghong.tech/tags/loki/</link>
+      <pubDate>Fri, 19 Jun 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/loki/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nfs</title>
+      <link>https://www.fenghong.tech/tags/nfs/</link>
+      <pubDate>Fri, 19 Jun 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/nfs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nginxIngress</title>
+      <link>https://www.fenghong.tech/tags/nginxingress/</link>
+      <pubDate>Fri, 19 Jun 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/nginxingress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pv</title>
+      <link>https://www.fenghong.tech/tags/pv/</link>
+      <pubDate>Fri, 19 Jun 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/pv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pvc</title>
+      <link>https://www.fenghong.tech/tags/pvc/</link>
+      <pubDate>Fri, 19 Jun 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/pvc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>upgrade</title>
+      <link>https://www.fenghong.tech/tags/upgrade/</link>
+      <pubDate>Tue, 16 Jun 2020 20:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/upgrade/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>v1.18.3</title>
+      <link>https://www.fenghong.tech/tags/v1.18.3/</link>
+      <pubDate>Tue, 16 Jun 2020 20:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/v1.18.3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bug</title>
+      <link>https://www.fenghong.tech/tags/bug/</link>
+      <pubDate>Tue, 16 Jun 2020 16:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/bug/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fix</title>
+      <link>https://www.fenghong.tech/tags/fix/</link>
+      <pubDate>Tue, 16 Jun 2020 16:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/fix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>learning</title>
+      <link>https://www.fenghong.tech/tags/learning/</link>
+      <pubDate>Mon, 15 Jun 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UnblockNeteaseMusic</title>
+      <link>https://www.fenghong.tech/tags/unblockneteasemusic/</link>
+      <pubDate>Mon, 15 Jun 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/unblockneteasemusic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>coredns</title>
+      <link>https://www.fenghong.tech/tags/coredns/</link>
+      <pubDate>Mon, 15 Jun 2020 09:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/coredns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lnux</title>
+      <link>https://www.fenghong.tech/tags/lnux/</link>
+      <pubDate>Tue, 09 Jun 2020 09:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/lnux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mount</title>
+      <link>https://www.fenghong.tech/tags/mount/</link>
+      <pubDate>Tue, 09 Jun 2020 09:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/mount/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes，rbac</title>
+      <link>https://www.fenghong.tech/tags/kubernetesrbac/</link>
+      <pubDate>Sat, 06 Jun 2020 15:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/kubernetesrbac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>server</title>
+      <link>https://www.fenghong.tech/tags/server/</link>
+      <pubDate>Wed, 20 May 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tcp</title>
+      <link>https://www.fenghong.tech/tags/tcp/</link>
+      <pubDate>Wed, 20 May 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/tcp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>udp</title>
+      <link>https://www.fenghong.tech/tags/udp/</link>
+      <pubDate>Wed, 20 May 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/udp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vpn</title>
+      <link>https://www.fenghong.tech/tags/vpn/</link>
+      <pubDate>Wed, 20 May 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/vpn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>websocket</title>
+      <link>https://www.fenghong.tech/tags/websocket/</link>
+      <pubDate>Tue, 12 May 2020 17:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/websocket/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>acme</title>
+      <link>https://www.fenghong.tech/tags/acme/</link>
+      <pubDate>Mon, 04 May 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/acme/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gitlab</title>
+      <link>https://www.fenghong.tech/tags/gitlab/</link>
+      <pubDate>Mon, 04 May 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/gitlab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>alertmanager</title>
+      <link>https://www.fenghong.tech/tags/alertmanager/</link>
+      <pubDate>Fri, 24 Apr 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/alertmanager/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>grafana</title>
+      <link>https://www.fenghong.tech/tags/grafana/</link>
+      <pubDate>Fri, 24 Apr 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/grafana/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>node_exporter</title>
+      <link>https://www.fenghong.tech/tags/node_exporter/</link>
+      <pubDate>Fri, 24 Apr 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/node_exporter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>https://www.fenghong.tech/tags/mysql/</link>
+      <pubDate>Wed, 08 Apr 2020 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chrome</title>
+      <link>https://www.fenghong.tech/tags/chrome/</link>
+      <pubDate>Wed, 04 Mar 2020 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/chrome/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ss</title>
+      <link>https://www.fenghong.tech/tags/ss/</link>
+      <pubDate>Wed, 04 Mar 2020 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/ss/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>trojan</title>
+      <link>https://www.fenghong.tech/tags/trojan/</link>
+      <pubDate>Wed, 04 Mar 2020 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/trojan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>logs</title>
+      <link>https://www.fenghong.tech/tags/logs/</link>
+      <pubDate>Mon, 10 Feb 2020 11:12:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/logs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rsync</title>
+      <link>https://www.fenghong.tech/tags/rsync/</link>
+      <pubDate>Mon, 10 Feb 2020 11:12:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/rsync/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ansible</title>
+      <link>https://www.fenghong.tech/tags/ansible/</link>
+      <pubDate>Fri, 10 Jan 2020 22:42:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/ansible/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://www.fenghong.tech/tags/python/</link>
+      <pubDate>Fri, 10 Jan 2020 22:42:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shell</title>
+      <link>https://www.fenghong.tech/tags/shell/</link>
+      <pubDate>Fri, 10 Jan 2020 22:42:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>grub</title>
+      <link>https://www.fenghong.tech/tags/grub/</link>
+      <pubDate>Mon, 30 Dec 2019 15:22:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/grub/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://www.fenghong.tech/tags/linux/</link>
+      <pubDate>Mon, 30 Dec 2019 15:22:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>secure</title>
+      <link>https://www.fenghong.tech/tags/secure/</link>
+      <pubDate>Mon, 30 Dec 2019 15:22:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/secure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>coding</title>
+      <link>https://www.fenghong.tech/tags/coding/</link>
+      <pubDate>Sun, 29 Dec 2019 11:22:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/coding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cobra</title>
+      <link>https://www.fenghong.tech/tags/cobra/</link>
+      <pubDate>Fri, 13 Dec 2019 09:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/cobra/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dingding</title>
+      <link>https://www.fenghong.tech/tags/dingding/</link>
+      <pubDate>Fri, 29 Nov 2019 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/dingding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>goland</title>
+      <link>https://www.fenghong.tech/tags/goland/</link>
+      <pubDate>Mon, 25 Nov 2019 12:42:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/goland/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jetbrains</title>
+      <link>https://www.fenghong.tech/tags/jetbrains/</link>
+      <pubDate>Mon, 25 Nov 2019 12:42:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/jetbrains/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>https://www.fenghong.tech/tags/java/</link>
+      <pubDate>Sat, 23 Nov 2019 15:42:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jvm</title>
+      <link>https://www.fenghong.tech/tags/jvm/</link>
+      <pubDate>Sat, 23 Nov 2019 15:42:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/jvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cluster</title>
+      <link>https://www.fenghong.tech/tags/cluster/</link>
+      <pubDate>Wed, 13 Nov 2019 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/cluster/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>consul</title>
+      <link>https://www.fenghong.tech/tags/consul/</link>
+      <pubDate>Wed, 13 Nov 2019 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/consul/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>interview</title>
+      <link>https://www.fenghong.tech/tags/interview/</link>
+      <pubDate>Tue, 12 Nov 2019 20:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/interview/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hash</title>
+      <link>https://www.fenghong.tech/tags/hash/</link>
+      <pubDate>Mon, 11 Nov 2019 15:52:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/hash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>upstream</title>
+      <link>https://www.fenghong.tech/tags/upstream/</link>
+      <pubDate>Mon, 11 Nov 2019 15:52:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/upstream/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>haproxy</title>
+      <link>https://www.fenghong.tech/tags/haproxy/</link>
+      <pubDate>Thu, 07 Nov 2019 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/haproxy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>queue</title>
+      <link>https://www.fenghong.tech/tags/queue/</link>
+      <pubDate>Thu, 07 Nov 2019 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/queue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rabbitmq</title>
+      <link>https://www.fenghong.tech/tags/rabbitmq/</link>
+      <pubDate>Thu, 07 Nov 2019 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/rabbitmq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ci</title>
+      <link>https://www.fenghong.tech/tags/ci/</link>
+      <pubDate>Fri, 01 Nov 2019 21:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/ci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gogs</title>
+      <link>https://www.fenghong.tech/tags/gogs/</link>
+      <pubDate>Fri, 01 Nov 2019 21:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/gogs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>uk8s</title>
+      <link>https://www.fenghong.tech/tags/uk8s/</link>
+      <pubDate>Fri, 01 Nov 2019 21:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/uk8s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>flag</title>
+      <link>https://www.fenghong.tech/tags/flag/</link>
+      <pubDate>Sun, 20 Oct 2019 15:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/flag/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gin</title>
+      <link>https://www.fenghong.tech/tags/gin/</link>
+      <pubDate>Sun, 20 Oct 2019 15:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/gin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gorequest</title>
+      <link>https://www.fenghong.tech/tags/gorequest/</link>
+      <pubDate>Sun, 20 Oct 2019 15:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/gorequest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>logrus</title>
+      <link>https://www.fenghong.tech/tags/logrus/</link>
+      <pubDate>Sun, 20 Oct 2019 15:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/logrus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>syncd</title>
+      <link>https://www.fenghong.tech/tags/syncd/</link>
+      <pubDate>Sun, 20 Oct 2019 15:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/syncd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>doublyLinkedList</title>
+      <link>https://www.fenghong.tech/tags/doublylinkedlist/</link>
+      <pubDate>Sat, 12 Oct 2019 12:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/doublylinkedlist/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hashMap</title>
+      <link>https://www.fenghong.tech/tags/hashmap/</link>
+      <pubDate>Sat, 12 Oct 2019 12:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/hashmap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lru</title>
+      <link>https://www.fenghong.tech/tags/lru/</link>
+      <pubDate>Sat, 12 Oct 2019 12:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/lru/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bit</title>
+      <link>https://www.fenghong.tech/tags/bit/</link>
+      <pubDate>Thu, 10 Oct 2019 14:40:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/bit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>leetcode</title>
+      <link>https://www.fenghong.tech/tags/leetcode/</link>
+      <pubDate>Thu, 10 Oct 2019 14:40:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/leetcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>binarySearch</title>
+      <link>https://www.fenghong.tech/tags/binarysearch/</link>
+      <pubDate>Thu, 26 Sep 2019 22:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/binarysearch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>贪心算法</title>
+      <link>https://www.fenghong.tech/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Thu, 26 Sep 2019 17:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>debt</title>
+      <link>https://www.fenghong.tech/tags/debt/</link>
+      <pubDate>Tue, 24 Sep 2019 17:40:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/debt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pipeline</title>
+      <link>https://www.fenghong.tech/tags/pipeline/</link>
+      <pubDate>Mon, 16 Sep 2019 15:08:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/pipeline/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>exp</title>
+      <link>https://www.fenghong.tech/tags/exp/</link>
+      <pubDate>Fri, 13 Sep 2019 11:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/exp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>stack</title>
+      <link>https://www.fenghong.tech/tags/stack/</link>
+      <pubDate>Fri, 13 Sep 2019 11:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/stack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sourcetree</title>
+      <link>https://www.fenghong.tech/tags/sourcetree/</link>
+      <pubDate>Wed, 11 Sep 2019 15:49:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/sourcetree/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sql</title>
+      <link>https://www.fenghong.tech/tags/sql/</link>
+      <pubDate>Sat, 07 Sep 2019 02:56:11 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/sql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ubuntu</title>
+      <link>https://www.fenghong.tech/tags/ubuntu/</link>
+      <pubDate>Sat, 07 Sep 2019 02:56:11 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>flannel</title>
+      <link>https://www.fenghong.tech/tags/flannel/</link>
+      <pubDate>Fri, 06 Sep 2019 15:56:11 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/flannel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>network</title>
+      <link>https://www.fenghong.tech/tags/network/</link>
+      <pubDate>Fri, 06 Sep 2019 15:56:11 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>link</title>
+      <link>https://www.fenghong.tech/tags/link/</link>
+      <pubDate>Wed, 04 Sep 2019 15:56:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/link/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>markdown</title>
+      <link>https://www.fenghong.tech/tags/markdown/</link>
+      <pubDate>Wed, 04 Sep 2019 15:56:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>polynomial</title>
+      <link>https://www.fenghong.tech/tags/polynomial/</link>
+      <pubDate>Wed, 04 Sep 2019 15:56:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/polynomial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>acmeTiny</title>
+      <link>https://www.fenghong.tech/tags/acmetiny/</link>
+      <pubDate>Mon, 02 Sep 2019 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/acmetiny/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssh</title>
+      <link>https://www.fenghong.tech/tags/ssh/</link>
+      <pubDate>Sun, 01 Sep 2019 18:10:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dashboard</title>
+      <link>https://www.fenghong.tech/tags/dashboard/</link>
+      <pubDate>Thu, 29 Aug 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/dashboard/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>crypto</title>
+      <link>https://www.fenghong.tech/tags/crypto/</link>
+      <pubDate>Wed, 28 Aug 2019 18:10:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/crypto/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>module</title>
+      <link>https://www.fenghong.tech/tags/module/</link>
+      <pubDate>Wed, 28 Aug 2019 18:10:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/module/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>paxos</title>
+      <link>https://www.fenghong.tech/tags/paxos/</link>
+      <pubDate>Wed, 28 Aug 2019 18:10:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/paxos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rsa</title>
+      <link>https://www.fenghong.tech/tags/rsa/</link>
+      <pubDate>Wed, 28 Aug 2019 18:10:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/rsa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mode</title>
+      <link>https://www.fenghong.tech/tags/mode/</link>
+      <pubDate>Mon, 26 Aug 2019 14:56:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/mode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Authorization</title>
+      <link>https://www.fenghong.tech/tags/authorization/</link>
+      <pubDate>Sat, 10 Aug 2019 10:08:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/authorization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>channel</title>
+      <link>https://www.fenghong.tech/tags/channel/</link>
+      <pubDate>Fri, 09 Aug 2019 15:56:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/channel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>numpy</title>
+      <link>https://www.fenghong.tech/tags/numpy/</link>
+      <pubDate>Thu, 08 Aug 2019 17:05:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/numpy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sed</title>
+      <link>https://www.fenghong.tech/tags/sed/</link>
+      <pubDate>Sat, 08 Jun 2019 16:18:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/sed/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>devOps</title>
+      <link>https://www.fenghong.tech/tags/devops/</link>
+      <pubDate>Tue, 04 Jun 2019 17:09:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>federated</title>
+      <link>https://www.fenghong.tech/tags/federated/</link>
+      <pubDate>Thu, 23 May 2019 10:44:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/federated/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lvs</title>
+      <link>https://www.fenghong.tech/tags/lvs/</link>
+      <pubDate>Wed, 22 May 2019 10:44:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/lvs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dmesg</title>
+      <link>https://www.fenghong.tech/tags/dmesg/</link>
+      <pubDate>Thu, 16 May 2019 09:48:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/dmesg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sonar</title>
+      <link>https://www.fenghong.tech/tags/sonar/</link>
+      <pubDate>Mon, 11 Mar 2019 08:43:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/sonar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>filecoin</title>
+      <link>https://www.fenghong.tech/tags/filecoin/</link>
+      <pubDate>Mon, 04 Mar 2019 20:11:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/filecoin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>safe</title>
+      <link>https://www.fenghong.tech/tags/safe/</link>
+      <pubDate>Sat, 12 Jan 2019 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/safe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>living</title>
+      <link>https://www.fenghong.tech/tags/living/</link>
+      <pubDate>Thu, 10 Jan 2019 20:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/living/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Malaysia</title>
+      <link>https://www.fenghong.tech/tags/malaysia/</link>
+      <pubDate>Tue, 01 Jan 2019 20:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/malaysia/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tour</title>
+      <link>https://www.fenghong.tech/tags/tour/</link>
+      <pubDate>Tue, 01 Jan 2019 20:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/tour/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>style</title>
+      <link>https://www.fenghong.tech/tags/style/</link>
+      <pubDate>Thu, 20 Dec 2018 17:05:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/style/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>slb</title>
+      <link>https://www.fenghong.tech/tags/slb/</link>
+      <pubDate>Tue, 18 Dec 2018 12:22:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/slb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shadowsocks</title>
+      <link>https://www.fenghong.tech/tags/shadowsocks/</link>
+      <pubDate>Wed, 12 Dec 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/shadowsocks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SwitchyOmega</title>
+      <link>https://www.fenghong.tech/tags/switchyomega/</link>
+      <pubDate>Wed, 12 Dec 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/switchyomega/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>password</title>
+      <link>https://www.fenghong.tech/tags/password/</link>
+      <pubDate>Tue, 11 Dec 2018 17:05:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/password/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SlowQuery</title>
+      <link>https://www.fenghong.tech/tags/slowquery/</link>
+      <pubDate>Tue, 11 Dec 2018 17:05:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/slowquery/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>aliYun</title>
+      <link>https://www.fenghong.tech/tags/aliyun/</link>
+      <pubDate>Mon, 03 Dec 2018 22:50:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/aliyun/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>elk</title>
+      <link>https://www.fenghong.tech/tags/elk/</link>
+      <pubDate>Mon, 03 Dec 2018 22:50:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/elk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>logstash</title>
+      <link>https://www.fenghong.tech/tags/logstash/</link>
+      <pubDate>Mon, 03 Dec 2018 22:50:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/logstash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>games</title>
+      <link>https://www.fenghong.tech/tags/games/</link>
+      <pubDate>Sun, 02 Dec 2018 17:42:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/games/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>error</title>
+      <link>https://www.fenghong.tech/tags/error/</link>
+      <pubDate>Thu, 15 Nov 2018 17:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/error/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>computer</title>
+      <link>https://www.fenghong.tech/tags/computer/</link>
+      <pubDate>Sun, 11 Nov 2018 20:11:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/computer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hack</title>
+      <link>https://www.fenghong.tech/tags/hack/</link>
+      <pubDate>Sat, 10 Nov 2018 23:48:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/hack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>resources</title>
+      <link>https://www.fenghong.tech/tags/resources/</link>
+      <pubDate>Fri, 09 Nov 2018 15:56:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/resources/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>certbot</title>
+      <link>https://www.fenghong.tech/tags/certbot/</link>
+      <pubDate>Thu, 08 Nov 2018 23:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/certbot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>https</title>
+      <link>https://www.fenghong.tech/tags/https/</link>
+      <pubDate>Thu, 08 Nov 2018 23:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/https/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>knowledge</title>
+      <link>https://www.fenghong.tech/tags/knowledge/</link>
+      <pubDate>Thu, 08 Nov 2018 17:17:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/knowledge/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>manage</title>
+      <link>https://www.fenghong.tech/tags/manage/</link>
+      <pubDate>Thu, 08 Nov 2018 17:17:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/manage/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iNotify</title>
+      <link>https://www.fenghong.tech/tags/inotify/</link>
+      <pubDate>Wed, 07 Nov 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/inotify/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ownCloud</title>
+      <link>https://www.fenghong.tech/tags/owncloud/</link>
+      <pubDate>Sat, 20 Oct 2018 16:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/owncloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>php</title>
+      <link>https://www.fenghong.tech/tags/php/</link>
+      <pubDate>Sat, 20 Oct 2018 16:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>food</title>
+      <link>https://www.fenghong.tech/tags/food/</link>
+      <pubDate>Sun, 07 Oct 2018 00:00:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/food/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Coco</title>
+      <link>https://www.fenghong.tech/tags/coco/</link>
+      <pubDate>Sat, 08 Sep 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/coco/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jumpServer</title>
+      <link>https://www.fenghong.tech/tags/jumpserver/</link>
+      <pubDate>Sat, 08 Sep 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/jumpserver/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Luna</title>
+      <link>https://www.fenghong.tech/tags/luna/</link>
+      <pubDate>Sat, 08 Sep 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/luna/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mariaDB</title>
+      <link>https://www.fenghong.tech/tags/mariadb/</link>
+      <pubDate>Sat, 08 Sep 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/mariadb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sftp</title>
+      <link>https://www.fenghong.tech/tags/sftp/</link>
+      <pubDate>Sat, 08 Sep 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/sftp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MFA</title>
+      <link>https://www.fenghong.tech/tags/mfa/</link>
+      <pubDate>Tue, 28 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/mfa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jeju</title>
+      <link>https://www.fenghong.tech/tags/jeju/</link>
+      <pubDate>Wed, 15 Aug 2018 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/jeju/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>problem</title>
+      <link>https://www.fenghong.tech/tags/problem/</link>
+      <pubDate>Sun, 12 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/problem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>qW3xT</title>
+      <link>https://www.fenghong.tech/tags/qw3xt/</link>
+      <pubDate>Sun, 12 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/qw3xt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Navicat</title>
+      <link>https://www.fenghong.tech/tags/navicat/</link>
+      <pubDate>Mon, 06 Aug 2018 15:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/navicat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>xshell</title>
+      <link>https://www.fenghong.tech/tags/xshell/</link>
+      <pubDate>Mon, 06 Aug 2018 15:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/xshell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>disk</title>
+      <link>https://www.fenghong.tech/tags/disk/</link>
+      <pubDate>Wed, 01 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/disk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>find</title>
+      <link>https://www.fenghong.tech/tags/find/</link>
+      <pubDate>Wed, 01 Aug 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/find/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>virtul</title>
+      <link>https://www.fenghong.tech/tags/virtul/</link>
+      <pubDate>Thu, 26 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/virtul/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>internet</title>
+      <link>https://www.fenghong.tech/tags/internet/</link>
+      <pubDate>Wed, 25 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/internet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zabbix</title>
+      <link>https://www.fenghong.tech/tags/zabbix/</link>
+      <pubDate>Tue, 24 Jul 2018 09:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/zabbix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tomcat</title>
+      <link>https://www.fenghong.tech/tags/tomcat/</link>
+      <pubDate>Wed, 18 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/tomcat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cache</title>
+      <link>https://www.fenghong.tech/tags/cache/</link>
+      <pubDate>Sun, 15 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/cache/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>keepalived</title>
+      <link>https://www.fenghong.tech/tags/keepalived/</link>
+      <pubDate>Wed, 11 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/keepalived/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LB</title>
+      <link>https://www.fenghong.tech/tags/lb/</link>
+      <pubDate>Fri, 29 Jun 2018 16:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/lb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>firewalld</title>
+      <link>https://www.fenghong.tech/tags/firewalld/</link>
+      <pubDate>Fri, 29 Jun 2018 15:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/firewalld/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>samba</title>
+      <link>https://www.fenghong.tech/tags/samba/</link>
+      <pubDate>Tue, 26 Jun 2018 08:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/samba/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ftp</title>
+      <link>https://www.fenghong.tech/tags/ftp/</link>
+      <pubDate>Mon, 25 Jun 2018 21:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/ftp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>slap</title>
+      <link>https://www.fenghong.tech/tags/slap/</link>
+      <pubDate>Fri, 15 Jun 2018 22:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/slap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MHA</title>
+      <link>https://www.fenghong.tech/tags/mha/</link>
+      <pubDate>Fri, 15 Jun 2018 16:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/mha/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>slave</title>
+      <link>https://www.fenghong.tech/tags/slave/</link>
+      <pubDate>Thu, 14 Jun 2018 16:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/slave/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>xtrabackup</title>
+      <link>https://www.fenghong.tech/tags/xtrabackup/</link>
+      <pubDate>Wed, 13 Jun 2018 20:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/xtrabackup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>binlog</title>
+      <link>https://www.fenghong.tech/tags/binlog/</link>
+      <pubDate>Mon, 11 Jun 2018 21:20:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/binlog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>index</title>
+      <link>https://www.fenghong.tech/tags/index/</link>
+      <pubDate>Sat, 09 Jun 2018 22:33:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DNS</title>
+      <link>https://www.fenghong.tech/tags/dns/</link>
+      <pubDate>Sat, 09 Jun 2018 00:33:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/dns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>数据库原理</title>
+      <link>https://www.fenghong.tech/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Fri, 08 Jun 2018 20:33:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hexo</title>
+      <link>https://www.fenghong.tech/tags/hexo/</link>
+      <pubDate>Wed, 06 Jun 2018 22:33:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/hexo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mac</title>
+      <link>https://www.fenghong.tech/tags/mac/</link>
+      <pubDate>Thu, 16 Nov 2017 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wifi</title>
+      <link>https://www.fenghong.tech/tags/wifi/</link>
+      <pubDate>Thu, 16 Nov 2017 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/wifi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Raft</title>
+      <link>https://www.fenghong.tech/tags/raft/</link>
+      <pubDate>Fri, 10 Nov 2017 23:56:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/raft/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tar</title>
+      <link>https://www.fenghong.tech/tags/tar/</link>
+      <pubDate>Fri, 10 Nov 2017 23:36:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/tar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vim</title>
+      <link>https://www.fenghong.tech/tags/vim/</link>
+      <pubDate>Fri, 10 Nov 2017 23:36:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

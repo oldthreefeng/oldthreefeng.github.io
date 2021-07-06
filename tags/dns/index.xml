@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DNS on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/dns/</link>
+    <description>Recent content in DNS on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Sat, 09 Jun 2018 00:33:14 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/dns/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DNS服务</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-10-dns/</link>
+      <pubDate>Sat, 09 Jun 2018 00:33:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-10-dns/</guid>
+      <description>DNS服务 DNS:Domain Name Service 应用</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>binarySearch on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/binarysearch/</link>
+    <description>Recent content in binarySearch on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Thu, 26 Sep 2019 22:40:10 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/binarysearch/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>go-binarySearch</title>
+      <link>https://www.fenghong.tech/blog/algorithm/binarysearch/</link>
+      <pubDate>Thu, 26 Sep 2019 22:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/binarysearch/</guid>
+      <description>[TOC] 14. first-position-of-target Description** 给定一个排序</description>
+    </item>
+    
+    <item>
+      <title>Mounting Array</title>
+      <link>https://www.fenghong.tech/blog/algorithm/binarysearch-mt/</link>
+      <pubDate>Thu, 26 Sep 2019 22:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/binarysearch-mt/</guid>
+      <description>[TOC] 1095.山脉数组</description>
+    </item>
+    
+  </channel>
+</rss>

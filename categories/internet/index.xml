@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>internet on Louis Blog</title>
+    <link>https://www.fenghong.tech/categories/internet/</link>
+    <description>Recent content in internet on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Sun, 15 Jul 2018 19:59:32 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/categories/internet/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Varnish</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-15-varnish/</link>
+      <pubDate>Sun, 15 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-15-varnish/</guid>
+      <description>摘要： 缓存相关的概念</description>
+    </item>
+    
+    <item>
+      <title>Samba</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-25-samba/</link>
+      <pubDate>Tue, 26 Jun 2018 08:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-25-samba/</guid>
+      <description>摘要：Samba服务</description>
+    </item>
+    
+    <item>
+      <title>FTP1</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-25-ftp1/</link>
+      <pubDate>Mon, 25 Jun 2018 21:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-25-ftp1/</guid>
+      <description>摘要：实现基于mys</description>
+    </item>
+    
+    <item>
+      <title>FTP</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-24-ftp/</link>
+      <pubDate>Sun, 24 Jun 2018 08:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-24-ftp/</guid>
+      <description>摘要：FTP的简介；</description>
+    </item>
+    
+    <item>
+      <title>Log</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-22-log/</link>
+      <pubDate>Fri, 22 Jun 2018 17:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-22-log/</guid>
+      <description>摘要：日志相关，jo</description>
+    </item>
+    
+    <item>
+      <title>DNS服务</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-10-dns/</link>
+      <pubDate>Sat, 09 Jun 2018 00:33:14 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-10-dns/</guid>
+      <description>DNS服务 DNS:Domain Name Service 应用</description>
+    </item>
+    
+    <item>
+      <title>Linux下路由配置梳理</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-04-20-linux_router/</link>
+      <pubDate>Fri, 20 Apr 2018 17:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-04-20-linux_router/</guid>
+      <description>摘要：路由的基本知识</description>
+    </item>
+    
+  </channel>
+</rss>

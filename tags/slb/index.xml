@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>slb on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/slb/</link>
+    <description>Recent content in slb on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Tue, 18 Dec 2018 12:22:12 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/slb/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ULB负载均衡踩的坑</title>
+      <link>https://www.fenghong.tech/blog/ops/loaderbalancerinucloud/</link>
+      <pubDate>Tue, 18 Dec 2018 12:22:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/loaderbalancerinucloud/</guid>
+      <description>[TOC] ULB的http强</description>
+    </item>
+    
+  </channel>
+</rss>

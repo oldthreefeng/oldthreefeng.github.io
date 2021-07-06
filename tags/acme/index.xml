@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>acme on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/acme/</link>
+    <description>Recent content in acme on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Mon, 04 May 2020 11:54:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/acme/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>gitlab-ce-zh部署并开启https</title>
+      <link>https://www.fenghong.tech/blog/ops/gitlab-ce-zh-install-with-https/</link>
+      <pubDate>Mon, 04 May 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/gitlab-ce-zh-install-with-https/</guid>
+      <description>[TOC] 背景: 源码仓库管理</description>
+    </item>
+    
+    <item>
+      <title>搭建trojan服务</title>
+      <link>https://www.fenghong.tech/blog/ops/trojan-install/</link>
+      <pubDate>Wed, 04 Mar 2020 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/trojan-install/</guid>
+      <description>[TOC] 摘要： 科学上网 trojan 背</description>
+    </item>
+    
+  </channel>
+</rss>

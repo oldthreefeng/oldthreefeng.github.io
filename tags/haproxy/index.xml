@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>haproxy on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/haproxy/</link>
+    <description>Recent content in haproxy on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Thu, 07 Nov 2019 13:54:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/haproxy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>RabbitMq消息队列使用</title>
+      <link>https://www.fenghong.tech/blog/go/rabbitmq-queue-use/</link>
+      <pubDate>Thu, 07 Nov 2019 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/rabbitmq-queue-use/</guid>
+      <description>$ 表示shell , #</description>
+    </item>
+    
+    <item>
+      <title>RabbitMq高可用集群搭建</title>
+      <link>https://www.fenghong.tech/blog/ops/rabbitmq-cluster-install/</link>
+      <pubDate>Wed, 06 Nov 2019 17:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/rabbitmq-cluster-install/</guid>
+      <description>RabbitMQ这款</description>
+    </item>
+    
+    <item>
+      <title>HAProxy</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-09-haproxy/</link>
+      <pubDate>Mon, 09 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-09-haproxy/</guid>
+      <description>摘要： HAproxy</description>
+    </item>
+    
+  </channel>
+</rss>

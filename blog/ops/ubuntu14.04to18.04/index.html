@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn"><head>
+  <meta charset="utf-8">
+  <title>ubuntu 14.04 upgrade to 18.04(LTS) | Louis Blog</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="有技术 有温度 有情怀">
+  
+  <meta name="author" content="Louis ">
+  <meta name="generator" content="Hugo 0.73.0" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  
+  <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="/plugins/animate/animate.css">
+  
+  <link rel="stylesheet" href="/plugins/venobox/venobox.css">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="/images/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="/images/images/favicon.png " type="image/x-icon">
+
+  <!--Algolia-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css">
+</head>
+<body>
+<!-- header -->
+<header>
+  
+
+  <!-- navigation -->
+  <div class="navigation bg-white position-relative">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="/"><img class="img-fluid pb-lg-3" src="/images/images/logo.png" width="189px" alt="Louis Blog"></a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/"></a>
+            </li>
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                博客
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/categories/kubernetes">Kubernetes</a>
+                
+                <a class="dropdown-item" href="/categories/sealos">sealos</a>
+                
+                <a class="dropdown-item" href="/categories/ops">运维相关</a>
+                
+                <a class="dropdown-item" href="/categories/golang">golang</a>
+                
+                <a class="dropdown-item" href="/categories/algorithm">algorithm</a>
+                
+                <a class="dropdown-item" href="/categories/tools">tools</a>
+                
+                <a class="dropdown-item" href="/blog">全部</a>
+                
+              </div>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/team">友情链接</a>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                关于我
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/contact">about</a>
+                
+                <a class="dropdown-item" href="https://github.com/oldthreefeng">github</a>
+                
+              </div>
+            </li>
+            
+            
+          </ul>
+
+          
+          
+
+          
+          <!-- search -->
+          <div class="search px-4">
+            <button id="searchOpen" class="search-btn"><i class="fa fa-search text-dark"></i></button>
+            <div class="search-wrapper">
+              <form action="/search">
+                <input class="search-box form-control" id="js-algolia-btn" name="s" type="search" placeholder="输入搜索词">
+              </form>
+              <button id="searchClose" class="search-close"><i class="fa fa-close text-dark"></i></button>
+            </div>
+          </div>
+          
+          
+          <!-- get start btn -->
+          <a href="/contact" class="btn btn-primary hover-ripple">联系我</a>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- /navigation -->
+</header>
+<!-- /header -->
+
+
+<!-- page title -->
+<section class="section bg-cover overlay" style="background-image: url('/'),url('/'),url('/images/images/backgrounds/page-title.jpg');">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-white mb-3">ubuntu 14.04 upgrade to 18.04(LTS)</h2>
+        <!-- breadcrumb -->
+        
+        <p class="text-white"></p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /page title -->
+
+
+<!-- blog details -->
+<section class="section">
+  <div class="container blog">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- post thumb -->
+        <div class="position-relative mb-5">
+          <img src="/"  onerror="this.src='https:\/\/pic.fenghong.tech\/proto\/ghost-2892905__340.jpg'" alt="post thumb" class="img-fluid w-100">
+           <div class="card-type">Ops</div>
+        </div>
+        <div class="card-meta text-uppercase mb-2">作者  <strong class="text-dark"><a href="https://www.fenghong.tech">Louis</a></strong>
+          
+            发表于 <strong class="text-dark">2019年9月3日</strong></div>
+        <hr>
+        <div class="content">
+          <p>[TOC]</p>
+<blockquote>
+<h3 id="前言">前言</h3>
+<p>升级ubuntu,为什么要升级呢?公司打算使用docker,老版本的ubuntu不支持docker-ce最新版,需要升级至18.04(LTS),这就很蛋疼了,对ubuntu的熟悉感差不多就只会dpcg,apt等简单的命令安装.查询了相关文档后,记录一下踩过的坑.</p>
+</blockquote>
+<h3 id="requirment">requirment</h3>
+<p>To install Docker Engine - Community, you need the 64-bit version of one of these Ubuntu versions:</p>
+<ul>
+<li>Disco 19.04</li>
+<li>Cosmic 18.10</li>
+<li>Bionic 18.04 (LTS)</li>
+<li>Xenial 16.04 (LTS)</li>
+</ul>
+<h3 id="开启升级之旅1404-1604">开启升级之旅14.04-16.04</h3>
+<p>三条命名直接升级.</p>
+<pre><code>$ sudo apt-get update 
+$ sudo apt-get dist-upgrade
+$ sudo do-release-upgrade
+
+</code></pre><p>开启升级之旅16.04-18.04</p>
+<pre><code>$ sudo apt-get update 
+$ sudo apt-get dist-upgrade
+$ sudo do-release-upgrade
+</code></pre><p>验证是否成功升级,发现lsb模块丢失</p>
+<pre><code>$ lsb_release -a  
+No LSB modules are available. 
+</code></pre><p>升级安装丢失的模块lsb即可</p>
+<pre><code>$ sudo apt-get install lsb-core
+</code></pre><p>升级的过程如果只需要几条命令,那需要运维干啥呢~~.因为系统比较老,直接升级到最新版本,可能引发很多问题.</p>
+<p>这边引发的问题是<code>python3</code>,<code> lsb-core</code> ,<code>lsb-release</code> ,<code>python3-apt</code></p>
+<pre><code>louis@qx-prod-qukuailian:~$ sudo apt update &amp;&amp; sudo apt upgrade
+Hit:1 http://xxg.mirrors.ucloud.cn/ubuntu bionic InRelease
+Get:2 http://xxg.mirrors.ucloud.cn/ubuntu bionic-updates InRelease [88.7 kB]         
+Hit:5 https://mirrors.aliyun.com/docker-ce/linux/ubuntu bionic InRelease                                       
+Get:3 http://xxg.mirrors.ucloud.cn/ubuntu bionic-backports InRelease [74.6 kB]                                 
+Get:4 http://xxg.mirrors.ucloud.cn/ubuntu bionic-security InRelease [88.7 kB]
+Fetched 252 kB in 1s (304 kB/s)                               
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+All packages are up to date.
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+4 not fully installed or removed.
+After this operation, 0 B of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Setting up python3 (3.6.7-1~18.04) ...
+running python rtupdate hooks for python3.6...
+dpkg-query: package 'dh-python' is not installed
+Use dpkg --info (= dpkg-deb --info) to examine archive files,
+and dpkg --contents (= dpkg-deb --contents) to list their contents.
+Traceback (most recent call last):
+  File &quot;/usr/bin/py3clean&quot;, line 210, in &lt;module&gt;
+    main()
+  File &quot;/usr/bin/py3clean&quot;, line 196, in main
+    pfiles = set(dpf.from_package(options.package))
+  File &quot;/usr/share/python3/debpython/files.py&quot;, line 53, in from_package
+    raise Exception(&quot;cannot get content of %s&quot; % package_name)
+Exception: cannot get content of dh-python
+error running python rtupdate hook dh-python
+dpkg: error processing package python3 (--configure):
+ installed python3 package post-installation script subprocess returned error exit status 4
+dpkg: dependency problems prevent configuration of lsb-core:
+ lsb-core depends on python3; however:
+  Package python3 is not configured yet.
+ lsb-core depends on python3:any (&gt;= 3.4~); however:
+  Package python3 is not configured yet.
+
+dpkg: error processing package lsb-core (--configure):
+ dependency problems - leaving unconfigured
+dpkg: dependency problems prevent configuration of lsb-release:
+ lsb-release depends on python3:any (&gt;= 3.4~); however:
+  Package python3 is not configured yet.
+
+dpkg: error processing package lsb-release (--configure):
+ dependency problems - leaving unconfigured
+dpkg: dependency problems prevent configuration of python3-apt:
+ python3-apt depends on python3 (&lt;&lt; 3.7); however:
+  Package python3 is not configured yet.
+ python3-apt depends on python3 (&gt;= 3.6~); however:
+  Package python3 is not configured yet.
+ python3-apt depends on python3:any (&gt;= 3.3.2-2~); however:
+  Package python3 is not configured yet.
+
+dpkg: error processing package python3-apt (--configure):
+ dependency problems - leaving unconfigured
+Errors were encountered while processing:
+ python3
+ lsb-core
+ lsb-release
+ python3-apt
+</code></pre><p>首先定位一下<code>python3</code>,查找<code>python3</code>相关依赖</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">root@qx-prod-qukuailian:~# dpkg --configure python3
+Setting up python3 <span style="color:#f92672">(</span>3.6.7-1~18.04<span style="color:#f92672">)</span> ...
+running python rtupdate hooks <span style="color:#66d9ef">for</span> python3.6...
+dpkg-query: package <span style="color:#e6db74">&#39;dh-python&#39;</span> is not installed
+Use dpkg --info <span style="color:#f92672">(=</span> dpkg-deb --info<span style="color:#f92672">)</span> to examine archive files,
+and dpkg --contents <span style="color:#f92672">(=</span> dpkg-deb --contents<span style="color:#f92672">)</span> to list their contents.
+Traceback <span style="color:#f92672">(</span>most recent call last<span style="color:#f92672">)</span>:
+  File <span style="color:#e6db74">&#34;/usr/bin/py3clean&#34;</span>, line 210, in &lt;module&gt;
+    main<span style="color:#f92672">()</span>
+  File <span style="color:#e6db74">&#34;/usr/bin/py3clean&#34;</span>, line 196, in main
+    pfiles <span style="color:#f92672">=</span> set<span style="color:#f92672">(</span>dpf.from_package<span style="color:#f92672">(</span>options.package<span style="color:#f92672">))</span>
+  File <span style="color:#e6db74">&#34;/usr/share/python3/debpython/files.py&#34;</span>, line 53, in from_package
+    raise Exception<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;cannot get content of %s&#34;</span> % package_name<span style="color:#f92672">)</span>
+Exception: cannot get content of dh-python
+error running python rtupdate hook dh-python
+dpkg: error processing package python3 <span style="color:#f92672">(</span>--configure<span style="color:#f92672">)</span>:
+ installed python3 package post-installation script subprocess returned error exit status <span style="color:#ae81ff">4</span>
+Errors were encountered <span style="color:#66d9ef">while</span> processing:
+ python3
+</code></pre></div><p>看起来像<code>python3</code>安装不行,google了半天,发现需要重装<code>Python3</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo apt-get install --reinstall python3
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+<span style="color:#ae81ff">0</span> upgraded, <span style="color:#ae81ff">0</span> newly installed, <span style="color:#ae81ff">1</span> reinstalled, <span style="color:#ae81ff">0</span> to remove and <span style="color:#ae81ff">0</span> not upgraded.
+<span style="color:#ae81ff">4</span> not fully installed or removed.
+After this operation, <span style="color:#ae81ff">0</span> B of additional disk space will be used.
+E: Internal Error, No file name <span style="color:#66d9ef">for</span> python3:amd64
+root@qx-prod-qukuailian:~# sudo apt update <span style="color:#f92672">&amp;&amp;</span> sudo apt upgrade
+Hit:1 http://xxg.mirrors.ucloud.cn/ubuntu bionic InRelease
+Hit:2 http://xxg.mirrors.ucloud.cn/ubuntu bionic-updates InRelease                   
+Hit:5 https://mirrors.aliyun.com/docker-ce/linux/ubuntu bionic InRelease             
+Hit:3 http://xxg.mirrors.ucloud.cn/ubuntu bionic-backports InRelease
+Hit:4 http://xxg.mirrors.ucloud.cn/ubuntu bionic-security InRelease
+Reading package lists... Done                      
+Building dependency tree       
+Reading state information... Done
+All packages are up to date.
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Calculating upgrade... Done
+<span style="color:#ae81ff">0</span> upgraded, <span style="color:#ae81ff">0</span> newly installed, <span style="color:#ae81ff">0</span> to remove and <span style="color:#ae81ff">0</span> not upgraded.
+<span style="color:#ae81ff">4</span> not fully installed or removed.
+After this operation, <span style="color:#ae81ff">0</span> B of additional disk space will be used.
+Do you want to <span style="color:#66d9ef">continue</span>? <span style="color:#f92672">[</span>Y/n<span style="color:#f92672">]</span> y
+Setting up python3 <span style="color:#f92672">(</span>3.6.7-1~18.04<span style="color:#f92672">)</span> ...
+running python rtupdate hooks <span style="color:#66d9ef">for</span> python3.6...
+dpkg-query: package <span style="color:#e6db74">&#39;dh-python&#39;</span> is not installed
+Use dpkg --info <span style="color:#f92672">(=</span> dpkg-deb --info<span style="color:#f92672">)</span> to examine archive files,
+and dpkg --contents <span style="color:#f92672">(=</span> dpkg-deb --contents<span style="color:#f92672">)</span> to list their contents.
+Traceback <span style="color:#f92672">(</span>most recent call last<span style="color:#f92672">)</span>:
+  File <span style="color:#e6db74">&#34;/usr/bin/py3clean&#34;</span>, line 210, in &lt;module&gt;
+    main<span style="color:#f92672">()</span>
+  File <span style="color:#e6db74">&#34;/usr/bin/py3clean&#34;</span>, line 196, in main
+    pfiles <span style="color:#f92672">=</span> set<span style="color:#f92672">(</span>dpf.from_package<span style="color:#f92672">(</span>options.package<span style="color:#f92672">))</span>
+  File <span style="color:#e6db74">&#34;/usr/share/python3/debpython/files.py&#34;</span>, line 53, in from_package
+    raise Exception<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;cannot get content of %s&#34;</span> % package_name<span style="color:#f92672">)</span>
+Exception: cannot get content of dh-python
+error running python rtupdate hook dh-python
+dpkg: error processing package python3 <span style="color:#f92672">(</span>--configure<span style="color:#f92672">)</span>:
+ installed python3 package post-installation script subprocess returned error exit status <span style="color:#ae81ff">4</span>
+dpkg: dependency problems prevent configuration of lsb-core:
+ lsb-core depends on python3; however:
+  Package python3 is not configured yet.
+ lsb-core depends on python3:any <span style="color:#f92672">(</span>&gt;<span style="color:#f92672">=</span> 3.4~<span style="color:#f92672">)</span>; however:
+  Package python3 is not configured yet.
+
+dpkg: error processing package lsb-core <span style="color:#f92672">(</span>--configure<span style="color:#f92672">)</span>:
+ dependency problems - leaving unconfigured
+dpkg: dependency problems prevent configuration of lsb-release:
+ lsb-release depends on python3:any <span style="color:#f92672">(</span>&gt;<span style="color:#f92672">=</span> 3.4~<span style="color:#f92672">)</span>; however:
+  Package python3 is not configured yet.
+
+dpkg: error processing package lsb-release <span style="color:#f92672">(</span>--configure<span style="color:#f92672">)</span>:
+ dependency problems - leaving unconfigured
+dpkg: dependency problems prevent configuration of python3-apt:
+ python3-apt depends on python3 <span style="color:#f92672">(</span><span style="color:#e6db74">&lt;&lt; 3.7); however:
+</span><span style="color:#e6db74">  Package python3</span> is not configured yet.
+ python3-apt depends on python3 <span style="color:#f92672">(</span>&gt;<span style="color:#f92672">=</span> 3.6~<span style="color:#f92672">)</span>; however:
+  Package python3 is not configured yet.
+ python3-apt depends on python3:any <span style="color:#f92672">(</span>&gt;<span style="color:#f92672">=</span> 3.3.2-2~<span style="color:#f92672">)</span>; however:
+  Package python3 is not configured yet.
+
+dpkg: error processing package python3-apt <span style="color:#f92672">(</span>--configure<span style="color:#f92672">)</span>:
+ dependency problems - leaving unconfigured
+Errors were encountered <span style="color:#66d9ef">while</span> processing:
+ python3
+ lsb-core
+ lsb-release
+ python3-apt
+E: Sub-process /usr/bin/dpkg returned an error code <span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>
+</code></pre></div><p>黑人问号,搞了半天,陷入循环了么,升级依赖需要这些<code>python3</code>,<code> lsb-core</code> ,<code>lsb-release</code> ,<code>python3-apt</code>依赖,我重新安装又得依赖这些,陷入了先有鸡还是先有蛋的问题;然后想了半天,重新再次查看日志</p>
+<pre><code>dpkg-query: package 'dh-python' is not installed
+</code></pre><p>想了想,是不是应该安装这个依赖呢,直接就开启安装模式</p>
+<pre><code>root@qx-prod-qukuailian:~# apt-get install dh-python
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  python3-distutils python3-lib2to3
+The following NEW packages will be installed:
+  dh-python python3-distutils python3-lib2to3
+0 upgraded, 3 newly installed, 0 to remove and 0 not upgraded.
+4 not fully installed or removed.
+Need to get 0 B/307 kB of archives.
+After this operation, 2,556 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Selecting previously unselected package python3-lib2to3.
+(Reading database ... 22162 files and directories currently installed.)
+Preparing to unpack .../python3-lib2to3_3.6.8-1~18.04_all.deb ...
+Unpacking python3-lib2to3 (3.6.8-1~18.04) ...
+Selecting previously unselected package python3-distutils.
+Preparing to unpack .../python3-distutils_3.6.8-1~18.04_all.deb ...
+Unpacking python3-distutils (3.6.8-1~18.04) ...
+Selecting previously unselected package dh-python.
+Preparing to unpack .../dh-python_3.20180325ubuntu2_all.deb ...
+Unpacking dh-python (3.20180325ubuntu2) ...
+Setting up python3 (3.6.7-1~18.04) ...
+running python rtupdate hooks for python3.6...
+running python post-rtupdate hooks for python3.6...
+Setting up lsb-release (9.20170808ubuntu1) ...
+Setting up python3-lib2to3 (3.6.8-1~18.04) ...
+Setting up python3-distutils (3.6.8-1~18.04) ...
+Setting up python3-apt (1.6.4) ...
+Setting up lsb-core (9.20170808ubuntu1) ...
+Setting up dh-python (3.20180325ubuntu2) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+W: APT had planned for dpkg to do more than it reported back (24 vs 28).
+   Affected packages: python3:amd64
+root@qx-prod-qukuailian:~# sudo apt update &amp;&amp; sudo apt upgrade
+Hit:1 http://xxg.mirrors.ucloud.cn/ubuntu bionic InRelease
+Hit:5 https://mirrors.aliyun.com/docker-ce/linux/ubuntu bionic InRelease
+Hit:2 http://xxg.mirrors.ucloud.cn/ubuntu bionic-updates InRelease      
+Hit:3 http://xxg.mirrors.ucloud.cn/ubuntu bionic-backports InRelease
+Hit:4 http://xxg.mirrors.ucloud.cn/ubuntu bionic-security InRelease
+Reading package lists... Done                      
+Building dependency tree       
+Reading state information... Done
+All packages are up to date.
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+</code></pre><p>哟,没有报错,说明安装成功,日志的查看也非常重要,仔细分析报错内容,针对性的执行命令会更容易解决问题,验证一下升级是否成功.</p>
+<pre><code>$ lsb_release -a
+LSB Version:	core-9.20170808ubuntu1-noarch:security-9.20170808ubuntu1-noarch
+Distributor ID:	Ubuntu
+Description:	Ubuntu 18.04.3 LTS
+Release:	18.04
+Codename:	bionic
+</code></pre><p>升级完,查看<code>systemctl</code>,也就是systemd是否可以执行,执行命令发现python又报了一个错误.</p>
+<pre><code>root@qx-prod-qukuailian:~# systemctl
+Traceback (most recent call last):
+  File &quot;/usr/lib/python3.6/dbm/gnu.py&quot;, line 4, in &lt;module&gt;
+    from _gdbm import *
+ModuleNotFoundError: No module named '_gdbm'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File &quot;/usr/lib/python3/dist-packages/CommandNotFound/CommandNotFound.py&quot;, line 7, in &lt;module&gt;
+    import dbm.gnu as gdbm
+  File &quot;/usr/lib/python3.6/dbm/gnu.py&quot;, line 6, in &lt;module&gt;
+    raise ImportError(str(msg) + ', please install the python3-gdbm package')
+ImportError: No module named '_gdbm', please install the python3-gdbm package
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File &quot;/usr/lib/command-not-found&quot;, line 27, in &lt;module&gt;
+    from CommandNotFound.util import crash_guard
+  File &quot;/usr/lib/python3/dist-packages/CommandNotFound/__init__.py&quot;, line 3, in &lt;module&gt;
+    from CommandNotFound.CommandNotFound import CommandNotFound
+  File &quot;/usr/lib/python3/dist-packages/CommandNotFound/CommandNotFound.py&quot;, line 9, in &lt;module&gt;
+    import gdbm
+ModuleNotFoundError: No module named 'gdbm'
+</code></pre><p>缺乏<code>gdbm</code>包,这里安装一下这个包就可以解决问题.</p>
+<pre><code>$ sudo apt-get install gdbm
+</code></pre><p>重头戏来了,做了这么多,就是想要系统可以支持docker-ce最新版</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -fsSL get.docker.com -o get-docker.sh
+$ sudo sh get-docker.sh --mirror Aliyun
+$ sudo systemctl start docker
+System has not been booted with systemd as init system <span style="color:#f92672">(</span>PID 1<span style="color:#f92672">)</span>. Can<span style="color:#960050;background-color:#1e0010">&#39;</span>t operate.
+</code></pre></div><p><code>docker</code>是成功安装了,但是<code>systemd</code>却没有启动起来,所以这里想了下,既然<code>docker</code>已经安装了,直接用<code>service</code>启动是否可以呢?结果发现启动成功</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo service docker start
+docker start/running, process <span style="color:#ae81ff">1451</span>
+$ sudo docker info
+Client:
+ Debug Mode: false
+
+Server:
+ Containers: <span style="color:#ae81ff">0</span>
+  Running: <span style="color:#ae81ff">0</span>
+  Paused: <span style="color:#ae81ff">0</span>
+  Stopped: <span style="color:#ae81ff">0</span>
+ Images: <span style="color:#ae81ff">0</span>
+ Server Version: 19.03.1
+ Storage Driver: aufs
+  Root Dir: /var/lib/docker/aufs
+  Backing Filesystem: extfs
+  Dirs: <span style="color:#ae81ff">0</span>
+  Dirperm1 Supported: false
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 894b81a4b802e4eb2a91d1ce216b8817763c29fb
+ runc version: 425e105d5a03fabd737a126ad93d62a9eeede87f
+ init version: fec3683
+ Security Options:
+  apparmor
+  seccomp
+   Profile: default
+ Kernel Version: 3.13.0-63-generic
+ Operating System: Ubuntu 18.04.3 LTS
+ OSType: linux
+ Architecture: x86_64
+ CPUs: <span style="color:#ae81ff">4</span>
+ Total Memory: 7.798GiB
+ Name: qx-prod-qukuailian
+ ID: 3H4E:BQXC:DVYP:DOPO:FDKT:4HJH:MPMB:LSRP:3LDS:CW56:VZZL:Q6T2
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ Registry: https://index.docker.io/v1/
+ Labels:
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+
+WARNING: No swap limit support
+WARNING: the aufs storage-driver is deprecated, and will be removed in a future release.
+</code></pre></div><h3 id="总结">总结</h3>
+<p>大功告成,在整个升级的过程中,曲曲折折,中途都想要重装系统了,但是通过一步一步分析报错信息,一步一步查找解决方案,去试错,最终问题就被解决.但是记得要有<code>PlanB</code>,升级之前记得做好快照,即使最后没有解决,我们可以通过快照恢复,不会破坏整个系统.</p>
+<h3 id="参考">参考</h3>
+<ul>
+<li><a href="https://askubuntu.com/questions/230766/how-lsb-module-affects-system-and-can-be-made-available-to-the-system">No LSB modules are available.  </a></li>
+<li><a href="https://askubuntu.com/questions/720416/no-module-named-gdbm">No module named &lsquo;gdbm&rsquo;</a></li>
+<li><a href="https://ubuntuforums.org/showthread.php?t=2148838">A Packages Problem,Unable to install anything due to unconfigured and depandesies</a></li>
+</ul>
+
+        </div>
+        <!-- tags -->
+        <div class="mb-3">
+          <h5 class="d-inline-block mr-3">Tags:</h5>
+          <ul class="list-inline d-inline-block">
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/ubuntu"> 
+            Ubuntu</a>
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/upgrade"> , 
+            Upgrade</a>
+            
+          </ul>
+        </div>
+        <!-- previous -->
+        <div class="mb-3 link-article">
+    <div class="pre-article">
+        
+            <div><i class="fa fa-arrow-left"></i> 上一篇</div>
+            <a href="https://www.fenghong.tech/blog/ops/acme-ssl-cert/">use acme.sh to renew ssl cert</a>
+        
+    </div>
+    <div class="next-article">
+        
+            <div>下一篇 <i class="fa fa-arrow-right"></i></div>
+            <a href="https://www.fenghong.tech/blog/algorithm/go-polyn-1/">Go 多项式实现(1)</a>
+        
+    </div>
+</div>
+        <!-- previous -->
+
+        <!-- recommend -->
+        
+
+<div class="mb-3">
+  <h2>文章推荐</h2>
+  <ul class="related">
+  
+    <li><a href="/blog/ops/ubuntu-chrome/">use ssr in ubuntu</a></li>
+  
+    <li><a href="/blog/2018/2018-07-25-kubuntu/">Kubuntu 从安装到科学上网</a></li>
+  
+  </ul>
+</div>
+
+
+        <!-- comments -->
+
+        
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script>
+          window.onload = function() {
+              const gitalk = new Gitalk({
+              clientID: 'a0a546df858aafb5300e',
+              clientSecret: '67d7b40de25c072fc38840ffb9c06ceab7ef5080',
+              repo: 'oldthreefeng.github.io',
+              owner: 'oldthreefeng',
+              admin: ['oldthreefeng'],
+              id: hex_md5(hex_md5(window.location.pathname + window.location.hash)), 
+              distractionFreeMode: false 
+            });
+            (function() {
+              if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+                document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+                return;
+              }
+              gitalk.render('gitalk-container');
+            })();
+          }
+        </script>
+        
+      </div>
+      <!-- sidebar -->
+<aside class="col-lg-4 order-1 order-lg-2">
+  <!-- tags -->
+  <div class="bg-white px-4 py-5 box-shadow mb-5 word-cloud">
+    <h4 class="mb-4">标签</h4>
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div id="tag-cloud" style="padding: 5px 15px">
+      
+        
+          
+          
+          
+          <a href="/tags/acme" style="font-size:1.0188679245283019rem">acme</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/acmetiny" style="font-size:1.0188679245283019rem">acmetiny</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/alertmanager" style="font-size:1rem">alertmanager</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/algorithm" style="font-size:1.1132075471698113rem">algorithm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/aliyun" style="font-size:1rem">aliyun</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ansible" style="font-size:1.0754716981132075rem">ansible</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/apisix" style="font-size:1rem">apisix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/arm64" style="font-size:1.0188679245283019rem">arm64</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/authorization" style="font-size:1rem">authorization</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/backup" style="font-size:1.0377358490566038rem">backup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binarysearch" style="font-size:1.0188679245283019rem">binarysearch</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binlog" style="font-size:1rem">binlog</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bit" style="font-size:1.0188679245283019rem">bit</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bug" style="font-size:1.0188679245283019rem">bug</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cache" style="font-size:1rem">cache</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/certbot" style="font-size:1rem">certbot</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/channel" style="font-size:1rem">channel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/chrome" style="font-size:1.0188679245283019rem">chrome</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ci" style="font-size:1rem">ci</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cluster" style="font-size:1.1132075471698113rem">cluster</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cobra" style="font-size:1rem">cobra</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coco" style="font-size:1.0377358490566038rem">coco</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coding" style="font-size:1rem">coding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/computer" style="font-size:1rem">computer</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/consul" style="font-size:1rem">consul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/containerd" style="font-size:1.0188679245283019rem">containerd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coredns" style="font-size:1rem">coredns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cors" style="font-size:1rem">cors</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/crypto" style="font-size:1rem">crypto</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/curl" style="font-size:1rem">curl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dashboard" style="font-size:1rem">dashboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dcdn" style="font-size:1rem">dcdn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/debt" style="font-size:1rem">debt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/devops" style="font-size:1.0188679245283019rem">devops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dingding" style="font-size:1rem">dingding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/disk" style="font-size:1rem">disk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dmesg" style="font-size:1rem">dmesg</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dns" style="font-size:1rem">dns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/docker" style="font-size:1.2264150943396226rem">docker</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/doublylinkedlist" style="font-size:1rem">doublylinkedlist</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/elk" style="font-size:1rem">elk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/error" style="font-size:1rem">error</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/etcd" style="font-size:1.0377358490566038rem">etcd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exec" style="font-size:1.0188679245283019rem">exec</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exp" style="font-size:1rem">exp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/federated" style="font-size:1rem">federated</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/filecoin" style="font-size:1rem">filecoin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/find" style="font-size:1rem">find</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/firewalld" style="font-size:1rem">firewalld</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/fix" style="font-size:1.0377358490566038rem">fix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flag" style="font-size:1.0188679245283019rem">flag</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flannel" style="font-size:1rem">flannel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/food" style="font-size:1.0188679245283019rem">food</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/frp" style="font-size:1.0377358490566038rem">frp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ftp" style="font-size:1.0188679245283019rem">ftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/games" style="font-size:1rem">games</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gin" style="font-size:1.0188679245283019rem">gin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/git" style="font-size:1.2075471698113207rem">git</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/github" style="font-size:1.0188679245283019rem">github</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gitlab" style="font-size:1rem">gitlab</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go" style="font-size:1.320754716981132rem">go</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go-vim" style="font-size:1rem">go-vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gogs" style="font-size:1.0566037735849056rem">gogs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/goland" style="font-size:1.0188679245283019rem">goland</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/golang" style="font-size:1.0377358490566038rem">golang</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gorequest" style="font-size:1rem">gorequest</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grafana" style="font-size:1.0188679245283019rem">grafana</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grub" style="font-size:1rem">grub</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hack" style="font-size:1.0188679245283019rem">hack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/haproxy" style="font-size:1.0377358490566038rem">haproxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/harbor" style="font-size:1.0188679245283019rem">harbor</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hash" style="font-size:1.0188679245283019rem">hash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hashmap" style="font-size:1rem">hashmap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/helm" style="font-size:1.0188679245283019rem">helm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hexo" style="font-size:1.0377358490566038rem">hexo</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/http" style="font-size:1.0754716981132075rem">http</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/https" style="font-size:1rem">https</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/index" style="font-size:1rem">index</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ingress" style="font-size:1.0377358490566038rem">ingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/inotify" style="font-size:1rem">inotify</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/internet" style="font-size:1.169811320754717rem">internet</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/interview" style="font-size:1rem">interview</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/iptables" style="font-size:1.0377358490566038rem">iptables</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ipvs" style="font-size:1.0188679245283019rem">ipvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/java" style="font-size:1.0754716981132075rem">java</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jeju" style="font-size:1rem">jeju</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jenkins" style="font-size:1.0943396226415094rem">jenkins</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jetbrains" style="font-size:1rem">jetbrains</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jumpserver" style="font-size:1.0566037735849056rem">jumpserver</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jvm" style="font-size:1rem">jvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/keepalived" style="font-size:1rem">keepalived</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kernel" style="font-size:1rem">kernel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/knowledge" style="font-size:1rem">knowledge</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kube-proxy" style="font-size:1.0188679245283019rem">kube-proxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetes" style="font-size:1.3962264150943395rem">kubernetes</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesrbac" style="font-size:1rem">kubernetesrbac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesssl" style="font-size:1.0188679245283019rem">kubernetesssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kuboard" style="font-size:1.0566037735849056rem">kuboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lb" style="font-size:1rem">lb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/learning" style="font-size:1.0566037735849056rem">learning</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/leetcode" style="font-size:1.0188679245283019rem">leetcode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libcurl" style="font-size:1rem">libcurl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libssh2" style="font-size:1rem">libssh2</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/link" style="font-size:1rem">link</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/linux" style="font-size:1.9811320754716981rem">linux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/living" style="font-size:1rem">living</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lnux" style="font-size:1rem">lnux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/log" style="font-size:1.0566037735849056rem">log</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logrus" style="font-size:1rem">logrus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logs" style="font-size:1rem">logs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logstash" style="font-size:1rem">logstash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/loki" style="font-size:1rem">loki</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lru" style="font-size:1rem">lru</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/luna" style="font-size:1rem">luna</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvm" style="font-size:1rem">lvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvs" style="font-size:1rem">lvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mac" style="font-size:1rem">mac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/malaysia" style="font-size:1rem">malaysia</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/manage" style="font-size:1rem">manage</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/map" style="font-size:1rem">map</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mariadb" style="font-size:1.0377358490566038rem">mariadb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/markdown" style="font-size:1.0188679245283019rem">markdown</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mfa" style="font-size:1rem">mfa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mha" style="font-size:1rem">mha</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mode" style="font-size:1rem">mode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/module" style="font-size:1rem">module</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mount" style="font-size:1rem">mount</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mysql" style="font-size:1.2452830188679245rem">mysql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/navicat" style="font-size:1rem">navicat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/network" style="font-size:1rem">network</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nfs" style="font-size:1.0754716981132075rem">nfs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginx" style="font-size:1.2264150943396226rem">nginx</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginxingress" style="font-size:1.0566037735849056rem">nginxingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/node_exporter" style="font-size:1.0188679245283019rem">node_exporter</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/numpy" style="font-size:1rem">numpy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ops" style="font-size:1.2452830188679245rem">ops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/owncloud" style="font-size:1rem">owncloud</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/password" style="font-size:1rem">password</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/paxos" style="font-size:1.0188679245283019rem">paxos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/php" style="font-size:1rem">php</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pipeline" style="font-size:1rem">pipeline</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/polynomial" style="font-size:1rem">polynomial</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/problem" style="font-size:1rem">problem</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/prometheus" style="font-size:1.0943396226415094rem">prometheus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pv" style="font-size:1.0754716981132075rem">pv</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pvc" style="font-size:1.0754716981132075rem">pvc</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/python" style="font-size:1.0943396226415094rem">python</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/queue" style="font-size:1rem">queue</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/qw3xt" style="font-size:1rem">qw3xt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rabbitmq" style="font-size:1.0188679245283019rem">rabbitmq</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/raft" style="font-size:1rem">raft</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rebase" style="font-size:1rem">rebase</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/redis" style="font-size:1.0377358490566038rem">redis</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/resources" style="font-size:1.0188679245283019rem">resources</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsa" style="font-size:1rem">rsa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsync" style="font-size:1.0188679245283019rem">rsync</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/safe" style="font-size:1.0754716981132075rem">safe</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/samba" style="font-size:1rem">samba</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sealos" style="font-size:1rem">sealos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/secure" style="font-size:1rem">secure</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sed" style="font-size:1rem">sed</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/server" style="font-size:1.2075471698113207rem">server</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sftp" style="font-size:1rem">sftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shadowsocks" style="font-size:1.0188679245283019rem">shadowsocks</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shell" style="font-size:1.0188679245283019rem">shell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slap" style="font-size:1rem">slap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slave" style="font-size:1rem">slave</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slb" style="font-size:1rem">slb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slowquery" style="font-size:1rem">slowquery</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sonar" style="font-size:1.0377358490566038rem">sonar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sourcetree" style="font-size:1.0188679245283019rem">sourcetree</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sql" style="font-size:1.0188679245283019rem">sql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ss" style="font-size:1rem">ss</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssh" style="font-size:1.0754716981132075rem">ssh</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssl" style="font-size:1.1132075471698113rem">ssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stack" style="font-size:1rem">stack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stress" style="font-size:1rem">stress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/style" style="font-size:1rem">style</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/switchyomega" style="font-size:1rem">switchyomega</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/syncd" style="font-size:1rem">syncd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/taint" style="font-size:1rem">taint</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tar" style="font-size:1rem">tar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tcp" style="font-size:1.0188679245283019rem">tcp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/testing" style="font-size:1rem">testing</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tomcat" style="font-size:1rem">tomcat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tour" style="font-size:1.0188679245283019rem">tour</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/trojan" style="font-size:1rem">trojan</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ubuntu" style="font-size:1.0566037735849056rem">ubuntu</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/udp" style="font-size:1rem">udp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/uk8s" style="font-size:1rem">uk8s</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unauthorized" style="font-size:1rem">unauthorized</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unblockneteasemusic" style="font-size:1rem">unblockneteasemusic</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upgrade" style="font-size:1.0188679245283019rem">upgrade</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upstream" style="font-size:1rem">upstream</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/v1.18.3" style="font-size:1rem">v1.18.3</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vim" style="font-size:1rem">vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/virtul" style="font-size:1rem">virtul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vpn" style="font-size:1.0754716981132075rem">vpn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vscode" style="font-size:1rem">vscode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/websocket" style="font-size:1rem">websocket</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/wifi" style="font-size:1rem">wifi</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xshell" style="font-size:1rem">xshell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xtrabackup" style="font-size:1rem">xtrabackup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/yum" style="font-size:1rem">yum</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/zabbix" style="font-size:1rem">zabbix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e6%95%b0%e6%8d%ae%e5%ba%93%e5%8e%9f%e7%90%86" style="font-size:1rem">数据库原理</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95" style="font-size:1rem">贪心算法</a>
+        
+      
+      </div>
+    
+  </div>
+
+  <!-- profile -->
+  <!-- toc -->
+  
+  <div class="bg-white px-4 py-5 box-shadow mb-5 sticky-top">
+    <h4 class="mb-4">目录</h4>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#前言">前言</a></li>
+        <li><a href="#requirment">requirment</a></li>
+        <li><a href="#开启升级之旅1404-1604">开启升级之旅14.04-16.04</a></li>
+        <li><a href="#总结">总结</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+
+</aside>
+<!-- /sidebar -->
+
+    </div>
+  </div>
+</section>
+<!-- /blog details -->
+
+
+
+<footer>
+	
+	<div class="section bg-secondary">
+		<div class="container">
+			<div class="row justify-content-between">
+				
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					<a class="mb-4 d-inline-block" href="/"><img class="img-fluid"
+																								src="/images/images/logo-alt.png" alt="Louis Blog" width="60%"></a>
+					<p class="text-light mb-5">每一个不曾起舞的日子都是对生命的辜负.</p>
+					<h4 class="text-white mb-4">关注我</h4>
+					
+					<ul class="list-inline social-icon-alt">
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://twitter.com/louishong17"><i class="fa fa-twitter"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://github.com/oldthreefeng"><i class="fa fa-github"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="/contact"><i class="fa fa-wechat"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="mailto:992165098@qq.com"><i class="fa fa-envelope"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://www.fenghong.tech/blog/index.xml"><i class="fa fa-rss"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					
+					
+					
+					
+					<div class="mb-5">
+						<h4 class="text-white mb-4">联系信息</h4>
+						<p class="text-light mb-3">上海 · 浦东新区</p>
+						<p class="text-light mb-3"></p>
+						<p class="text-light mb-3">微信联系方式</p>
+						<p class="text-light mb-3"><img src="/images/images/wechat-qrcode.png" width="356px"></p>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="bg-secondary-darken py-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+					<p class="mb-0 text-white">Copyright © 2020 Louis</p>
+				</div>
+				<div class="col-md-6 text-center text-md-right">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item mx-0"><a class="d-inline-block px-3 text-white" href="https://beian.miit.gov.cn/"
+																									class="text-white">鄂ICP备18027870号-1</a></li>
+						<p class="list-inline-item mx-0 text-white">本网站由</p>
+						<a target="_blank" rel="nofollow noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://pic.fenghong.tech/images/180803_logo30.png" style="margin-bottom:5px;height: 25px;"></a>
+						<p class="list-inline-item mx-0 text-white">提供CDN加速/云存储服务</p>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+<script>
+	var indexURL = "/index.json"
+</script>
+
+
+<!-- JS Plugins -->
+
+<script src="/plugins/jQuery/jquery.min.js"></script>
+
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="/plugins/slick/slick.min.js"></script>
+
+<script src="/plugins/google-map/gmap.js"></script>
+
+<script src="/plugins/venobox/venobox.min.js"></script>
+
+<script src="/plugins/filterizr/jquery.filterizr.min.js"></script>
+
+<script src="/plugins/search/fuse.min.js"></script>
+
+<script src="/plugins/search/mark.js"></script>
+
+<script src="/plugins/search/search.js"></script>
+
+<script src="/plugins/bigPicture/bigPicture.js"></script>
+
+<script src="/plugins/hex_md5/hex_md5.js"></script>
+
+
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+
+<!-- Algolia -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+<script>
+	docsearch({
+		apiKey: 'b4d47f0c039a84d4035305be829404dd',
+		indexName: 'DocSearch',
+		appId: 'CTH4P282IZ',
+		inputSelector: '#js-algolia-btn',
+		debug: false,
+	});
+</script>
+
+<!-- google analitycs -->
+
+<script>
+	(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-130595069-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https'){
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else{
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</body>
+
+</html>

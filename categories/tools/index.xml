@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tools on Louis Blog</title>
+    <link>https://www.fenghong.tech/categories/tools/</link>
+    <description>Recent content in tools on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Thu, 21 Jan 2021 12:34:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/categories/tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>windos使用wls2 并配置vscode golang开发~</title>
+      <link>https://www.fenghong.tech/blog/tools/windows-wls2-vscode-go/</link>
+      <pubDate>Thu, 21 Jan 2021 12:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/tools/windows-wls2-vscode-go/</guid>
+      <description>[TOC] 背景: 提高开发效率</description>
+    </item>
+    
+    <item>
+      <title>为什么 TCP 建立连接需要三次握手</title>
+      <link>https://www.fenghong.tech/blog/technology/why-tcp-three-way-hanshake/</link>
+      <pubDate>Wed, 09 Sep 2020 11:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/technology/why-tcp-three-way-hanshake/</guid>
+      <description>[TOC] 为什么 TCP 建立连接需</description>
+    </item>
+    
+    <item>
+      <title>github个人信息展示</title>
+      <link>https://www.fenghong.tech/blog/technology/github-profile/</link>
+      <pubDate>Mon, 27 Jul 2020 16:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/technology/github-profile/</guid>
+      <description>[TOC] 创建一个 和自己gi</description>
+    </item>
+    
+    <item>
+      <title>白嫖网易云音乐vip~</title>
+      <link>https://www.fenghong.tech/blog/tools/unblockneteasemusic-docker-compose/</link>
+      <pubDate>Mon, 15 Jun 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/tools/unblockneteasemusic-docker-compose/</guid>
+      <description>[TOC] 背景: 提高生活质量</description>
+    </item>
+    
+    <item>
+      <title>开源项目获取jetbrains全家桶licence</title>
+      <link>https://www.fenghong.tech/blog/tools/jetbrains-github/</link>
+      <pubDate>Mon, 25 Nov 2019 12:42:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/tools/jetbrains-github/</guid>
+      <description>JetBrains 公司旗下的 IDEA 功能都</description>
+    </item>
+    
+    <item>
+      <title>sed基础用法</title>
+      <link>https://www.fenghong.tech/blog/tools/sed/</link>
+      <pubDate>Sat, 08 Jun 2019 16:18:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/tools/sed/</guid>
+      <description>[TOC] 使用的是gnu sed, mac</description>
+    </item>
+    
+    <item>
+      <title>dmesg 添加时间戳</title>
+      <link>https://www.fenghong.tech/blog/tools/dmesg/</link>
+      <pubDate>Thu, 16 May 2019 09:48:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/tools/dmesg/</guid>
+      <description>[TOC] 公司系统是cent</description>
+    </item>
+    
+    <item>
+      <title>go-filecoin</title>
+      <link>https://www.fenghong.tech/blog/technology/go-filecoin/</link>
+      <pubDate>Mon, 04 Mar 2019 20:11:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/technology/go-filecoin/</guid>
+      <description>[TOC] IPFS 与 FileCoin IPFS 是一个网络</description>
+    </item>
+    
+    <item>
+      <title>Linux上tcp处于time_wait</title>
+      <link>https://www.fenghong.tech/blog/tools/linnux-tcp-timewait/</link>
+      <pubDate>Fri, 22 Feb 2019 23:48:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/tools/linnux-tcp-timewait/</guid>
+      <description>[TOC] linux上大量t</description>
+    </item>
+    
+    <item>
+      <title>ops to fish</title>
+      <link>https://www.fenghong.tech/blog/technology/ops_to_fish/</link>
+      <pubDate>Fri, 04 Jan 2019 20:11:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/technology/ops_to_fish/</guid>
+      <description>[TOC] 前言 今天在某技术交</description>
+    </item>
+    
+    <item>
+      <title>Go 开发工具安装</title>
+      <link>https://www.fenghong.tech/blog/tools/goland-install/</link>
+      <pubDate>Sun, 09 Dec 2018 15:56:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/tools/goland-install/</guid>
+      <description>[TOC] InteliJ IDEA安装 网上</description>
+    </item>
+    
+    <item>
+      <title>github pull request</title>
+      <link>https://www.fenghong.tech/blog/technology/github-pr/</link>
+      <pubDate>Sun, 11 Nov 2018 20:11:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/technology/github-pr/</guid>
+      <description>如何给开源项目贡献代</description>
+    </item>
+    
+    <item>
+      <title>hacker attach</title>
+      <link>https://www.fenghong.tech/blog/tools/hacker-attach/</link>
+      <pubDate>Sat, 10 Nov 2018 23:48:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/tools/hacker-attach/</guid>
+      <description>[TOC] 一、跨站脚本攻击 概</description>
+    </item>
+    
+    <item>
+      <title>程序员的知识管理</title>
+      <link>https://www.fenghong.tech/blog/technology/manage-knowledge/</link>
+      <pubDate>Thu, 08 Nov 2018 17:17:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/technology/manage-knowledge/</guid>
+      <description>[TOC] 前言 本文从一个程序</description>
+    </item>
+    
+    <item>
+      <title>Markdown</title>
+      <link>https://www.fenghong.tech/blog/tools/markdown/</link>
+      <pubDate>Thu, 08 Nov 2018 16:18:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/tools/markdown/</guid>
+      <description>[TOC] Markdown 是一种轻量级的标</description>
+    </item>
+    
+    <item>
+      <title>查看WIFI历史密码</title>
+      <link>https://www.fenghong.tech/blog/tools/wifi-passwod/</link>
+      <pubDate>Thu, 16 Nov 2017 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/tools/wifi-passwod/</guid>
+      <description>[TOC] 背景: WIFI密码</description>
+    </item>
+    
+  </channel>
+</rss>

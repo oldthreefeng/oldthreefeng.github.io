@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/git/</link>
+    <description>Recent content in git on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Tue, 30 Jun 2020 10:18:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>git-rebase合并多commit记录</title>
+      <link>https://www.fenghong.tech/blog/ops/git-rebase/</link>
+      <pubDate>Tue, 30 Jun 2020 10:18:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/git-rebase/</guid>
+      <description>[toc] 新建测试仓库 为了不</description>
+    </item>
+    
+    <item>
+      <title>jenkins&#43;java&#43;docker&#43;kubernetes实现自动化部署</title>
+      <link>https://www.fenghong.tech/blog/ops/jenkins-java-docker-kubernetes/</link>
+      <pubDate>Wed, 24 Jun 2020 10:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/jenkins-java-docker-kubernetes/</guid>
+      <description>[TOC] 背景 基于sprin</description>
+    </item>
+    
+    <item>
+      <title>gitlab-ce-zh部署并开启https</title>
+      <link>https://www.fenghong.tech/blog/ops/gitlab-ce-zh-install-with-https/</link>
+      <pubDate>Mon, 04 May 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/gitlab-ce-zh-install-with-https/</guid>
+      <description>[TOC] 背景: 源码仓库管理</description>
+    </item>
+    
+    <item>
+      <title>Git in Gogs with SourceTree</title>
+      <link>https://www.fenghong.tech/blog/intro/git-in-gogs/</link>
+      <pubDate>Wed, 11 Sep 2019 15:49:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/intro/git-in-gogs/</guid>
+      <description>[TOC] 背景 使用git clone h</description>
+    </item>
+    
+    <item>
+      <title>Gogs仓库迁移</title>
+      <link>https://www.fenghong.tech/blog/ops/gogs-repo-move-to-annother-host/</link>
+      <pubDate>Mon, 09 Sep 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/gogs-repo-move-to-annother-host/</guid>
+      <description>[TOC] 公司服务器缩减，运</description>
+    </item>
+    
+    <item>
+      <title>jenkins自动化发布工具迁移</title>
+      <link>https://www.fenghong.tech/blog/ops/jenkins-move-to-annother-host/</link>
+      <pubDate>Mon, 09 Sep 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/jenkins-move-to-annother-host/</guid>
+      <description>[TOC] 背景 公司服务器缩减</description>
+    </item>
+    
+    <item>
+      <title>refusing to merge unrelated histories</title>
+      <link>https://www.fenghong.tech/blog/intro/git-unrelate/</link>
+      <pubDate>Tue, 16 Jul 2019 14:43:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/intro/git-unrelate/</guid>
+      <description>Git的报错 在使用G</description>
+    </item>
+    
+    <item>
+      <title>Gogs仓库搭建</title>
+      <link>https://www.fenghong.tech/blog/ops/gogs-repo-install/</link>
+      <pubDate>Thu, 09 May 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/gogs-repo-install/</guid>
+      <description>[TOC] 介绍 Have you used Gogs? It’</description>
+    </item>
+    
+    <item>
+      <title>git 远程分支清理</title>
+      <link>https://www.fenghong.tech/blog/intro/git_clean_remote/</link>
+      <pubDate>Fri, 16 Nov 2018 16:17:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/intro/git_clean_remote/</guid>
+      <description>[TOC] git 远程分支清理。 远</description>
+    </item>
+    
+    <item>
+      <title>Git Flow</title>
+      <link>https://www.fenghong.tech/blog/intro/git-flow/</link>
+      <pubDate>Sat, 10 Nov 2018 22:49:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/intro/git-flow/</guid>
+      <description>[TOC] 集中式与分布式 Git 属</description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://www.fenghong.tech/blog/intro/git/</link>
+      <pubDate>Thu, 08 Nov 2018 16:18:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/intro/git/</guid>
+      <description>[TOC] Git的help信</description>
+    </item>
+    
+    <item>
+      <title>运维桌面软件应用安装</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-09-05-opsenv/</link>
+      <pubDate>Mon, 06 Aug 2018 15:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-09-05-opsenv/</guid>
+      <description>一、Navicat for</description>
+    </item>
+    
+  </channel>
+</rss>

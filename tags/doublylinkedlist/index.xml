@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>doublyLinkedList on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/doublylinkedlist/</link>
+    <description>Recent content in doublyLinkedList on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Sat, 12 Oct 2019 12:40:10 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/doublylinkedlist/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>LRU 算法</title>
+      <link>https://www.fenghong.tech/blog/algorithm/lrucache/</link>
+      <pubDate>Sat, 12 Oct 2019 12:40:10 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/algorithm/lrucache/</guid>
+      <description>操作系统内存的管理 关</description>
+    </item>
+    
+  </channel>
+</rss>

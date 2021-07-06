@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nginxIngress on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/nginxingress/</link>
+    <description>Recent content in nginxIngress on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Fri, 19 Jun 2020 21:34:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/nginxingress/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>k8s基于helm安装loki并持久化数据</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-loki-logs/</link>
+      <pubDate>Fri, 19 Jun 2020 21:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-loki-logs/</guid>
+      <description>[TOC] 基本的集群监控部署</description>
+    </item>
+    
+    <item>
+      <title>k8s安装prometheus并持久化数据</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-promtheus-persist-storage/</link>
+      <pubDate>Thu, 11 Jun 2020 15:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-promtheus-persist-storage/</guid>
+      <description>[TOC] Prometheus 部署已经完成, 但</description>
+    </item>
+    
+    <item>
+      <title>sealos 一键安装 kubernetes1.18.0[deprecated]</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sealos-install/</link>
+      <pubDate>Mon, 01 Jun 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sealos-install/</guid>
+      <description>[TOC] 一个二进制工具加一</description>
+    </item>
+    
+    <item>
+      <title>kubeadm 安装 kubernetes1.15.3</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubeadm-install-kubernetes1.15.3/</link>
+      <pubDate>Thu, 29 Aug 2019 15:56:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubeadm-install-kubernetes1.15.3/</guid>
+      <description>[TOC] kubeadm是K</description>
+    </item>
+    
+  </channel>
+</rss>

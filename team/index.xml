@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>友情链接 on Louis Blog</title>
+    <link>https://www.fenghong.tech/team/</link>
+    <description>Recent content in 友情链接 on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Sun, 07 Jun 2020 10:47:55 +0600</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/team/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>fanux.中弈</title>
+      <link>https://www.fenghong.tech/team/fanux/</link>
+      <pubDate>Sun, 07 Jun 2020 10:47:55 +0600</pubDate>
+      
+      <guid>https://www.fenghong.tech/team/fanux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>云原生实验室</title>
+      <link>https://www.fenghong.tech/team/ibm/</link>
+      <pubDate>Sun, 07 Jun 2020 10:47:55 +0600</pubDate>
+      
+      <guid>https://www.fenghong.tech/team/ibm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>张馆长</title>
+      <link>https://www.fenghong.tech/team/zhangguanzhang/</link>
+      <pubDate>Sun, 07 Jun 2020 10:47:55 +0600</pubDate>
+      
+      <guid>https://www.fenghong.tech/team/zhangguanzhang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>接引道人</title>
+      <link>https://www.fenghong.tech/team/oldthreefeng/</link>
+      <pubDate>Sun, 07 Jun 2020 10:47:55 +0600</pubDate>
+      
+      <guid>https://www.fenghong.tech/team/oldthreefeng/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>邵欢庆</title>
+      <link>https://www.fenghong.tech/team/shaoq/</link>
+      <pubDate>Sun, 07 Jun 2020 10:47:55 +0600</pubDate>
+      
+      <guid>https://www.fenghong.tech/team/shaoq/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

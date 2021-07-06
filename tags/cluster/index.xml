@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cluster on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/cluster/</link>
+    <description>Recent content in Cluster on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Wed, 13 Nov 2019 13:54:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/cluster/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>consul服务注册</title>
+      <link>https://www.fenghong.tech/blog/go/consul-register/</link>
+      <pubDate>Wed, 13 Nov 2019 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/consul-register/</guid>
+      <description>$ 表示shell , #</description>
+    </item>
+    
+    <item>
+      <title>RabbitMq消息队列使用</title>
+      <link>https://www.fenghong.tech/blog/go/rabbitmq-queue-use/</link>
+      <pubDate>Thu, 07 Nov 2019 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/go/rabbitmq-queue-use/</guid>
+      <description>$ 表示shell , #</description>
+    </item>
+    
+    <item>
+      <title>RabbitMq高可用集群搭建</title>
+      <link>https://www.fenghong.tech/blog/ops/rabbitmq-cluster-install/</link>
+      <pubDate>Wed, 06 Nov 2019 17:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/rabbitmq-cluster-install/</guid>
+      <description>RabbitMQ这款</description>
+    </item>
+    
+    <item>
+      <title>KeepAlive</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-07-11-keepalive/</link>
+      <pubDate>Wed, 11 Jul 2018 19:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-07-11-keepalive/</guid>
+      <description>摘要： HA cluste</description>
+    </item>
+    
+    <item>
+      <title>Linux Vitual Server</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-29-linux-vitual-server/</link>
+      <pubDate>Fri, 29 Jun 2018 16:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-29-linux-vitual-server/</guid>
+      <description>摘要： 集群概念 LVS</description>
+    </item>
+    
+    <item>
+      <title>MYSQL压力测试</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-15-mysql-10/</link>
+      <pubDate>Fri, 15 Jun 2018 22:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-15-mysql-10/</guid>
+      <description>摘要：mysql的压</description>
+    </item>
+    
+    <item>
+      <title>MYSQL高可用集群</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-06-15-mysql-09/</link>
+      <pubDate>Fri, 15 Jun 2018 16:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-06-15-mysql-09/</guid>
+      <description>摘要：MySQL的高</description>
+    </item>
+    
+  </channel>
+</rss>

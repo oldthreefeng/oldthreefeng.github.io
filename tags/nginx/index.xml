@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nginx on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/nginx/</link>
+    <description>Recent content in nginx on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Wed, 30 Dec 2020 19:54:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>记一次nginx使用map后的uri丢失</title>
+      <link>https://www.fenghong.tech/blog/ops/nginx-map-args/</link>
+      <pubDate>Wed, 30 Dec 2020 19:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/nginx-map-args/</guid>
+      <description>[TOC] 背景 偶然有一次机会</description>
+    </item>
+    
+    <item>
+      <title>记一次nginx跨域访问Content Security Policy设置</title>
+      <link>https://www.fenghong.tech/blog/ops/nginx-blocked-by-cors/</link>
+      <pubDate>Mon, 22 Jun 2020 14:58:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/nginx-blocked-by-cors/</guid>
+      <description>[toc] 前言 在开发静态页面</description>
+    </item>
+    
+    <item>
+      <title>gitlab-ce-zh部署并开启https</title>
+      <link>https://www.fenghong.tech/blog/ops/gitlab-ce-zh-install-with-https/</link>
+      <pubDate>Mon, 04 May 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/gitlab-ce-zh-install-with-https/</guid>
+      <description>[TOC] 背景: 源码仓库管理</description>
+    </item>
+    
+    <item>
+      <title>配置prometheus告警规则</title>
+      <link>https://www.fenghong.tech/blog/ops/prometheus-alertmanager/</link>
+      <pubDate>Fri, 24 Apr 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/prometheus-alertmanager/</guid>
+      <description>[TOC] 摘要： 系统监控报警</description>
+    </item>
+    
+    <item>
+      <title>搭建prometheus监控系统</title>
+      <link>https://www.fenghong.tech/blog/ops/grafana-prometheus-node_exporter-mysql/</link>
+      <pubDate>Wed, 08 Apr 2020 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/grafana-prometheus-node_exporter-mysql/</guid>
+      <description>[TOC] 摘要： 系统监控 prometheus 背</description>
+    </item>
+    
+    <item>
+      <title>搭建trojan服务</title>
+      <link>https://www.fenghong.tech/blog/ops/trojan-install/</link>
+      <pubDate>Wed, 04 Mar 2020 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/trojan-install/</guid>
+      <description>[TOC] 摘要： 科学上网 trojan 背</description>
+    </item>
+    
+    <item>
+      <title>nginx rewrite的break和last</title>
+      <link>https://www.fenghong.tech/blog/ops/nginx-rewrite/</link>
+      <pubDate>Tue, 12 Nov 2019 15:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/nginx-rewrite/</guid>
+      <description>[TOC] last 和 break 当出现在lo</description>
+    </item>
+    
+    <item>
+      <title>nginx基于ip_hash访问策略的不生效的分析.</title>
+      <link>https://www.fenghong.tech/blog/ops/nginx-ip_hash-realip/</link>
+      <pubDate>Mon, 11 Nov 2019 15:52:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/nginx-ip_hash-realip/</guid>
+      <description>nginx基于ip_</description>
+    </item>
+    
+    <item>
+      <title>nginx &amp; lvs </title>
+      <link>https://www.fenghong.tech/blog/technology/lvs-nginx/</link>
+      <pubDate>Wed, 22 May 2019 10:44:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/technology/lvs-nginx/</guid>
+      <description>[TOC] ​ lvs和ngin</description>
+    </item>
+    
+    <item>
+      <title>ULB负载均衡踩的坑</title>
+      <link>https://www.fenghong.tech/blog/ops/loaderbalancerinucloud/</link>
+      <pubDate>Tue, 18 Dec 2018 12:22:12 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/loaderbalancerinucloud/</guid>
+      <description>[TOC] ULB的http强</description>
+    </item>
+    
+    <item>
+      <title>nginx if 多重判断语句</title>
+      <link>https://www.fenghong.tech/blog/ops/nginx-if/</link>
+      <pubDate>Wed, 12 Dec 2018 10:44:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/nginx-if/</guid>
+      <description>[TOC] nginx 多重判断 在Ngi</description>
+    </item>
+    
+    <item>
+      <title>Let’s Encrypt使用</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-11-08-lets-encrypt/</link>
+      <pubDate>Thu, 08 Nov 2018 23:59:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-11-08-lets-encrypt/</guid>
+      <description>Let’s Encrypt 及 Certbot 简介</description>
+    </item>
+    
+    <item>
+      <title>owncloud私有云搭建</title>
+      <link>https://www.fenghong.tech/blog/2018/2018-10-11-owncloud/</link>
+      <pubDate>Sat, 20 Oct 2018 16:03:32 +0000</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/2018/2018-10-11-owncloud/</guid>
+      <description>owncloud的功</description>
+    </item>
+    
+  </channel>
+</rss>

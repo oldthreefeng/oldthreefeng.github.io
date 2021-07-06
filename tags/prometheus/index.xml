@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>prometheus on Louis Blog</title>
+    <link>https://www.fenghong.tech/tags/prometheus/</link>
+    <description>Recent content in prometheus on Louis Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright &amp;copy; 2020 Louis</copyright>
+    <lastBuildDate>Wed, 27 Jan 2021 15:34:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.fenghong.tech/tags/prometheus/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>k8s中Prometheus监控redis-exporter</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-prometheus-redis-exporter/</link>
+      <pubDate>Wed, 27 Jan 2021 15:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-prometheus-redis-exporter/</guid>
+      <description>[TOC] 在使用数据库 Redis 过程</description>
+    </item>
+    
+    <item>
+      <title>记一次kubernetes v1.18.0 svc名称空间地址解析异常问题及解决</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-svc-reslove-bug-1.18.0/</link>
+      <pubDate>Mon, 15 Jun 2020 09:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-svc-reslove-bug-1.18.0/</guid>
+      <description>[TOC] 安装kubenet</description>
+    </item>
+    
+    <item>
+      <title>k8s安装prometheus并持久化数据</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/kubernetes-promtheus-persist-storage/</link>
+      <pubDate>Thu, 11 Jun 2020 15:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/kubernetes-promtheus-persist-storage/</guid>
+      <description>[TOC] Prometheus 部署已经完成, 但</description>
+    </item>
+    
+    <item>
+      <title>sealos 一键安装 kubernetes1.18.0[deprecated]</title>
+      <link>https://www.fenghong.tech/blog/kubernetes/sealos-install/</link>
+      <pubDate>Mon, 01 Jun 2020 17:34:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/kubernetes/sealos-install/</guid>
+      <description>[TOC] 一个二进制工具加一</description>
+    </item>
+    
+    <item>
+      <title>配置prometheus告警规则</title>
+      <link>https://www.fenghong.tech/blog/ops/prometheus-alertmanager/</link>
+      <pubDate>Fri, 24 Apr 2020 11:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/prometheus-alertmanager/</guid>
+      <description>[TOC] 摘要： 系统监控报警</description>
+    </item>
+    
+    <item>
+      <title>搭建prometheus监控系统</title>
+      <link>https://www.fenghong.tech/blog/ops/grafana-prometheus-node_exporter-mysql/</link>
+      <pubDate>Wed, 08 Apr 2020 13:54:18 +0800</pubDate>
+      
+      <guid>https://www.fenghong.tech/blog/ops/grafana-prometheus-node_exporter-mysql/</guid>
+      <description>[TOC] 摘要： 系统监控 prometheus 背</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,2615 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn"><head>
+  <meta charset="utf-8">
+  <title>kubernetes1.18.0部署harborv2.0.2 | Louis Blog</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文介绍了在kubernetes集群中部署harbor应用, 并实现https访问及数据持久化。">
+  
+  <meta name="author" content="Louis ">
+  <meta name="generator" content="Hugo 0.73.0" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  
+  <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="/plugins/animate/animate.css">
+  
+  <link rel="stylesheet" href="/plugins/venobox/venobox.css">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="/images/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="/images/images/favicon.png " type="image/x-icon">
+
+  <!--Algolia-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css">
+</head>
+<body>
+<!-- header -->
+<header>
+  
+
+  <!-- navigation -->
+  <div class="navigation bg-white position-relative">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="/"><img class="img-fluid pb-lg-3" src="/images/images/logo.png" width="189px" alt="Louis Blog"></a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/"></a>
+            </li>
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                博客
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/categories/kubernetes">Kubernetes</a>
+                
+                <a class="dropdown-item" href="/categories/sealos">sealos</a>
+                
+                <a class="dropdown-item" href="/categories/ops">运维相关</a>
+                
+                <a class="dropdown-item" href="/categories/golang">golang</a>
+                
+                <a class="dropdown-item" href="/categories/algorithm">algorithm</a>
+                
+                <a class="dropdown-item" href="/categories/tools">tools</a>
+                
+                <a class="dropdown-item" href="/blog">全部</a>
+                
+              </div>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/team">友情链接</a>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                关于我
+              </a>
+              <div class="dropdown-menu" >
+                
+                <a class="dropdown-item" href="/contact">about</a>
+                
+                <a class="dropdown-item" href="https://github.com/oldthreefeng">github</a>
+                
+              </div>
+            </li>
+            
+            
+          </ul>
+
+          
+          
+
+          
+          <!-- search -->
+          <div class="search px-4">
+            <button id="searchOpen" class="search-btn"><i class="fa fa-search text-dark"></i></button>
+            <div class="search-wrapper">
+              <form action="/search">
+                <input class="search-box form-control" id="js-algolia-btn" name="s" type="search" placeholder="输入搜索词">
+              </form>
+              <button id="searchClose" class="search-close"><i class="fa fa-close text-dark"></i></button>
+            </div>
+          </div>
+          
+          
+          <!-- get start btn -->
+          <a href="/contact" class="btn btn-primary hover-ripple">联系我</a>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- /navigation -->
+</header>
+<!-- /header -->
+
+
+<!-- page title -->
+<section class="section bg-cover overlay" style="background-image: url('/'),url('/'),url('/images/images/backgrounds/page-title.jpg');">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-white mb-3">kubernetes1.18.0部署harborv2.0.2</h2>
+        <!-- breadcrumb -->
+        
+        <p class="text-white">本文介绍了在kubernetes集群中部署harbor应用, 并实现https访问及数据持久化。</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /page title -->
+
+
+<!-- blog details -->
+<section class="section">
+  <div class="container blog">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- post thumb -->
+        <div class="position-relative mb-5">
+          <img src="/"  onerror="this.src='https:\/\/pic.fenghong.tech\/proto\/fashion-3406555_960_720.jpg'" alt="post thumb" class="img-fluid w-100">
+           <div class="card-type">Kubernetes</div>
+        </div>
+        <div class="card-meta text-uppercase mb-2">作者  <strong class="text-dark"><a href="https://www.youpenglai.tech">Louis</a></strong>
+          
+            发表于 <strong class="text-dark">2020年9月1日</strong></div>
+        <hr>
+        <div class="content">
+          <p>[TOC]</p>
+<blockquote>
+<p>Harbor 支持多种安装方式，源码目录下面默认有一个安装脚本（make/install.sh），采用 docker-compose 的形式运行 Harbor 各个组件,以前写的一个使用<a href="https://www.fenghong.tech/blog/docker/harbor-registry/">docker-compose</a>部署的, 这次使用helm部署. 并实现https访问.</p>
+</blockquote>
+<h2 id="安装harbor">安装harbor</h2>
+<p>首先下载 Harbor Chart 包到要安装的集群上：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git clone https://github.com/goharbor/harbor-helm
+$ cd harbor-helm
+$ git checkout 1.4.2
+</code></pre></div><h3 id="配置文件解析">配置文件解析</h3>
+<p>安装 Helm Chart 包最重要的当然是<code>values.yaml</code>文件了，我们可以通过覆盖该文件中的属性来改变配置：</p>
+<pre><code>expose:
+  # 设置暴露服务的方式。将类型设置为 ingress、clusterIP或nodePort并补充对应部分的信息。
+  type: ingress
+  tls:
+   # 是否开启 tls，注意：如果类型是 ingress 并且tls被禁用，则在pull/push镜像时，则必须包含端口。详细查看文档：https://github.com/goharbor/harbor/issues/5291。
+    enabled: true
+    # 如果你想使用自己的 TLS 证书和私钥，请填写这个 secret 的名称，这个 secret 必须包含名为 tls.crt 和 tls.key 的证书和私钥文件，如果没有设置则会自动生成证书和私钥文件。
+    secretName: &quot;fenghong&quot;
+    # 默认 Notary 服务会使用上面相同的证书和私钥文件，如果你想用一个独立的则填充下面的字段，注意只有类型是 ingress 的时候才需要。
+    notarySecretName: &quot;&quot;
+    # common name 是用于生成证书的，当类型是 clusterIP 或者 nodePort 并且 secretName 为空的时候才需要
+    commonName: &quot;&quot;
+  ingress:
+    hosts:
+      core: harbor.fenghong.cn 
+      notary: notary.fenghong.tech
+    # set to the type of ingress controller if it has specific requirements.
+    # leave as `default` for most ingress controllers.
+    # set to `gce` if using the GCE ingress controller
+    # set to `ncp` if using the NCP (NSX-T Container Plugin) ingress controller
+    controller: default
+    annotations:
+      ingress.kubernetes.io/ssl-redirect: &quot;true&quot;
+      ingress.kubernetes.io/proxy-body-size: &quot;0&quot;
+      nginx.ingress.kubernetes.io/ssl-redirect: &quot;true&quot;
+      nginx.ingress.kubernetes.io/proxy-body-size: &quot;0&quot;
+
+# Harbor 核心服务外部访问 URL。主要用于：
+# 1) 补全 portal 页面上面显示的 docker/helm 命令
+# 2) 补全返回给 docker/notary 客户端的 token 服务 URL
+
+# 格式：protocol://domain[:port]。
+# 1) 如果 expose.type=ingress，&quot;domain&quot;的值就是 expose.ingress.hosts.core 的值
+# 2) 如果 expose.type=clusterIP，&quot;domain&quot;的值就是 expose.clusterIP.name 的值
+# 3) 如果 expose.type=nodePort，&quot;domain&quot;的值就是 k8s 节点的 IP 地址
+
+# 如果在代理后面部署 Harbor，请将其设置为代理的 URL
+externalURL: https://harbor.fenghong.cn
+
+# harbor各组件之间的TLS. 基本可以不用的.
+internalTLS:
+  enabled: false
+  certSource: &quot;auto&quot;
+  # The content of trust ca, only available when `certSource` is &quot;manual&quot;
+  trustCa: &quot;&quot;
+  # core related cert configuration
+  core:
+    # secret name for core's tls certs
+    secretName: &quot;&quot;
+    # Content of core's TLS cert file, only available when `certSource` is &quot;manual&quot;
+    crt: &quot;&quot;
+    # Content of core's TLS key file, only available when `certSource` is &quot;manual&quot;
+    key: &quot;&quot;
+  # jobservice related cert configuration
+  jobservice:
+    # secret name for jobservice's tls certs
+    secretName: &quot;&quot;
+    # Content of jobservice's TLS key file, only available when `certSource` is &quot;manual&quot;
+    crt: &quot;&quot;
+    # Content of jobservice's TLS key file, only available when `certSource` is &quot;manual&quot;
+    key: &quot;&quot;
+  # registry related cert configuration
+  registry:
+    # secret name for registry's tls certs
+    secretName: &quot;&quot;
+    # Content of registry's TLS key file, only available when `certSource` is &quot;manual&quot;
+    crt: &quot;&quot;
+    # Content of registry's TLS key file, only available when `certSource` is &quot;manual&quot;
+    key: &quot;&quot;
+  # portal related cert configuration
+  portal:
+    # secret name for portal's tls certs
+    secretName: &quot;&quot;
+    # Content of portal's TLS key file, only available when `certSource` is &quot;manual&quot;
+    crt: &quot;&quot;
+    # Content of portal's TLS key file, only available when `certSource` is &quot;manual&quot;
+    key: &quot;&quot;
+  # chartmuseum related cert configuration
+  chartmuseum:
+    # secret name for chartmuseum's tls certs
+    secretName: &quot;&quot;
+    # Content of chartmuseum's TLS key file, only available when `certSource` is &quot;manual&quot;
+    crt: &quot;&quot;
+    # Content of chartmuseum's TLS key file, only available when `certSource` is &quot;manual&quot;
+    key: &quot;&quot;
+  # clair related cert configuration
+  clair:
+    # secret name for clair's tls certs
+    secretName: &quot;&quot;
+    # Content of clair's TLS key file, only available when `certSource` is &quot;manual&quot;
+    crt: &quot;&quot;
+    # Content of clair's TLS key file, only available when `certSource` is &quot;manual&quot;
+    key: &quot;&quot;
+  # trivy related cert configuration
+  trivy:
+    # secret name for trivy's tls certs
+    secretName: &quot;&quot;
+    # Content of trivy's TLS key file, only available when `certSource` is &quot;manual&quot;
+    crt: &quot;&quot;
+    # Content of trivy's TLS key file, only available when `certSource` is &quot;manual&quot;
+    key: &quot;&quot;
+
+
+# 默认情况下开启数据持久化，在k8s集群中需要动态的挂载卷默认需要一个StorageClass对象。
+# 如果你有已经存在可以使用的持久卷，需要在&quot;storageClass&quot;中指定你的 storageClass 或者设置 &quot;existingClaim&quot;。
+#
+# 对于存储 docker 镜像和 Helm charts 包，你也可以用 &quot;azure&quot;、&quot;gcs&quot;、&quot;s3&quot;、&quot;swift&quot; 或者 &quot;oss&quot;，直接在 &quot;imageChartStorage&quot; 区域设置即可
+
+persistence:
+  enabled: true
+  # Setting it to &quot;keep&quot; to avoid removing PVCs during a helm delete
+  # operation. Leaving it empty will delete PVCs after the chart deleted
+  resourcePolicy: &quot;keep&quot;
+  persistentVolumeClaim:
+    registry:
+	  # 使用一个存在的 PVC(必须在绑定前先手动创建)
+      existingClaim: &quot;&quot;
+      # 指定&quot;storageClass&quot;，或者使用默认的 StorageClass 对象，设置成&quot;-&quot;禁用动态分配挂载卷
+      storageClass: &quot;nfs&quot;
+      subPath: &quot;&quot;
+      accessMode: ReadWriteOnce
+      size: 2Gi
+    chartmuseum:
+      existingClaim: &quot;&quot;
+      storageClass: &quot;nfs&quot;
+      subPath: &quot;&quot;
+      accessMode: ReadWriteOnce
+      size: 2Gi
+    jobservice:
+      existingClaim: &quot;&quot;
+      storageClass: &quot;nfs&quot;
+      subPath: &quot;&quot;
+      accessMode: ReadWriteOnce
+      size: 1Gi
+    # 如果使用外部的数据库服务，下面的设置将会被忽略
+    database:
+      existingClaim: &quot;&quot;
+      storageClass: &quot;&quot;
+      subPath: &quot;&quot;
+      accessMode: ReadWriteOnce
+      size: 1Gi
+    # 如果使用外部的 Redis 服务，下面的设置将会被忽略
+    redis:
+      existingClaim: &quot;&quot;
+      storageClass: &quot;nfs&quot;
+      subPath: &quot;&quot;
+      accessMode: ReadWriteOnce
+      size: 1Gi
+    trivy:
+      existingClaim: &quot;&quot;
+      storageClass: &quot;nfs&quot;
+      subPath: &quot;&quot;
+      accessMode: ReadWriteOnce
+      size: 2Gi
+ # 定义使用什么存储后端来存储镜像和 charts 包，详细文档地址：https://github.com/docker/distribution/blob/master/docs/configuration.md#storage
+  imageChartStorage:
+     # 指定存储类型：&quot;filesystem&quot;, &quot;azure&quot;, &quot;gcs&quot;, &quot;s3&quot;, &quot;swift&quot;, &quot;oss&quot;，在相应的区域填上对应的信息。
+    # 如果你想使用 pv 则必须设置成&quot;filesystem&quot;类型
+    type: filesystem
+    filesystem:
+      rootdirectory: /storage
+      #maxthreads: 100
+
+imagePullPolicy: IfNotPresent
+
+# Use this set to assign a list of default pullSecrets
+imagePullSecrets:
+#  - name: docker-registry-secret
+#  - name: internal-registry-secret
+
+
+updateStrategy:
+  type: RollingUpdate
+
+# debug, info, warning, error or fatal
+logLevel: info
+
+# Harbor admin 初始密码，Harbor 启动后通过 Portal 修改该密码
+harborAdminPassword: &quot;Harbor12345&quot;
+# 用于加密的一个 secret key，必须是一个16位的字符串
+secretKey: &quot;not-a-secure-key&quot;
+
+# The proxy settings for updating clair vulnerabilities from the Internet and replicating
+# artifacts from/to the registries that cannot be reached directly
+proxy:
+  httpProxy:
+  httpsProxy:
+  noProxy: 127.0.0.1,localhost,.local,.internal
+  components:
+    - core
+    - jobservice
+    - clair
+    - trivy
+
+# The custom ca bundle secret, the secret must contain key named &quot;ca.crt&quot;
+# which will be injected into the trust store for chartmuseum, clair, core, jobservice, registry, trivy components
+# caBundleSecretName: &quot;&quot;
+
+## UAA Authentication Options
+# If you're using UAA for authentication behind a self-signed
+# certificate you will need to provide the CA Cert.
+# Set uaaSecretName below to provide a pre-created secret that
+# contains a base64 encoded CA Certificate named `ca.crt`.
+# uaaSecretName:
+
+# 如果你通过&quot;ingress&quot;保留服务，则下面的Nginx不会被使用
+nginx:
+  image:
+    repository: goharbor/nginx-photon
+    tag: v2.0.2
+  # set the service account to be used, default if left empty
+  serviceAccountName: &quot;&quot;
+  replicas: 1
+  # resources:
+  #  requests:
+  #    memory: 256Mi
+  #    cpu: 100m
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  ## Additional deployment annotations
+  podAnnotations: {}
+
+portal:
+  image:
+    repository: goharbor/harbor-portal
+    tag: v2.0.2
+  # set the service account to be used, default if left empty
+  serviceAccountName: &quot;&quot;
+  replicas: 1
+# resources:
+#  requests:
+#    memory: 256Mi
+#    cpu: 100m
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  ## Additional deployment annotations
+  podAnnotations: {}
+
+core:
+  image:
+    repository: goharbor/harbor-core
+    tag: v2.0.2
+  # set the service account to be used, default if left empty
+  serviceAccountName: &quot;&quot;
+  replicas: 1
+  ## Liveness probe values
+  livenessProbe:
+    initialDelaySeconds: 300
+# resources:
+#  requests:
+#    memory: 256Mi
+#    cpu: 100m
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  ## Additional deployment annotations
+  podAnnotations: {}
+  # Secret is used when core server communicates with other components.
+  # If a secret key is not specified, Helm will generate one.
+  # Must be a string of 16 chars.
+  secret: &quot;&quot;
+  # Fill the name of a kubernetes secret if you want to use your own
+  # TLS certificate and private key for token encryption/decryption.
+  # The secret must contain keys named:
+  # &quot;tls.crt&quot; - the certificate
+  # &quot;tls.key&quot; - the private key
+  # The default key pair will be used if it isn't set
+  secretName: &quot;&quot;
+  # The XSRF key. Will be generated automatically if it isn't specified
+  xsrfKey: &quot;&quot;
+
+jobservice:
+  image:
+    repository: goharbor/harbor-jobservice
+    tag: v2.0.2
+  replicas: 1
+  # set the service account to be used, default if left empty
+  serviceAccountName: &quot;&quot;
+  maxJobWorkers: 10
+  # The logger for jobs: &quot;file&quot;, &quot;database&quot; or &quot;stdout&quot;
+  jobLogger: file
+# resources:
+#   requests:
+#     memory: 256Mi
+#     cpu: 100m
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  ## Additional deployment annotations
+  podAnnotations: {}
+  # Secret is used when job service communicates with other components.
+  # If a secret key is not specified, Helm will generate one.
+  # Must be a string of 16 chars.
+  secret: &quot;&quot;
+
+registry:
+  # set the service account to be used, default if left empty
+  serviceAccountName: &quot;&quot;
+  registry:
+    image:
+      repository: goharbor/registry-photon
+      tag: v2.0.2
+    # resources:
+    #  requests:
+    #    memory: 256Mi
+    #    cpu: 100m
+  controller:
+    image:
+      repository: goharbor/harbor-registryctl
+      tag: v2.0.2
+
+    # resources:
+    #  requests:
+    #    memory: 256Mi
+    #    cpu: 100m
+  # set the service account to be used, default if left empty
+  serviceAccountName: &quot;&quot;
+  replicas: 1
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  ## Additional deployment annotations
+  podAnnotations: {}
+  # Secret is used to secure the upload state from client
+  # and registry storage backend.
+  # See: https://github.com/docker/distribution/blob/master/docs/configuration.md#http
+  # If a secret key is not specified, Helm will generate one.
+  # Must be a string of 16 chars.
+  secret: &quot;&quot;
+  # If true, the registry returns relative URLs in Location headers. The client is responsible for resolving the correct URL.
+  relativeurls: false
+  credentials:
+    username: &quot;harbor_registry_user&quot;
+    password: &quot;harbor_registry_password&quot;
+    # If you update the username or password of registry, make sure use cli tool htpasswd to generate the bcrypt hash
+    # e.g. &quot;htpasswd -nbBC10 $username $password&quot;
+    htpasswd: &quot;harbor_registry_user:$2y$10$9L4Tc0DJbFFMB6RdSCunrOpTHdwhid4ktBJmLD00bYgqkkGOvll3m&quot;
+
+  middleware:
+    enabled: false
+    type: cloudFront
+    cloudFront:
+      baseurl: example.cloudfront.net
+      keypairid: KEYPAIRID
+      duration: 3000s
+      ipfilteredby: none
+      # The secret key that should be present is CLOUDFRONT_KEY_DATA, which should be the encoded private key
+      # that allows access to CloudFront
+      privateKeySecret: &quot;my-secret&quot;
+
+chartmuseum:
+  enabled: true
+  # set the service account to be used, default if left empty
+  serviceAccountName: &quot;&quot;
+  # Harbor defaults ChartMuseum to returning relative urls, if you want using absolute url you should enable it by change the following value to 'true'
+  absoluteUrl: false
+  image:
+    repository: goharbor/chartmuseum-photon
+    tag: v2.0.2
+  replicas: 1
+  # resources:
+  #  requests:
+  #    memory: 256Mi
+  #    cpu: 100m
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  ## Additional deployment annotations
+  podAnnotations: {}
+
+clair:
+  enabled: true
+  # set the service account to be used, default if left empty
+  serviceAccountName: &quot;&quot;
+  clair:
+    image:
+      repository: goharbor/clair-photon
+      tag: v2.0.2
+    # resources:
+    #  requests:
+    #    memory: 256Mi
+    #    cpu: 100m
+  adapter:
+    image:
+      repository: goharbor/clair-adapter-photon
+      tag: v2.0.2
+    # resources:
+    #  requests:
+    #    memory: 256Mi
+    #    cpu: 100m
+  replicas: 1
+  # The interval of clair updaters, the unit is hour, set to 0 to
+  # disable the updaters
+  updatersInterval: 12
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  ## Additional deployment annotations
+  podAnnotations: {}
+
+trivy:
+  # enabled the flag to enable Trivy scanner
+  enabled: true
+  image:
+    # repository the repository for Trivy adapter image
+    repository: goharbor/trivy-adapter-photon
+    # tag the tag for Trivy adapter image
+    tag: v2.0.2
+  # set the service account to be used, default if left empty
+  serviceAccountName: &quot;&quot;
+  # replicas the number of Pod replicas
+  replicas: 1
+  # debugMode the flag to enable Trivy debug mode with more verbose scanning log
+  debugMode: false
+  # vulnType a comma-separated list of vulnerability types. Possible values are `os` and `library`.
+  vulnType: &quot;os,library&quot;
+  # severity a comma-separated list of severities to be checked
+  severity: &quot;UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL&quot;
+  # ignoreUnfixed the flag to display only fixed vulnerabilities
+  ignoreUnfixed: false
+  # insecure the flag to skip verifying registry certificate
+  insecure: false
+  # gitHubToken the GitHub access token to download Trivy DB
+  #
+  # Trivy DB contains vulnerability information from NVD, Red Hat, and many other upstream vulnerability databases.
+  # It is downloaded by Trivy from the GitHub release page https://github.com/aquasecurity/trivy-db/releases and cached
+  # in the local file system (`/home/scanner/.cache/trivy/db/trivy.db`). In addition, the database contains the update
+  # timestamp so Trivy can detect whether it should download a newer version from the Internet or use the cached one.
+  # Currently, the database is updated every 12 hours and published as a new release to GitHub.
+  #
+  # Anonymous downloads from GitHub are subject to the limit of 60 requests per hour. Normally such rate limit is enough
+  # for production operations. If, for any reason, it's not enough, you could increase the rate limit to 5000
+  # requests per hour by specifying the GitHub access token. For more details on GitHub rate limiting please consult
+  # https://developer.github.com/v3/#rate-limiting
+  #
+  # You can create a GitHub token by following the instructions in
+  # https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
+  gitHubToken: &quot;&quot;
+  # skipUpdate the flag to disable Trivy DB downloads from GitHub
+  #
+  # You might want to set the value of this flag to `true` in test or CI/CD environments to avoid GitHub rate limiting issues.
+  # If the value is set to `true` you have to manually download the `trivy.db` file and mount it in the
+  # `/home/scanner/.cache/trivy/db/trivy.db` path.
+  skipUpdate: false
+  resources:
+    requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ## Additional deployment annotations
+  podAnnotations: {}
+
+notary:
+  enabled: true
+  server:
+    # set the service account to be used, default if left empty
+    serviceAccountName: &quot;&quot;
+    image:
+      repository: goharbor/notary-server-photon
+      tag: v2.0.2
+    replicas: 1
+    # resources:
+    #  requests:
+    #    memory: 256Mi
+    #    cpu: 100m
+  signer:
+    # set the service account to be used, default if left empty
+    serviceAccountName: &quot;&quot;
+    image:
+      repository: goharbor/notary-signer-photon
+      tag: v2.0.2
+    replicas: 1
+    # resources:
+    #  requests:
+    #    memory: 256Mi
+    #    cpu: 100m
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  ## Additional deployment annotations
+  podAnnotations: {}
+  # Fill the name of a kubernetes secret if you want to use your own
+  # TLS certificate authority, certificate and private key for notary
+  # communications.
+  # The secret must contain keys named ca.crt, tls.crt and tls.key that
+  # contain the CA, certificate and private key.
+  # They will be generated if not set.
+  secretName: &quot;&quot;
+
+database:
+  # if external database is used, set &quot;type&quot; to &quot;external&quot;
+  # and fill the connection informations in &quot;external&quot; section
+  type: internal
+  internal:
+    # set the service account to be used, default if left empty
+    serviceAccountName: &quot;&quot;
+    image:
+      repository: goharbor/harbor-db
+      tag: v2.0.2
+    # The initial superuser password for internal database
+    password: &quot;changeit&quot;
+    # resources:
+    #  requests:
+    #    memory: 256Mi
+    #    cpu: 100m
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+  external:
+    host: &quot;192.168.0.1&quot;
+    port: &quot;5432&quot;
+    username: &quot;user&quot;
+    password: &quot;password&quot;
+    coreDatabase: &quot;registry&quot;
+    clairDatabase: &quot;clair&quot;
+    notaryServerDatabase: &quot;notary_server&quot;
+    notarySignerDatabase: &quot;notary_signer&quot;
+    # &quot;disable&quot; - No SSL
+    # &quot;require&quot; - Always SSL (skip verification)
+    # &quot;verify-ca&quot; - Always SSL (verify that the certificate presented by the
+    # server was signed by a trusted CA)
+    # &quot;verify-full&quot; - Always SSL (verify that the certification presented by the
+    # server was signed by a trusted CA and the server host name matches the one
+    # in the certificate)
+    sslmode: &quot;disable&quot;
+  # The maximum number of connections in the idle connection pool.
+  # If it &lt;=0, no idle connections are retained.
+  maxIdleConns: 50
+  # The maximum number of open connections to the database.
+  # If it &lt;= 0, then there is no limit on the number of open connections.
+  # Note: the default number of connections is 1024 for postgre of harbor.
+  maxOpenConns: 1000
+  ## Additional deployment annotations
+  podAnnotations: {}
+
+redis:
+  # if external Redis is used, set &quot;type&quot; to &quot;external&quot;
+  # and fill the connection informations in &quot;external&quot; section
+  type: internal
+  internal:
+    # set the service account to be used, default if left empty
+    serviceAccountName: &quot;&quot;
+    image:
+      repository: goharbor/redis-photon
+      tag: v2.0.2
+    # resources:
+    #  requests:
+    #    memory: 256Mi
+    #    cpu: 100m
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+  external:
+    host: &quot;192.168.0.2&quot;
+    port: &quot;6379&quot;
+    # The &quot;coreDatabaseIndex&quot; must be &quot;0&quot; as the library Harbor
+    # used doesn't support configuring it
+    coreDatabaseIndex: &quot;0&quot;
+    jobserviceDatabaseIndex: &quot;1&quot;
+    registryDatabaseIndex: &quot;2&quot;
+    chartmuseumDatabaseIndex: &quot;3&quot;
+    clairAdapterIndex: &quot;4&quot;
+    trivyAdapterIndex: &quot;5&quot;
+    password: &quot;&quot;
+  ## Additional deployment annotations
+  podAnnotations: {}
+
+</code></pre><p>简化后<code>harbor.yaml</code></p>
+<pre><code>expose:
+  type: ingress
+  tls:
+    enabled: true
+    secretName: &quot;youpenglai&quot;
+  ingress:
+    hosts:
+      core: harbor.fenghong.tech 
+      notary: notary.fenghong.tech
+    controller: default
+    annotations:
+      ingress.kubernetes.io/ssl-redirect: &quot;true&quot;
+      ingress.kubernetes.io/proxy-body-size: &quot;0&quot;
+      nginx.ingress.kubernetes.io/ssl-redirect: &quot;true&quot;
+      nginx.ingress.kubernetes.io/proxy-body-size: &quot;0&quot;
+externalURL: https://harbor.fenghong.tech
+persistence:
+  enabled: true
+  resourcePolicy: &quot;keep&quot;
+  persistentVolumeClaim:
+    registry:
+      storageClass: &quot;nfs&quot;
+      accessMode: ReadWriteOnce
+      size: 2Gi
+    chartmuseum:
+      storageClass: &quot;nfs&quot;
+      accessMode: ReadWriteOnce
+      size: 2Gi
+    jobservice:
+      existingClaim: &quot;&quot;
+      storageClass: &quot;nfs&quot;
+      subPath: &quot;&quot;
+      accessMode: ReadWriteOnce
+      size: 1Gi
+    database:
+      storageClass: &quot;nfs&quot;
+      accessMode: ReadWriteOnce
+      size: 1Gi
+    redis:
+      storageClass: &quot;nfs&quot;
+      accessMode: ReadWriteOnce
+      size: 1Gi
+    trivy:
+      storageClass: &quot;nfs&quot;
+      accessMode: ReadWriteOnce
+      size: 2Gi
+imagePullPolicy: IfNotPresent
+</code></pre><h3 id="部署">部署</h3>
+<p>其中需要我们定制的部分很少，我们将域名替换成我们自己的，使用默认的 Ingress  方式暴露服务，其他需要我们手动配置的部分就是数据持久化的部分，我们需要提前为上面的这些服务创建好可用的 PVC 或者 StorageClass  对象，比如我们这里使用一个名为 harbor-data 的 StorageClass 资源对象，当然也可以根据我们实际的需求修改  accessMode 或者存储容量.这里,我已经预先创建了<a href="https://www.fenghong.tech/blog/kubernetes/kubeadm-pvc/">基于nfs的动态pvc</a>了以及域名证书<code>tls</code>. 不熟悉的可以找一下之前的文章.</p>
+<pre><code>$ kubectl create ns  kube-ops
+# 使用指定的key创建名为fenghong的TLS secret 
+$ kubectl create secret tls fenghong --cert=path/to/tls.cert --key=path/to/tls.key   -n kube-ops
+
+# 创建nginx-ingress
+$ kubectl apply -f https://kuboard.cn/install-script/v1.18.x/nginx-ingress.yaml
+
+## 指定values.yaml安装 harbor
+$ helm repo add harbor https://helm.goharbor.io
+$ helm  install  harbor harbor/harbor  -f harbor.yaml  --namespace kube-ops
+</code></pre><h3 id="查看部署结果">查看部署结果</h3>
+<pre><code>$ kubectl get all -n kube-ops 
+NAME                                               READY   STATUS    RESTARTS   AGE
+pod/harbor-harbor-chartmuseum-9dbc86bf5-np6tm      1/1     Running   0          65m
+pod/harbor-harbor-clair-75c79f8699-hh9z8           2/2     Running   0          30m
+pod/harbor-harbor-core-c5f8b499d-n7jq5             1/1     Running   0          65m
+pod/harbor-harbor-database-0                       1/1     Running   0          65m
+pod/harbor-harbor-jobservice-7bc6f94fc8-hrwqw      1/1     Running   1          65m
+pod/harbor-harbor-notary-server-5fc79f89d8-2mfvn   1/1     Running   2          65m
+pod/harbor-harbor-notary-signer-55fb874764-phg9c   1/1     Running   2          65m
+pod/harbor-harbor-portal-87858859c-z5gpm           1/1     Running   0          65m
+pod/harbor-harbor-redis-0                          1/1     Running   0          65m
+pod/harbor-harbor-registry-7ddd894946-txmfr        2/2     Running   0          21m
+pod/harbor-harbor-trivy-0                          1/1     Running   0          65m
+
+NAME                                  TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE
+service/harbor-harbor-chartmuseum     ClusterIP   10.102.191.179   &lt;none&gt;        80/TCP              65m
+service/harbor-harbor-clair           ClusterIP   10.97.102.76     &lt;none&gt;        8080/TCP            65m
+service/harbor-harbor-core            ClusterIP   10.104.232.106   &lt;none&gt;        80/TCP              65m
+service/harbor-harbor-database        ClusterIP   10.101.7.197     &lt;none&gt;        5432/TCP            65m
+service/harbor-harbor-jobservice      ClusterIP   10.111.236.111   &lt;none&gt;        80/TCP              65m
+service/harbor-harbor-notary-server   ClusterIP   10.99.122.140    &lt;none&gt;        4443/TCP            65m
+service/harbor-harbor-notary-signer   ClusterIP   10.110.255.184   &lt;none&gt;        7899/TCP            65m
+service/harbor-harbor-portal          ClusterIP   10.101.139.189   &lt;none&gt;        80/TCP              65m
+service/harbor-harbor-redis           ClusterIP   10.105.216.126   &lt;none&gt;        6379/TCP            65m
+service/harbor-harbor-registry        ClusterIP   10.98.71.16      &lt;none&gt;        5000/TCP,8080/TCP   65m
+service/harbor-harbor-trivy           ClusterIP   10.104.97.54     &lt;none&gt;        8080/TCP            65m
+
+NAME                                          READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/harbor-harbor-chartmuseum     1/1     1            1           65m
+deployment.apps/harbor-harbor-clair           1/1     1            1           65m
+deployment.apps/harbor-harbor-core            1/1     1            1           65m
+deployment.apps/harbor-harbor-jobservice      1/1     1            1           65m
+deployment.apps/harbor-harbor-notary-server   1/1     1            1           65m
+deployment.apps/harbor-harbor-notary-signer   1/1     1            1           65m
+deployment.apps/harbor-harbor-portal          1/1     1            1           65m
+deployment.apps/harbor-harbor-registry        1/1     1            1           65m
+
+NAME                                                     DESIRED   CURRENT   READY   AGE
+replicaset.apps/harbor-harbor-chartmuseum-9dbc86bf5      1         1         1       65m
+replicaset.apps/harbor-harbor-clair-75c79f8699           1         1         1       65m
+replicaset.apps/harbor-harbor-core-c5f8b499d             1         1         1       65m
+replicaset.apps/harbor-harbor-jobservice-7bc6f94fc8      1         1         1       65m
+replicaset.apps/harbor-harbor-notary-server-5fc79f89d8   1         1         1       65m
+replicaset.apps/harbor-harbor-notary-signer-55fb874764   1         1         1       65m
+replicaset.apps/harbor-harbor-portal-87858859c           1         1         1       65m
+replicaset.apps/harbor-harbor-registry-7ddd894946        1         1         1       65m
+
+NAME                                      READY   AGE
+statefulset.apps/harbor-harbor-database   1/1     65m
+statefulset.apps/harbor-harbor-redis      1/1     65m
+statefulset.apps/harbor-harbor-trivy      1/1     65m
+
+## 查看ingress
+$ kubectl get ing -n kube-ops 
+NAME                           CLASS    HOSTS                  ADDRESS   PORTS     AGE
+harbor-harbor-ingress          &lt;none&gt;   harbor.fenghong.tech             80, 443   140m
+harbor-harbor-ingress-notary   &lt;none&gt;   notary.fenghong.tech             80, 443   140m
+</code></pre><p>添加完成后，在浏览器中输入<code>harbor.fenghong.tech</code> 界面了，当然我们配置的 Ingress 中会强制跳转到 https，所以如果你的浏览器有什么安全限制的话，证书是阿里云的免费一年的帧数，证书文件可以通过查看 Secret 资源对象获取.</p>
+<p>然后输入用户名：<code>admin</code>，密码：<code>Harbor12345</code>（当然我们也可以通过 Helm 安装的时候自己覆盖 harborAdminPassword）即可登录进入 Portal 首页 .</p>
+<p><img src="https://pic.fenghong.tech/k8s/harbor_20200901172759.jpg" alt=""></p>
+<p>高可用参考<a href="https://github.com/goharbor/harbor-helm">官网</a>.</p>
+
+        </div>
+        <!-- tags -->
+        <div class="mb-3">
+          <h5 class="d-inline-block mr-3">Tags:</h5>
+          <ul class="list-inline d-inline-block">
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/kubernetes"> 
+            Kubernetes</a>
+            <a>
+            <li class="list-inline-item"><a class="text-color" href="/tags/harbor"> , 
+            Harbor</a>
+            
+          </ul>
+        </div>
+        <!-- previous -->
+        <div class="mb-3 link-article">
+    <div class="pre-article">
+        
+            <div><i class="fa fa-arrow-left"></i> 上一篇</div>
+            <a href="https://www.fenghong.tech/blog/technology/kernel-update/">kernel update by yum</a>
+        
+    </div>
+    <div class="next-article">
+        
+            <div>下一篇 <i class="fa fa-arrow-right"></i></div>
+            <a href="https://www.fenghong.tech/blog/algorithm/go-slice-deduplicate/">go实现对slice的去重并移除元素</a>
+        
+    </div>
+</div>
+        <!-- previous -->
+
+        <!-- recommend -->
+        
+
+<div class="mb-3">
+  <h2>文章推荐</h2>
+  <ul class="related">
+  
+    <li><a href="/blog/kubernetes/kubernetes-traefik/">kubernetes traefik简单应用</a></li>
+  
+    <li><a href="/blog/kubernetes/kubernetes-ingress-rewrite/">kubernetes ingress rewrite配置</a></li>
+  
+    <li><a href="/blog/ops/jenkins-java-docker-kubernetes/">jenkins&#43;java&#43;docker&#43;kubernetes实现自动化部署</a></li>
+  
+    <li><a href="/blog/kubernetes/kubernetes-loki-logs/">k8s基于helm安装loki并持久化数据</a></li>
+  
+    <li><a href="/blog/kubernetes/kubernetes-upgrade-1.18.3/">kubernetes集群升级至v1.18.3且调整证书年限</a></li>
+  
+  </ul>
+</div>
+
+
+        <!-- comments -->
+
+        
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script>
+          window.onload = function() {
+              const gitalk = new Gitalk({
+              clientID: 'a0a546df858aafb5300e',
+              clientSecret: '67d7b40de25c072fc38840ffb9c06ceab7ef5080',
+              repo: 'oldthreefeng.github.io',
+              owner: 'oldthreefeng',
+              admin: ['oldthreefeng'],
+              id: hex_md5(hex_md5(window.location.pathname + window.location.hash)), 
+              distractionFreeMode: false 
+            });
+            (function() {
+              if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+                document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+                return;
+              }
+              gitalk.render('gitalk-container');
+            })();
+          }
+        </script>
+        
+      </div>
+      <!-- sidebar -->
+<aside class="col-lg-4 order-1 order-lg-2">
+  <!-- tags -->
+  <div class="bg-white px-4 py-5 box-shadow mb-5 word-cloud">
+    <h4 class="mb-4">标签</h4>
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div id="tag-cloud" style="padding: 5px 15px">
+      
+        
+          
+          
+          
+          <a href="/tags/acme" style="font-size:1.0188679245283019rem">acme</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/acmetiny" style="font-size:1.0188679245283019rem">acmetiny</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/alertmanager" style="font-size:1rem">alertmanager</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/algorithm" style="font-size:1.1132075471698113rem">algorithm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/aliyun" style="font-size:1rem">aliyun</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ansible" style="font-size:1.0754716981132075rem">ansible</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/apisix" style="font-size:1rem">apisix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/arm64" style="font-size:1.0188679245283019rem">arm64</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/authorization" style="font-size:1rem">authorization</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/backup" style="font-size:1.0377358490566038rem">backup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binarysearch" style="font-size:1.0188679245283019rem">binarysearch</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/binlog" style="font-size:1rem">binlog</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bit" style="font-size:1.0188679245283019rem">bit</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/bug" style="font-size:1.0188679245283019rem">bug</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cache" style="font-size:1rem">cache</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/certbot" style="font-size:1rem">certbot</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/channel" style="font-size:1rem">channel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/chrome" style="font-size:1.0188679245283019rem">chrome</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ci" style="font-size:1rem">ci</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cluster" style="font-size:1.1132075471698113rem">cluster</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cobra" style="font-size:1rem">cobra</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coco" style="font-size:1.0377358490566038rem">coco</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coding" style="font-size:1rem">coding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/computer" style="font-size:1rem">computer</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/consul" style="font-size:1rem">consul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/containerd" style="font-size:1.0188679245283019rem">containerd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/coredns" style="font-size:1rem">coredns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/cors" style="font-size:1rem">cors</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/crypto" style="font-size:1rem">crypto</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/curl" style="font-size:1rem">curl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dashboard" style="font-size:1rem">dashboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dcdn" style="font-size:1rem">dcdn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/debt" style="font-size:1rem">debt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/devops" style="font-size:1.0188679245283019rem">devops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dingding" style="font-size:1rem">dingding</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/disk" style="font-size:1rem">disk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dmesg" style="font-size:1rem">dmesg</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/dns" style="font-size:1rem">dns</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/docker" style="font-size:1.2264150943396226rem">docker</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/doublylinkedlist" style="font-size:1rem">doublylinkedlist</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/elk" style="font-size:1rem">elk</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/error" style="font-size:1rem">error</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/etcd" style="font-size:1.0377358490566038rem">etcd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exec" style="font-size:1.0188679245283019rem">exec</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/exp" style="font-size:1rem">exp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/federated" style="font-size:1rem">federated</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/filecoin" style="font-size:1rem">filecoin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/find" style="font-size:1rem">find</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/firewalld" style="font-size:1rem">firewalld</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/fix" style="font-size:1.0377358490566038rem">fix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flag" style="font-size:1.0188679245283019rem">flag</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/flannel" style="font-size:1rem">flannel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/food" style="font-size:1.0188679245283019rem">food</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/frp" style="font-size:1.0377358490566038rem">frp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ftp" style="font-size:1.0188679245283019rem">ftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/games" style="font-size:1rem">games</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gin" style="font-size:1.0188679245283019rem">gin</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/git" style="font-size:1.2075471698113207rem">git</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/github" style="font-size:1.0188679245283019rem">github</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gitlab" style="font-size:1rem">gitlab</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go" style="font-size:1.320754716981132rem">go</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/go-vim" style="font-size:1rem">go-vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gogs" style="font-size:1.0566037735849056rem">gogs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/goland" style="font-size:1.0188679245283019rem">goland</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/golang" style="font-size:1.0377358490566038rem">golang</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/gorequest" style="font-size:1rem">gorequest</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grafana" style="font-size:1.0188679245283019rem">grafana</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/grub" style="font-size:1rem">grub</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hack" style="font-size:1.0188679245283019rem">hack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/haproxy" style="font-size:1.0377358490566038rem">haproxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/harbor" style="font-size:1.0188679245283019rem">harbor</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hash" style="font-size:1.0188679245283019rem">hash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hashmap" style="font-size:1rem">hashmap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/helm" style="font-size:1.0188679245283019rem">helm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/hexo" style="font-size:1.0377358490566038rem">hexo</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/http" style="font-size:1.0754716981132075rem">http</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/https" style="font-size:1rem">https</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/index" style="font-size:1rem">index</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ingress" style="font-size:1.0377358490566038rem">ingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/inotify" style="font-size:1rem">inotify</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/internet" style="font-size:1.169811320754717rem">internet</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/interview" style="font-size:1rem">interview</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/iptables" style="font-size:1.0377358490566038rem">iptables</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ipvs" style="font-size:1.0188679245283019rem">ipvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/java" style="font-size:1.0754716981132075rem">java</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jeju" style="font-size:1rem">jeju</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jenkins" style="font-size:1.0943396226415094rem">jenkins</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jetbrains" style="font-size:1rem">jetbrains</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jumpserver" style="font-size:1.0566037735849056rem">jumpserver</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/jvm" style="font-size:1rem">jvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/keepalived" style="font-size:1rem">keepalived</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kernel" style="font-size:1rem">kernel</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/knowledge" style="font-size:1rem">knowledge</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kube-proxy" style="font-size:1.0188679245283019rem">kube-proxy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetes" style="font-size:1.3962264150943395rem">kubernetes</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesrbac" style="font-size:1rem">kubernetesrbac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kubernetesssl" style="font-size:1.0188679245283019rem">kubernetesssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/kuboard" style="font-size:1.0566037735849056rem">kuboard</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lb" style="font-size:1rem">lb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/learning" style="font-size:1.0566037735849056rem">learning</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/leetcode" style="font-size:1.0188679245283019rem">leetcode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libcurl" style="font-size:1rem">libcurl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/libssh2" style="font-size:1rem">libssh2</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/link" style="font-size:1rem">link</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/linux" style="font-size:1.9811320754716981rem">linux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/living" style="font-size:1rem">living</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lnux" style="font-size:1rem">lnux</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/log" style="font-size:1.0566037735849056rem">log</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logrus" style="font-size:1rem">logrus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logs" style="font-size:1rem">logs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/logstash" style="font-size:1rem">logstash</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/loki" style="font-size:1rem">loki</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lru" style="font-size:1rem">lru</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/luna" style="font-size:1rem">luna</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvm" style="font-size:1rem">lvm</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/lvs" style="font-size:1rem">lvs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mac" style="font-size:1rem">mac</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/malaysia" style="font-size:1rem">malaysia</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/manage" style="font-size:1rem">manage</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/map" style="font-size:1rem">map</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mariadb" style="font-size:1.0377358490566038rem">mariadb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/markdown" style="font-size:1.0188679245283019rem">markdown</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mfa" style="font-size:1rem">mfa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mha" style="font-size:1rem">mha</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mode" style="font-size:1rem">mode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/module" style="font-size:1rem">module</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mount" style="font-size:1rem">mount</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/mysql" style="font-size:1.2452830188679245rem">mysql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/navicat" style="font-size:1rem">navicat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/network" style="font-size:1rem">network</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nfs" style="font-size:1.0754716981132075rem">nfs</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginx" style="font-size:1.2264150943396226rem">nginx</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/nginxingress" style="font-size:1.0566037735849056rem">nginxingress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/node_exporter" style="font-size:1.0188679245283019rem">node_exporter</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/numpy" style="font-size:1rem">numpy</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ops" style="font-size:1.2452830188679245rem">ops</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/owncloud" style="font-size:1rem">owncloud</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/password" style="font-size:1rem">password</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/paxos" style="font-size:1.0188679245283019rem">paxos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/php" style="font-size:1rem">php</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pipeline" style="font-size:1rem">pipeline</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/polynomial" style="font-size:1rem">polynomial</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/problem" style="font-size:1rem">problem</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/prometheus" style="font-size:1.0943396226415094rem">prometheus</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pv" style="font-size:1.0754716981132075rem">pv</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/pvc" style="font-size:1.0754716981132075rem">pvc</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/python" style="font-size:1.0943396226415094rem">python</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/queue" style="font-size:1rem">queue</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/qw3xt" style="font-size:1rem">qw3xt</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rabbitmq" style="font-size:1.0188679245283019rem">rabbitmq</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/raft" style="font-size:1rem">raft</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rebase" style="font-size:1rem">rebase</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/redis" style="font-size:1.0377358490566038rem">redis</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/resources" style="font-size:1.0188679245283019rem">resources</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsa" style="font-size:1rem">rsa</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/rsync" style="font-size:1.0188679245283019rem">rsync</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/safe" style="font-size:1.0754716981132075rem">safe</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/samba" style="font-size:1rem">samba</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sealos" style="font-size:1rem">sealos</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/secure" style="font-size:1rem">secure</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sed" style="font-size:1rem">sed</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/server" style="font-size:1.2075471698113207rem">server</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sftp" style="font-size:1rem">sftp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shadowsocks" style="font-size:1.0188679245283019rem">shadowsocks</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/shell" style="font-size:1.0188679245283019rem">shell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slap" style="font-size:1rem">slap</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slave" style="font-size:1rem">slave</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slb" style="font-size:1rem">slb</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/slowquery" style="font-size:1rem">slowquery</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sonar" style="font-size:1.0377358490566038rem">sonar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sourcetree" style="font-size:1.0188679245283019rem">sourcetree</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/sql" style="font-size:1.0188679245283019rem">sql</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ss" style="font-size:1rem">ss</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssh" style="font-size:1.0754716981132075rem">ssh</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ssl" style="font-size:1.1132075471698113rem">ssl</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stack" style="font-size:1rem">stack</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/stress" style="font-size:1rem">stress</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/style" style="font-size:1rem">style</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/switchyomega" style="font-size:1rem">switchyomega</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/syncd" style="font-size:1rem">syncd</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/taint" style="font-size:1rem">taint</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tar" style="font-size:1rem">tar</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tcp" style="font-size:1.0188679245283019rem">tcp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/testing" style="font-size:1rem">testing</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tomcat" style="font-size:1rem">tomcat</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/tour" style="font-size:1.0188679245283019rem">tour</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/trojan" style="font-size:1rem">trojan</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/ubuntu" style="font-size:1.0566037735849056rem">ubuntu</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/udp" style="font-size:1rem">udp</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/uk8s" style="font-size:1rem">uk8s</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unauthorized" style="font-size:1rem">unauthorized</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/unblockneteasemusic" style="font-size:1rem">unblockneteasemusic</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upgrade" style="font-size:1.0188679245283019rem">upgrade</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/upstream" style="font-size:1rem">upstream</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/v1.18.3" style="font-size:1rem">v1.18.3</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vim" style="font-size:1rem">vim</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/virtul" style="font-size:1rem">virtul</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vpn" style="font-size:1.0754716981132075rem">vpn</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/vscode" style="font-size:1rem">vscode</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/websocket" style="font-size:1rem">websocket</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/wifi" style="font-size:1rem">wifi</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xshell" style="font-size:1rem">xshell</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/xtrabackup" style="font-size:1rem">xtrabackup</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/yum" style="font-size:1rem">yum</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/zabbix" style="font-size:1rem">zabbix</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e6%95%b0%e6%8d%ae%e5%ba%93%e5%8e%9f%e7%90%86" style="font-size:1rem">数据库原理</a>
+        
+      
+        
+          
+          
+          &middot;
+          <a href="/tags/%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95" style="font-size:1rem">贪心算法</a>
+        
+      
+      </div>
+    
+  </div>
+
+  <!-- profile -->
+  <!-- toc -->
+  
+  <div class="bg-white px-4 py-5 box-shadow mb-5 sticky-top">
+    <h4 class="mb-4">目录</h4>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装harbor">安装harbor</a>
+      <ul>
+        <li><a href="#配置文件解析">配置文件解析</a></li>
+        <li><a href="#部署">部署</a></li>
+        <li><a href="#查看部署结果">查看部署结果</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+
+</aside>
+<!-- /sidebar -->
+
+    </div>
+  </div>
+</section>
+<!-- /blog details -->
+
+
+
+<footer>
+	
+	<div class="section bg-secondary">
+		<div class="container">
+			<div class="row justify-content-between">
+				
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					<a class="mb-4 d-inline-block" href="/"><img class="img-fluid"
+																								src="/images/images/logo-alt.png" alt="Louis Blog" width="60%"></a>
+					<p class="text-light mb-5">每一个不曾起舞的日子都是对生命的辜负.</p>
+					<h4 class="text-white mb-4">关注我</h4>
+					
+					<ul class="list-inline social-icon-alt">
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://twitter.com/louishong17"><i class="fa fa-twitter"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://github.com/oldthreefeng"><i class="fa fa-github"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="/contact"><i class="fa fa-wechat"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="mailto:992165098@qq.com"><i class="fa fa-envelope"></i></a>
+						</li>
+						
+						<li class="list-inline-item">
+							<a class="hover-ripple" href="https://www.fenghong.tech/blog/index.xml"><i class="fa fa-rss"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="col-lg-5 mb-5 mb-lg-0">
+					
+					
+					
+					
+					
+					<div class="mb-5">
+						<h4 class="text-white mb-4">联系信息</h4>
+						<p class="text-light mb-3">上海 · 浦东新区</p>
+						<p class="text-light mb-3"></p>
+						<p class="text-light mb-3">微信联系方式</p>
+						<p class="text-light mb-3"><img src="/images/images/wechat-qrcode.png" width="356px"></p>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="bg-secondary-darken py-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+					<p class="mb-0 text-white">Copyright © 2020 Louis</p>
+				</div>
+				<div class="col-md-6 text-center text-md-right">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item mx-0"><a class="d-inline-block px-3 text-white" href="https://beian.miit.gov.cn/"
+																									class="text-white">鄂ICP备18027870号-1</a></li>
+						<p class="list-inline-item mx-0 text-white">本网站由</p>
+						<a target="_blank" rel="nofollow noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://pic.fenghong.tech/images/180803_logo30.png" style="margin-bottom:5px;height: 25px;"></a>
+						<p class="list-inline-item mx-0 text-white">提供CDN加速/云存储服务</p>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+<script>
+	var indexURL = "/index.json"
+</script>
+
+
+<!-- JS Plugins -->
+
+<script src="/plugins/jQuery/jquery.min.js"></script>
+
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="/plugins/slick/slick.min.js"></script>
+
+<script src="/plugins/google-map/gmap.js"></script>
+
+<script src="/plugins/venobox/venobox.min.js"></script>
+
+<script src="/plugins/filterizr/jquery.filterizr.min.js"></script>
+
+<script src="/plugins/search/fuse.min.js"></script>
+
+<script src="/plugins/search/mark.js"></script>
+
+<script src="/plugins/search/search.js"></script>
+
+<script src="/plugins/bigPicture/bigPicture.js"></script>
+
+<script src="/plugins/hex_md5/hex_md5.js"></script>
+
+
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+
+<!-- Algolia -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+<script>
+	docsearch({
+		apiKey: 'b4d47f0c039a84d4035305be829404dd',
+		indexName: 'DocSearch',
+		appId: 'CTH4P282IZ',
+		inputSelector: '#js-algolia-btn',
+		debug: false,
+	});
+</script>
+
+<!-- google analitycs -->
+
+<script>
+	(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-130595069-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https'){
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else{
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</body>
+
+</html>
